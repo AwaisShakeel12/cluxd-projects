@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anti Logistics — Smart Logistics, Strong Connections, Global Solutions</title>
+<meta name="description" content="Anti is a global logistics provider delivering trust, speed and reliability across the globe.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23f4750e' d='M12 2 L22 22 H15 L12 15 L9 22 H2 Z'/></svg>">
+
+<!-- Bootstrap 5 + Font Awesome + Fonts -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!--
+  ALL IMAGES ARE HOT-LINKED FROM THE WEB (Unsplash / RandomUser). No generated images.
+  Swap any URL below if you want different photos.
+-->
+
+<style>
+/* ================= ANTI LOGISTICS DESIGN SYSTEM ================= */
+:root{
+  --navy:#0c2340;        /* main dark blue */
+  --navy-2:#0a1c33;      /* darker strip / topbar / footer */
+  --navy-3:#133153;      /* lighter card blue */
+  --orange:#f4750e;      /* brand orange */
+  --orange-d:#d9650b;
+  --ink:#12283f;
+  --muted:#68788c;
+  --muted-2:#9fb0c2;
+  --line:#e5eaf1;
+  --light:#f5f7fa;
+  --green:#22c55e;
+  --radius:12px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;font-size:15px;overflow-x:hidden;position:relative}
+::selection{background:var(--orange);color:#fff}
+img{max-width:100%}
+h1,h2,h3,h4{font-weight:800;color:#fff}
+.section{padding:90px 0}
+@media(max-width:767.98px){.section{padding:60px 0}}
+.text-orange{color:var(--orange)!important}
+.tag{display:inline-block;color:var(--orange);font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.sec-title{font-size:clamp(1.7rem,3vw,2.35rem);line-height:1.2;margin:0}
+.dark .sec-title,.sec-title.dark{color:var(--navy)}
+p.lead-sm{color:var(--muted-2);font-size:.85rem;max-width:430px}
+.dark p.lead-sm{color:#aebdcc}
+
+/* Buttons */
+.btn-brand{background:var(--orange);color:#fff;border:0;border-radius:50rem;padding:.78rem 1.6rem;font-size:.82rem;font-weight:700;display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;transition:.3s;white-space:nowrap}
+.btn-brand:hover{background:var(--orange-d);color:#fff;transform:translateY(-2px);box-shadow:0 10px 24px rgba(244,117,14,.35)}
+.btn-play{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;display:inline-flex;align-items:center;justify-content:center;transition:.3s;flex:0 0 auto}
+.btn-play:hover{background:var(--orange);border-color:var(--orange)}
+.btn-play.dark{border-color:rgba(12,35,64,.35);color:var(--navy)}
+.btn-play.dark:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.link-more{font-size:.78rem;font-weight:700;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:.25s}
+.link-more:hover{color:var(--orange);gap:.7rem}
+
+/* ============ TOPBAR + NAVBAR ============ */
+
+/* ============ TOPBAR + NAVBAR ============ */
+.topbar{background:var(--navy-2);color:#aebdcc;font-size:.74rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.topbar i{color:var(--orange);margin-right:.4rem}
+.topbar a{color:#aebdcc;text-decoration:none}
+.topbar a:hover{color:#fff}
+
+/* Transparent by default */
+.navbar {
+  background: transparent; 
+  padding: 1.2rem 0; 
+  transition: all 0.35s ease;
+}
+/* Solid when scrolled */
+.navbar.scrolled {
+  background: var(--navy); 
+  padding: 0.85rem 0; 
+  box-shadow: 0 10px 30px rgba(4,16,30,.45);
+}
+
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none}
+.brand svg{width:26px;height:26px}
+.brand b{color:#fff;font-size:1.35rem;font-weight:800;letter-spacing:.01em}
+.navbar .nav-link{color:#dce5ef;font-size:.83rem;font-weight:600;margin:0 .5rem;position:relative}
+.navbar .nav-link::after{content:"";position:absolute;left:.5rem;right:.5rem;bottom:0;height:2px;background:var(--orange);transform:scaleX(0);transition:.3s}
+.navbar .nav-link:hover,.navbar .nav-link.active{color:#fff}
+.navbar .nav-link:hover::after,.navbar .nav-link.active::after{transform:scaleX(1)}
+.navbar-toggler{border:0}
+.navbar-toggler:focus{box-shadow:none}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+
+/* Keep mobile dropdown solid so it's readable over the hero */
+@media(max-width:991.98px){
+  .navbar-collapse{background:var(--navy-2);border-radius:10px;padding:.8rem 1rem;margin-top:.6rem}
+  .navbar .nav-link{margin:0;padding:.5rem .25rem}
+  .navbar .btn-brand{margin-top:.5rem}
+}
+/* ============ HERO ============ */
+
+/* ============ HERO ============ */
+.hero {
+  background: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: -85px; /* Pulls the hero background up UNDER the transparent navbar */
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(12,35,64,0.95) 0%, rgba(12,35,64,0.7) 45%, rgba(12,35,64,0.15) 100%);
+}
+.hero-content {
+  padding: 9.5rem 0 6.5rem; /* Increased top padding to push text down below the overlapping navbar */
+  position: relative;
+  z-index: 2;
+}
+.hero h1 {font-size:clamp(2.1rem,4.4vw,3.3rem); font-weight:800; line-height:1.16}
+.hero .lead-sm {margin:1.3rem 0 1.8rem; color:#cfdbe8}
+
+@media(max-width:991.98px) {
+  .hero { margin-top: -70px; } /* Slightly smaller pull-up for mobile */
+  .hero-content {padding: 7.5rem 1rem 4.5rem;}
+  .hero::before {background: linear-gradient(90deg, rgba(12,35,64,0.95) 0%, rgba(12,35,64,0.85) 100%);}
+}
+
+/* Stats strip */
+.stats{background:rgba(10,28,51,0.9); border-top:1px solid rgba(255,255,255,.1); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); margin-top:auto;}
+.stat-item{display:flex; align-items:center; gap:.9rem; padding:1.15rem 1rem; justify-content:center;}
+.stat-item i{color:var(--orange); font-size:1.5rem}
+.stat-item .num{color:#fff; font-weight:800; font-size:1.25rem; line-height:1.1}
+.stat-item .lbl{color:#8fa2b6; font-size:.7rem}
+@media(min-width:992px){.stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.08)}}
+/* ============ SERVICES ============ */
+.srv-card{border:1px solid var(--line);border-radius:10px;padding:1.35rem 1.25rem;display:flex;gap:.95rem;align-items:flex-start;height:100%;background:#fff;transition:.3s}
+.srv-card:hover{border-color:var(--orange);box-shadow:0 14px 34px rgba(12,35,64,.1);transform:translateY(-4px)}
+.srv-card i{color:var(--navy);font-size:1.5rem;margin-top:.15rem;transition:.3s}
+.srv-card:hover i{color:var(--orange)}
+.srv-card h3{color:var(--navy);font-size:.92rem;font-weight:700}
+.srv-card p{color:var(--muted);font-size:.75rem;margin:0}
+
+/* ============ BANNER CARD ============ */
+
+/* ============ BANNER CARD ============ */
+.banner-card {
+  background: url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1400&q=70') center/cover no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+.banner-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(12,35,64,0.95) 0%, rgba(12,35,64,0.6) 55%, rgba(12,35,64,0) 100%);
+}
+.banner-body {
+  padding: 4.5rem 3.5rem;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+.banner-body h2 {font-size:clamp(1.4rem,2.4vw,1.9rem)}
+.banner-body p {color:#b7c5d4; font-size:.82rem}
+@media(max-width:991.98px) {
+  .banner-body {padding:3rem 1.6rem}
+  .banner-card::before {background: linear-gradient(90deg, rgba(12,35,64,0.95) 0%, rgba(12,35,64,0.8) 100%);}
+}
+/* ============ WHY CHOOSE ============ */
+.wc-item{display:flex;gap:.95rem;align-items:flex-start}
+.wc-ico{flex:0 0 44px;width:44px;height:44px;border-radius:10px;background:var(--navy);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.05rem;transition:.3s}
+.wc-item:hover .wc-ico{background:var(--orange);color:#fff;transform:rotate(-6deg)}
+.wc-item h3{color:var(--navy);font-size:.9rem;font-weight:700}
+.wc-item p{color:var(--muted);font-size:.75rem;margin:0}
+.arch-wrap{position:relative;padding-left:70px}
+.arch{border-radius:320px 320px 14px 14px;overflow:hidden;box-shadow:0 24px 60px rgba(12,35,64,.18)}
+.arch img{width:100%;height:440px;object-fit:cover}
+.badge-circle{position:absolute;left:0;top:44%;width:150px;height:150px;border-radius:50%;background:var(--navy);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 16px 40px rgba(12,35,64,.35);z-index:2}
+.badge-circle b{font-size:1.5rem;font-weight:800;color:#fff}
+.badge-circle span{font-size:.68rem;color:#b7c5d4;line-height:1.3;padding:0 14px}
+@media(max-width:991.98px){.arch-wrap{padding-left:0;margin-top:2rem}.badge-circle{left:-8px}.arch img{height:380px}}
+
+/* ============ INDUSTRIES ============ */
+.ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+@media(max-width:991.98px){.ind-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:575.98px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
+.ind-card{border-radius:10px;overflow:hidden;border:1px solid var(--line);transition:.3s;background:#fff}
+.ind-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(12,35,64,.12)}
+.ind-card img{width:100%;height:110px;object-fit:cover}
+.ind-card .lbl{background:var(--light);font-size:.7rem;font-weight:600;color:var(--ink);text-align:center;padding:.55rem .3rem}
+
+/* ============ CTA STRIP ============ */
+.strip{background:var(--navy);border-radius:12px;padding:1.4rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.strip h3{font-size:1.05rem;margin:0}
+.strip p{color:#aebdcc;font-size:.75rem;margin:0}
+
+/* ============ HOW IT WORKS ============ */
+.steps-row{position:relative}
+.steps-wave{position:absolute;left:3%;right:3%;top:6px;height:56px;display:none}
+@media(min-width:992px){.steps-wave{display:block}}
+.step-num{position:relative;z-index:1;display:inline-block;background:#fff;padding:0 8px;color:var(--orange);font-size:1.45rem;font-weight:800}
+.step h3{color:var(--navy);font-size:.92rem;font-weight:700}
+.step p{color:var(--muted);font-size:.75rem}
+.wave-divider{display:block;width:100%;height:90px;margin-bottom:-1px}
+
+/* ============ TRACKING ============ */
+.track-input{border:1px solid var(--line);border-radius:8px;padding:.8rem 1.1rem;font-size:.82rem;width:100%;max-width:340px;color:var(--ink)}
+.track-input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 .2rem rgba(244,117,14,.12)}
+.tv{position:relative}
+.tv-main{border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(12,35,64,.18)}
+.tv-main img{width:100%;display:block;object-fit:cover}
+.tv-map{height:250px}
+.tv-ship{height:170px}
+.status-card{position:absolute;right:-26px;bottom:34px;background:#fff;border-radius:12px;box-shadow:0 18px 46px rgba(12,35,64,.22);padding:1rem 1.15rem;width:236px;z-index:2}
+.status-card .t{font-size:.68rem;color:var(--muted)}
+.status-card .s{font-size:.9rem;font-weight:800;color:var(--navy);margin-bottom:.6rem}
+.prog{display:flex;align-items:center}
+.prog .dot{width:10px;height:10px;border-radius:50%;background:var(--green);flex:0 0 auto;box-shadow:0 0 0 3px rgba(34,197,94,.18)}
+.prog .dot.gray{background:#cbd5e1;box-shadow:none}
+.prog .bar{flex:1;height:2px;background:var(--green)}
+.prog .bar.gray{background:#e2e8f0}
+.prog-lbls{display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-top:.4rem}
+@media(max-width:991.98px){.status-card{right:10px;bottom:16px}.tv{margin-top:2.5rem}}
+
+/* ============ TESTIMONIALS ============ */
+.testi{background:var(--navy)}
+.quote-ball{flex:0 0 74px;width:74px;height:74px;border-radius:50%;background:#fff;color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.testi-card{background:var(--navy-3);border-radius:12px;padding:1.7rem 1.8rem;flex:1}
+.testi-card p{color:#cfdbe8;font-size:.82rem}
+.testi-card img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+.testi-card .nm{color:#fff;font-size:.78rem;font-weight:700}
+.testi-card .rl{color:#8fa2b6;font-size:.68rem}
+.testi-nav button{width:38px;height:38px;border-radius:50%;border:0;background:#22456c;color:#cfdbe8;transition:.3s}
+.testi-nav button:hover{background:var(--orange);color:#fff}
+.testi-slide{display:none;animation:fadeT .5s ease}
+.testi-slide.active{display:block}
+@keyframes fadeT{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============ NEWS ============ */
+.news-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;height:100%;background:#fff;transition:.3s;position:relative}
+.news-card:hover{box-shadow:0 16px 36px rgba(12,35,64,.12);transform:translateY(-4px)}
+.news-card img{width:100%;height:150px;object-fit:cover}
+.date-badge{position:absolute;top:136px;left:14px;background:#fff;border-radius:8px;box-shadow:0 8px 20px rgba(12,35,64,.16);text-align:center;padding:.35rem .6rem;z-index:2}
+.date-badge b{display:block;font-size:.95rem;font-weight:800;color:var(--navy);line-height:1.1}
+.date-badge span{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.news-body{padding:2rem 1.1rem 1.2rem}
+.news-body h3{color:var(--navy);font-size:.85rem;font-weight:700;line-height:1.45}
+
+/* ============ READY CTA ============ */
+.ready{position:relative;background:url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1800&q=70') center/cover no-repeat fixed}
+.ready::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,28,51,.96) 20%,rgba(10,28,51,.75) 60%,rgba(10,28,51,.55))}
+.ready .container{position:relative;z-index:1}
+.ready h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.ready p{color:#b7c5d4;font-size:.83rem;max-width:420px}
+@media(max-width:991.98px){.ready{background-attachment:scroll}}
+
+/* ============ PARTNERS ============ */
+.partner-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+@media(max-width:991.98px){.partner-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:575.98px){.partner-grid{grid-template-columns:repeat(2,1fr)}}
+.partner{border:1px solid var(--line);border-radius:8px;height:76px;display:flex;align-items:center;justify-content:center;gap:.5rem;color:#93a1b0;font-weight:800;font-size:.95rem;letter-spacing:.04em;filter:grayscale(1);transition:.3s;background:#fff}
+.partner:hover{color:var(--navy);filter:none;transform:translateY(-3px);box-shadow:0 10px 24px rgba(12,35,64,.1)}
+.partner small{font-size:.6rem;letter-spacing:.12em}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--navy-2);color:#aebdcc}
+.footer h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:1.1rem}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer ul li{margin-bottom:.55rem}
+.footer ul a{color:#aebdcc;font-size:.76rem;text-decoration:none;transition:.25s}
+.footer ul a:hover{color:var(--orange);padding-left:4px}
+.footer .about-p{font-size:.76rem;max-width:250px}
+.footer .c-line{display:flex;gap:.6rem;font-size:.76rem;margin-bottom:.6rem;align-items:flex-start}
+.footer .c-line i{color:var(--orange);margin-top:.1rem}
+.social a{width:34px;height:34px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#cfdbe8;text-decoration:none;font-size:.75rem;transition:.3s}
+.social a:hover{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);font-size:.7rem;color:#7d90a5}
+.footer-bottom i{color:var(--orange)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navList" data-bs-root-margin="0px 0px -55%">
+
+<!-- ===================== TOPBAR ===================== -->
+<div class="topbar d-none d-lg-block">
+  <div class="container-xl d-flex align-items-center justify-content-between py-2">
+    <div class="d-flex gap-4">
+      <span><i class="fa-regular fa-clock"></i>Mon - Fri 08:00 - 18:00</span>
+      <a href="mailto:info@anti.com"><i class="fa-regular fa-envelope"></i>info@anti.com</a>
+    </div>
+    <div class="d-flex align-items-center gap-4">
+      <a href="tel:+480123456789"><i class="fa-solid fa-phone"></i>+48 0123 456 789</a>
+      <a href="#contact" class="btn-brand py-1 px-3" style="font-size:.7rem">Request a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <div class="container-xl">
+    <a class="brand" href="#home">
+      <svg viewBox="0 0 24 24"><path fill="#f4750e" d="M12 2 L22 22 H15 L12 15 L9 22 H2 Z"/></svg>
+      <b>Anti</b>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0" id="navList">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#industries">Industries</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tracking">Pages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+      </ul>
+      <a href="#contact" class="btn-brand">Request a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== 1) HERO ===================== -->
+<!-- ===================== 1) HERO ===================== -->
+<header class="hero" id="home">
+  <div class="container-xl position-relative z-1">
+    <div class="row">
+      <div class="col-lg-7 col-xl-6">
+        <div class="hero-content">
+          <h1>Smart Logistics<br><span class="text-orange">Strong Connections</span><br>Global Solutions</h1>
+          <p class="lead-sm">We deliver more than cargo — we deliver trust, speed, and reliability across globe.</p>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <a href="#services" class="btn-brand">Get Started</a>
+            <span class="d-inline-flex align-items-center gap-2">
+              <button class="btn-play" data-bs-toggle="modal" data-bs-target="#videoModal" aria-label="Watch video"><i class="fa-solid fa-play"></i></button>
+              <span class="text-white" style="font-size:.8rem;font-weight:600">Watch Video</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="stats position-relative z-1">
+    <div class="container-xl">
+      <div class="row">
+        <div class="col-6 col-lg-3"><div class="stat-item"><i class="fa-regular fa-building"></i><div><div class="num"><span class="cnt" data-count="120" data-suffix="+">0+</span></div><div class="lbl">Global Offices</div></div></div></div>
+        <div class="col-6 col-lg-3"><div class="stat-item"><i class="fa-regular fa-clock"></i><div><div class="num"><span class="cnt" data-count="98" data-suffix="%">0%</span></div><div class="lbl">On-Time Delivery</div></div></div></div>
+        <div class="col-6 col-lg-3"><div class="stat-item"><i class="fa-solid fa-users"></i><div><div class="num"><span class="cnt" data-count="25" data-suffix="K+">0K+</span></div><div class="lbl">Happy Clients</div></div></div></div>
+        <div class="col-6 col-lg-3"><div class="stat-item"><i class="fa-solid fa-globe"></i><div><div class="num"><span class="cnt" data-count="150" data-suffix="+">0+</span></div><div class="lbl">Countries Covered</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== 2) SERVICES ===================== -->
+<section class="section" id="services">
+  <div class="container-xl">
+    <div class="row align-items-end g-3 mb-5 reveal">
+      <div class="col-lg-6">
+        <span class="tag">Our Services</span>
+        <h2 class="sec-title dark mt-2">End-to-End Logistics<br><span class="text-orange">Solutions</span></h2>
+      </div>
+      <div class="col-lg-6"><p class="lead-sm ms-lg-auto mb-0" style="color:var(--muted)">From transportation to warehousing, we provide complete logistics solutions tailored to your business.</p></div>
+    </div>
+    <div class="row g-4 reveal">
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><i class="fa-solid fa-ship"></i><div><h3>Sea Freight</h3><p>Reliable ocean freight for global trade.</p></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><i class="fa-solid fa-plane"></i><div><h3>Air Freight</h3><p>Fast and secure air cargo solutions.</p></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><i class="fa-solid fa-truck-fast"></i><div><h3>Road Transport</h3><p>Efficient road freight across borders.</p></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><i class="fa-solid fa-warehouse"></i><div><h3>Warehousing</h3><p>Safe and smart storage solutions.</p></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><i class="fa-solid fa-clipboard-check"></i><div><h3>Customs Clearance</h3><p>Smooth and compliant customs processes.</p></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><i class="fa-solid fa-cubes"></i><div><h3>Supply Chain</h3><p>Optimized supply chain management.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3) BANNER ===================== -->
+
+<!-- ===================== 3) BANNER ===================== -->
+<section class="pb-5">
+  <div class="container-xl">
+    <div class="banner-card reveal">
+      <div class="banner-body">
+        <h2>Fast, Reliable &amp;<br>Always on Time</h2>
+        <p class="my-3">We ensure your cargo reaches its destination safely and on schedule, every time.</p>
+        <div class="d-flex align-items-center gap-3 mt-4">
+          <a href="#about" class="btn-brand">Learn More</a>
+          <button class="btn-play" data-bs-toggle="modal" data-bs-target="#videoModal" aria-label="Watch video"><i class="fa-solid fa-play"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4) WHY CHOOSE US ===================== -->
+<section class="section pt-lg-4" id="about">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <span class="tag">Why Choose Us</span>
+        <h2 class="sec-title dark mt-2 mb-3">Your Trusted Logistics<br><span class="text-orange">Partner</span></h2>
+        <p class="mb-4" style="color:var(--muted);font-size:.83rem;max-width:420px">We focus on delivering value, reliability, and excellence in every shipment.</p>
+        <div class="row g-4">
+          <div class="col-sm-6"><div class="wc-item"><div class="wc-ico"><i class="fa-solid fa-location-dot"></i></div><div><h3>Real-Time Tracking</h3><p>Monitor your shipment 24/7 with live updates.</p></div></div></div>
+          <div class="col-sm-6"><div class="wc-item"><div class="wc-ico"><i class="fa-solid fa-globe"></i></div><div><h3>Global Network</h3><p>Strong network across 150+ countries.</p></div></div></div>
+          <div class="col-sm-6"><div class="wc-item"><div class="wc-ico"><i class="fa-solid fa-shield-halved"></i></div><div><h3>Secure Delivery</h3><p>We ensure your cargo is safe and secure.</p></div></div></div>
+          <div class="col-sm-6"><div class="wc-item"><div class="wc-ico"><i class="fa-solid fa-headset"></i></div><div><h3>Expert Support</h3><p>Our team is here to support you anytime.</p></div></div></div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <div class="arch-wrap">
+          <div class="badge-circle"><b>25+</b><span>Years of Experience</span></div>
+          <div class="arch"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=70" alt="Logistics engineer at port" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5) INDUSTRIES ===================== -->
+<section class="section pt-0" id="industries">
+  <div class="container-xl">
+    <div class="reveal mb-4">
+      <span class="tag">Industries We Serve</span>
+      <h2 class="sec-title dark mt-2">Tailored Logistics for<br>Every Industry</h2>
+    </div>
+    <div class="ind-grid reveal">
+      <div class="ind-card"><img src="https://images.unsplash.com/photo-1565043666747-69f664855786?auto=format&fit=crop&w=600&q=60" alt="Manufacturing" loading="lazy"><div class="lbl">Manufacturing</div></div>
+      <div class="ind-card"><img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=600&q=60" alt="Retail & E-commerce" loading="lazy"><div class="lbl">Retail &amp; E-commerce</div></div>
+      <div class="ind-card"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=60" alt="Automotive" loading="lazy"><div class="lbl">Automotive</div></div>
+      <div class="ind-card"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=60" alt="Healthcare" loading="lazy"><div class="lbl">Healthcare</div></div>
+      <div class="ind-card"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=60" alt="Construction" loading="lazy"><div class="lbl">Construction</div></div>
+    </div>
+
+    <!-- CTA strip -->
+    <div class="strip mt-5 reveal">
+      <div><h3>Need a custom logistics solution?</h3><p>We design solutions that fit your business.</p></div>
+      <a href="#contact" class="btn-brand">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6) HOW IT WORKS ===================== -->
+<section class="section pt-0 pb-0" id="process">
+  <div class="container-xl">
+    <div class="reveal mb-5">
+      <span class="tag">How It Works</span>
+      <h2 class="sec-title dark mt-2">Simple Steps, Smooth<br>Delivery</h2>
+    </div>
+    <div class="steps-row reveal pb-5">
+      <svg class="steps-wave" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 30 Q 62.5 0, 125 30 T 250 30 T 375 30 T 500 30 T 625 30 T 750 30 T 875 30 T 1000 30" fill="none" stroke="#c3ccd6" stroke-width="2" stroke-dasharray="6 8"/>
+      </svg>
+      <div class="row g-4 text-center text-lg-start">
+        <div class="col-6 col-lg-3 step"><span class="step-num">01</span><h3 class="mt-2">Request a Quote</h3><p>Share your requirements with us.</p></div>
+        <div class="col-6 col-lg-3 step"><span class="step-num">02</span><h3 class="mt-2">We Plan</h3><p>Our team creates the best logistics plan.</p></div>
+        <div class="col-6 col-lg-3 step"><span class="step-num">03</span><h3 class="mt-2">We Deliver</h3><p>Your cargo is delivered safely and on time.</p></div>
+        <div class="col-6 col-lg-3 step"><span class="step-num">04</span><h3 class="mt-2">You Relax</h3><p>We handle the rest; you focus on your business.</p></div>
+      </div>
+    </div>
+  </div>
+  <!-- navy wave divider -->
+  <svg class="wave-divider" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,70 C240,120 480,10 720,40 C960,70 1200,100 1440,30 L1440,110 L0,110 Z" fill="#0c2340"/>
+  </svg>
+</section>
+
+<!-- ===================== 7) TRACKING ===================== -->
+<section class="section" id="tracking" style="background:#fff">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 reveal">
+        <span class="tag">Track Your Shipment</span>
+        <h2 class="sec-title dark mt-2 mb-3">Track Your Shipment<br>in <span class="text-orange">Real-Time</span></h2>
+        <p style="color:var(--muted);font-size:.82rem;max-width:400px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        <form id="trackForm" class="mt-4">
+          <input type="text" id="trackId" class="track-input" placeholder="Enter Tracking ID" aria-label="Tracking ID" required>
+          <div class="mt-3"><button type="submit" class="btn-brand">Track Now</button></div>
+          <div id="trackMsg" class="d-none mt-3" style="font-size:.78rem;color:var(--green);font-weight:700"><i class="fa-solid fa-circle-check me-1"></i><span></span></div>
+        </form>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="tv">
+          <div class="tv-main">
+            <img class="tv-map" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=70" alt="Global network map" loading="lazy">
+            <img class="tv-ship" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=70" alt="Cargo ship" loading="lazy">
+          </div>
+          <div class="status-card">
+            <div class="t">Shipment Status</div>
+            <div class="s" id="statusTitle">In Transit</div>
+            <div class="prog">
+              <span class="dot"></span><span class="bar"></span><span class="dot"></span><span class="bar gray"></span><span class="dot gray"></span>
+            </div>
+            <div class="prog-lbls"><span>Booked</span><span>In Transit</span><span>Delivered</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8) TESTIMONIALS ===================== -->
+<section class="testi section" id="testimonials">
+  <div class="container-xl">
+    <div class="row align-items-center g-4 g-lg-5">
+      <div class="col-lg-5 reveal">
+        <span class="tag">Testimonials</span>
+        <h2 class="sec-title mt-2 mb-3">What Our Clients Say<br>About Us</h2>
+        <p class="lead-sm mb-0">Our clients trust us for our commitment, reliability, and excellence.</p>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="d-flex align-items-center gap-4 mb-4">
+          <div class="quote-ball d-none d-md-flex"><i class="fa-solid fa-quote-right"></i></div>
+          <div class="testi-card">
+            <div class="testi-slide active">
+              <p class="mb-3">Anti has been a game-changer for our supply chain. Their service is fast, reliable, and highly professional.</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Johnson" loading="lazy">
+                <div><div class="nm">— David Johnson</div><div class="rl">Operations Manager</div></div>
+              </div>
+            </div>
+            <div class="testi-slide">
+              <p class="mb-3">From booking to delivery, everything was transparent and on schedule. Their tracking tools are simply excellent.</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Mitchell" loading="lazy">
+                <div><div class="nm">— Sarah Mitchell</div><div class="rl">Supply Chain Director</div></div>
+              </div>
+            </div>
+            <div class="testi-slide">
+              <p class="mb-3">A true global partner. Their team handles our cargo with care and always delivers exactly as promised.</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="James Carter" loading="lazy">
+                <div><div class="nm">— James Carter</div><div class="rl">CEO, Carter Trading</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-nav d-flex gap-2 justify-content-end">
+          <button id="tPrev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+          <button id="tNext" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9) NEWS ===================== -->
+<section class="section" id="news">
+  <div class="container-xl">
+    <div class="row g-5">
+      <div class="col-lg-4 reveal">
+        <span class="tag">Latest News</span>
+        <h2 class="sec-title dark mt-2 mb-3">Insights &amp; Updates</h2>
+        <p style="color:var(--muted);font-size:.82rem;max-width:300px">Stay informed with the latest trends, tips, and updates from the logistics world.</p>
+        <a href="#news" class="btn-brand mt-2">View All News</a>
+      </div>
+      <div class="col-lg-8 reveal">
+        <div class="row g-4">
+          <div class="col-md-4"><article class="news-card">
+            <img src="https://images.unsplash.com/photo-1553413077-19758620585ff?auto=format&fit=crop&w=700&q=60" alt="Warehouse" loading="lazy">
+            <div class="date-badge"><b>20</b><span>May</span></div>
+            <div class="news-body"><h3>The Future of Global Logistics</h3><a class="link-more mt-2" href="#news">Read More <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article></div>
+          <div class="col-md-4"><article class="news-card">
+            <img src="https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?auto=format&fit=crop&w=700&q=60" alt="Truck on highway" loading="lazy">
+            <div class="date-badge"><b>18</b><span>May</span></div>
+            <div class="news-body"><h3>5 Ways to Optimize Your Supply Chain</h3><a class="link-more mt-2" href="#news">Read More <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article></div>
+          <div class="col-md-4"><article class="news-card">
+            <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=700&q=60" alt="Containers" loading="lazy">
+            <div class="date-badge"><b>16</b><span>May</span></div>
+            <div class="news-body"><h3>Sustainable Logistics for a Better Tomorrow</h3><a class="link-more mt-2" href="#news">Read More <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10) READY CTA ===================== -->
+<section class="ready section" id="cta">
+  <div class="container-xl">
+    <div class="reveal" style="max-width:640px">
+      <h2>Ready to <span class="text-orange">Simplify</span> Your<br>Logistics?</h2>
+      <p class="my-4">Partner with Anti and experience logistics that drive your business forward.</p>
+      <div class="d-flex flex-wrap align-items-center gap-4">
+        <span class="d-inline-flex align-items-center gap-2">
+          <button class="btn-play" data-bs-toggle="modal" data-bs-target="#videoModal" aria-label="Watch video"><i class="fa-solid fa-play"></i></button>
+          <span class="text-white" style="font-size:.8rem;font-weight:600">Watch Video</span>
+        </span>
+        <a href="#contact" class="btn-brand">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 11) PARTNERS ===================== -->
+<section class="section" id="partners">
+  <div class="container-xl">
+    <div class="reveal mb-4">
+      <span class="tag">Our Global Partners</span>
+      <h2 class="sec-title dark mt-2">Trusted by Leading<br>Companies Worldwide</h2>
+    </div>
+    <div class="partner-grid reveal">
+      <div class="partner"><i class="fa-solid fa-star"></i><small>MAERSK</small></div>
+      <div class="partner" style="font-style:italic">DHL</div>
+      <div class="partner">Fed<span class="text-orange" style="filter:grayscale(0)">E</span>x</div>
+      <div class="partner">m<span style="font-size:.7em">sc</span></div>
+      <div class="partner"><i class="fa-regular fa-circle-dot"></i><small>KUEHNE + NAGEL</small></div>
+      <div class="partner"><i class="fa-solid fa-shield-halved"></i><small>ups</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer pt-5" id="contact">
+  <div class="container-xl">
+    <div class="row g-4 pb-4">
+      <div class="col-lg-3">
+        <a class="brand mb-3" href="#home">
+          <svg viewBox="0 0 24 24"><path fill="#f4750e" d="M12 2 L22 22 H15 L12 15 L9 22 H2 Z"/></svg>
+          <b>Anti</b>
+        </a>
+        <p class="about-p mt-3">We are a global logistics provider committed to delivering excellence, reliability, and value to businesses worldwide.</p>
+        <div class="social d-flex gap-2 mt-3">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#news">News &amp; Blog</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#services">Sea Freight</a></li>
+          <li><a href="#services">Air Freight</a></li>
+          <li><a href="#services">Road Transport</a></li>
+          <li><a href="#services">Warehousing</a></li>
+          <li><a href="#services">Supply Chain</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#tracking">FAQs</a></li>
+          <li><a href="#tracking">Track Shipment</a></li>
+          <li><a href="#contact">Terms &amp; Conditions</a></li>
+          <li><a href="#contact">Privacy Policy</a></li>
+          <li><a href="#contact">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 col-lg-3">
+        <h3>Contact Us</h3>
+        <div class="c-line"><i class="fa-solid fa-phone"></i><span>+88 0123 456 789</span></div>
+        <div class="c-line"><i class="fa-regular fa-envelope"></i><span>info@anti.com</span></div>
+        <div class="c-line"><i class="fa-solid fa-location-dot"></i><span>123 Logistics Park,<br>Global City, 1000</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom py-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© <span id="year">2025</span> Anti Logistics. All Rights Reserved.</span>
+      <span>Designed with <i class="fa-solid fa-heart"></i> by Anti Team</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== VIDEO MODAL ===================== -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-label="Watch video" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 overflow-hidden" style="border-radius:14px;background:var(--navy)">
+      <div class="modal-body p-0 position-relative">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=70" alt="Anti logistics video cover" style="width:100%;aspect-ratio:16/9;object-fit:cover">
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="p-4 text-center">
+          <h3 style="font-size:1.1rem">Anti — Moving The World Forward</h3>
+          <p class="mb-0" style="color:#aebdcc;font-size:.78rem">Smart logistics, strong connections, global solutions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+  /* Year */
+  $('#year').textContent=new Date().getFullYear();
+
+  /* Navbar shadow */
+  const nav=$('#mainNav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>20);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* Animated counters */
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,end=+el.dataset.count,suf=el.dataset.suffix||'';
+    const t0=performance.now(),dur=1400;
+    (function tick(t){
+      const p=Math.min((t-t0)/dur,1),v=Math.round(end*(1-Math.pow(1-p,3)));
+      el.textContent=v+suf;
+      if(p<1)requestAnimationFrame(tick);
+    })(t0);
+    cio.unobserve(el);
+  }),{threshold:.6});
+  $$('.cnt').forEach(el=>cio.observe(el));
+
+  /* Testimonials slider */
+  const slides=$$('.testi-slide');let ti=0,tt;
+  function tShow(i){slides[ti].classList.remove('active');ti=(i+slides.length)%slides.length;slides[ti].classList.add('active');}
+  function tAuto(){clearInterval(tt);tt=setInterval(()=>tShow(ti+1),7000);}
+  $('#tNext').addEventListener('click',()=>{tShow(ti+1);tAuto();});
+  $('#tPrev').addEventListener('click',()=>{tShow(ti-1);tAuto();});
+  tAuto();
+
+  /* Tracking form */
+  $('#trackForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const id=$('#trackId').value.trim()||'ANTI-2025-0001';
+    const msg=$('#trackMsg');
+    msg.classList.remove('d-none');
+    msg.querySelector('span').textContent='Shipment '+id.toUpperCase()+' is In Transit — estimated delivery in 3 days.';
+    $('#statusTitle').textContent='In Transit · '+id.toUpperCase();
+  });
+
+  /* Reveal on scroll */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  }),{threshold:.12});
+  $$('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

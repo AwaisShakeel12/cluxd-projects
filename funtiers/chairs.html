@@ -1,0 +1,2716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Work - Premium Office Chairs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+  <style>
+:root {
+    --primary-purple: #6C3CE1;
+    --secondary-purple: #8B5CF6;
+    --light-purple: #EDE9FE;
+    --dark-purple: #4C1D95;
+    --accent: #F59E0B;
+    --gradient-1: linear-gradient(135deg, #6C3CE1 0%, #8B5CF6 50%, #A78BFA 100%);
+    --gradient-2: linear-gradient(135deg, #4C1D95 0%, #6C3CE1 50%, #8B5CF6 100%);
+    --gradient-hero: linear-gradient(135deg, #f8f6ff 0%, #ede9fe 50%, #e0d4fd 100%);
+    --shadow-sm: 0 2px 10px rgba(108, 60, 225, 0.1);
+    --shadow-md: 0 10px 40px rgba(108, 60, 225, 0.15);
+    --shadow-lg: 0 20px 60px rgba(108, 60, 225, 0.2);
+    --shadow-card: 0 15px 50px rgba(108, 60, 225, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #1a1a2e;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    padding: 12px 0;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(108, 60, 225, 0.08);
+    z-index: 1050;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 10px rgba(108, 60, 225, 0.1);
+}
+
+.navbar.scrolled {
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 20px rgba(108, 60, 225, 0.15);
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+.navbar-brand span {
+    font-size: 0.65rem;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background: none;
+    -webkit-text-fill-color: #666;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #333 !important;
+    padding: 8px 16px !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    position: relative;
+    margin: 3px 0;
+}
+
+.nav-link:hover {
+    color: var(--primary-purple) !important;
+    background: var(--light-purple);
+}
+
+.nav-link.active {
+    color: #fff !important;
+    background: var(--gradient-1);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 8px 12px;
+    background: var(--light-purple);
+    border-radius: 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(108, 60, 225, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.nav-cta {
+    background: var(--gradient-1);
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(108, 60, 225, 0.3);
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(108, 60, 225, 0.4);
+    color: #fff !important;
+}
+
+.navbar-collapse {
+    background: rgba(255, 255, 255, 0.98);
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+    min-height: 100vh;
+    background: var(--gradient-hero);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 120px 15px 60px;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(108, 60, 225, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(108, 60, 225, 0.1);
+    border: 1px solid rgba(108, 60, 225, 0.2);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-purple);
+    margin-bottom: 15px;
+    animation: slideDown 0.8s ease;
+}
+
+.hero-badge i {
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #1a1a2e;
+}
+
+.hero-title .highlight {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    max-width: 100%;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.btn-primary-custom {
+    background: var(--gradient-1);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(108, 60, 225, 0.3);
+    width: 100%;
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(108, 60, 225, 0.4);
+    color: #fff;
+}
+
+.btn-secondary-custom {
+    background: #fff;
+    color: var(--primary-purple);
+    border: 2px solid rgba(108, 60, 225, 0.2);
+    padding: 11px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-secondary-custom:hover {
+    border-color: var(--primary-purple);
+    background: var(--light-purple);
+    transform: translateY(-2px);
+    color: var(--primary-purple);
+}
+
+.hero-image-wrapper {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hero-chair-img {
+    width: 100%;
+    max-width: 320px;
+    filter: drop-shadow(0 20px 40px rgba(108, 60, 225, 0.25));
+    animation: heroFloat 4s ease-in-out infinite;
+    border-radius: 16px;
+    margin: 0 auto;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.hero-stats {
+    position: relative;
+    margin-top: 25px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(108, 60, 225, 0.1);
+    border: 1px solid rgba(108, 60, 225, 0.1);
+}
+
+.hero-stat {
+    text-align: center;
+}
+
+.hero-stat h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+    margin-bottom: 2px;
+}
+
+.hero-stat p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TRUST SECTION ===== */
+.trust-section {
+    padding: 50px 0;
+    background: #fff;
+    position: relative;
+}
+
+.trust-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(108, 60, 225, 0.2), transparent);
+}
+
+.trust-stats {
+    text-align: center;
+    padding: 20px 15px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.trust-stats:hover {
+    transform: translateY(-5px);
+    background: var(--light-purple);
+}
+
+.trust-icon {
+    width: 55px;
+    height: 55px;
+    background: var(--light-purple);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 1.4rem;
+    color: var(--primary-purple);
+    transition: all 0.3s ease;
+}
+
+.trust-stats:hover .trust-icon {
+    background: var(--gradient-1);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.trust-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 3px;
+}
+
+.trust-label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.partners-section {
+    padding: 25px 0;
+    background: var(--gradient-hero);
+}
+
+.partner-logo {
+    padding: 12px 8px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--dark-purple);
+    text-align: center;
+}
+
+.partner-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* ===== SECTION STYLES ===== */
+.section-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--light-purple);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-purple);
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.section-title .highlight {
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    max-width: 100%;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== PRODUCT CARDS ===== */
+.products-section {
+    padding: 50px 0;
+    background: #fff;
+}
+
+.products-section.bg-light-purple {
+    background: linear-gradient(180deg, #f8f6ff 0%, #ffffff 100%);
+}
+
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.row > [class*="col-"] {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.row.g-4 > [class*="col-"] {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(108, 60, 225, 0.06);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+    min-height: 240px;
+    background: linear-gradient(135deg, #f0ecff 0%, #e8e0ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.5s ease;
+    border-radius: 12px;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+.product-image::after {
+    content: '\f00e';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(108, 60, 225, 0.9);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.product-image:hover::after {
+    opacity: 1;
+}
+
+.product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--gradient-1);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.product-badge.sale {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.product-badge.new {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.product-info {
+    padding: 18px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-category {
+    font-size: 0.7rem;
+    color: var(--primary-purple);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.product-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.product-features {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.product-feature {
+    font-size: 0.65rem;
+    background: var(--light-purple);
+    color: var(--primary-purple);
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.product-rating i {
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+.product-rating span {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+
+.price-current {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--dark-purple);
+}
+
+.price-old {
+    font-size: 0.85rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.btn-buy {
+    background: var(--gradient-1);
+    color: #fff;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+}
+
+.btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 60, 225, 0.35);
+    color: #fff;
+}
+
+.btn-buy i {
+    font-size: 0.95rem;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #f8f6ff 0%, #ede9fe 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(108, 60, 225, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 25px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.about-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(108, 60, 225, 0.1) 0%, transparent 100%);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.about-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.about-feature-item:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.about-feature-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--light-purple);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--primary-purple);
+    flex-shrink: 0;
+}
+
+.about-feature-text h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: #1a1a2e;
+}
+
+.about-feature-text p {
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* ===== REVIEWS SECTION ===== */
+.reviews-section {
+    padding: 50px 0;
+    background: #fff;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(108, 60, 225, 0.06);
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.review-card::before {
+    content: '"';
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--light-purple);
+    line-height: 1;
+}
+
+.review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 10px;
+}
+
+.review-stars i {
+    color: var(--accent);
+    font-size: 0.85rem;
+}
+
+.review-text {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.review-author-info h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: #1a1a2e;
+}
+
+.review-author-info p {
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #f8f6ff 0%, #ede9fe 100%);
+    position: relative;
+}
+
+.contact-form-wrapper {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(108, 60, 225, 0.06);
+    margin-bottom: 25px;
+}
+
+.form-floating {
+    margin-bottom: 12px;
+}
+
+.form-floating .form-control,
+.form-floating .form-select {
+    border: 2px solid rgba(108, 60, 225, 0.1);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.form-floating .form-control:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 4px rgba(108, 60, 225, 0.1);
+}
+
+.contact-info-card {
+    background: var(--gradient-2);
+    border-radius: 18px;
+    padding: 25px 20px;
+    color: #fff;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-info-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contact-info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.contact-info-card > p {
+    opacity: 0.9;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 0.85rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-item-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.contact-item-text h6 {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+
+.contact-item-text p {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.social-link:hover {
+    background: #fff;
+    color: var(--primary-purple);
+    transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--dark-purple);
+    color: #fff;
+    padding: 40px 0 20px;
+}
+
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    opacity: 0.7;
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.footer-title {
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 6px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    opacity: 0.6;
+    font-size: 0.75rem;
+    margin-bottom: 0;
+}
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 9999;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #25D366;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-tooltip {
+    display: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===== SCROLL TO TOP ===== */
+.scroll-top {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    width: 45px;
+    height: 45px;
+    background: var(--gradient-1);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(108, 60, 225, 0.3);
+    z-index: 999;
+}
+
+.scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== IMAGE LIGHTBOX MODAL ===== */
+.image-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+.image-lightbox.active {
+    display: flex;
+}
+
+.image-lightbox-content {
+    position: relative;
+    max-width: 95%;
+    max-height: 85vh;
+    animation: zoomIn 0.3s ease;
+}
+
+.image-lightbox-content img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.image-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.image-lightbox-close:hover {
+    background: #fff;
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.image-lightbox-info {
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+}
+
+.image-lightbox-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.image-lightbox-info p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease;
+}
+
+.loading-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader {
+    width: 45px;
+    height: 45px;
+    border: 4px solid var(--light-purple);
+    border-top-color: var(--primary-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Large Mobile and up */
+@media (min-width: 576px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+    }
+    
+    .btn-primary-custom,
+    .btn-secondary-custom {
+        width: auto;
+        flex: 1;
+        min-width: 140px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .section-title {
+        font-size: 2.1rem;
+    }
+    
+    .product-image {
+        height: 260px;
+        min-height: 260px;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .about-image img {
+        height: 320px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-chair-img {
+        max-width: 400px;
+    }
+    
+    .hero-stats {
+        gap: 20px;
+        padding: 25px;
+    }
+    
+    .hero-stat h3 {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 2.4rem;
+    }
+    
+    .product-image {
+        height: 280px;
+        min-height: 280px;
+    }
+    
+    .about-image img {
+        height: 380px;
+    }
+    
+    .trust-number {
+        font-size: 2rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        background: transparent;
+        margin-top: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    .nav-link {
+        margin: 0;
+    }
+    
+    .nav-cta {
+        margin: 0 0 0 10px;
+    }
+    
+    .hero-section {
+        padding: 120px 0 80px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+    }
+    
+    .btn-primary-custom,
+    .btn-secondary-custom {
+        width: auto;
+    }
+    
+    .hero-stats {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .section-title {
+        font-size: 2.8rem;
+    }
+    
+    .product-image {
+        height: 300px;
+        min-height: 300px;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .about-image img {
+        height: 420px;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .product-image {
+        height: 320px;
+        min-height: 320px;
+    }
+    
+    .about-image img {
+        height: 450px;
+    }
+    
+    .trust-number {
+        font-size: 2.3rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-chair-img {
+        max-width: 250px;
+    }
+    
+    .hero-stats {
+        position: relative;
+        margin-top: 15px;
+    }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .hero-section {
+        min-height: -webkit-fill-available;
+    }
+}
+
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+}
+
+.container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.row {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+@media (max-width: 767px) {
+
+    /* Navbar */
+    .navbar {
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    .navbar .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .navbar-brand {
+        font-size: 1.15rem;
+    }
+
+    .navbar-brand span {
+        font-size: 0.55rem;
+    }
+
+    .navbar-toggler {
+        padding: 6px 9px;
+        margin-left: auto;
+    }
+
+    /* Hero */
+    .hero-section {
+        width: 100%;
+        min-height: auto !important;
+        padding: 95px 15px 35px !important;
+    }
+
+    .hero-section .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .hero-buttons {
+        width: 100%;
+    }
+
+    .btn-primary-custom,
+    .btn-secondary-custom {
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    .hero-image-wrapper {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .hero-chair-img {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-stats {
+        width: 100%;
+        max-width: 100%;
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        margin-top: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* All sections */
+    .trust-section,
+    .partners-section,
+    .products-section,
+    .about-section,
+    .reviews-section,
+    .contact-section,
+    .footer {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* WhatsApp */
+    .whatsapp-float {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        z-index: 99999;
+    }
+
+    .whatsapp-float a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+}
+</style>  
+
+
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Office Work
+                <span>Premium Office Chairs</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars fa-lg" style="color: var(--primary-purple);"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#premium">Premium Chairs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#office">Office Chairs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link nav-cta" href="https://wa.me/923079098545" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Order Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <i class="fas fa-crown"></i>
+                        #1 Office Chair Brand in Pakistan
+                    </div>
+                    <h1 class="hero-title">
+                        Premium <span class="highlight">Office Chairs</span> for Maximum Comfort
+                    </h1>
+                    <p class="hero-subtitle">
+                        Discover the finest collection of ergonomic office chairs at Office Work. 
+                        Designed for comfort, built for durability, priced for everyone.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#premium" class="btn-primary-custom">
+                            <i class="fas fa-chair"></i> Explore Collection
+                        </a>
+                        <a href="#contact" class="btn-secondary-custom">
+                            <i class="fas fa-phone"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="hero-image-wrapper">
+                        <img src="../images/chair2.jpg" 
+                             alt="Premium Office Chair" class="hero-chair-img">
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <h3>5000+</h3>
+                                <p>Happy Customers</p>
+                            </div>
+                            <div class="hero-stat">
+                                <h3>200+</h3>
+                                <p>Chair Designs</p>
+                            </div>
+                            <div class="hero-stat">
+                                <h3>10+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section" id="trust">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="trust-stats">
+                        <div class="trust-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="trust-number" data-count="5000">0</div>
+                        <div class="trust-label">Happy Customers</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="trust-stats">
+                        <div class="trust-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="trust-number" data-count="200">0</div>
+                        <div class="trust-label">Chair Varieties</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="trust-stats">
+                        <div class="trust-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="trust-number" data-count="10">0</div>
+                        <div class="trust-label">Years Experience</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="trust-stats">
+                        <div class="trust-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="trust-number" data-count="50">0</div>
+                        <div class="trust-label">Cities Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <p class="text-center text-muted mb-4" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Trusted By Leading Brands</p>
+            <div class="row align-items-center justify-content-center text-center">
+                <div class="col-6 col-md-2"><div class="partner-logo"><i class="fas fa-building"></i> Corp Ltd</div></div>
+                <div class="col-6 col-md-2"><div class="partner-logo"><i class="fas fa-city"></i> TechHub</div></div>
+                <div class="col-6 col-md-2"><div class="partner-logo"><i class="fas fa-landmark"></i> Govt Offices</div></div>
+                <div class="col-6 col-md-2"><div class="partner-logo"><i class="fas fa-hospital"></i> MedCare</div></div>
+                <div class="col-6 col-md-2"><div class="partner-logo"><i class="fas fa-university"></i> EduPro</div></div>
+                <div class="col-6 col-md-2"><div class="partner-logo"><i class="fas fa-briefcase"></i> BizCorp</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Office Chairs Section -->
+    <section class="products-section" id="premium">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-crown"></i> Premium Collection
+                </div>
+                <h2 class="section-title">Premium <span class="highlight">Office Chairs</span></h2>
+                <p class="section-subtitle">
+                    Our exclusive premium collection features top-tier ergonomic chairs designed for executives and professionals who demand the best.
+                </p>
+            </div>
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">Premium</span>
+                            <img src="../images/chair1.jpg" alt="Executive Pro Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Executive Chair</div>
+                            <h3 class="product-name">Executive Pro Max Leather Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Genuine Leather</span>
+                                <span class="product-feature">Lumbar Support</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(4.9)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 45,000</span>
+                                <span class="price-old">Rs. 55,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Executive Pro Max Leather Chair', '45,000', '../images/chair1.jpg')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">New</span>
+                            <img src="../images/chair2.jpg" alt="Ergo Elite Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Ergonomic Chair</div>
+                            <h3 class="product-name">Ergo Elite Mesh Premium Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Mesh Back</span>
+                                <span class="product-feature">Headrest</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(4.8)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 38,500</span>
+                                <span class="price-old">Rs. 48,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Ergo Elite Mesh Premium Chair', '38,500', '../images/chair2.jpg')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge sale">Sale</span>
+                            <img src="../images/chair3.jfif" alt="Director Plus Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Director Chair</div>
+                            <h3 class="product-name">Director Plus High-Back Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">High Back</span>
+                                <span class="product-feature">Armrest</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 52,000</span>
+                                <span class="price-old">Rs. 65,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Director Plus High-Back Chair', '52,000', '../images/chair3.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">Premium</span>
+                            <img src="../images/chair4.jfif" alt="Royal Executive Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Executive Chair</div>
+                            <h3 class="product-name">Royal Executive Swivel Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">360° Swivel</span>
+                                <span class="product-feature">Cushioned</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 48,500</span>
+                                <span class="price-old">Rs. 58,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Royal Executive Swivel Chair', '48,500', '../images/chair4.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">New</span>
+                            <img src="../images/chair5.jfif" alt="CEO Signature Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">CEO Chair</div>
+                            <h3 class="product-name">CEO Signature Premium Leather</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Premium Leather</span>
+                                <span class="product-feature">Reclining</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(5.0)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 65,000</span>
+                                <span class="price-old">Rs. 80,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('CEO Signature Premium Leather', '65,000', '../images/chair5.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge sale">Sale</span>
+                            <img src="../images/chair6.jfif" alt="Boss Chair Deluxe">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Boss Chair</div>
+                            <h3 class="product-name">Boss Chair Deluxe Edition</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Heavy Duty</span>
+                                <span class="product-feature">Padded Arms</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span>(4.6)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 42,000</span>
+                                <span class="price-old">Rs. 52,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Boss Chair Deluxe Edition', '42,000', '../images/chair6.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Chairs Section -->
+    <section class="products-section bg-light-purple" id="office">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-briefcase"></i> Office Collection
+                </div>
+                <h2 class="section-title">Standard <span class="highlight">Office Chairs</span></h2>
+                <p class="section-subtitle">
+                    Affordable and comfortable office chairs perfect for daily use. Great value with excellent build quality.
+                </p>
+            </div>
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">Popular</span>
+                            <img src="../images/chair7.jfif" alt="Standard Office Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Office Chair</div>
+                            <h3 class="product-name">Classic Office Mesh Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Breathable Mesh</span>
+                                <span class="product-feature">Adjustable</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(4.8)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 12,500</span>
+                                <span class="price-old">Rs. 18,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Classic Office Mesh Chair', '12,500', '../images/chair7.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">New</span>
+                            <img src="../images/chair8.jpg" alt="Workstation Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Workstation</div>
+                            <h3 class="product-name">Workstation Comfort Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Padded Seat</span>
+                                <span class="product-feature">Wheels</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 15,000</span>
+                                <span class="price-old">Rs. 20,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Workstation Comfort Chair', '15,000', '../images/chair8.jpg')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge sale">Sale</span>
+                            <img src="../images/chair9.jfif" alt="Conference Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Conference</div>
+                            <h3 class="product-name">Conference Room Chair Set</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Stackable</span>
+                                <span class="product-feature">Lightweight</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(4.9)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 8,500</span>
+                                <span class="price-old">Rs. 12,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Conference Room Chair Set', '8,500', '../images/chair9.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">Popular</span>
+                            <img src="../images/chair10.jfif" alt="Visitor Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Visitor Chair</div>
+                            <h3 class="product-name">Visitor Waiting Room Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Modern Design</span>
+                                <span class="product-feature">Durable</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span>(4.6)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 6,500</span>
+                                <span class="price-old">Rs. 9,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Visitor Waiting Room Chair', '6,500', '../images/chair10.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">Best Value</span>
+                            <img src="../images/chair3.jfif" alt="Task Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Task Chair</div>
+                            <h3 class="product-name">Daily Task Office Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Height Adjust</span>
+                                <span class="product-feature">Tilt Lock</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span>(4.7)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 9,500</span>
+                                <span class="price-old">Rs. 14,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Daily Task Office Chair', '9,500', '../images/chair3.jfif')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">New</span>
+                            <img src="../images/chair1.jpg" alt="Study Chair">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Study Chair</div>
+                            <h3 class="product-name">Study & Home Office Chair</h3>
+                            <div class="product-features">
+                                <span class="product-feature">Compact</span>
+                                <span class="product-feature">Comfortable</span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span>(4.5)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price-current">Rs. 11,000</span>
+                                <span class="price-old">Rs. 16,000</span>
+                            </div>
+                            <button class="btn-buy" onclick="orderOnWhatsApp('Study & Home Office Chair', '11,000', '../images/chair1.jpg')">
+                                <i class="fab fa-whatsapp"></i> Buy Now on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="About Office Work">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="section-badge">
+                        <i class="fas fa-info-circle"></i> About Us
+                    </div>
+                    <h2 class="section-title">About <span class="highlight">Office Work</span></h2>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        With over 10 years of experience in the furniture industry, Office Work has been Pakistan's most trusted name for premium office chairs. We believe every professional deserves comfort and style at their workspace. Our commitment to quality, fair pricing, and exceptional customer service sets us apart.
+                    </p>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        We source only the finest materials and work with top manufacturers to bring you chairs that combine ergonomic design with modern aesthetics. From startups to multinational corporations, our chairs grace offices across Pakistan.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="about-feature-text">
+                                <h5>Premium Quality</h5>
+                                <p>Only the finest materials and craftsmanship</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-truck"></i></div>
+                            <div class="about-feature-text">
+                                <h5>Fast Delivery</h5>
+                                <p>Nationwide delivery within 3-5 days</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-undo"></i></div>
+                            <div class="about-feature-text">
+                                <h5>Easy Returns</h5>
+                                <p>7-day hassle-free return policy</p>
+                            </div>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="about-feature-text">
+                                <h5>2 Year Warranty</h5>
+                                <p>Complete peace of mind guaranteed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-star"></i> Customer Reviews
+                </div>
+                <h2 class="section-title">What Our <span class="highlight">Customers Say</span></h2>
+                <p class="section-subtitle">
+                    Don't just take our word for it. Here's what our valued customers have to say about their experience with us.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Absolutely amazing quality! The Executive Pro Max chair transformed my workspace. So comfortable for long hours. Highly recommend Office Work!"</p>
+                        <div class="review-author">
+                            <div class="review-avatar">AK</div>
+                            <div class="review-author-info">
+                                <h5>Ahmed Khan</h5>
+                                <p>Software Engineer, Lahore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Ordered 20 chairs for our office. The quality exceeded expectations and delivery was super fast. Great customer service on WhatsApp too!"</p>
+                        <div class="review-author">
+                            <div class="review-avatar">SM</div>
+                            <div class="review-author-info">
+                                <h5>Sarah Malik</h5>
+                                <p>HR Manager, Islamabad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="review-text">"Best office chairs in Pakistan at this price point! The ergonomic design saved my back pain. Will definitely order more for my team."</p>
+                        <div class="review-author">
+                            <div class="review-avatar">UA</div>
+                            <div class="review-author-info">
+                                <h5>Usman Ali</h5>
+                                <p>CEO, TechStartup Karachi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Premium quality chairs at very reasonable prices. The WhatsApp ordering was so convenient. The team was very responsive and helpful."</p>
+                        <div class="review-author">
+                            <div class="review-avatar">FA</div>
+                            <div class="review-author-info">
+                                <h5>Fatima Ahmed</h5>
+                                <p>Interior Designer, Faisalabad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"We furnished our entire call center with chairs from Office Work. Excellent bulk pricing and consistent quality across all units."</p>
+                        <div class="review-author">
+                            <div class="review-avatar">RH</div>
+                            <div class="review-author-info">
+                                <h5>Rashid Hussain</h5>
+                                <p>Operations Head, BPO Rawalpindi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The CEO Signature chair is worth every penny. Premium leather, great lumbar support, and it looks stunning in my office. 10/10 would recommend!"</p>
+                        <div class="review-author">
+                            <div class="review-avatar">ZA</div>
+                            <div class="review-author-info">
+                                <h5>Zainab Abbas</h5>
+                                <p>Lawyer, Multan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </div>
+                <h2 class="section-title">Contact <span class="highlight">Us Today</span></h2>
+                <p class="section-subtitle">
+                    Have questions or need a custom quote? Reach out to us and our team will get back to you within 24 hours.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="contact-form-wrapper">
+                        <h3 style="font-weight: 700; margin-bottom: 5px;">Send Us a Message</h3>
+                        <p class="text-muted mb-4" style="font-size: 0.9rem;">Fill out the form below and we'll respond promptly.</p>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                        <label for="name">Full Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                        <label for="email">Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+                                        <label for="phone">Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="subject" required>
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="Premium Chairs">Premium Chairs Inquiry</option>
+                                            <option value="Office Chairs">Office Chairs Inquiry</option>
+                                            <option value="Bulk Order">Bulk Order</option>
+                                            <option value="Custom Order">Custom Order</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <label for="subject">Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" placeholder="Message" style="height: 120px" required></textarea>
+                                        <label for="message">Your Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-primary-custom" style="width: 100%; justify-content: center;">
+                                        <i class="fas fa-paper-plane"></i> Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <h3>Let's Connect</h3>
+                        <p>Reach out to us through any of these channels. We're always happy to help!</p>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Our Location</h6>
+                                <p>Main Market, Gujranwala, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Call Us</h6>
+                                <p>+923079098545</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div class="contact-item-text">
+                                <h6>WhatsApp</h6>
+                                <p>+923079098545</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Email Us</h6>
+                                <p>info@faizanmughal.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+                            <div class="contact-item-text">
+                                <h6>Business Hours</h6>
+                                <p>Mon-Sat: 9AM - 8PM</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">Office Work</div>
+                    <p class="footer-text">Pakistan's premier office chair shop offering premium quality ergonomic chairs at unbeatable prices. Your comfort is our priority.</p>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#premium">Premium Chairs</a></li>
+                        <li><a href="#office">Office Chairs</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Executive Chairs</a></li>
+                        <li><a href="#">Ergonomic Chairs</a></li>
+                        <li><a href="#">Mesh Chairs</a></li>
+                        <li><a href="#">Visitor Chairs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-links" style="gap: 8px;">
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1);"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1);"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1);"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Office Work. All Rights Reserved. | Made with ❤️ in Pakistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <div class="whatsapp-tooltip">Chat with us!</div>
+        <a href="https://wa.me/923079098545?text=Hello!%20I%20am%20interested%20in%20your%20office%20chairs.%20Please%20share%20more%20details." target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hide');
+            }, 500);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Scroll to top button
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        });
+
+        // Scroll to top
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navCollapse = document.querySelector('.navbar-collapse');
+                if (navCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navCollapse).hide();
+                }
+            });
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.trust-number');
+        const observerOptions = { threshold: 0.5 };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current) + '+';
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target + '+';
+                        }
+                    };
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // WhatsApp Order Function - Sends product info with the message
+        function orderOnWhatsApp(productName, price, imageUrl) {
+            const phoneNumber = '923079098545'; // Change to your WhatsApp number
+            const message = `🛒 *New Order Inquiry*%0A%0A` +
+                           `📦 *Product:* ${productName}%0A` +
+                           `💰 *Price:* Rs. ${price}%0A` +
+                           `🖼️ *Product Image:* ${imageUrl}%0A%0A` +
+                           `I would like to order this chair. Please confirm availability and delivery details.%0A%0A` +
+                           `Thank you! 🙏`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Send to WhatsApp
+            const whatsappMsg = `📧 *New Contact Form Message*%0A%0A` +
+                               `👤 *Name:* ${name}%0A` +
+                               `📧 *Email:* ${email}%0A` +
+                               `📱 *Phone:* ${phone}%0A` +
+                               `📋 *Subject:* ${subject}%0A%0A` +
+                               `💬 *Message:*%0A${message}`;
+            
+            const whatsappUrl = `https://wa.me/923079098545?text=${whatsappMsg}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success
+            alert('✅ Your message has been sent! We will contact you soon.');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ===== IMAGE LIGHTBOX FUNCTIONALITY =====
+function openImageLightbox(imageSrc, productName, price) {
+    // Create lightbox if it doesn't exist
+    let lightbox = document.getElementById('imageLightbox');
+    
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'imageLightbox';
+        lightbox.className = 'image-lightbox';
+        lightbox.innerHTML = `
+            <div class="image-lightbox-content">
+                <button class="image-lightbox-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img src="" alt="">
+                <div class="image-lightbox-info">
+                    <h4></h4>
+                    <p></p>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+        
+        // Close button click
+        lightbox.querySelector('.image-lightbox-close').addEventListener('click', closeImageLightbox);
+        
+        // Click outside to close
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeImageLightbox();
+            }
+        });
+        
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeImageLightbox();
+            }
+        });
+    }
+    
+    // Update lightbox content
+    const img = lightbox.querySelector('img');
+    const info = lightbox.querySelector('.image-lightbox-info');
+    
+    img.src = imageSrc;
+    img.alt = productName;
+    info.querySelector('h4').textContent = productName;
+    info.querySelector('p').textContent = `Price: Rs. ${price}`;
+    
+    // Show lightbox
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageLightbox() {
+    const lightbox = document.getElementById('imageLightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Attach click handlers to all product images
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.product-image').forEach((imageContainer, index) => {
+        imageContainer.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            const card = this.closest('.product-card');
+            const productName = card.querySelector('.product-name').textContent;
+            const price = card.querySelector('.price-current').textContent.replace('Rs. ', '');
+            
+            openImageLightbox(img.src, productName, price);
+        });
+    });
+});
+
+// Alternative: Add onclick directly to product images via JS
+window.addEventListener('load', function() {
+    document.querySelectorAll('.product-image img').forEach(img => {
+        img.style.cursor = 'pointer';
+    });
+});
+    </script>
+</body>
+</html>

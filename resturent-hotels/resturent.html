@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshBrew Kitchen | Premium Dining Experience</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #e74c3c;
+      --secondary: #f39c12;
+      --accent: #2ecc71;
+      --light: #ffffff;
+      --dark: #2c3e50;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(231, 76, 60, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafc;
+      overflow-x: hidden;
+      color: var(--dark);
+    }
+
+    /* === Navbar === */
+    .navbar-custom {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.4s ease;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 0.8rem 0;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--dark) !important;
+      margin: 0 0.7rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: white;
+      background: rgba(231, 76, 60, 0.8);
+      margin-bottom: 1.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero {
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary-hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+    }
+
+    .btn-primary-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+    }
+
+    .btn-outline-hero {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline-hero:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Background decoration */
+    .hero-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .decor-element {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+    }
+
+    .decor-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--primary);
+      top: 10%;
+      left: 5%;
+    }
+
+    .decor-2 {
+      width: 250px;
+      height: 250px;
+      background: var(--secondary);
+      bottom: 15%;
+      right: 10%;
+    }
+
+    /* === Menu Sections === */
+    .section-title {
+      text-align: center;
+      margin: 3.5rem 0 2.5rem;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      margin: 0.6rem auto;
+      border-radius: 2px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: all 0.35s ease;
+      height: 100%;
+      position: relative;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(231, 76, 60, 0.22);
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--secondary);
+      color: white;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .menu-img {
+      height: 220px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 1.3rem;
+    }
+
+    .menu-title {
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--dark);
+    }
+
+    .menu-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      min-height: 60px;
+    }
+
+    .menu-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .menu-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .btn-order {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.4rem 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .btn-order:hover {
+      opacity: 0.9;
+    }
+
+    /* === Feedback Section === */
+    .feedback-section {
+      background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+      padding: 4rem 0;
+    }
+
+    .feedback-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: all 0.35s ease;
+      height: 100%;
+      padding: 1.5rem;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .feedback-img {
+      height: 180px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .feedback-rating {
+      color: #ffc107;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .feedback-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .feedback-author {
+      font-weight: 600;
+      margin-top: 0.8rem;
+      color: var(--primary);
+    }
+
+    /* === About Section === */
+    .about-section {
+      background: linear-gradient(135deg, #f8f9ff, #eef1ff);
+      padding: 4rem 0;
+    }
+
+    .about-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: all 0.35s ease;
+      height: 100%;
+      padding: 1.5rem;
+    }
+
+    .about-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .about-img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .about-body h5 {
+      margin-top: 1rem;
+    }
+
+    /* === Footer === */
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 3rem 0 1.5rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    /* Reservation Form */
+    .reservation-form {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    
+    .form-control {
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      border: 1px solid #eee;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25);
+    }
+    
+    .btn-reserve {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      width: 100%;
+    }
+    
+    .btn-reserve:hover {
+      opacity: 0.9;
+    }
+    
+    /* Counter Section */
+    .counter-section {
+      background: linear-gradient(135deg, #dded4d, #f39c12);
+      color: white;
+      padding: 0.5rem 0;
+    }
+    
+    .counter-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    .counter-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .counter-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-hero {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-utensils me-2"></i>FreshBrew Kitchen
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#coffee">Coffee & Shakes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pizza">Pizza & More</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kharachi">Kharachi & Biryani</a></li>
+          <li class="nav-item"><a class="nav-link" href="#feedback">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero-section" id="top">
+    <div class="hero-decor">
+      <div class="decor-element decor-1"></div>
+      <div class="decor-element decor-2"></div>
+    </div>
+    
+    <div class="hero-content">
+      <span class="hero-badge">Premium Dining Experience</span>
+      <h1 class="hero-title">Savor the Finest Flavors at FreshBrew Kitchen</h1>
+      <p class="hero-subtitle">Experience authentic cuisine, crafted with passion and served in a warm, inviting atmosphere. From aromatic biryanis to gourmet pizzas and artisan beverages, every dish tells a story.</p>
+      
+      <div class="hero-btns">
+        <a href="#coffee" class="btn-hero btn-primary-hero">
+          <i class="fas fa-coffee"></i> Explore Menu
+        </a>
+        <a href="#reservation" class="btn-hero btn-outline-hero">
+          <i class="fas fa-calendar-check"></i> Reserve Table
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Counter Section -->
+  <div class="counter-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-3 col-6">
+          <div class="counter-item">
+            <div class="counter-number">12+</div>
+            <div class="counter-label">Years Experience</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="counter-item">
+            <div class="counter-number">500+</div>
+            <div class="counter-label">Daily Orders</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="counter-item">
+            <div class="counter-number">50+</div>
+            <div class="counter-label">Menu Items</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="counter-item">
+            <div class="counter-number">98%</div>
+            <div class="counter-label">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coffee & Shakes -->
+  <section class="py-5" id="coffee">
+    <div class="container">
+      <h2 class="section-title">Coffee & Shakes</h2>
+      <div class="row g-4">
+        <!-- Item 1 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Specialty</span>
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Espresso">
+            <div class="card-body">
+              <h5 class="menu-title">Espresso</h5>
+              <p class="menu-description">Rich, concentrated coffee with a creamy layer of foam.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$3.50</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Cappuccino">
+            <div class="card-body">
+              <h5 class="menu-title">Cappuccino</h5>
+              <p class="menu-description">Perfectly balanced espresso with steamed milk and foam.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$4.25</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Popular</span>
+            <img src="../images/orange-smoothies.jpg" class="menu-img" alt="Latte">
+            <div class="card-body">
+              <h5 class="menu-title">Latte</h5>
+              <p class="menu-description">Smooth espresso with steamed milk and a light foam layer.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$4.50</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="../images/cappuccino-with-flower-picture-table.jpg" class="menu-img" alt="Mocha">
+            <div class="card-body">
+              <h5 class="menu-title">Mocha</h5>
+              <p class="menu-description">Espresso with chocolate and steamed milk, topped with whipped cream.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$4.75</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Seasonal</span>
+            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Vanilla Shake">
+            <div class="card-body">
+              <h5 class="menu-title">Vanilla Shake</h5>
+              <p class="menu-description">Creamy vanilla ice cream blended with milk for a smooth treat.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$5.50</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="../images/orange-smoothies.jpg" class="menu-img" alt="Chocolate Shake">
+            <div class="card-body">
+              <h5 class="menu-title">Chocolate Shake</h5>
+              <p class="menu-description">Rich chocolate flavor made with premium cocoa and ice cream.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$5.75</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pizza & More -->
+  <section class="py-5 bg-light" id="pizza">
+    <div class="container">
+      <h2 class="section-title">Pizza & More</h2>
+      <div class="row g-4">
+        <!-- Item 1 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Bestseller</span>
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Margherita Pizza">
+            <div class="card-body">
+              <h5 class="menu-title">Margherita Pizza</h5>
+              <p class="menu-description">Classic pizza with tomato sauce, mozzarella, and fresh basil.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$12.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Pepperoni Pizza">
+            <div class="card-body">
+              <h5 class="menu-title">Pepperoni Feast</h5>
+              <p class="menu-description">Loaded with spicy pepperoni and extra cheese.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$14.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Veggie Supreme">
+            <div class="card-body">
+              <h5 class="menu-title">Veggie Supreme</h5>
+              <p class="menu-description">Loaded with fresh vegetables and herbs.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$13.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="BBQ Chicken">
+            <div class="card-body">
+              <h5 class="menu-title">BBQ Chicken</h5>
+              <p class="menu-description">Tender chicken with BBQ sauce and melted cheese.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$15.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Spicy</span>
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Beef Burger">
+            <div class="card-body">
+              <h5 class="menu-title">Classic Beef Burger</h5>
+              <p class="menu-description">Juicy beef patty with lettuce, tomato, and special sauce.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$11.50</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="menu-img" alt="Chicken Burger">
+            <div class="card-body">
+              <h5 class="menu-title">Chicken Club</h5>
+              <p class="menu-description">Grilled chicken with bacon, cheese, and fresh vegetables.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$10.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kharachi & Biryani -->
+  <section class="py-5" id="kharachi">
+    <div class="container">
+      <h2 class="section-title">Kharachi & Biryani</h2>
+      <div class="row g-4">
+        <!-- Item 1 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Authentic</span>
+            <img src="../images/high-angle-pakistan-meal-arrangement.jpg" class="menu-img" alt="Chicken Biryani">
+            <div class="card-body">
+              <h5 class="menu-title">Chicken Biryani</h5>
+              <p class="menu-description">Fragrant basmati rice layered with tender chicken and spices.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$14.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="../images/high-angle-pakistan-meal-composition (1).jpg" class="menu-img" alt="Mutton Biryani">
+            <div class="card-body">
+              <h5 class="menu-title">Mutton Biryani</h5>
+              <p class="menu-description">Delicate mutton cooked with aromatic spices and basmati rice.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$16.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Vegetarian</span>
+            <img src="../images/high-angle-pakistan-meal-composition.jpg" class="menu-img" alt="Vegetable Biryani">
+            <div class="card-body">
+              <h5 class="menu-title">Vegetable Biryani</h5>
+              <p class="menu-description">Mixed vegetables with fragrant basmati rice and spices.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$12.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="../images/close-up-fried-whole-fish-served-with-sauce.jpg" class="menu-img" alt="Fish Biryani">
+            <div class="card-body">
+              <h5 class="menu-title">Fish Biryani</h5>
+              <p class="menu-description">Fresh fish cooked with aromatic rice and spices.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$15.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <span class="discount-badge">Spicy</span>
+            <img src="../images/chicken-fried-hot-pot-with-spicy-sauce-korean-style.jpg" class="menu-img" alt="Chicken Karahi">
+            <div class="card-body">
+              <h5 class="menu-title">Chicken Karahi</h5>
+              <p class="menu-description">Tender chicken cooked with tomatoes, bell peppers, and spices.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$13.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6 -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="../images/grilled-chicken-wooden-board-lettuce-onion-sauce-side-view.jpg" class="menu-img" alt="Beef Karahi">
+            <div class="card-body">
+              <h5 class="menu-title">Beef Karahi</h5>
+              <p class="menu-description">Slow-cooked beef with onions, tomatoes, and aromatic spices.</p>
+              <div class="menu-footer">
+                <span class="menu-price">$15.99</span>
+                <button class="btn btn-order">Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation -->
+  <section class="py-5" id="reservation">
+    <div class="container">
+      <h2 class="section-title">Make a Reservation</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="reservation-form">
+            <form>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Your Name">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="your@email.com">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="(123) 456-7890">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="date" class="form-label">Date</label>
+                  <input type="date" class="form-control" id="date">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="time" class="form-label">Time</label>
+                  <input type="time" class="form-control" id="time">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="guests" class="form-label">Number of Guests</label>
+                  <select class="form-select" id="guests">
+                    <option selected>1 Person</option>
+                    <option>2 People</option>
+                    <option>3 People</option>
+                    <option>4 People</option>
+                    <option>5-10 People</option>
+                    <option>10+ People</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="special" class="form-label">Special Requests</label>
+                <textarea class="form-control" id="special" rows="3" placeholder="Any special requirements..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-reserve">Reserve Table</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section class="feedback-section" id="feedback">
+    <div class="container">
+      <h2 class="section-title">Customer Feedback</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feedback-card">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" class="feedback-img" alt="Customer">
+            <div class="feedback-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="feedback-text">"The biryani was absolutely divine! Best I've had outside of India. The service was exceptional too."</p>
+            <div class="feedback-author">— Sarah Johnson</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feedback-card">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" class="feedback-img" alt="Customer">
+            <div class="feedback-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="feedback-text">"Their artisan coffee is incredible. Paired with the chocolate shake, it was the perfect dessert combo!"</p>
+            <div class="feedback-author">— Michael Chen</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feedback-card">
+            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=600&q=80" class="feedback-img" alt="Customer">
+            <div class="feedback-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="feedback-text">"The ambiance is perfect for family dinners. Kids loved the pizza while we enjoyed the karahi. Will definitely return!"</p>
+            <div class="feedback-author">— Fatima Ahmed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <h2 class="section-title">About Our Restaurant</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="about-card">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80" class="about-img" alt="Restaurant Interior">
+            <h5>Cozy Atmosphere</h5>
+            <p>Our restaurant features a warm, inviting atmosphere with comfortable seating and elegant décor that enhances your dining experience.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="about-card">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" class="about-img" alt="Chef Cooking">
+            <h5>Expert Chefs</h5>
+            <p>Our culinary team brings years of experience and passion, crafting dishes with the finest ingredients and authentic techniques.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="about-card">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=600&q=80" class="about-img" alt="Restaurant View">
+            <h5>Diverse Menu</h5>
+            <p>From traditional biryani to modern pizzas, our menu offers something for everyone, ensuring there's always something delicious to try.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h4 class="mb-3">FreshBrew Kitchen</h4>
+          <p>Experience culinary excellence in a warm, inviting atmosphere. Where tradition meets innovation.</p>
+          <div class="mt-3">
+            <i class="fas fa-map-marker-alt me-2"></i> 123 Culinary Avenue, Food District
+          </div>
+          <div class="mt-2">
+            <i class="fas fa-phone me-2"></i> +1 (234) 567-8900
+          </div>
+          <div class="mt-2">
+            <i class="fas fa-envelope me-2"></i> info@freshbrewkitchen.com
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <h5>Opening Hours</h5>
+          <p>Mon-Fri: 11am - 10pm<br>
+          Sat-Sun: 10am - 11pm</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#top">Home</a></li>
+            <li><a href="#coffee">Coffee & Shakes</a></li>
+            <li><a href="#pizza">Pizza & More</a></li>
+            <li><a href="#kharachi">Kharachi & Biryani</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Follow Us</h5>
+          <div class="d-flex mt-3">
+            <a href="#" class="me-3"><i class="fab fa-facebook fa-2x"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 bg-white opacity-25">
+      <p class="text-center mb-0">&copy; 2026 FreshBrew Kitchen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Smooth Scroll & Navbar Effect -->
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar-custom');
+      if (window.scrollY > 50) {
+        nav.style.padding = '0.5rem 0';
+        nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+      } else {
+        nav.style.padding = '0.8rem 0';
+        nav.style.boxShadow = '0 2px 15px rgba(0,0,0,0.05)';
+      }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Initialize reservation date to today
+    document.getElementById('date').valueAsDate = new Date();
+  </script>
+
+</body>
+</html>

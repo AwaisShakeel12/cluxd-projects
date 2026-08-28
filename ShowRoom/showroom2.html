@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO-DRIVE | Premium Automotive Gallery</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Outfit & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-cyan: #00d4ff;
+            --deep-navy: #0a192f;
+            --soft-white: #f8fafc;
+            --text-dark: #1e293b;
+            --glass: rgba(255, 255, 255, 0.95);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--soft-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* --- Navbar Fixes --- */
+        .navbar {
+            padding: 20px 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+        /* Navbar Initial state (on Hero) */
+        .navbar.at-top {
+            background: transparent;
+        }
+        .navbar.at-top .nav-link, .navbar.at-top .navbar-brand {
+            color: white !important;
+        }
+        /* Navbar Scrolled state */
+        .navbar.scrolled {
+            background: var(--glass);
+            padding: 12px 0;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .navbar.scrolled .nav-link, .navbar.scrolled .navbar-brand {
+            color: var(--deep-navy) !important;
+        }
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+        }
+        .nav-link {
+            font-weight: 600;
+            margin: 0 15px;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover {
+            color: var(--primary-cyan) !important;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), 
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        .text-cyan { color: var(--primary-cyan); }
+
+        /* --- About Section --- */
+        .about-img-stack {
+            position: relative;
+            padding: 20px;
+        }
+        .about-img-main {
+            width: 100%;
+            border-radius: 20px;
+            z-index: 2;
+            position: relative;
+        }
+        .about-experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            background: var(--primary-cyan);
+            color: var(--deep-navy);
+            padding: 30px;
+            border-radius: 20px;
+            font-weight: 900;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            z-index: 3;
+        }
+
+        /* --- Car Cards --- */
+        .inventory-section { padding: 100px 0; }
+        
+        .filter-btn {
+            border: none;
+            background: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin: 5px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .filter-btn.active {
+            background: var(--deep-navy);
+            color: white;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.03);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(10, 25, 47, 0.1);
+        }
+        .car-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .car-img-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .car-card:hover .car-img-wrapper img { transform: scale(1.1); }
+
+        .price-badge {
+            background: var(--deep-navy);
+            color: var(--primary-cyan);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* --- Services --- */
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+        .service-card:hover {
+            border-bottom: 4px solid var(--primary-cyan);
+            background: var(--deep-navy);
+            color: white;
+        }
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-cyan);
+            margin-bottom: 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--deep-navy);
+            color: #94a3b8;
+            padding: 80px 0 30px;
+        }
+        .footer-logo { color: white; font-weight: 900; font-size: 1.8rem; }
+        .footer-link {
+            color: #94a3b8; text-decoration: none; display: block; margin-bottom: 12px;
+        }
+        .footer-link:hover { color: var(--primary-cyan); }
+
+        .btn-cyan {
+            background: var(--primary-cyan);
+            color: var(--deep-navy);
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            border: none;
+        }
+        .btn-cyan:hover {
+            background: #00b8e6;
+            transform: scale(1.05);
+            color: var(--deep-navy);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top at-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">NEO<span class="text-cyan">DRIVE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inventory">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#contact" class="btn-cyan py-2">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up">
+                    <h6 class="text-cyan fw-bold text-uppercase mb-3" style="letter-spacing: 3px;">The Ultimate Showroom</h6>
+                    <h1>DRIVE THE <span class="text-cyan">EXTRAORDINARY</span></h1>
+                    <p class="lead mb-5 opacity-75">Curating the world's most prestigious automotive masterpieces <br class="d-none d-md-block"> for collectors and enthusiasts alike.</p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                        <a href="#inventory" class="btn-cyan">Browse Collection</a>
+                        <a href="#about" class="btn btn-outline-light rounded-pill px-5">Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="about" style="margin-top: 100px;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="about-img-stack">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=600" class="about-img-main" alt="Showroom">
+                        <div class="about-experience-badge">
+                            <h2 class="mb-0">25+</h2>
+                            <p class="mb-0 small">YEARS OF EXCELLENCE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <h6 class="text-cyan fw-bold mb-3">SINCE 1998</h6>
+                    <h2 class="display-5 fw-bold mb-4">Redefining The Luxury <br> Car Experience</h2>
+                    <p class="text-muted mb-4">At Neo-Drive, we believe purchasing a car should be as exhilarating as driving one. Our showroom features an exclusive selection of new and certified pre-owned vehicles from the world's leading manufacturers.</p>
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-cyan fs-4 me-3"></i>
+                                <span class="fw-bold">Global Shipping</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-cyan fs-4 me-3"></i>
+                                <span class="fw-bold">Certified History</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventory -->
+    <section class="inventory-section bg-white" id="inventory">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold" data-aos="fade-up">Elite <span class="text-cyan">Inventory</span></h2>
+                <div class="d-flex justify-content-center flex-wrap mt-4" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn active" onclick="filter('all')">All Cars</button>
+                    <button class="filter-btn" onclick="filter('new')">New Arrivals</button>
+                    <button class="filter-btn" onclick="filter('luxury')">Luxury</button>
+                    <button class="filter-btn" onclick="filter('suv')">SUVs</button>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-2">
+                <!-- Car 1 -->
+                <div class="col-lg-4 col-md-6 car-item new" data-aos="zoom-in">
+                    <div class="car-card">
+                        <div class="car-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=800" alt="Car">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">Audi RS e-tron GT</h4>
+                            <p class="text-muted small">Electric | 2024 | 0 miles</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-badge">$147,000</span>
+                                <a href="#" class="text-dark fw-bold text-decoration-none">Explore <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 2 -->
+                <div class="col-lg-4 col-md-6 car-item luxury" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="car-card">
+                        <div class="car-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=800" alt="Car">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">BMW M4 Competition</h4>
+                            <p class="text-muted small">Petrol | 2023 | 2k miles</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-badge">$89,000</span>
+                                <a href="#" class="text-dark fw-bold text-decoration-none">Explore <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 3 -->
+                <div class="col-lg-4 col-md-6 car-item suv" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="car-card">
+                        <div class="car-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800" alt="Car">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">Range Rover Sport</h4>
+                            <p class="text-muted small">Hybrid | 2024 | 100 miles</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-badge">$112,000</span>
+                                <a href="#" class="text-dark fw-bold text-decoration-none">Explore <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <!-- Car 1 -->
+                <div class="col-lg-4 col-md-6 car-item new" data-aos="zoom-in">
+                    <div class="car-card">
+                        <div class="car-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=800" alt="Car">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">Audi RS e-tron GT</h4>
+                            <p class="text-muted small">Electric | 2024 | 0 miles</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-badge">$147,000</span>
+                                <a href="#" class="text-dark fw-bold text-decoration-none">Explore <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 2 -->
+                <div class="col-lg-4 col-md-6 car-item luxury" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="car-card">
+                        <div class="car-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=800" alt="Car">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">BMW M4 Competition</h4>
+                            <p class="text-muted small">Petrol | 2023 | 2k miles</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-badge">$89,000</span>
+                                <a href="#" class="text-dark fw-bold text-decoration-none">Explore <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Car 3 -->
+                <div class="col-lg-4 col-md-6 car-item suv" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="car-card">
+                        <div class="car-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800" alt="Car">
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold">Range Rover Sport</h4>
+                            <p class="text-muted small">Hybrid | 2024 | 100 miles</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-badge">$112,000</span>
+                                <a href="#" class="text-dark fw-bold text-decoration-none">Explore <i class="fas fa-arrow-right ms-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-5" id="services">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h6 class="text-cyan fw-bold">OUR SERVICES</h6>
+                <h2 class="display-6 fw-bold">Why People Choose Us</h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="service-card shadow-sm">
+                        <i class="fas fa-award"></i>
+                        <h4>Quality Control</h4>
+                        <p class="text-muted mb-0">Every vehicle undergoes a rigorous 300-point inspection by certified engineers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card shadow-sm">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h4>Financing Made Easy</h4>
+                        <p class="text-muted mb-0">Partnered with top global banks to provide you the lowest interest rates available.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card shadow-sm">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h4>Global Delivery</h4>
+                        <p class="text-muted mb-0">We deliver your car to your doorstep anywhere in the world with full insurance coverage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-5" id="contact">
+        <div class="container py-5">
+            <div class="bg-white rounded-5 shadow-lg overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-lg-5 p-5 bg-navy text-white" style="background: var(--deep-navy);">
+                        <h2 class="fw-bold mb-4">Start Your <br> Journey Today</h2>
+                        <p class="opacity-75 mb-5">Ready to meet your dream car? Book a private viewing or a test drive.</p>
+                        <div class="d-flex mb-4">
+                            <div class="text-cyan me-3 fs-4"><i class="fas fa-phone-alt"></i></div>
+                            <div>+1 (888) NEO-DRIVE</div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="text-cyan me-3 fs-4"><i class="fas fa-envelope"></i></div>
+                            <div>concierge@neodrive.com</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="text-cyan me-3 fs-4"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>Park Avenue Showroom, NY</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 p-5">
+                        <form>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small">Full Name</label>
+                                    <input type="text" class="form-control form-control-lg bg-light border-0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small">Email Address</label>
+                                    <input type="email" class="form-control form-control-lg bg-light border-0">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold small">Preferred Car</label>
+                                    <select class="form-select form-control-lg bg-light border-0">
+                                        <option>Select Model</option>
+                                        <option>Audi RS e-tron GT</option>
+                                        <option>BMW M4</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold small">Message</label>
+                                    <textarea class="form-control bg-light border-0" rows="4"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn-cyan w-100 py-3">SEND INQUIRY</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="footer-logo mb-4">NEO<span class="text-cyan">DRIVE</span></div>
+                    <p>The premier global destination for high-end luxury, exotic, and performance vehicles.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 ms-auto">
+                    <h5 class="text-white mb-4">Links</h5>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#inventory" class="footer-link">Inventory</a>
+                    <a href="#services" class="footer-link">Services</a>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="text-white mb-4">Contact Info</h5>
+                    <p class="small mb-2">123 Luxury Lane, NY 10001</p>
+                    <p class="small mb-2">+1 800 555 0199</p>
+                    <p class="small">Mon - Sat: 9:00 AM - 8:00 PM</p>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white" placeholder="Email">
+                        <button class="btn btn-cyan px-3"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5 border-secondary opacity-25">
+            <p class="text-center small mb-0">&copy; 2024 NEO-DRIVE Automotive. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Navbar Logic
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+                nav.classList.remove('at-top');
+            } else {
+                nav.classList.remove('scrolled');
+                nav.classList.add('at-top');
+            }
+        });
+
+        // Filter Logic
+        function filter(category) {
+            const cards = document.querySelectorAll('.car-item');
+            const btns = document.querySelectorAll('.filter-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if(category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            AOS.refresh();
+        }
+    </script>
+</body>
+</html>

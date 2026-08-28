@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cluxd — Your Health, Our Priority</title>
+<meta name="description" content="cluxd Healthcare — compassionate care, advanced medicine, trusted by thousands.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231db56f'/><path d='M50 22v56M22 50h56' stroke='white' stroke-width='16' stroke-linecap='round'/></svg>">
+
+<!-- Bootstrap 5 + Font Awesome + Fonts -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ================= CLUXD HEALTHCARE DESIGN SYSTEM ================= */
+:root{
+  --green:#1db56f; --green-d:#149a5c; --green-soft:#e6f7ef; --green-bright:#35e0a1;
+  --navy:#13294f; --navy-2:#0f2140;
+  --muted:#6a7a8c; --bg:#f6fafc; --line:#e5edf3;
+  --grad:linear-gradient(100deg,#2b80d0 0%,#1db56f 100%);
+}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--navy);font-size:15px;overflow-x:hidden;position:relative}
+h1,h2,h3,h4,.h-font{font-family:'Poppins',sans-serif}
+::selection{background:var(--green);color:#fff}
+img{max-width:100%}
+.section{padding:88px 0}
+@media(max-width:767.98px){.section{padding:60px 0}}
+.tag{display:inline-block;color:var(--green);font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.sec-title{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:600;color:var(--navy);line-height:1.3;margin:0}
+.text-green{color:var(--green)!important}
+p.small-p{color:var(--muted);font-size:.82rem;max-width:440px}
+
+/* Buttons */
+.btn-green{background:var(--green);color:#fff;border:0;border-radius:8px;padding:.75rem 1.5rem;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;transition:.3s;white-space:nowrap}
+.btn-green:hover{background:var(--green-d);color:#fff;transform:translateY(-2px);box-shadow:0 12px 26px rgba(29,181,111,.3)}
+.btn-navy{background:var(--navy);color:#fff;border:0;border-radius:8px;padding:.75rem 1.5rem;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;transition:.3s;white-space:nowrap}
+.btn-navy:hover{background:var(--navy-2);color:#fff;transform:translateY(-2px)}
+.btn-navy i,.btn-green i{font-size:.7rem}
+.link-more{font-size:.74rem;font-weight:700;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:.25s}
+.link-more:hover{color:var(--green);gap:.7rem}
+
+/* ============ NAVBAR ============ */
+.navbar{background:#fff;padding:.9rem 0;transition:.3s}
+.navbar.scrolled{box-shadow:0 10px 30px rgba(19,41,79,.08)}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none}
+.brand .cross{width:34px;height:34px;border-radius:9px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.brand b{font-family:'Poppins';font-size:1.3rem;font-weight:700;color:var(--navy)}
+.navbar .nav-link{color:#41546e;font-size:.8rem;font-weight:600;margin:0 .55rem;position:relative}
+.navbar .nav-link::after{content:"";position:absolute;left:.55rem;right:.55rem;bottom:2px;height:2px;background:var(--green);transform:scaleX(0);transition:.3s}
+.navbar .nav-link:hover,.navbar .nav-link.active{color:var(--green)}
+.navbar .nav-link:hover::after,.navbar .nav-link.active::after{transform:scaleX(1)}
+.helpline .ic{width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.helpline small{display:block;color:var(--muted);font-size:.62rem;font-weight:600}
+.helpline b{font-size:.82rem;color:var(--navy)}
+.navbar-toggler{border:0}
+.navbar-toggler:focus{box-shadow:none}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2313294f' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+@media(max-width:991.98px){.navbar-collapse{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;margin-top:.6rem}.navbar .nav-link{margin:0;padding:.5rem .25rem}}
+
+/* ============ HERO (IMAGE AS BACKGROUND, TEXT OVER IT) ============ */
+.hero{
+  position:relative;color:#fff;
+  background:
+    linear-gradient(95deg,rgba(15,33,64,.94) 0%,rgba(15,33,64,.82) 42%,rgba(15,33,64,.45) 72%,rgba(15,33,64,.25) 100%),
+    url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1900&q=70') center/cover no-repeat;
+  padding:60px 0 150px;
+}
+@media(max-width:991.98px){.hero{padding:40px 0 120px;background:linear-gradient(180deg,rgba(15,33,64,.92) 0%,rgba(15,33,64,.8) 60%,rgba(15,33,64,.65) 100%),url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat}}
+.hero h1{font-size:clamp(2.3rem,4.6vw,3.5rem);font-weight:600;line-height:1.18;color:#fff}
+.hero h1 .text-green{color:var(--green-bright)!important}
+.hero p.lead-p{color:#d7e3ef;font-size:.9rem;max-width:460px}
+.hero-feats .hf{display:flex;align-items:flex-start;gap:.6rem}
+.hero-feats i{color:var(--green-bright);font-size:1.05rem;margin-top:.15rem}
+.hero-feats b{font-size:.76rem;color:#fff;display:block;line-height:1.35}
+.emg-card{position:absolute;right:0;top:52%;transform:translateY(-50%);background:#fff;border-radius:14px;box-shadow:0 20px 50px rgba(9,24,48,.35);padding:1rem 1.3rem;display:flex;gap:.9rem;align-items:center;z-index:2;color:var(--navy)}
+.emg-card .ic{width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex:0 0 auto}
+.emg-card b{font-size:.8rem;display:block}
+.emg-card small{color:var(--muted);font-size:.66rem;display:block}
+.emg-card .num{color:var(--green);font-weight:800;font-size:.95rem}
+@media(max-width:991.98px){.emg-card{position:relative;top:auto;transform:none;margin-top:2rem;right:auto}}
+
+/* ============ APPOINTMENT FORM (overlaps hero) ============ */
+.appt-wrap{margin-top:-95px;position:relative;z-index:6}
+@media(max-width:991.98px){.appt-wrap{margin-top:-70px}}
+.appt-card{background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(19,41,79,.12);padding:1.9rem 1.9rem 1.7rem}
+.appt-card h3{font-size:1.1rem;font-weight:600}
+.appt-card label{font-size:.66rem;color:var(--navy);font-weight:700;margin-bottom:.35rem}
+.appt-card .form-control,.appt-card .form-select{background:#fbfdfe;border:1px solid var(--line);border-radius:8px;font-size:.78rem;padding:.65rem .9rem;color:var(--navy)}
+.appt-card .form-control:focus,.appt-card .form-select:focus{border-color:var(--green);box-shadow:0 0 0 .2rem rgba(29,181,111,.12)}
+#apptMsg{font-size:.76rem;color:var(--green);font-weight:700}
+
+/* ============ WHY CHOOSE ============ */
+.why-stats .ws{text-align:center;padding:0 .6rem}
+.why-stats .ws i{color:var(--green);font-size:1.2rem}
+.why-stats .ws b{display:block;font-size:1.15rem;font-weight:800;margin-top:.35rem}
+.why-stats .ws span{color:var(--muted);font-size:.64rem}
+@media(min-width:992px){.why-stats .ws+.ws{border-left:1px solid var(--line)}}
+.why-img{border-radius:18px;width:100%;height:330px;object-fit:cover;box-shadow:0 24px 60px rgba(19,41,79,.14)}
+
+/* ============ DEPARTMENTS ============ */
+.dep-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.5rem 1rem;text-align:center;height:100%;transition:.3s}
+.dep-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(19,41,79,.1);border-color:var(--green)}
+.dep-card i{color:var(--green);font-size:1.5rem}
+.dep-card b{display:block;font-size:.8rem;color:var(--navy);margin-top:.7rem}
+.dep-card span{color:var(--muted);font-size:.66rem}
+
+/* ============ GRADIENT BANNERS ============ */
+.grad-banner{background:var(--grad);border-radius:18px;color:#fff;overflow:hidden}
+.grad-banner h2{font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:600}
+.grad-banner p{color:rgba(255,255,255,.85);font-size:.8rem;max-width:330px}
+.g-stat{text-align:center;padding:0 1rem}
+.g-stat i{font-size:1.2rem}
+.g-stat b{display:block;font-size:1.5rem;font-weight:800;margin-top:.4rem}
+.g-stat span{font-size:.66rem;color:rgba(255,255,255,.85)}
+@media(min-width:768px){.g-stat+.g-stat{border-left:1px solid rgba(255,255,255,.3)}}
+.cta-phone img{border-radius:16px;height:280px;width:100%;object-fit:cover;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+
+/* ============ DOCTORS ============ */
+.doc-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;height:100%;transition:.3s}
+.doc-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(19,41,79,.1)}
+.doc-card img{width:100%;height:210px;object-fit:cover;object-position:top}
+.doc-card .bd{padding:.9rem 1rem;text-align:center}
+.doc-card b{font-size:.8rem;display:block}
+.doc-card span{color:var(--muted);font-size:.66rem}
+
+/* ============ TESTIMONIALS ============ */
+.testi{background:var(--navy);position:relative;overflow:hidden}
+.testi::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=60') center/cover;opacity:.1}
+.testi .container{position:relative;z-index:1}
+.testi .q{color:var(--green);font-size:2.4rem}
+.testi p.qt{color:#dbe6f2;font-size:.92rem;max-width:680px;margin:0 auto}
+.testi img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--green)}
+.testi .nm{color:#fff;font-size:.8rem;font-weight:700}
+.testi .rl{color:#8fa5c0;font-size:.66rem}
+.t-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.08);color:#fff;transition:.3s;z-index:2}
+.t-arrow:hover{background:var(--green)}
+.t-arrow.prev{left:3%}.t-arrow.next{right:3%}
+.testi-slide{display:none;animation:fadeT .5s ease}
+.testi-slide.active{display:block}
+@keyframes fadeT{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============ SERVICES ============ */
+.srv-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;height:100%;transition:.3s}
+.srv-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(19,41,79,.1)}
+.srv-card img{width:100%;height:160px;object-fit:cover}
+.srv-card .bd{padding:1.1rem 1.2rem}
+.srv-card b{font-size:.88rem}
+.srv-card p{color:var(--muted);font-size:.7rem;margin:.3rem 0 .8rem}
+
+/* ============ BLOG ============ */
+.blog-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;height:100%;transition:.3s}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(19,41,79,.1)}
+.blog-card img{width:100%;height:160px;object-fit:cover}
+.blog-card .bd{padding:1.1rem 1.2rem}
+.blog-card .dt{color:var(--muted);font-size:.64rem}
+.blog-card b{font-size:.85rem;display:block;margin:.35rem 0 .8rem;line-height:1.5}
+
+/* ============ INSURANCE ============ */
+.ins-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.4rem 3rem;font-weight:800;font-size:1.15rem}
+.ins-row span{display:inline-flex;align-items:center;gap:.45rem;opacity:.85;transition:.3s}
+.ins-row span:hover{opacity:1;transform:translateY(-3px)}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--navy);color:#a9bad0}
+.footer h3{color:#fff;font-size:.85rem;font-weight:600;font-family:'Poppins';margin-bottom:1.1rem}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer ul li{margin-bottom:.55rem}
+.footer ul a{color:#a9bad0;font-size:.75rem;text-decoration:none;transition:.25s}
+.footer ul a:hover{color:var(--green);padding-left:4px}
+.footer .c-line{display:flex;gap:.6rem;font-size:.75rem;margin-bottom:.65rem;align-items:flex-start}
+.footer .c-line i{color:var(--green);margin-top:.15rem}
+.footer .social a{width:32px;height:32px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#c8d6e8;text-decoration:none;font-size:.72rem;transition:.3s}
+.footer .social a:hover{background:var(--green);border-color:var(--green);color:#fff;transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);font-size:.7rem;color:#7d93b1}
+.footer-bottom a{color:#7d93b1;text-decoration:none}
+.footer-bottom a:hover{color:var(--green)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navList" data-bs-root-margin="0px 0px -55%">
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <div class="container-xl">
+    <a class="brand" href="#home"><span class="cross"><i class="fa-solid fa-plus"></i></span><b>cluxd</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0" id="navList">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+        <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Pages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <div class="helpline d-flex align-items-center gap-2">
+        <div class="ic"><i class="fa-solid fa-phone"></i></div>
+        <div><small>Emergency Helpline</small><b>0800 1234 5678</b></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO — IMAGE AS BACKGROUND, TEXT OVER IT ===================== -->
+<header class="hero" id="home">
+  <div class="container-xl position-relative">
+    <div class="d-flex justify-content-end mb-4"><a href="#appointment" class="btn-green">Book Appointment</a></div>
+    <div class="row">
+      <div class="col-lg-8">
+        <h1>Your Health,<br><span class="text-green">Our Priority</span></h1>
+        <p class="lead-p mt-3 mb-4">Compassionate care. Advanced medicine. Trusted by thousands.</p>
+        <div class="hero-feats d-flex flex-wrap gap-4 mb-4">
+          <div class="hf"><i class="fa-solid fa-user-doctor"></i><b>Experienced<br>Doctors</b></div>
+          <div class="hf"><i class="fa-solid fa-microscope"></i><b>Modern<br>Technology</b></div>
+          <div class="hf"><i class="fa-regular fa-clock"></i><b>24/7<br>Emergency Care</b></div>
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#appointment" class="btn-green">Book Appointment</a>
+          <a href="#services" class="btn-navy" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3)">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- floating emergency card over the background image -->
+    <div class="emg-card">
+      <div class="ic"><i class="fa-solid fa-phone"></i></div>
+      <div><b>Emergency Care</b><small>Available 24/7</small><span class="num">0800 1234 5678</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== APPOINTMENT FORM (overlapping hero) ===================== -->
+<div class="appt-wrap" id="appointment">
+  <div class="container-xl">
+    <div class="appt-card reveal">
+      <h3>Find &amp; Book Appointment</h3>
+      <form id="apptForm" class="mt-3">
+        <div class="row g-3">
+          <div class="col-6 col-lg-3"><label>Select Department</label>
+            <select class="form-select" required><option value="">Select Department</option><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>Gynecology</option><option>Radiology</option></select></div>
+          <div class="col-6 col-lg-3"><label>Select Doctor</label>
+            <select class="form-select" required><option value="">Select Doctor</option><option>Dr. Sarah Johnson</option><option>Dr. Michael Lee</option><option>Dr. Priya Sharma</option><option>Dr. James Wilson</option></select></div>
+          <div class="col-6 col-lg-3"><label>Date</label><input type="date" class="form-control" required></div>
+          <div class="col-6 col-lg-3"><label>Time</label>
+            <select class="form-select" required><option value="">Select Time</option><option>09:00 AM</option><option>11:00 AM</option><option>02:00 PM</option><option>04:00 PM</option></select></div>
+          <div class="col-6 col-lg-3"><label>Full Name</label><input type="text" class="form-control" placeholder="Your Name" required></div>
+          <div class="col-6 col-lg-3"><label>Phone Number</label><input type="tel" class="form-control" placeholder="Your Phone" required></div>
+          <div class="col-6 col-lg-3"><label>Email Address</label><input type="email" class="form-control" placeholder="Your Email" required></div>
+          <div class="col-6 col-lg-3 d-flex align-items-end"><button type="submit" class="btn-green w-100 justify-content-center">Book Now <i class="fa-solid fa-arrow-right"></i></button></div>
+        </div>
+        <div id="apptMsg" class="d-none mt-3"><i class="fa-solid fa-circle-check me-1"></i>Appointment request received! Our team will confirm shortly.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== WHY CHOOSE US ===================== -->
+<section class="section" id="about">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <span class="tag">Why Choose Us</span>
+        <h2 class="sec-title mt-2 mb-3">Trusted Care Backed<br>by <span class="text-green">Experience</span></h2>
+        <p class="small-p mb-4">At cluxd, we combine advanced medical technology with compassionate care to ensure the best outcomes for our patients.</p>
+        <div class="why-stats d-flex flex-wrap justify-content-between gap-3">
+          <div class="ws"><i class="fa-solid fa-user-doctor"></i><b>120+</b><span>Expert Doctors</span></div>
+          <div class="ws"><i class="fa-solid fa-face-smile"></i><b>15K+</b><span>Happy Patients</span></div>
+          <div class="ws"><i class="fa-regular fa-hospital"></i><b>25+</b><span>Departments</span></div>
+          <div class="ws"><i class="fa-regular fa-clock"></i><b>24/7</b><span>Emergency Care</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal"><img class="why-img" src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1100&q=70" alt="cluxd hospital building" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DEPARTMENTS ===================== -->
+<section class="section pt-0" id="departments">
+  <div class="container-xl text-center">
+    <div class="reveal">
+      <span class="tag">Our Departments</span>
+      <h2 class="sec-title mt-2 mb-5">Comprehensive Care<br>Under One Roof</h2>
+    </div>
+    <div class="row g-3 g-lg-4 reveal">
+      <div class="col-6 col-md-4 col-xl-2"><div class="dep-card"><i class="fa-solid fa-heart-pulse"></i><b>Cardiology</b><span>Heart Care</span></div></div>
+      <div class="col-6 col-md-4 col-xl-2"><div class="dep-card"><i class="fa-solid fa-brain"></i><b>Neurology</b><span>Brain &amp; Nerves</span></div></div>
+      <div class="col-6 col-md-4 col-xl-2"><div class="dep-card"><i class="fa-solid fa-bone"></i><b>Orthopedics</b><span>Bone &amp; Joint</span></div></div>
+      <div class="col-6 col-md-4 col-xl-2"><div class="dep-card"><i class="fa-solid fa-baby"></i><b>Pediatrics</b><span>Child Care</span></div></div>
+      <div class="col-6 col-md-4 col-xl-2"><div class="dep-card"><i class="fa-solid fa-person-pregnant"></i><b>Gynecology</b><span>Women's Health</span></div></div>
+      <div class="col-6 col-md-4 col-xl-2"><div class="dep-card"><i class="fa-solid fa-x-ray"></i><b>Radiology</b><span>Imaging Center</span></div></div>
+    </div>
+    <div class="mt-4 reveal"><a href="#services" class="btn-navy">View All Departments <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- ===================== GRADIENT EXCELLENCE BANNER ===================== -->
+<section class="pb-5">
+  <div class="container-xl">
+    <div class="grad-banner p-4 p-lg-5 reveal">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h2>Delivering Excellence<br>Every Step of the Way</h2>
+          <p class="my-3">From consultation to recovery, we are with you at every step.</p>
+          <a href="#about" class="btn-navy">Learn More About Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-center text-center gap-2">
+            <div class="g-stat"><i class="fa-solid fa-heart-pulse"></i><b>98%</b><span>Patient Satisfaction</span></div>
+            <div class="g-stat"><i class="fa-solid fa-calendar-check"></i><b>200+</b><span>Daily Appointments</span></div>
+            <div class="g-stat"><i class="fa-solid fa-award"></i><b>30+</b><span>Years of Experience</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOCTORS ===================== -->
+<section class="section pt-0" id="doctors">
+  <div class="container-xl">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-3 reveal">
+        <span class="tag">Meet Our Doctors</span>
+        <h2 class="sec-title mt-2 mb-4" style="font-size:1.4rem">Expert Doctors, Compassionate Care</h2>
+        <a href="#doctors" class="btn-navy">View All Doctors <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="col-lg-9">
+        <div class="row g-3 g-md-4 reveal">
+          <div class="col-6 col-md-3"><div class="doc-card"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=60" alt="Dr. Sarah Johnson" loading="lazy"><div class="bd"><b>Dr. Sarah Johnson</b><span>Cardiologist</span></div></div></div>
+          <div class="col-6 col-md-3"><div class="doc-card"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=60" alt="Dr. Michael Lee" loading="lazy"><div class="bd"><b>Dr. Michael Lee</b><span>Neurologist</span></div></div></div>
+          <div class="col-6 col-md-3"><div class="doc-card"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=60" alt="Dr. Priya Sharma" loading="lazy"><div class="bd"><b>Dr. Priya Sharma</b><span>Pediatrician</span></div></div></div>
+          <div class="col-6 col-md-3"><div class="doc-card"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=60" alt="Dr. James Wilson" loading="lazy"><div class="bd"><b>Dr. James Wilson</b><span>Orthopedic Surgeon</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="testi section" id="testimonials">
+  <button class="t-arrow prev" id="tPrev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="t-arrow next" id="tNext" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="container text-center">
+    <div class="testi-slide active">
+      <i class="fa-solid fa-quote-left q"></i>
+      <p class="qt">The doctors and staff at cluxd were amazing. They explained everything clearly and made me feel comfortable throughout my treatment.</p>
+      <div class="d-inline-flex align-items-center gap-3 mt-4 text-start">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Smith" loading="lazy">
+        <div><div class="nm">John Smith</div><div class="rl">Happy Patient</div></div>
+      </div>
+    </div>
+    <div class="testi-slide">
+      <i class="fa-solid fa-quote-left q"></i>
+      <p class="qt">From booking to recovery, everything was seamless. The facilities are modern and the care is truly world-class.</p>
+      <div class="d-inline-flex align-items-center gap-3 mt-4 text-start">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Carter" loading="lazy">
+        <div><div class="nm">Emily Carter</div><div class="rl">Happy Patient</div></div>
+      </div>
+    </div>
+    <div class="testi-slide">
+      <i class="fa-solid fa-quote-left q"></i>
+      <p class="qt">The emergency team responded within minutes and saved my father's life. We are forever grateful to cluxd Healthcare.</p>
+      <div class="d-inline-flex align-items-center gap-3 mt-4 text-start">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Miller" loading="lazy">
+        <div><div class="nm">David Miller</div><div class="rl">Patient's Family</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="section" id="services">
+  <div class="container-xl text-center">
+    <div class="reveal">
+      <span class="tag">Our Services</span>
+      <h2 class="sec-title mt-2 mb-5">Healthcare Services<br>Designed For You</h2>
+    </div>
+    <div class="row g-4 text-start reveal">
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=60" alt="Health Checkup" loading="lazy"><div class="bd"><b>Health Checkup</b><p>Full body health screening</p><a class="link-more" href="#appointment">Learn More <i class="fa-solid fa-arrow-right"></i></a></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><img src="https://images.unsplash.com/photo-1551601651-2a8555f13136?auto=format&fit=crop&w=800&q=60" alt="Surgery" loading="lazy"><div class="bd"><b>Surgery</b><p>Advanced surgical care</p><a class="link-more" href="#appointment">Learn More <i class="fa-solid fa-arrow-right"></i></a></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=60" alt="Emergency Care" loading="lazy"><div class="bd"><b>Emergency Care</b><p>24/7 emergency support</p><a class="link-more" href="#appointment">Learn More <i class="fa-solid fa-arrow-right"></i></a></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=60" alt="Laboratory Test" loading="lazy"><div class="bd"><b>Laboratory Test</b><p>Accurate lab diagnostics</p><a class="link-more" href="#appointment">Learn More <i class="fa-solid fa-arrow-right"></i></a></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><img src="https://images.unsplash.com/photo-1471864190281-a93a3070cdb6?auto=format&fit=crop&w=800&q=60" alt="Pharmacy" loading="lazy"><div class="bd"><b>Pharmacy</b><p>Quality medicines</p><a class="link-more" href="#appointment">Learn More <i class="fa-solid fa-arrow-right"></i></a></div></div></div>
+      <div class="col-md-6 col-lg-4"><div class="srv-card"><img src="https://images.unsplash.com/photo-1612277701974-68cb0486c2b1?auto=format&fit=crop&w=800&q=60" alt="Ambulance Service" loading="lazy"><div class="bd"><b>Ambulance Service</b><p>Fast &amp; reliable transport</p><a class="link-more" href="#appointment">Learn More <i class="fa-solid fa-arrow-right"></i></a></div></div></div>
+    </div>
+    <div class="mt-5 reveal"><a href="#appointment" class="btn-navy">View All Services <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- ===================== GRADIENT CTA + PHONE ===================== -->
+<section class="pb-5">
+  <div class="container-xl">
+    <div class="grad-banner p-4 p-lg-5 reveal">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <h2>Book Your Appointment Today &amp; Take the First Step Towards Better Health</h2>
+          <a href="#appointment" class="btn-navy mt-4">Book Appointment <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="col-lg-5 cta-phone"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=70" alt="Telehealth appointment on phone" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BLOG ===================== -->
+<section class="section pt-0" id="blog">
+  <div class="container-xl">
+    <div class="text-center mb-4 reveal">
+      <span class="tag">Our Blog</span>
+      <h2 class="sec-title mt-2">Health Tips &amp;<br>News Updates</h2>
+    </div>
+    <div class="d-flex justify-content-end mb-3 reveal"><a href="#blog" class="btn-navy">View All Posts <i class="fa-solid fa-arrow-right"></i></a></div>
+    <div class="row g-4 reveal">
+      <div class="col-md-4"><article class="blog-card"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=60" alt="Healthy lifestyle" loading="lazy"><div class="bd"><span class="dt">May 20, 2025</span><b>10 Tips for a Healthy Lifestyle</b><a class="link-more" href="#blog">Read More <i class="fa-solid fa-arrow-right"></i></a></div></article></div>
+      <div class="col-md-4"><article class="blog-card"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=60" alt="Regular checkups" loading="lazy"><div class="bd"><span class="dt">May 25, 2025</span><b>How Regular Checkups Can Save Lives</b><a class="link-more" href="#blog">Read More <i class="fa-solid fa-arrow-right"></i></a></div></article></div>
+      <div class="col-md-4"><article class="blog-card"><img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=60" alt="Heart health" loading="lazy"><div class="bd"><span class="dt">May 15, 2025</span><b>Understanding Heart Health</b><a class="link-more" href="#blog">Read More <i class="fa-solid fa-arrow-right"></i></a></div></article></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INSURANCE PARTNERS ===================== -->
+<section class="section pt-0" id="partners">
+  <div class="container-xl text-center reveal">
+    <span class="tag">Insurance Partners</span>
+    <h2 class="sec-title mt-2 mb-5" style="font-size:1.35rem">We Work With<br>Leading Insurance Providers</h2>
+    <div class="ins-row">
+      <span style="color:#7d3bec">aetna</span>
+      <span style="color:#0076a8"><i class="fa-solid fa-seedling" style="color:#43b04b"></i>Cigna</span>
+      <span style="color:#0057b8;font-size:.95rem"><i class="fa-solid fa-cross"></i>BlueCross <small style="font-size:.6em">BlueShield</small></span>
+      <span style="color:#002677"><i class="fa-solid fa-u"></i>United</span>
+      <span style="color:#8dc63f">Humana</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer pt-5" id="contact">
+  <div class="container-xl">
+    <div class="row g-4 pb-4">
+      <div class="col-lg-4">
+        <a class="brand mb-3" href="#home"><span class="cross"><i class="fa-solid fa-plus"></i></span><b style="color:#fff">cluxd</b></a>
+        <p class="mt-3" style="font-size:.76rem;max-width:270px">cluxd is committed to providing exceptional healthcare services with compassion, innovation, and excellence.</p>
+        <div class="social d-flex gap-2 mt-3">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctors">Doctors</a></li>
+          <li><a href="#departments">Departments</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3 col-lg-3">
+        <h3>Our Services</h3>
+        <ul>
+          <li><a href="#services">Health Checkup</a></li>
+          <li><a href="#services">Surgery</a></li>
+          <li><a href="#services">Emergency Care</a></li>
+          <li><a href="#services">Laboratory Test</a></li>
+          <li><a href="#services">Pharmacy</a></li>
+          <li><a href="#services">Ambulance Service</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h3>Contact Info</h3>
+        <div class="c-line"><i class="fa-solid fa-location-dot"></i><span>123 Healthcare Ave,<br>Wellness City, WC 12345</span></div>
+        <div class="c-line"><i class="fa-solid fa-phone"></i><span>0800 1234 5678</span></div>
+        <div class="c-line"><i class="fa-regular fa-envelope"></i><span>info@cluxdhealthcare.com</span></div>
+        <div class="c-line"><i class="fa-solid fa-globe"></i><span>www.cluxdhealthcare.com</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom py-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© <span id="year">2025</span> cluxd Healthcare. All Rights Reserved.</span>
+      <span class="d-flex gap-4"><a href="#contact">Privacy Policy</a><a href="#contact">Terms &amp; Conditions</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+  /* Year */
+  $('#year').textContent=new Date().getFullYear();
+
+  /* Navbar shadow */
+  const nav=$('#mainNav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>20);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* Image fallback */
+  const FB='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1100&q=60';
+  $$('img').forEach(im=>im.addEventListener('error',()=>{if(!im.dataset.fb){im.dataset.fb=1;im.src=FB;}}));
+
+  /* Appointment form */
+  $('#apptForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    $('#apptMsg').classList.remove('d-none');
+    e.target.reset();
+  });
+
+  /* Testimonials slider */
+  const slides=$$('.testi-slide');let ti=0,tt;
+  function tShow(i){slides[ti].classList.remove('active');ti=(i+slides.length)%slides.length;slides[ti].classList.add('active');}
+  function tAuto(){clearInterval(tt);tt=setInterval(()=>tShow(ti+1),7000);}
+  $('#tNext').addEventListener('click',()=>{tShow(ti+1);tAuto();});
+  $('#tPrev').addEventListener('click',()=>{tShow(ti-1);tAuto();});
+  tAuto();
+
+  /* Reveal on scroll */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  }),{threshold:.12});
+  $$('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

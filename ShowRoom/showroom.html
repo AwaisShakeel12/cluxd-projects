@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE DRIVE | Modern Car Showroom</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #8a2be2; /* BlueViolet */
+            --secondary-color: #4b0082; /* Indigo/Purple */
+            --light-blue: #f0f4ff;
+            --white: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: #333;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 15px;
+        }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--light-blue);
+        }
+        .btn-main {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            border: none;
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .btn-main:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* --- Filter Section --- */
+        .filter-section {
+            padding: 50px 0;
+            background: var(--light-blue);
+        }
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 25px;
+            border-radius: 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Car Cards --- */
+        .car-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            margin-bottom: 30px;
+            border: none;
+        }
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.2);
+        }
+        .car-img-container {
+            height: 200px;
+            overflow: hidden;
+        }
+        .car-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .car-body {
+            padding: 25px;
+        }
+        .car-title {
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        .car-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .car-tag {
+            background: var(--light-blue);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* --- Services --- */
+        .services {
+            padding: 80px 0;
+        }
+        .service-box {
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            background: #fff;
+            transition: var(--transition);
+        }
+        .service-box:hover {
+            background: var(--light-blue);
+        }
+        .service-box i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- Contact Form --- */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .contact-form input, .contact-form textarea {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            margin-bottom: 20px;
+            padding: 12px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #111;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        .footer-link {
+            color: #bbb;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-car-side me-2"></i>LUXE DRIVE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inventory">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1>Experience The Future of Driving</h1>
+                    <p>Discover our exclusive collection of luxury vehicles, performance SUVs, and premium pre-owned cars.</p>
+                    <a href="#inventory" class="btn-main">Explore Inventory</a>
+                    <a href="#contact" class="btn btn-outline-light rounded-pill ms-3 px-4 py-2">Book a Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventory / Filter Section -->
+    <section class="filter-section" id="inventory">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Featured <span style="color: var(--primary-color);">Cars</span></h2>
+                <p>Find the perfect match for your lifestyle</p>
+                <div class="mt-4">
+                    <button class="filter-btn active" onclick="filterSelection('all')">All Cars</button>
+                    <button class="filter-btn" onclick="filterSelection('new')">New Arrival</button>
+                    <button class="filter-btn" onclick="filterSelection('used')">Used Cars</button>
+                    <button class="filter-btn" onclick="filterSelection('suv')">SUVs</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Car Card 1 -->
+                <div class="col-md-4 car-item new">
+                    <div class="car-card">
+                        <div class="car-img-container">
+                            <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&q=80&w=600" alt="Car">
+                        </div>
+                        <div class="car-body">
+                            <span class="car-tag">New 2024</span>
+                            <h5 class="car-title">BMW M4 Competition</h5>
+                            <p class="text-muted"><i class="fas fa-gas-pump me-2"></i>Petrol | <i class="fas fa-cog me-2"></i>Automatic</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="car-price">$82,000</span>
+                                <a href="#" class="btn-main py-1 px-3" style="font-size: 0.8rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Card 2 -->
+                <div class="col-md-4 car-item suv">
+                    <div class="car-card">
+                        <div class="car-img-container">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=600" alt="Car">
+                        </div>
+                        <div class="car-body">
+                            <span class="car-tag">SUV</span>
+                            <h5 class="car-title">Range Rover Sport</h5>
+                            <p class="text-muted"><i class="fas fa-gas-pump me-2"></i>Hybrid | <i class="fas fa-cog me-2"></i>AWD</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="car-price">$115,000</span>
+                                <a href="#" class="btn-main py-1 px-3" style="font-size: 0.8rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Card 3 -->
+                <div class="col-md-4 car-item used">
+                    <div class="car-card">
+                        <div class="car-img-container">
+                            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=600" alt="Car">
+                        </div>
+                        <div class="car-body">
+                            <span class="car-tag">Pre-Owned</span>
+                            <h5 class="car-title">Tesla Model 3 P100D</h5>
+                            <p class="text-muted"><i class="fas fa-bolt me-2"></i>Electric | <i class="fas fa-road me-2"></i>12k Miles</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="car-price">$45,900</span>
+                                <a href="#" class="btn-main py-1 px-3" style="font-size: 0.8rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="col-md-4 car-item new">
+                    <div class="car-card">
+                        <div class="car-img-container">
+                            <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&q=80&w=600" alt="Car">
+                        </div>
+                        <div class="car-body">
+                            <span class="car-tag">New 2024</span>
+                            <h5 class="car-title">BMW M4 Competition</h5>
+                            <p class="text-muted"><i class="fas fa-gas-pump me-2"></i>Petrol | <i class="fas fa-cog me-2"></i>Automatic</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="car-price">$82,000</span>
+                                <a href="#" class="btn-main py-1 px-3" style="font-size: 0.8rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Card 2 -->
+                <div class="col-md-4 car-item suv">
+                    <div class="car-card">
+                        <div class="car-img-container">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=600" alt="Car">
+                        </div>
+                        <div class="car-body">
+                            <span class="car-tag">SUV</span>
+                            <h5 class="car-title">Range Rover Sport</h5>
+                            <p class="text-muted"><i class="fas fa-gas-pump me-2"></i>Hybrid | <i class="fas fa-cog me-2"></i>AWD</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="car-price">$115,000</span>
+                                <a href="#" class="btn-main py-1 px-3" style="font-size: 0.8rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Card 3 -->
+                <div class="col-md-4 car-item used">
+                    <div class="car-card">
+                        <div class="car-img-container">
+                            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=600" alt="Car">
+                        </div>
+                        <div class="car-body">
+                            <span class="car-tag">Pre-Owned</span>
+                            <h5 class="car-title">Tesla Model 3 P100D</h5>
+                            <p class="text-muted"><i class="fas fa-bolt me-2"></i>Electric | <i class="fas fa-road me-2"></i>12k Miles</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="car-price">$45,900</span>
+                                <a href="#" class="btn-main py-1 px-3" style="font-size: 0.8rem;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Premium <span style="color: var(--primary-color);">Services</span></h2>
+                <p>We provide more than just a car; we provide a lifestyle.</p>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="service-box">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Extended Warranty</h4>
+                        <p class="text-muted">Peace of mind with our industry-leading 5-year coverage plans.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-box">
+                        <i class="fas fa-tools"></i>
+                        <h4>Master Service</h4>
+                        <p class="text-muted">Certified technicians using only original manufacture parts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-box">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h4>Easy Financing</h4>
+                        <p class="text-muted">Low interest rates and instant approval for your dream car.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="about" style="background-color: var(--light-blue);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=600" class="img-fluid rounded-4 shadow" alt="Showroom">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h6 class="text-uppercase fw-bold text-primary">Since 1995</h6>
+                    <h2 class="fw-bold mb-4">The Largest Luxury Showroom In the City</h2>
+                    <p class="text-muted mb-4">Luxe Drive has been at the forefront of the automotive industry for over 25 years. We specialize in bringing the rarest and most prestigious vehicles to our clients while maintaining a standard of excellence in service.</p>
+                    <div class="row g-0">
+                        <div class="col-6 mb-3">
+                            <h3 class="fw-bold text-primary">500+</h3>
+                            <p>Cars Sold</p>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <h3 class="fw-bold text-primary">100%</h3>
+                            <p>Satisfied Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Get In Touch</h2>
+                    <p class="mb-5">Have questions about a specific model or want to schedule a test drive? Fill out the form and our team will get back to you within 24 hours.</p>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-map-marker-alt mt-1 me-3"></i>
+                        <p>123 Luxury Drive, Beverly Hills, CA 90210</p>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-phone mt-1 me-3"></i>
+                        <p>+1 (555) LUXE-CARS</p>
+                    </div>
+                    <div class="d-flex">
+                        <i class="fas fa-envelope mt-1 me-3"></i>
+                        <p>info@luxedrive.com</p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Subject">
+                            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                            <button type="submit" class="btn btn-light w-100 fw-bold py-3 text-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="fw-bold text-white mb-4">LUXE DRIVE</h4>
+                    <p class="text-muted">Defining the future of luxury transportation with quality, trust, and speed.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold text-white mb-4">Quick Links</h6>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#inventory" class="footer-link">Inventory</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold text-white mb-4">Support</h6>
+                    <a href="#" class="footer-link">FAQ</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold text-white mb-4">Newsletter</h6>
+                    <p class="text-muted">Subscribe to get the latest updates on new arrivals.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email Address">
+                        <button class="btn btn-primary" style="background: var(--primary-color); border:none;">Join</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4" style="background: #444;">
+            <div class="text-center mt-4">
+                <p class="text-muted mb-0">&copy; 2024 Luxe Drive Showroom. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').style.padding = '10px 0';
+                document.querySelector('.navbar').style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                document.querySelector('.navbar').style.padding = '20px 0';
+                document.querySelector('.navbar').style.boxShadow = 'none';
+            }
+        });
+
+        // Simple Filter Logic
+        function filterSelection(category) {
+            let items = document.querySelectorAll('.car-item');
+            let btns = document.querySelectorAll('.filter-btn');
+            
+            // Toggle active button class
+            btns.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(category)) btn.classList.add('active');
+                if(category === 'all' && btn.innerText.includes('All')) btn.classList.add('active');
+            });
+
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else if (item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

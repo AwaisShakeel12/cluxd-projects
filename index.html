@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Library</title>
+  <meta name="description" content="Browse website templates and demos.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">WEBSITE LIBRARY</p>
+      <h1>Website Templates</h1>
+      <p class="subtitle">Browse all available HTML websites by category.</p>
+
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search websites..." aria-label="Search websites">
+      </div>
+
+      <div id="filters" class="filters" aria-label="Categories"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="results-row">
+      <p id="resultCount">Loading websites...</p>
+    </div>
+    <section id="siteGrid" class="site-grid"></section>
+    <div id="emptyState" class="empty hidden">
+      <h2>No websites found</h2>
+      <p>Try another search or category.</p>
+    </div>
+  </main>
+
+  <template id="cardTemplate">
+    <article class="site-card">
+      <div class="preview-wrap">
+        <iframe class="preview" loading="lazy" title="Website preview" sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin"></iframe>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="category"></span>
+        </div>
+        <h2 class="site-name"></h2>
+        <p class="description"></p>
+        <a class="view-btn" target="_blank" rel="noopener">Open Website ↗</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

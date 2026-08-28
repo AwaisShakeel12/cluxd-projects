@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Elena Brooks, MD — Dermatology & Skin Health</title>
+<meta name="description" content="Board-certified dermatology: medical, cosmetic and surgical skin care with a modern, personal touch.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231f9ad6'/><circle cx='50' cy='50' r='20' fill='white'/></svg>">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ THEME (Z360 DNA, NEW DESIGN) ============ */
+:root{
+  --bg:#f7f8fa; --ink:#0b0d10; --muted:#5f6b76; --line:#e6e9ee;
+  --blue:#1f9ad6; --blue-2:#57b7e6; --blue-soft:#eaf5fc;
+  --grad:linear-gradient(160deg,#f0f8fd 0%,#bfe0f5 55%,#7cc0ea 100%);
+}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;overflow-x:hidden}
+::selection{background:var(--blue);color:#fff}
+.section{padding:100px 0}
+@media(max-width:767.98px){.section{padding:64px 0}}
+h1,h2,h3,h4{letter-spacing:-.02em}
+.muted{color:var(--muted)}
+.tagline{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--line);border-radius:50rem;padding:.4rem 1rem;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.tagline i{font-size:.6rem}
+.btn-ink{background:var(--ink);color:#fff;border:0;border-radius:50rem;padding:.85rem 1.7rem;font-size:.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:.3s}
+.btn-ink:hover{background:#000;color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:50rem;padding:.85rem 1.7rem;font-size:.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:.3s}
+.btn-ghost:hover{border-color:var(--ink)}
+.grad-panel{background:var(--grad);border-radius:28px}
+.img-zoom{overflow:hidden}
+.img-zoom img{transition:transform .7s ease}
+.img-zoom:hover img{transform:scale(1.06)}
+
+/* ============ NAVBAR ============ */
+.navbar{background:rgba(247,248,250,.88);backdrop-filter:blur(10px);padding:.9rem 0;z-index:1020}
+.navbar.scrolled{box-shadow:0 8px 24px rgba(11,13,16,.07)}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--ink)}
+.logo .orb{width:34px;height:34px;border-radius:50%;background:conic-gradient(from 210deg,#7cc0ea,#1f9ad6,#a6d4f0,#7cc0ea);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem}
+.logo b{font-size:1.02rem;font-weight:700}
+.logo small{display:block;font-size:.58rem;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}
+.navbar .nav-link{color:#3c4650;font-size:.83rem;font-weight:500;margin:0 .45rem}
+.navbar .nav-link:hover,.navbar .nav-link.active{color:var(--blue)}
+.navbar-toggler{border:0}.navbar-toggler:focus{box-shadow:none}
+
+/* ============ 02 HERO ============ */
+.hero{padding:70px 0 90px;position:relative}
+.hero::before{content:"";position:absolute;top:-140px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(124,192,234,.35),transparent 65%)}
+.hero h1{font-size:clamp(2.4rem,5.2vw,3.9rem);font-weight:800;line-height:1.08}
+.hero h1 .u{position:relative;white-space:nowrap}
+.hero h1 .u::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:.32em;background:rgba(124,192,234,.5);z-index:-1;border-radius:4px}
+.hero p.sub{color:var(--muted);font-size:.95rem;max-width:480px}
+.hero .rate-row img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-9px}
+.hero .rate-row img:first-child{margin-left:0}
+.hero-visual{position:relative}
+.hero-visual .main-img{border-radius:32px;width:100%;height:520px;object-fit:cover;box-shadow:0 40px 90px rgba(31,100,150,.25)}
+.float-card{position:absolute;background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(11,13,16,.14);padding:.8rem 1rem;font-size:.72rem;display:flex;align-items:center;gap:.7rem;animation:fl 5s ease-in-out infinite}
+.float-card b{font-size:.78rem;display:block}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.fc-1{top:34px;left:-26px}
+.fc-2{bottom:44px;right:-20px;animation-delay:1.4s}
+.fc-ic{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex:0 0 auto}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pu 1.6s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 9px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+@media(max-width:991.98px){.hero-visual .main-img{height:420px}.fc-1{left:8px}.fc-2{right:8px}}
+
+/* ============ 03 MARQUEE + STATS ============ */
+.marquee{background:var(--ink);color:#fff;overflow:hidden}
+.mq-track{display:flex;gap:2.6rem;width:max-content;padding:.85rem 0;animation:mq 26s linear infinite;font-size:.78rem;font-weight:600;letter-spacing:.06em}
+.mq-track i{color:var(--blue-2);font-size:.6rem;align-self:center}
+@keyframes mq{to{transform:translateX(-50%)}}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.3rem 1rem;text-align:center;transition:.3s}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(11,13,16,.08)}
+.stat-card b{font-size:1.5rem;font-weight:800;display:block}
+.stat-card b span{color:var(--blue)}
+.stat-card small{color:var(--muted);font-size:.68rem}
+
+/* ============ 04 ABOUT ============ */
+.about-imgs{position:relative}
+.about-imgs .a1{border-radius:26px;width:100%;height:470px;object-fit:cover}
+.about-imgs .a2{position:absolute;right:-18px;bottom:-24px;width:190px;height:150px;object-fit:cover;border-radius:18px;border:6px solid var(--bg);box-shadow:0 20px 44px rgba(11,13,16,.18)}
+.about-imgs .exp-badge{position:absolute;left:-18px;top:-20px;width:104px;height:104px;border-radius:50%;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.about-imgs .exp-badge small{font-size:.56rem;font-weight:600;color:#9aa4ae}
+.check-li{display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;font-weight:600;margin-bottom:.6rem}
+.check-li i{color:var(--blue);background:var(--blue-soft);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.6rem;flex:0 0 auto;margin-top:.1rem}
+
+/* ============ 05 TREATMENTS ============ */
+.tr-card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;height:100%;transition:.3s;position:relative}
+.tr-card:hover{transform:translateY(-6px);box-shadow:0 24px 54px rgba(11,13,16,.1)}
+.tr-card img{width:100%;height:200px;object-fit:cover}
+.tr-card .price-chip{position:absolute;top:14px;right:14px;background:#fff;border-radius:50rem;padding:.35rem .8rem;font-size:.68rem;font-weight:800;box-shadow:0 8px 20px rgba(11,13,16,.14)}
+.tr-card .price-chip span{color:var(--blue)}
+.tr-card .bd{padding:1.3rem 1.4rem}
+.tr-card h3{font-size:1rem;font-weight:700}
+.tr-card p{color:var(--muted);font-size:.78rem}
+.tr-card .meta{display:flex;gap:1rem;color:var(--muted);font-size:.66rem;font-weight:600;border-top:1px solid var(--line);padding-top:.85rem}
+.tr-card .meta i{color:var(--blue)}
+
+/* ============ 06 BEFORE / AFTER ============ */
+.ba{position:relative;border-radius:26px;overflow:hidden;--pos:50%;box-shadow:0 30px 70px rgba(31,100,150,.2);user-select:none}
+.ba img{width:100%;height:460px;object-fit:cover;display:block;pointer-events:none}
+.ba .before{filter:saturate(.55) contrast(.88) brightness(.96)}
+.ba .after-wrap{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos))}
+.ba .after-wrap img{filter:saturate(1.12) contrast(1.05)}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:#fff;box-shadow:0 0 20px rgba(0,0,0,.3)}
+.ba-line .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:.9rem;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .lbl{position:absolute;top:16px;background:rgba(11,13,16,.75);color:#fff;border-radius:50rem;padding:.3rem .9rem;font-size:.66rem;font-weight:700;backdrop-filter:blur(4px)}
+@media(max-width:767.98px){.ba img{height:340px}}
+
+/* ============ 07 JOURNEY ============ */
+.step-card{background:rgba(255,255,255,.92);border-radius:20px;padding:1.6rem 1.3rem;height:100%;position:relative;transition:.3s}
+.step-card:hover{transform:translateY(-5px)}
+.step-card .no{position:absolute;top:14px;right:16px;font-size:1.6rem;font-weight:800;color:rgba(31,154,214,.22)}
+.step-card .ic{width:48px;height:48px;border-radius:14px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.step-card b{font-size:.92rem}
+.step-card p{color:var(--muted);font-size:.75rem;margin:0}
+
+/* ============ 08 EXPERIENCE ============ */
+.xp-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.2rem 1.3rem;display:flex;gap:1rem;align-items:flex-start;transition:.3s;height:100%}
+.xp-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 16px 36px rgba(11,13,16,.08)}
+.xp-card .yr{background:var(--ink);color:#fff;border-radius:50rem;padding:.3rem .8rem;font-size:.68rem;font-weight:700;flex:0 0 auto}
+.xp-card b{font-size:.88rem;display:block}
+.xp-card p{color:var(--muted);font-size:.74rem;margin:0}
+
+/* ============ 09 REVIEWS ============ */
+.rev-row{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px}
+.rev-row::-webkit-scrollbar{display:none}
+.rev-card{flex:0 0 min(370px,86%);scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.6rem;transition:.3s}
+.rev-card:hover{box-shadow:0 18px 44px rgba(11,13,16,.09)}
+.rev-card .stars{color:#f5b301;font-size:.72rem}
+.rev-card p{font-size:.84rem;margin:0.9rem 0 1.1rem}
+.rev-card img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.rev-card b{font-size:.8rem;display:block}
+.rev-card small{color:var(--muted);font-size:.66rem}
+.nav-circ{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);transition:.3s}
+.nav-circ:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ============ 10 PRICING ============ */
+.price-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:2rem 1.8rem;height:100%;transition:.3s;position:relative}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 24px 54px rgba(11,13,16,.1)}
+.price-card .amt{font-size:2rem;font-weight:800}
+.price-card .amt small{font-size:.75rem;color:var(--muted);font-weight:600}
+.price-card li{font-size:.8rem;margin-bottom:.55rem;display:flex;gap:.55rem}
+.price-card li i{color:var(--blue)}
+.price-card.pop{background:var(--ink);color:#fff;border-color:var(--ink)}
+.price-card.pop .amt small,.price-card.pop p{color:#9aa4ae}
+.price-card.pop li i{color:var(--blue-2)}
+.pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;border-radius:50rem;padding:.35rem 1rem;font-size:.64rem;font-weight:800;letter-spacing:.08em}
+
+/* ============ 11 FAQ ============ */
+.accordion-item{border:1px solid var(--line);border-radius:16px!important;overflow:hidden;margin-bottom:.8rem;background:#fff}
+.accordion-button{font-size:.86rem;font-weight:600;background:#fff;padding:1.1rem 1.3rem}
+.accordion-button:not(.collapsed){background:var(--blue-soft);color:var(--ink);box-shadow:none}
+.accordion-button:focus{box-shadow:none}
+.accordion-body{color:var(--muted);font-size:.8rem;padding:1.1rem 1.3rem}
+
+/* ============ 12 CTA ============ */
+.cta-panel{padding:clamp(2.6rem,6vw,5rem);position:relative;overflow:hidden}
+.cta-panel::after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.25)}
+.cta-panel h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800}
+.cta-form{background:#fff;border-radius:20px;padding:1.6rem;box-shadow:0 30px 70px rgba(31,100,150,.25)}
+.cta-form .form-control,.cta-form .form-select{border-radius:10px;border:1px solid var(--line);font-size:.8rem;padding:.65rem .9rem}
+.cta-form .form-control:focus,.cta-form .form-select:focus{border-color:var(--blue);box-shadow:0 0 0 .2rem rgba(31,154,214,.15)}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--ink);color:#9aa4ae}
+.footer h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:1rem}
+.footer a{color:#9aa4ae;font-size:.78rem;text-decoration:none}
+.footer a:hover{color:var(--blue-2)}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer li{margin-bottom:.5rem}
+.footer .soc{width:34px;height:34px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#cfd8df;font-size:.75rem;transition:.3s}
+.footer .soc:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);font-size:.7rem}
+
+/* ============ CHATBOT (top-most, compact) ============ */
+.chat-fab{position:fixed;right:18px;bottom:18px;width:54px;height:54px;border-radius:50%;border:0;background:linear-gradient(135deg,#57b7e6,#1f9ad6);color:#fff;font-size:1.25rem;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 36px rgba(31,154,214,.4);z-index:10000;transition:.3s}
+.chat-fab:hover{transform:translateY(-3px)}
+.chat-fab .badge-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ff4d4d;border:2px solid #fff;display:none}
+.chat-box{position:fixed;right:18px;bottom:84px;width:min(320px,calc(100vw - 24px));max-height:calc(100dvh - 110px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px rgba(11,13,16,.25);z-index:10000;display:none;flex-direction:column;overflow:hidden;animation:pop .25s ease}
+.chat-box.open{display:flex}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.chat-head{background:linear-gradient(135deg,#57b7e6,#1f9ad6);color:#fff;padding:.75rem .9rem;display:flex;align-items:center;gap:.6rem}
+.chat-head .ava{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.chat-head b{font-size:.8rem;display:block}
+.chat-head small{font-size:.62rem;opacity:.9;display:flex;align-items:center;gap:.3rem}
+.chat-head small::before{content:"";width:7px;height:7px;border-radius:50%;background:#4ade80}
+.chat-head .x{margin-left:auto;background:rgba(255,255,255,.18);border:0;color:#fff;width:26px;height:26px;border-radius:50%}
+.chat-body{height:230px;overflow-y:auto;padding:.9rem;background:#fbfcfe;display:flex;flex-direction:column;gap:.5rem}
+@media(max-height:640px){.chat-body{height:160px}}
+.msg{max-width:85%;padding:.55rem .8rem;border-radius:12px;font-size:.75rem;line-height:1.5;animation:pop .25s ease}
+.msg.bot{background:#eef2f6;color:#20262c;border-top-left-radius:4px}
+.msg.user{background:var(--ink);color:#fff;margin-left:auto;border-top-right-radius:4px}
+.typing{display:flex;gap:4px;padding:.6rem .8rem;background:#eef2f6;border-radius:12px;width:fit-content}
+.typing span{width:5px;height:5px;border-radius:50%;background:#9aa4ae;animation:tp 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,100%{opacity:.3}50%{opacity:1;transform:translateY(-3px)}}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;padding:.5rem .8rem .4rem;background:#fbfcfe}
+.qchip{border:1px solid var(--line);background:#fff;border-radius:50rem;padding:.3rem .7rem;font-size:.64rem;font-weight:600;color:#3c4650}
+.qchip:hover{border-color:var(--blue);color:var(--blue)}
+.chat-foot{display:flex;gap:.45rem;padding:.6rem;border-top:1px solid var(--line);background:#fff}
+.chat-foot input{flex:1;min-width:0;border:1px solid var(--line);border-radius:50rem;padding:.5rem .9rem;font-size:.75rem;outline:none}
+.chat-foot input:focus{border-color:var(--blue)}
+.chat-foot button{width:36px;height:36px;border-radius:50%;border:0;background:var(--ink);color:#fff}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navList" data-bs-root-margin="0px 0px -55%">
+
+<!-- ============ 01 NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <div class="container-xl">
+    <a class="logo" href="#home"><span class="orb"><i class="bi bi-droplet-fill"></i></span><span><b>Dr. Elena Brooks</b><small>Dermatology</small></span></a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto" id="navList">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#treatments">Treatments</a></li>
+        <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#book" class="btn-ink">Book Visit</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 02 HERO ============ -->
+<header class="hero" id="home">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="tagline reveal"><i class="bi bi-star-fill"></i> Board-Certified Dermatologist · FAAD</span>
+        <h1 class="mt-4 reveal">Healthy Skin,<br><span class="u">Confident</span> You.</h1>
+        <p class="sub mt-3 reveal">Medical, cosmetic and surgical dermatology — personalized treatment plans, honest advice, and visible results in weeks, not years.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4 reveal">
+          <a href="#book" class="btn-ink">Book Consultation <i class="bi bi-arrow-right"></i></a>
+          <a href="#treatments" class="btn-ghost"><i class="bi bi-play-circle"></i> View Treatments</a>
+        </div>
+        <div class="rate-row d-flex align-items-center gap-3 mt-4 reveal">
+          <div class="d-flex">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="">
+          </div>
+          <div style="font-size:.74rem"><span style="color:#f5b301">★★★★★</span> <b>4.9</b> · 1,200+ verified patient reviews</div>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <div class="hero-visual">
+          <img class="main-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1000&q=70" alt="Dr. Elena Brooks">
+          <div class="float-card fc-1"><span class="fc-ic" style="background:#e8faf1;color:#16a34a"><i class="bi bi-calendar2-check"></i></span><div><b>Next opening</b><span class="muted">Today · 3:30 PM</span> <span class="pulse-dot d-inline-block ms-1"></span></div></div>
+          <div class="float-card fc-2"><span class="fc-ic" style="background:var(--blue-soft);color:var(--blue)"><i class="bi bi-graph-up-arrow"></i></span><div><b>98% clearer skin</b><span class="muted">average in 12 weeks</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 03 MARQUEE + STATS ============ -->
+<div class="marquee">
+  <div class="mq-track" id="mq">
+    <span>Acne Treatment</span><i class="bi bi-star-fill"></i><span>Laser Resurfacing</span><i class="bi bi-star-fill"></i><span>Botox &amp; Fillers</span><i class="bi bi-star-fill"></i><span>Chemical Peels</span><i class="bi bi-star-fill"></i><span>Skin Cancer Screening</span><i class="bi bi-star-fill"></i><span>Microneedling</span><i class="bi bi-star-fill"></i><span>Rosacea Care</span><i class="bi bi-star-fill"></i><span>Scar Revision</span><i class="bi bi-star-fill"></i>
+  </div>
+</div>
+<section class="py-5">
+  <div class="container-xl">
+    <div class="row g-3 reveal">
+      <div class="col-6 col-lg-3"><div class="stat-card"><b>15<span>+</span></b><small>Years of Practice</small></div></div>
+      <div class="col-6 col-lg-3"><div class="stat-card"><b>12k<span>+</span></b><small>Patients Treated</small></div></div>
+      <div class="col-6 col-lg-3"><div class="stat-card"><b>30<span>+</span></b><small>Treatments Offered</small></div></div>
+      <div class="col-6 col-lg-3"><div class="stat-card"><b>4.9<span>★</span></b><small>Average Rating</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <div class="about-imgs">
+          <div class="exp-badge">15+<small>YEARS</small></div>
+          <img class="a1" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1000&q=70" alt="Dr. Brooks at the clinic">
+          <img class="a2" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=60" alt="Skin treatment">
+        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <span class="tagline"><i class="bi bi-star-fill"></i> About Dr. Brooks</span>
+        <h2 class="fw-bold mt-3" style="font-size:clamp(1.7rem,3vw,2.4rem)">Skin Science,<br>With A Human Touch</h2>
+        <p class="muted mt-3" style="font-size:.88rem">I'm Dr. Elena Brooks — a board-certified dermatologist on a mission to make expert skin care personal again. Every plan starts with your skin story, your goals, and your lifestyle — never a one-size-fits-all protocol.</p>
+        <div class="row mt-4">
+          <div class="col-sm-6">
+            <div class="check-li"><i class="bi bi-check-lg"></i>Harvard-trained, FAAD certified</div>
+            <div class="check-li"><i class="bi bi-check-lg"></i>Same-week appointments</div>
+            <div class="check-li"><i class="bi bi-check-lg"></i>Evidence-based treatments</div>
+          </div>
+          <div class="col-sm-6">
+            <div class="check-li"><i class="bi bi-check-lg"></i>Honest, pressure-free advice</div>
+            <div class="check-li"><i class="bi bi-check-lg"></i>AI follow-ups between visits</div>
+            <div class="check-li"><i class="bi bi-check-lg"></i>All skin tones &amp; types</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-4 mt-4">
+          <a href="#book" class="btn-ink">Meet Me In Clinic <i class="bi bi-arrow-right"></i></a>
+          <div style="font-size:.8rem"><b>Dr. Elena Brooks</b><br><span class="muted" style="font-size:.7rem">MD, FAAD — Dermatology</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 TREATMENTS ============ -->
+<section class="section pt-0" id="treatments">
+  <div class="container-xl">
+    <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-5 reveal">
+      <div><span class="tagline"><i class="bi bi-star-fill"></i> Treatments</span>
+      <h2 class="fw-bold mt-3 mb-0" style="font-size:clamp(1.7rem,3vw,2.4rem)">Care For Every Skin Goal</h2></div>
+      <a href="#book" class="btn-ghost">Full Treatment List</a>
+    </div>
+    <div class="row g-4 reveal">
+      <div class="col-md-6 col-lg-4"><div class="tr-card img-zoom">
+        <span class="price-chip">from <span>$90</span></span>
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=60" alt="Medical Dermatology" loading="lazy">
+        <div class="bd"><h3>Medical Dermatology</h3><p>Acne, eczema, psoriasis, rosacea — diagnosed properly, treated effectively.</p>
+        <div class="meta"><span><i class="bi bi-clock-history"></i> 30 min</span><span><i class="bi bi-shield-check"></i> No downtime</span></div></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="tr-card img-zoom">
+        <span class="price-chip">from <span>$150</span></span>
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=800&q=60" alt="Acne & Scar Program" loading="lazy">
+        <div class="bd"><h3>Acne &amp; Scar Program</h3><p>A 12-week guided plan: medication, peels and microneedling that actually works.</p>
+        <div class="meta"><span><i class="bi bi-clock-history"></i> 12 weeks</span><span><i class="bi bi-graph-up-arrow"></i> 98% success</span></div></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="tr-card img-zoom">
+        <span class="price-chip">from <span>$220</span></span>
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=60" alt="Anti-Age & Injectables" loading="lazy">
+        <div class="bd"><h3>Anti-Age &amp; Injectables</h3><p>Natural-looking Botox and fillers — refreshed, never frozen.</p>
+        <div class="meta"><span><i class="bi bi-clock-history"></i> 45 min</span><span><i class="bi bi-shield-check"></i> Zero downtime</span></div></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="tr-card img-zoom">
+        <span class="price-chip">from <span>$300</span></span>
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=60" alt="Laser Resurfacing" loading="lazy">
+        <div class="bd"><h3>Laser Resurfacing</h3><p>Fractional laser for texture, pores, sun damage and glow restoration.</p>
+        <div class="meta"><span><i class="bi bi-clock-history"></i> 60 min</span><span><i class="bi bi-hourglass-split"></i> 3-day recovery</span></div></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="tr-card img-zoom">
+        <span class="price-chip">from <span>$130</span></span>
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=60" alt="Chemical Peels" loading="lazy">
+        <div class="bd"><h3>Chemical Peels &amp; Glow</h3><p>Medical-grade peels tailored to your skin tone for instant brightness.</p>
+        <div class="meta"><span><i class="bi bi-clock-history"></i> 40 min</span><span><i class="bi bi-shield-check"></i> Mild flaking</span></div></div>
+      </div></div>
+      <div class="col-md-6 col-lg-4"><div class="tr-card img-zoom">
+        <span class="price-chip">from <span>$110</span></span>
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=60" alt="Skin Cancer Screening" loading="lazy">
+        <div class="bd"><h3>Skin Cancer Screening</h3><p>Full-body mole mapping with dermoscopy — peace of mind in one visit.</p>
+        <div class="meta"><span><i class="bi bi-clock-history"></i> 30 min</span><span><i class="bi bi-clipboard2-check"></i> Same-day results</span></div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 BEFORE / AFTER ============ -->
+<section class="section pt-0" id="results">
+  <div class="container-xl">
+    <div class="text-center mb-5 reveal">
+      <span class="tagline"><i class="bi bi-star-fill"></i> Real Results</span>
+      <h2 class="fw-bold mt-3" style="font-size:clamp(1.7rem,3vw,2.4rem)">See The Difference — Drag The Slider</h2>
+      <p class="muted mt-2" style="font-size:.85rem">Typical outcome of the 12-week Acne &amp; Glow program (unretouched).</p>
+    </div>
+    <div class="ba reveal" id="ba">
+      <img class="before" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1400&q=70" alt="Before treatment">
+      <div class="after-wrap"><img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1400&q=70" alt="After treatment"></div>
+      <span class="lbl" style="left:16px">Before</span>
+      <span class="lbl" style="right:16px">After · 12 weeks</span>
+      <div class="ba-line"><div class="knob"><i class="bi bi-arrows-left-right"></i></div></div>
+      <input type="range" min="2" max="98" value="50" id="baRange" aria-label="Compare before and after">
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-3 mt-4 reveal">
+      <span class="btn-ghost" style="padding:.55rem 1.1rem;font-size:.72rem"><i class="bi bi-check2-circle" style="color:var(--blue)"></i> Acne −90% in 12 weeks</span>
+      <span class="btn-ghost" style="padding:.55rem 1.1rem;font-size:.72rem"><i class="bi bi-check2-circle" style="color:var(--blue)"></i> Texture +75% smoother</span>
+      <span class="btn-ghost" style="padding:.55rem 1.1rem;font-size:.72rem"><i class="bi bi-check2-circle" style="color:var(--blue)"></i> Glow visible from week 3</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 JOURNEY ============ -->
+<section class="pb-5">
+  <div class="container-xl">
+    <div class="grad-panel p-4 p-lg-5 reveal">
+      <div class="text-center mb-5">
+        <span class="tagline" style="background:rgba(255,255,255,.7)"><i class="bi bi-star-fill"></i> Patient Journey</span>
+        <h2 class="fw-bold mt-3 mb-0" style="font-size:clamp(1.6rem,2.8vw,2.2rem)">From First Visit To Full Glow</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3"><div class="step-card"><span class="no">01</span><div class="ic"><i class="bi bi-calendar2-check"></i></div><b>Book Online</b><p class="mt-1">Pick a slot in 60 seconds — same-week visits, always.</p></div></div>
+        <div class="col-6 col-lg-3"><div class="step-card"><span class="no">02</span><div class="ic"><i class="bi bi-search"></i></div><b>Skin Analysis</b><p class="mt-1">30-minute consult + dermoscopy scan of your skin story.</p></div></div>
+        <div class="col-6 col-lg-3"><div class="step-card"><span class="no">03</span><div class="ic"><i class="bi bi-droplet-half"></i></div><b>Personal Plan</b><p class="mt-1">Treatments + home routine, built only for your skin.</p></div></div>
+        <div class="col-6 col-lg-3"><div class="step-card"><span class="no">04</span><div class="ic"><i class="bi bi-stars"></i></div><b>Glow &amp; Follow-Up</b><p class="mt-1">AI check-ins between visits until results are visible.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 EXPERIENCE ============ -->
+<section class="section" id="experience">
+  <div class="container-xl">
+    <div class="text-center mb-5 reveal">
+      <span class="tagline"><i class="bi bi-star-fill"></i> Credentials</span>
+      <h2 class="fw-bold mt-3" style="font-size:clamp(1.7rem,3vw,2.4rem)">Training You Can Trust</h2>
+    </div>
+    <div class="row g-4 reveal">
+      <div class="col-md-6"><div class="xp-card"><span class="yr">2006</span><div><b>M.D. — Harvard Medical School</b><p>Graduated magna cum laude, dermatology research prize.</p></div></div></div>
+      <div class="col-md-6"><div class="xp-card"><span class="yr">2010</span><div><b>Residency — Johns Hopkins Dermatology</b><p>Chief resident; published 12 peer-reviewed papers.</p></div></div></div>
+      <div class="col-md-6"><div class="xp-card"><span class="yr">2014</span><div><b>Fellowship — Mohs &amp; Laser Surgery</b><p>Advanced training in skin cancer and laser resurfacing.</p></div></div></div>
+      <div class="col-md-6"><div class="xp-card"><span class="yr">2024</span><div><b>"Top Dermatologist" — City Health Awards</b><p>Recognized for outcomes in acne &amp; cosmetic dermatology.</p></div></div></div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-4 mt-5 reveal" style="color:#9aa4ae;font-weight:700;font-size:.9rem">
+      <span><i class="bi bi-hospital me-1"></i>AMA Member</span>
+      <span><i class="bi bi-shield-plus me-1"></i>AAD Fellow</span>
+      <span><i class="bi bi-building me-1"></i>Johns Hopkins Alumni</span>
+      <span><i class="bi bi-cross2 me-1"></i>ASDS Member</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 REVIEWS ============ -->
+<section class="section pt-0" id="reviews">
+  <div class="container-xl">
+    <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4 reveal">
+      <div><span class="tagline"><i class="bi bi-star-fill"></i> Patient Love</span>
+      <h2 class="fw-bold mt-3 mb-0" style="font-size:clamp(1.7rem,3vw,2.4rem)">1,200+ Five-Star Stories</h2></div>
+      <div class="d-flex gap-2"><button class="nav-circ" id="revPrev" aria-label="Previous reviews"><i class="bi bi-arrow-left"></i></button><button class="nav-circ" id="revNext" aria-label="Next reviews"><i class="bi bi-arrow-right"></i></button></div>
+    </div>
+    <div class="rev-row reveal" id="revRow">
+      <div class="rev-card"><div class="stars">★★★★★</div><p>"After 8 years of struggling with acne, my skin is clear in 12 weeks. Dr. Brooks explained everything and her AI assistant checked on me every week."</p><div class="d-flex align-items-center gap-2"><img src="https://randomuser.me/api/portraits/women/65.jpg" alt=""><div><b>Sofia M.</b><small>Acne Program · Google</small></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><p>"The most natural Botox I've ever had. She actually talks you OUT of things you don't need. That honesty is priceless."</p><div class="d-flex align-items-center gap-2"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div><b>Hannah L.</b><small>Injectables · Google</small></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><p>"Found a suspicious mole during a routine screening and handled everything the same day. She likely saved my life."</p><div class="d-flex align-items-center gap-2"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt=""><div><b>David K.</b><small>Skin Check · Healthgrades</small></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><p>"Laser results are unreal — my sun damage is gone and I finally wear no makeup. Worth every penny."</p><div class="d-flex align-items-center gap-2"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt=""><div><b>Amira R.</b><small>Laser · Google</small></div></div></div>
+      <div class="rev-card"><div class="stars">★★★★★</div><p>"First dermatologist who treated my darker skin tone with real expertise. My melasma has never looked better."</p><div class="d-flex align-items-center gap-2"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt=""><div><b>Grace O.</b><small>Pigmentation · Zocdoc</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 PRICING ============ -->
+<section class="section pt-0" id="pricing">
+  <div class="container-xl">
+    <div class="text-center mb-5 reveal">
+      <span class="tagline"><i class="bi bi-star-fill"></i> Simple Pricing</span>
+      <h2 class="fw-bold mt-3" style="font-size:clamp(1.7rem,3vw,2.4rem)">Transparent, No Surprises</h2>
+    </div>
+    <div class="row g-4 reveal">
+      <div class="col-lg-4"><div class="price-card">
+        <b style="font-size:.9rem">Essential Consult</b>
+        <div class="amt mt-2">$90<small> / visit</small></div>
+        <p class="muted" style="font-size:.76rem">Perfect for a first look at your skin.</p>
+        <ul class="list-unstyled mt-3">
+          <li><i class="bi bi-check2-circle"></i>30-min skin consultation</li>
+          <li><i class="bi bi-check2-circle"></i>Dermoscopy mole check</li>
+          <li><i class="bi bi-check2-circle"></i>Personal home-routine plan</li>
+          <li><i class="bi bi-check2-circle"></i>1-week AI follow-up chat</li>
+        </ul>
+        <a href="#book" class="btn-ghost w-100 justify-content-center mt-2">Book Essential</a>
+      </div></div>
+      <div class="col-lg-4"><div class="price-card pop">
+        <span class="pop-badge">MOST POPULAR</span>
+        <b style="font-size:.9rem">Glow Program</b>
+        <div class="amt mt-2">$240<small> / 12 weeks</small></div>
+        <p style="font-size:.76rem">The complete transformation plan.</p>
+        <ul class="list-unstyled mt-3">
+          <li><i class="bi bi-check2-circle"></i>Everything in Essential</li>
+          <li><i class="bi bi-check2-circle"></i>3 in-clinic treatments (peel/laser)</li>
+          <li><i class="bi bi-check2-circle"></i>Weekly AI progress check-ins</li>
+          <li><i class="bi bi-check2-circle"></i>Before/after photo tracking</li>
+          <li><i class="bi bi-check2-circle"></i>Priority same-day slots</li>
+        </ul>
+        <a href="#book" class="btn-ink w-100 justify-content-center mt-2" style="background:var(--blue)">Start Glow Program</a>
+      </div></div>
+      <div class="col-lg-4"><div class="price-card">
+        <b style="font-size:.9rem">Skin Membership</b>
+        <div class="amt mt-2">$49<small> / month</small></div>
+        <p class="muted" style="font-size:.76rem">Year-round skin health, covered.</p>
+        <ul class="list-unstyled mt-3">
+          <li><i class="bi bi-check2-circle"></i>2 visits + 1 screening / year</li>
+          <li><i class="bi bi-check2-circle"></i>10% off all treatments</li>
+          <li><i class="bi bi-check2-circle"></i>Unlimited AI assistant chat</li>
+          <li><i class="bi bi-check2-circle"></i>Seasonal routine updates</li>
+        </ul>
+        <a href="#book" class="btn-ghost w-100 justify-content-center mt-2">Join Membership</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 FAQ ============ -->
+<section class="section pt-0" id="faq">
+  <div class="container-xl">
+    <div class="row g-5">
+      <div class="col-lg-4 reveal">
+        <span class="tagline"><i class="bi bi-star-fill"></i> Good To Know</span>
+        <h2 class="fw-bold mt-3" style="font-size:clamp(1.6rem,2.6vw,2.1rem)">Questions,<br>Answered Honestly</h2>
+        <p class="muted mt-3" style="font-size:.84rem">Anything else? Ask Medi, our AI assistant, in the corner — it answers instantly, 24/7.</p>
+      </div>
+      <div class="col-lg-8 reveal">
+        <div class="accordion" id="faqAcc">
+          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1">Do I need a referral to book?</button></h3>
+          <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">No referral needed. Book online or through the assistant and pick any open slot — new patients are usually seen within the same week.</div></div></div>
+          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q2">Is my treatment covered by insurance?</button></h3>
+          <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Medical dermatology (acne, eczema, screenings, biopsies) is covered by most major plans. Cosmetic treatments are self-pay with transparent pricing shown before you commit.</div></div></div>
+          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q3">How soon will I see results?</button></h3>
+          <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Glow and peels show within 1–3 weeks. Acne programs typically show 90% improvement by week 12. Laser results build over 4–6 weeks as collagen remodels.</div></div></div>
+          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q4">Do you treat all skin tones?</button></h3>
+          <div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Absolutely. Protocols, lasers and peel strengths are adjusted for every Fitzpatrick skin type — treating darker skin safely is a core specialty of the clinic.</div></div></div>
+          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q5">What is the AI assistant — is it safe?</button></h3>
+          <div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Medi handles bookings, reminders and general questions only. It never diagnoses — anything clinical goes straight to Dr. Brooks, and emergencies are always routed to 911 guidance.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 CTA + BOOKING ============ -->
+<section class="pb-5" id="book">
+  <div class="container-xl">
+    <div class="grad-panel cta-panel reveal">
+      <div class="row align-items-center g-5 position-relative" style="z-index:1">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h2>Ready For Your<br>Best Skin Yet?</h2>
+          <p class="mt-3 mb-0" style="color:#28506b;font-size:.88rem;max-width:420px">Book a consultation today — same-week slots, honest advice, and a plan built only for you.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="cta-form" id="bookForm">
+            <div class="row g-3">
+              <div class="col-sm-6"><input type="text" class="form-control" placeholder="Your name" required></div>
+              <div class="col-sm-6"><input type="tel" class="form-control" placeholder="Phone number" required></div>
+              <div class="col-sm-6"><select class="form-select"><option>Consultation</option><option>Acne Program</option><option>Injectables</option><option>Laser</option><option>Skin Check</option></select></div>
+              <div class="col-sm-6"><input type="date" class="form-control" required></div>
+              <div class="col-12"><button class="btn-ink w-100 justify-content-center" type="submit">Request Appointment <i class="bi bi-arrow-right"></i></button></div>
+              <div class="col-12 text-center d-none" id="bookMsg" style="font-size:.78rem;color:var(--blue);font-weight:700"><i class="bi bi-check2-circle"></i> Request received — we'll confirm within 2 hours!</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer pt-5">
+  <div class="container-xl">
+    <div class="row g-4 pb-4">
+      <div class="col-lg-4">
+        <a class="logo" href="#home"><span class="orb"><i class="bi bi-droplet-fill"></i></span><span><b style="color:#fff">Dr. Elena Brooks</b><small style="color:#7d8b96">Dermatology</small></span></a>
+        <p class="mt-3" style="font-size:.78rem;max-width:270px">Modern, honest dermatology for every skin tone — medical, cosmetic and surgical, with care that continues between visits.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a class="soc" href="#"><i class="bi bi-instagram"></i></a><a class="soc" href="#"><i class="bi bi-facebook"></i></a><a class="soc" href="#"><i class="bi bi-tiktok"></i></a><a class="soc" href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2"><h3>Treatments</h3><ul><li><a href="#treatments">Acne Care</a></li><li><a href="#treatments">Injectables</a></li><li><a href="#treatments">Laser</a></li><li><a href="#treatments">Peels</a></li><li><a href="#treatments">Screening</a></li></ul></div>
+      <div class="col-6 col-md-3 col-lg-2"><h3>Clinic</h3><ul><li><a href="#about">About</a></li><li><a href="#results">Results</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div class="col-lg-4"><h3>Visit Us</h3><ul>
+        <li><a href="#"><i class="bi bi-geo-alt me-2" style="color:var(--blue-2)"></i>123 Glow Avenue, Suite 200, Dallas, TX</a></li>
+        <li><a href="tel:4692001097"><i class="bi bi-telephone me-2" style="color:var(--blue-2)"></i>(469) 200-1097</a></li>
+        <li><a href="mailto:hello@brooksdem.com"><i class="bi bi-envelope me-2" style="color:var(--blue-2)"></i>hello@brooksderm.com</a></li>
+        <li><a href="#"><i class="bi bi-clock me-2" style="color:var(--blue-2)"></i>Tue–Sat · 9:00–17:00</a></li></ul></div>
+    </div>
+    <div class="footer-bottom py-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© 2025 Brooks Dermatology. All rights reserved.</span>
+      <span>Privacy · Terms · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ AI CHATBOT ============ -->
+<button class="chat-fab" id="chatFab" aria-label="Open AI assistant"><i class="bi bi-chat-dots-fill"></i><span class="badge-dot" id="chatBadge"></span></button>
+<div class="chat-box" id="chatBox" role="dialog" aria-label="AI assistant">
+  <div class="chat-head">
+    <div class="ava">🤖</div>
+    <div><b>Medi — Skin Assistant</b><small>Online · replies instantly</small></div>
+    <button class="x" id="chatClose" aria-label="Close"><i class="bi bi-x"></i></button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chips" id="chatChips"></div>
+  <form class="chat-foot" id="chatForm">
+    <input type="text" id="chatInput" placeholder="Ask about treatments, prices…" aria-label="Message">
+    <button type="submit" aria-label="Send"><i class="bi bi-send-fill"></i></button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+  /* Marquee duplicate for seamless loop */
+  const mq=$('#mq');mq.innerHTML+=mq.innerHTML;
+
+  /* Navbar + reveal */
+  const nav=$('#mainNav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.1});
+  $$('.reveal').forEach(el=>io.observe(el));
+
+  /* Before/After slider */
+  const ba=$('#ba');
+  $('#baRange').addEventListener('input',e=>ba.style.setProperty('--pos',e.target.value+'%'));
+
+  /* Reviews scroller */
+  const rr=$('#revRow');
+  $('#revNext').onclick=()=>rr.scrollBy({left:390,behavior:'smooth'});
+  $('#revPrev').onclick=()=>rr.scrollBy({left:-390,behavior:'smooth'});
+
+  /* Booking */
+  $('#bookForm').addEventListener('submit',e=>{e.preventDefault();$('#bookMsg').classList.remove('d-none');e.target.reset();});
+
+  /* Image fallback */
+  const FB='https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=60';
+  $$('img').forEach(im=>im.addEventListener('error',()=>{if(!im.dataset.fb){im.dataset.fb=1;im.src=FB;}}));
+
+  /* ============ CHATBOT ============ */
+  const fab=$('#chatFab'),box=$('#chatBox'),body=$('#chatBody'),chips=$('#chatChips'),badge=$('#chatBadge');
+  let opened=false;
+  const QUICK=['Book appointment','Prices','Treatments','Hours','Location'];
+  function addMsg(t,w){const d=document.createElement('div');d.className='msg '+w;d.innerHTML=t;body.appendChild(d);body.scrollTop=body.scrollHeight;}
+  function showChips(l){chips.innerHTML='';l.forEach(q=>{const b=document.createElement('button');b.className='qchip';b.textContent=q;b.onclick=()=>send(q);chips.appendChild(b);});}
+  function typing(){const t=document.createElement('div');t.className='typing';t.innerHTML='<span></span><span></span><span></span>';body.appendChild(t);body.scrollTop=body.scrollHeight;return t;}
+  function brain(raw){
+    const t=raw.toLowerCase();
+    if(/(emergency|bleeding|911|severe pain)/.test(t))return"⚠️ For emergencies call 911. For urgent skin reactions call us at (469) 200-1097 — we keep same-day slots.";
+    if(/(confirm|yes please|go ahead)/.test(t))return"✅ Done! Request sent to the front desk — you'll get a confirmation SMS within 2 hours. 💙";
+    if(/(morning)/.test(t))return"Dr. Brooks has <b>Tue 9:30 AM</b> or <b>Fri 10:00 AM</b> free. Reply <b>confirm</b> to request one!";
+    if(/(afternoon|evening)/.test(t))return"Next afternoon slots: <b>Thu 2:00 PM</b> or <b>Thu 4:30 PM</b>. Reply <b>confirm</b> to grab one!";
+    if(/(book|appointment|schedule|slot)/.test(t))return"🗓️ Lovely! We're open Tue–Sat, 9–5. Do you prefer a <b>morning</b> or <b>afternoon</b> visit?";
+    if(/(price|cost|fee|how much)/.test(t))return"💡 Consults from <b>$90</b>, peels <b>$130</b>, injectables <b>$220</b>, laser <b>$300</b> — and the 12-week Glow Program is <b>$240</b>. No hidden fees!";
+    if(/(acne|scar)/.test(t))return"✨ Our 12-week Acne & Scar Program combines medication, peels and microneedling — 98% of patients see clear skin by week 12.";
+    if(/(laser)/.test(t))return"🔆 Fractional laser resurfacing treats texture, pores and sun damage in ~60 min, with just 3 days of recovery.";
+    if(/(botox|filler|injectable|wrinkle)/.test(t))return"💉 Natural-looking Botox & fillers from $220 — Dr. Brooks is famous for the 'refreshed, not frozen' look.";
+    if(/(treat|service|peel|offer)/.test(t))return"🧴 We offer: medical dermatology, acne programs, injectables, laser resurfacing, chemical peels and full-body skin checks.";
+    if(/(hour|open|when|time)/.test(t))return"🕒 Clinic hours: <b>Tue–Sat, 9:00–17:00</b>. I'm here 24/7 though!";
+    if(/(where|location|address|parking)/.test(t))return"📍 123 Glow Avenue, Suite 200, Dallas, TX — free parking behind the building.";
+    if(/(insurance|cover)/.test(t))return"💳 Medical visits are covered by most major plans; cosmetic treatments are self-pay with upfront pricing.";
+    if(/(doctor|who|experience|qualif)/.test(t))return"👩⚕️ Dr. Elena Brooks — Harvard MD, Johns Hopkins residency, FAAD, 15+ years and 12,000+ patients.";
+    if(/(thank|thanks|great|love)/.test(t))return"You're so welcome! 💙 Your skin is in great hands.";
+    if(/(hi|hello|hey)/.test(t))return"Hi! 👋 I'm Medi. Ask me about treatments, prices, hours or booking!";
+    return"I can help with <b>bookings</b>, <b>prices</b>, <b>treatments</b>, <b>hours</b> & <b>location</b> — tap a quick option below! 👇";
+  }
+  function send(txt){if(!txt.trim())return;addMsg(txt,'user');const t=typing();setTimeout(()=>{t.remove();addMsg(brain(txt),'bot');showChips(QUICK);},800+Math.random()*600);}
+  function openChat(){box.classList.add('open');badge.style.display='none';
+    if(!opened){opened=true;setTimeout(()=>addMsg("Hi! 👋 I'm <b>Medi</b>, Dr. Brooks' skin assistant. Ask me anything!",'bot'),300);setTimeout(()=>showChips(QUICK),600);}}
+  fab.onclick=()=>box.classList.contains('open')?box.classList.remove('open'):openChat();
+  $('#chatClose').onclick=()=>box.classList.remove('open');
+  $('#chatForm').addEventListener('submit',e=>{e.preventDefault();send($('#chatInput').value);$('#chatInput').value='';});
+  setTimeout(()=>{if(!opened)badge.style.display='block';},2500);
+})();
+</script>
+</body>
+</html>

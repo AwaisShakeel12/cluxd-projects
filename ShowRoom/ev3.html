@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV-STUDIO | The New Era</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Syne (Bold/Tech) & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #DFFF00; /* Hyper Lime */
+            --dark: #0a0a0a;
+            --light-bg: #ffffff;
+            --gray-faint: #f5f5f7;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-link {
+            font-family: 'Syne', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* --- Floating Island Navbar --- */
+        .navbar-container {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 100px;
+            padding: 10px 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+            width: auto;
+            min-width: 60%;
+            transition: var(--transition);
+        }
+        .navbar-brand { font-weight: 800; font-size: 1.2rem; color: var(--dark) !important; }
+        .nav-link {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: var(--dark) !important;
+            margin: 0 15px;
+            font-weight: 700;
+        }
+        .nav-link:hover { color: #888 !important; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+        .hero-bg-text {
+            position: absolute;
+            font-size: 25vw;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px #eee;
+            z-index: 0;
+            white-space: nowrap;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-img-wrapper {
+            position: relative;
+            z-index: 1;
+           
+        }
+        .hero-img {
+            width: 70%;
+            height: 50%;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.1));
+            animation: bikeFloat 6s ease-in-out infinite;
+             margin-top: 50px;
+        }
+        @keyframes bikeFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* --- Buttons --- */
+        .btn-hyper {
+            background: var(--dark);
+            color: var(--accent);
+            padding: 18px 45px;
+            border-radius: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-hyper:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        /* --- Filter Pills --- */
+        .filter-section { padding: 100px 0 50px; }
+        .filter-pill {
+            background: var(--gray-faint);
+            padding: 12px 35px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin: 0 5px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .filter-pill.active {
+            background: var(--dark);
+            color: var(--accent);
+        }
+
+        /* --- 12 Grid Cards --- */
+        .product-card {
+            background: var(--gray-faint);
+            border-radius: 40px;
+            padding: 40px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            height: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .product-card:hover {
+            background: #fff;
+            border-color: #eee;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+            transform: translateY(-15px);
+        }
+        .card-img-box {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .card-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: var(--transition);
+        }
+        .product-card:hover .card-img-box img {
+            transform: scale(1.15) rotate(-5deg);
+        }
+        .price-tag {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 20px;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* --- About Section (Split Design) --- */
+        .about-wrap {
+            background: var(--dark);
+            color: #fff;
+            border-radius: 60px;
+            overflow: hidden;
+            padding: 80px;
+        }
+        .about-title-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 5rem;
+            font-weight: 800;
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        /* --- Contact --- */
+        .contact-input {
+            border: none;
+            border-bottom: 2px solid #eee;
+            padding: 20px 0;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        .contact-input:focus {
+            outline: none;
+            border-color: var(--dark);
+        }
+
+        footer { padding: 100px 0 50px; background: var(--gray-faint); }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Navbar -->
+    <div class="navbar-container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#">EV<span>STUDIO</span></a>
+            <div class="ms-5 d-none d-lg-flex">
+                <a class="nav-link" href="#home">Intro</a>
+                <a class="nav-link" href="#inventory">Gallery</a>
+                <a class="nav-link" href="#about">Mission</a>
+                <a class="nav-link" href="#contact">Connect</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-bg-text">MOTION</div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 hero-content" data-aos="fade-up">
+                    <h1 class="display-1 fw-bolder">The Future <br>is <span style="color: var(--accent); background: var(--dark); padding: 0 10px;">Silent</span></h1>
+                    <p class="my-4 text-muted fw-bold">Clean energy meets aggressive design. Explore our curated selection of high-performance electric vehicles.</p>
+                    <a href="#inventory" class="btn-hyper">Enter Showroom</a>
+                </div>
+                <div class="col-lg-7" data-aos="zoom-out">
+                    <img src="https://i0.wp.com/yjfuture.pk/wp-content/uploads/2025/01/Blue-Azadi-New-scaled.webp?fit=2560%2C2560&ssl=1" class="hero-img" alt="Main Bike">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="filter-section" id="inventory">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h2 class="display-4 fw-bold">THE FLEET<span class="text-muted">.25</span></h2>
+                </div>
+                <div class="col-md-6 text-md-end" data-aos="fade-left">
+                    <div class="d-inline-flex">
+                        <div class="filter-pill active" onclick="filterData('all')">Everything</div>
+                        <div class="filter-pill" onclick="filterData('scooter')">Scooters</div>
+                        <div class="filter-pill" onclick="filterData('bike')">E-Bikes</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4" id="fleetGrid">
+                <!-- 6 Scooters -->
+                <div class="col-lg-4 col-md-6 fleet-item scooter" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$4,200</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-T9-Sport-Red-%E2%80%93-Nano-Carbon-Fiber-Electric-Bike-rjzekdntjg3u9v4fuipq4ajlon9slx7ng61jzsg740.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">Volt T9 Sport</h4>
+                        <p class="small text-muted">Hyper-range urban scooter</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item scooter" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card">
+                        <span class="price-tag">$3,800</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-Wonder-Bike-White-%E2%80%93-Nano-Carbon-Fiber-Electric-Bike-rjzekdnyev7avie85vgkg6l0ambi5e5sleewhk9a5c.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">E8S Rangemaker</h4>
+                        <p class="small text-muted">Extended battery technology</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item scooter" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card">
+                        <span class="price-tag">$5,500</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-Metrix-Orange-%E2%80%93-Nano-Carbon-Fiber-Electric-Bike-rjzekdntjg39t9s5ig19l6plastlc18guojpytx8u8.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">Metrix Carbon</h4>
+                        <p class="small text-muted">Carbon fiber chassis edition</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item scooter" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$1,299</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-Metrix-Silver-%E2%80%93-Nano-Carbon-Fiber-Electric-Bike-rjzekdntjg3u9v4fuipq4ajlon9slx7ng61jzsg740.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">Silver Glide</h4>
+                        <p class="small text-muted">Compact city traveler</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item scooter" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$1,799</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-Premium-Silver-%E2%80%93-Lithium-Iron-Phosphate-Electric-Bike-rjzekdntjg3u9v4fuipq4ajlon9slx7ng61jzsg740.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">L-Phosphate Pro</h4>
+                        <p class="small text-muted">Industrial grade reliability</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item scooter" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$2,400</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-Wonder-Bike-White-%E2%80%93-Nano-Carbon-Fiber-Electric-Bike-rjzekdnyev7avie85vgkg6l0ambi5e5sleewhk9a5c.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">Wonder Nano</h4>
+                        <p class="small text-muted">Smart connect integration</p>
+                    </div>
+                </div>
+
+                <!-- 6 Bikes -->
+                <div class="col-lg-4 col-md-6 fleet-item bike" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$999</span>
+                        <div class="card-img-box">
+                            <img src="https://metroev.pk/wp-content/uploads/elementor/thumbs/Metro-Premium-Plus-Silver-%E2%80%93-Lithium-Iron-Phosphate-Electric-Bike-rjzekdntjg3u9v4fuipq4ajlon9slx7ng61jzsg740.webp" alt="">
+                        </div>
+                        <h4 class="fw-bold">Eco Mini Plus</h4>
+                        <p class="small text-muted">Efficient mountain climber</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item bike" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$4,900</span>
+                        <div class="card-img-box">
+                            <img src="https://www.shopperspk.com/wp-content/uploads/2023/08/benolli-battery-operated-electric-kids-bike-ride-on-baby-bike-with-led-lights-music-usb-kids-baby-electric-bike-battery-operated-bike-0-in-Pakistan.png" alt="">
+                        </div>
+                        <h4 class="fw-bold">Benolli Kids</h4>
+                        <p class="small text-muted">Safe-ride tech for kids</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item bike" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$7,100</span>
+                        <div class="card-img-box">
+                            <img src="https://cdn.bikedekho.com/processedimages/ultraviolette/f77/source/f7768a816a13cca5.jpg" alt="">
+                        </div>
+                        <h4 class="fw-bold">Ultraviolette F77</h4>
+                        <p class="small text-muted">Absolute performance bike</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item bike" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$3,200</span>
+                        <div class="card-img-box">
+                            <img src="https://cdn.bikedekho.com/processedimages/ultraviolette/f77/source/f7768a816a13cca5.jpg" alt="">
+                        </div>
+                        <h4 class="fw-bold">Okla OKG-1</h4>
+                        <p class="small text-muted">Modern trail blazer</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item bike" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$2,800</span>
+                        <div class="card-img-box">
+                            <img src="https://cdn.bikedekho.com/processedimages/ultraviolette/f77/source/f7768a816a13cca5.jpg" alt="">
+                        </div>
+                        <h4 class="fw-bold">Okla OKG-2</h4>
+                        <p class="small text-muted">Street race edition</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 fleet-item bike" data-aos="fade-up">
+                    <div class="product-card">
+                        <span class="price-tag">$1,550</span>
+                        <div class="card-img-box">
+                            <img src="https://ha-middle-east.com/cdn/shop/files/07.11.2024_19.21.00_REC_900x.png?v=1733749900" alt="">
+                        </div>
+                        <h4 class="fw-bold">City Master X</h4>
+                        <p class="small text-muted">Reliable daily workhorse</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="about-wrap">
+                <div class="row align-items-center">
+                    <div class="col-md-1 d-none d-lg-block">
+                        <div class="about-title-vertical">INNOVATION</div>
+                    </div>
+                    <div class="col-lg-5" data-aos="fade-right">
+                        <h2 class="display-3 fw-bold mb-4">RE-CODING <br> <span style="color: var(--accent)">TRAFFIC</span></h2>
+                        <p class="lead opacity-75">We don't just sell electric vehicles; we design the lifestyle of tomorrow. Our mission is to accelerate the transition to carbon-free commuting through superior design and power.</p>
+                        <div class="mt-5">
+                            <div class="mb-4">
+                                <h5 class="fw-bold mb-0">99.9% RECYCLABLE</h5>
+                                <p class="small opacity-50">Our batteries are built for the circular economy.</p>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-0">ZERO NOISE</h5>
+                                <p class="small opacity-50">Designed to reduce urban sound pollution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="zoom-in">
+                        <img src="https://ha-middle-east.com/cdn/shop/files/07.11.2024_19.43.25_REC_1024x1024@2x.png?v=1733748513" class="img-fluid rounded-4" style="filter: grayscale(1) invert(1);" alt="Innovation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5" data-aos="fade-right">
+                    <h2 class="display-1 fw-bold">JOIN <br> THE <br> CLUB.</h2>
+                    <p class="mt-4 fw-bold">WANT A TEST DRIVE? DROP YOUR INFO.</p>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up">
+                    <form>
+                        <input type="text" class="contact-input" placeholder="YOUR FULL NAME">
+                        <input type="email" class="contact-input" placeholder="EMAIL ADDRESS">
+                        <input type="text" class="contact-input" placeholder="MODEL OF INTEREST">
+                        <button class="btn-hyper mt-4">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <h2 class="fw-bold mb-0">EV<span>STUDIO</span></h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="small mb-0 fw-bold">&copy; 2025 ALL RIGHTS RESERVED. ECO-DRIVE GROUP.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="#" class="text-dark me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-dark"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // Filter Logic
+        function filterData(cat) {
+            const items = document.querySelectorAll('.fleet-item');
+            const pills = document.querySelectorAll('.filter-pill');
+            
+            pills.forEach(p => p.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if(cat === 'all' || item.classList.contains(cat)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            AOS.refresh();
+        }
+
+        // Smooth Scroll Logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
