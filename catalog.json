@@ -1,1 +1,86 @@
-[]
+[
+  {
+    "name": "NS Collection | Premium Garments",
+    "category": "Ecommerce",
+    "url": "ecommerce/e_commerce1.html",
+    "description": ""
+  },
+  {
+    "name": "Office Work - Premium Office Chairs",
+    "category": "Funtiers",
+    "url": "funtiers/chairs.html",
+    "description": ""
+  },
+  {
+    "name": "cluxd — Your Health, Our Priority",
+    "category": "Healthcare",
+    "url": "healthcare/healthcare1.html",
+    "description": "cluxd Healthcare — compassionate care, advanced medicine, trusted by thousands."
+  },
+  {
+    "name": "Dr. Elena Brooks, MD — Dermatology & Skin Health",
+    "category": "Healthcare",
+    "url": "healthcare/doctor-portfolio.html",
+    "description": "Board-certified dermatology: medical, cosmetic and surgical skin care with a modern, personal touch."
+  },
+  {
+    "name": "Anti Logistics — Smart Logistics, Strong Connections, Global Solutions",
+    "category": "Logic",
+    "url": "logic/logictis1.html",
+    "description": "Anti is a global logistics provider delivering trust, speed and reliability across the globe."
+  },
+  {
+    "name": "Cluxd — Crafting Spaces. Creating Moments.",
+    "category": "Real Estate",
+    "url": "realestate/design1.html",
+    "description": "Cluxd designs and builds luxury custom pools and outdoor living spaces with unmatched quality and creativity."
+  },
+  {
+    "name": "Elysium Estates | Premium Real Estate",
+    "category": "Real Estate",
+    "url": "realestate/real_estate.html",
+    "description": ""
+  },
+  {
+    "name": "Elysium Estates — Luxury Real Estate, Reimagined",
+    "category": "Real Estate",
+    "url": "realestate/realestate2.html",
+    "description": ""
+  },
+  {
+    "name": "FreshBrew Kitchen | Premium Dining Experience",
+    "category": "Restaurant Hotels",
+    "url": "resturent-hotels/resturent.html",
+    "description": ""
+  },
+  {
+    "name": "Cluxd — Rent. Drive. Enjoy The Journey.",
+    "category": "Showroom",
+    "url": "ShowRoom/showroom3.html",
+    "description": "Choose from 300+ luxury, economy, SUV & electric cars. Flexible rentals, best prices, unlimited miles."
+  },
+  {
+    "name": "E-GLIDE | Next-Gen Electric Mobility",
+    "category": "Showroom",
+    "url": "ShowRoom/ev2.html",
+    "description": ""
+  },
+  {
+    "name": "EV-STUDIO | The New Era",
+    "category": "Showroom",
+    "url": "ShowRoom/ev3.html",
+    "description": ""
+  },
+  {
+    "name": "LUXE DRIVE | Modern Car Showroom",
+    "category": "Showroom",
+    "url": "ShowRoom/showroom.html",
+    "description": ""
+  },
+  {
+    "name": "NEO-DRIVE | Premium Automotive Gallery",
+    "category": "Showroom",
+    "url": "ShowRoom/showroom2.html",
+    "description": ""
+  }
+]
