@@ -1610,6 +1610,53 @@ body {
         font-size: 1.4rem;
     }
 }
+
+
+/* ============ DESKTOP & LARGE SCREEN FIXES ============ */
+
+/* 1. Restore container max-widths so the page stays centered and doesn't stretch infinitely on wide monitors */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px !important;
+    }
+    
+    /* 2. Scale up the hero image for standard laptop/desktop screens */
+    .hero-chair-img {
+        max-width: 480px !important;
+    }
+    
+    /* 3. Adjust the floating stats box to match the bigger image */
+    .hero-stats {
+        bottom: 0px !important;
+        width: 85%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px !important;
+    }
+    
+    /* 4. Make the hero image proportionally larger for ultra-wide monitors */
+    .hero-chair-img {
+        max-width: 550px !important;
+    }
+    
+    /* 5. Add a bit more vertical breathing room on huge screens */
+    .hero-section {
+        padding: 160px 0 100px !important;
+    }
+    
+    .hero-stats {
+        bottom: -20px !important;
+    }
+}
 </style>  
 
 
