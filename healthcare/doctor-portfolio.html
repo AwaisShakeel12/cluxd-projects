@@ -214,6 +214,49 @@ h1,h2,h3,h4{letter-spacing:-.02em}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ============ RESPONSIVE & HORIZONTAL OVERFLOW FIXES ============ */
+
+/* 1. Stop all horizontal scrolling across the entire page */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+
+/* 2. Stop the oversized background circle from stretching the page width */
+.hero {
+  overflow-x: hidden;
+}
+
+/* 3. Fix Chatbot width bug (100vw includes the scrollbar, which breaks the layout) */
+.chat-box {
+  width: 320px !important;
+  max-width: calc(100% - 36px) !important;
+  right: 18px !important;
+}
+
+/* 4. Pull floating image badges fully inside the screen on mobile */
+@media (max-width: 767.98px) {
+  .fc-1 { left: 8px !important; }
+  .fc-2 { right: 8px !important; }
+  
+  .about-imgs .a2 { right: 0 !important; width: 140px; height: 110px; }
+  .about-imgs .exp-badge { left: 0 !important; width: 80px; height: 80px; }
+  .about-imgs .exp-badge small { font-size: 0.5rem; }
+}
+
+/* 5. Clean up the mobile Navbar so it doesn't stretch or hide behind elements */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 1.2rem;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(11, 13, 16, 0.12);
+    margin-top: 1rem;
+  }
+  .navbar .nav-link { margin-bottom: 0.5rem; display: block; }
+  .navbar .btn-ink { width: 100%; justify-content: center; margin-top: 0.5rem; }
+}
 </style>
 </head>
 
