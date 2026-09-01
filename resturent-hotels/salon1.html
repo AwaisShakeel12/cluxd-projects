@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIÈRE — Luxury Hair & Beauty Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --white: #ffffff;
+    --off-white: #FEFBFD;
+    --pink-mist: #FDF2F8;
+    --lavender: #F5F3FF;
+    --pink-soft: #FCE7F3;
+    --line: #F3E8FF;
+    --line-soft: #FAF5FF;
+    --ink: #1A0B2E;
+    --ink-soft: #2D1B47;
+    --muted: #6B5B7B;
+    --pink: #EC4899;
+    --pink-deep: #BE185D;
+    --purple: #8B5CF6;
+    --purple-deep: #6D28D9;
+    --gold: #D4AF37;
+    --gold-light: #F5D77F;
+    --gradient: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+    --gradient-warm: linear-gradient(135deg, #F472B6 0%, #A855F7 100%);
+    --gradient-soft: linear-gradient(135deg, #EC489915 0%, #8B5CF615 100%);
+    --gradient-gold: linear-gradient(135deg, #F5D77F 0%, #D4AF37 100%);
+    --shadow-sm: 0 4px 16px rgba(139, 92, 246, 0.06);
+    --shadow-md: 0 16px 40px rgba(139, 92, 246, 0.1);
+    --shadow-lg: 0 32px 80px rgba(236, 72, 153, 0.15);
+    --shadow-xl: 0 50px 100px rgba(139, 92, 246, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, .display {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; border: none; }
+
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+
+  .gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.25em;
+    color: var(--purple-deep);
+    margin-bottom: 24px;
+    padding: 8px 16px;
+    background: var(--gradient-soft);
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+  .eyebrow i { font-size: 0.6rem; color: var(--pink); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-size: 0.88rem; font-weight: 600;
+    border-radius: 999px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    border: none;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: var(--gradient); color: var(--white);
+    box-shadow: 0 12px 30px rgba(236, 72, 153, 0.35);
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.45);
+  }
+  .btn-ghost {
+    background: var(--white); color: var(--ink);
+    border: 1.5px solid var(--line);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-ghost:hover {
+    border-color: var(--pink);
+    color: var(--pink-deep);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-gold {
+    background: var(--gradient-gold); color: var(--ink);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(212, 175, 55, 0.4);
+  }
+
+  /* ============ NAVBAR ============ */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 22px 0; z-index: 1000;
+    transition: all 0.4s ease;
+  }
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: saturate(180%) blur(20px);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 4px 30px rgba(139, 92, 246, 0.06);
+  }
+  .nav-wrap {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+  .logo-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    font-size: 1.1rem;
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+  }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    font-size: 0.92rem; font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 0; height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s;
+    border-radius: 2px;
+  }
+  .nav-links a:hover { color: var(--pink-deep); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions { display: flex; align-items: center; gap: 14px; }
+  .nav-phone {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--ink-soft); font-weight: 500; font-size: 0.88rem;
+  }
+  .nav-phone i { color: var(--pink); }
+  .nav-cta {
+    padding: 11px 22px;
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 999px;
+    font-size: 0.85rem; font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .nav-cta:hover {
+    background: var(--gradient);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(236, 72, 153, 0.3);
+  }
+
+  .menu-toggle {
+    display: none; background: none; border: none;
+    font-size: 1.4rem; color: var(--ink);
+  }
+
+  .mobile-menu {
+    position: fixed; inset: 0;
+    background: var(--white);
+    z-index: 999;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .mobile-menu.active { opacity: 1; pointer-events: all; }
+  .mobile-menu ul { list-style: none; text-align: center; }
+  .mobile-menu li { margin: 14px 0; }
+  .mobile-menu a {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 140px 0 80px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FEFBFD 0%, #FDF2F8 50%, #F5F3FF 100%);
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    animation: blobFloat 15s ease-in-out infinite;
+  }
+  .hero-blob-1 {
+    top: -100px; right: 5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
+  }
+  .hero-blob-2 {
+    bottom: -150px; left: 5%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+    animation-delay: 5s;
+  }
+  .hero-blob-3 {
+    top: 30%; left: 40%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    animation-delay: 10s;
+  }
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.1); }
+    66% { transform: translate(-30px, 20px) scale(0.95); }
+  }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-left { position: relative; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--white);
+    padding: 8px 18px 8px 8px;
+    border-radius: 999px;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line);
+    animation: slideIn 0.8s ease-out;
+  }
+  .hero-badge-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+  }
+  .hero-badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    line-height: 1;
+    margin-bottom: 28px;
+    font-weight: 500;
+    animation: fadeUp 1s ease-out 0.2s both;
+  }
+  .hero h1 .line { display: block; }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 6px;
+    width: 100%; height: 10px;
+    background: var(--gradient-soft);
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+    animation: fadeUp 1s ease-out 0.4s both;
+  }
+
+  .hero-cta {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 50px;
+    animation: fadeUp 1s ease-out 0.6s both;
+  }
+
+  .hero-trust {
+    display: flex; align-items: center; gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    animation: fadeUp 1s ease-out 0.8s both;
+    flex-wrap: wrap;
+  }
+  .hero-avatars { display: flex; }
+  .hero-avatars img {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--white);
+    margin-left: -12px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s;
+  }
+  .hero-avatars img:first-child { margin-left: 0; }
+  .hero-avatars img:hover { transform: translateY(-4px) scale(1.1); z-index: 2; }
+
+  .hero-trust-text {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .hero-trust-text strong {
+    display: block; color: var(--ink);
+    font-weight: 700; font-size: 0.95rem;
+  }
+  .hero-trust-text .stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  /* Hero Visual - Unique Asymmetric Layout */
+  .hero-visual {
+    position: relative;
+    height: 620px;
+    animation: fadeLeft 1.2s ease-out 0.3s both;
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-img-main {
+    position: absolute;
+    top: 0; right: 0;
+    width: 85%; height: 85%;
+    border-radius: 240px 240px 32px 32px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+  }
+  .hero-img-main img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .hero-img-main::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(236, 72, 153, 0.2) 100%);
+  }
+
+  .hero-img-small {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 220px; height: 260px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 8px solid var(--white);
+    z-index: 3;
+  }
+  .hero-img-small img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  .hero-circle {
+    position: absolute;
+    top: -20px; left: 20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    z-index: 4;
+    animation: rotate 20s linear infinite;
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3);
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .hero-circle-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .hero-circle-text strong {
+    display: block;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .hero-float-card {
+    position: absolute;
+    background: var(--white);
+    padding: 18px 22px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; gap: 14px;
+    z-index: 4;
+    border: 1px solid var(--line-soft);
+  }
+  .hero-float-card.card-1 {
+    top: 40px; left: -10px;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  .hero-float-card.card-2 {
+    bottom: 80px; right: -20px;
+    animation: floatCard 5s ease-in-out infinite 1s;
+  }
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .float-icon {
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    background: var(--gradient-soft);
+    color: var(--pink-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .float-text .ft-title {
+    font-weight: 700; color: var(--ink);
+    font-size: 1rem;
+  }
+  .float-text .ft-sub {
+    color: var(--muted);
+    font-size: 0.78rem;
+    margin-top: 2px;
+  }
+
+  /* ============ MARQUEE ============ */
+  .marquee {
+    padding: 32px 0;
+    background: var(--ink);
+    color: var(--white);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 60px;
+    animation: marquee 35s linear infinite;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .marquee-track span {
+    display: inline-flex; align-items: center; gap: 60px;
+  }
+  .marquee-track .dot {
+    width: 8px; height: 8px;
+    background: var(--gradient);
+    border-radius: 50%;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 120px 0; position: relative; }
+  .section-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 70px;
+  }
+  .section-head h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .section-head h2 em {
+    font-style: italic;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+  }
+  .section-head p {
+    color: var(--muted); font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* ============ STATS ============ */
+  .stats-section {
+    padding: 90px 0;
+    background: var(--white);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .stat-card {
+    background: var(--white);
+    padding: 36px 24px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-soft);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .stat-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--pink);
+    box-shadow: var(--shadow-md);
+  }
+  .stat-card:hover::before { opacity: 1; }
+  .stat-card > * { position: relative; z-index: 1; }
+
+  .stat-icon {
+    width: 60px; height: 60px;
+    border-radius: 20px;
+    background: var(--gradient);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 600;
+    line-height: 1;
+    margin-bottom: 8px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-label {
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* ============ SERVICES ============ */
+  .services-section { background: var(--pink-mist); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column;
+    cursor: pointer;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+  .service-card:hover .service-img img { transform: scale(1.08); }
+
+  .service-img {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+  .service-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .service-tag {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--white);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.68rem; font-weight: 700;
+    color: var(--pink-deep);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    box-shadow: var(--shadow-sm);
+    z-index: 2;
+  }
+  .service-tag.hot {
+    background: var(--gradient);
+    color: var(--white);
+  }
+
+  .service-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex; flex-direction: column;
+  }
+  .service-icon-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px;
+  }
+  .service-icon {
+    width: 44px; height: 44px;
+    border-radius: 14px;
+    background: var(--gradient-soft);
+    color: var(--pink-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    transition: all 0.4s;
+  }
+  .service-card:hover .service-icon {
+    background: var(--gradient); color: var(--white);
+    transform: rotate(-15deg) scale(1.1);
+  }
+  .service-rating {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 0.82rem;
+    color: var(--gold);
+  }
+  .service-rating span {
+    color: var(--muted); font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .service-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .service-desc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .service-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+  }
+  .service-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--ink);
+  }
+  .service-price small {
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem; font-weight: 500;
+    display: block;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+  .service-link {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s;
+  }
+  .service-card:hover .service-link {
+    background: var(--gradient);
+    transform: rotate(-45deg) scale(1.1);
+  }
+
+  /* ============ ABOUT ============ */
+  .about-section { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    height: 620px;
+  }
+  .about-main-img {
+    width: 75%; height: 100%;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .about-main-img img { width: 100%; height: 100%; object-fit: cover; }
+  .about-small-img {
+    position: absolute;
+    bottom: -30px; right: 0;
+    width: 55%; height: 280px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 8px solid var(--white);
+  }
+  .about-small-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .about-badge-float {
+    position: absolute;
+    top: 40px; right: 20px;
+    background: var(--white);
+    padding: 20px 24px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; gap: 14px;
+    z-index: 3;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  .about-badge-float .ab-icon {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-gold);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .ab-text strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 600;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ab-text span {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .about-content h2 {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    margin-bottom: 22px;
+  }
+  .about-content h2 em {
+    font-style: italic;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+  }
+  .about-content > p {
+    color: var(--muted);
+    font-size: 1rem; line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .about-features {
+    list-style: none;
+    margin: 30px 0;
+    display: grid; gap: 14px;
+  }
+  .about-features li {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 0.95rem; font-weight: 500;
+    color: var(--ink-soft);
+    padding: 14px 18px;
+    background: var(--pink-mist);
+    border-radius: 14px;
+    transition: all 0.3s;
+  }
+  .about-features li:hover {
+    background: var(--gradient-soft);
+    transform: translateX(4px);
+  }
+  .about-features i {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* ============ GALLERY ============ */
+  .gallery-section { background: var(--lavender); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 16px;
+  }
+  .gallery-item {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .gallery-item:hover img { transform: scale(1.1); }
+  .gallery-item::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(26, 11, 46, 0.85) 100%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+  .gallery-caption {
+    position: absolute;
+    bottom: 20px; left: 24px; right: 24px;
+    color: var(--white);
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.4s;
+  }
+  .gallery-item:hover .gallery-caption {
+    opacity: 1; transform: translateY(0);
+  }
+  .gallery-caption span {
+    font-size: 0.7rem;
+    color: var(--gold-light);
+    text-transform: uppercase; letter-spacing: 0.15em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .gallery-caption h4 {
+    color: var(--white);
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .gallery-item:nth-child(1) { grid-row: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+  .gallery-item:nth-child(6) { grid-row: span 2; }
+
+  /* ============ TEAM ============ */
+  .team-section { background: var(--white); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  .team-card {
+    text-align: center;
+    transition: transform 0.4s;
+  }
+  .team-card:hover { transform: translateY(-10px); }
+  .team-img {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: 200px 200px 24px 24px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.4s;
+  }
+  .team-card:hover .team-img { box-shadow: var(--shadow-xl); }
+  .team-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s;
+  }
+  .team-card:hover .team-img img { transform: scale(1.05); }
+  .team-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(236, 72, 153, 0.3) 100%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .team-card:hover .team-img::after { opacity: 1; }
+
+  .team-social {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    display: flex; gap: 8px;
+    opacity: 0; transition: all 0.4s;
+    z-index: 2;
+  }
+  .team-card:hover .team-social {
+    opacity: 1; transform: translateX(-50%) translateY(0);
+  }
+  .team-social a {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-sm);
+  }
+  .team-social a:hover {
+    background: var(--gradient);
+    color: var(--white);
+    transform: translateY(-3px);
+  }
+
+  .team-card h4 {
+    font-size: 1.4rem; font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .team-role {
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--pink-deep);
+    text-transform: uppercase; letter-spacing: 0.18em;
+    margin-bottom: 10px;
+  }
+  .team-exp {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ============ PRICING ============ */
+  .pricing-section { background: var(--pink-mist); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+  .price-card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 44px 36px;
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .price-card.featured {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+    transform: translateY(-14px);
+    box-shadow: var(--shadow-xl);
+  }
+  .price-card.featured:hover { transform: translateY(-20px); }
+  .price-tag {
+    position: absolute;
+    top: -14px; right: 32px;
+    background: var(--gradient);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+  }
+  .price-name {
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.25em;
+    color: var(--pink-deep);
+    margin-bottom: 24px;
+  }
+  .price-card.featured .price-name { color: var(--gold-light); }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .price-card.featured .price-amount { color: var(--white); }
+  .price-amount .currency {
+    font-size: 1.8rem; vertical-align: top;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .price-amount small {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .price-card.featured .price-amount small { color: rgba(255,255,255,0.6); }
+  .price-desc {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  .price-card.featured .price-desc { color: rgba(255,255,255,0.6); }
+  .price-list {
+    list-style: none;
+    margin-bottom: 30px;
+    flex-grow: 1;
+  }
+  .price-list li {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.92rem;
+  }
+  .price-card.featured .price-list li { border-color: rgba(255,255,255,0.1); }
+  .price-list li i { color: var(--pink); font-size: 0.85rem; }
+  .price-card.featured .price-list li i { color: var(--gold-light); }
+  .price-card .btn { width: 100%; justify-content: center; }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials-section {
+    background: var(--ink);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials-section::before {
+    content: ''; position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 60%);
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .testimonials-section::after {
+    content: ''; position: absolute;
+    bottom: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 60%);
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .testimonials-section h2 { color: var(--white); }
+  .testimonials-section .eyebrow {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    color: var(--gold-light);
+  }
+  .testimonials-section .eyebrow i { color: var(--gold-light); }
+  .testimonials-section .section-head p { color: rgba(255,255,255,0.6); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative; z-index: 2;
+  }
+  .testi-card {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 36px;
+    transition: all 0.4s;
+  }
+  .testi-card:hover {
+    background: rgba(236, 72, 153, 0.08);
+    border-color: rgba(236, 72, 153, 0.3);
+    transform: translateY(-8px);
+  }
+  .testi-quote-icon {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .testi-stars {
+    color: var(--gold);
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+  .testi-text {
+    color: rgba(255,255,255,0.88);
+    font-size: 1rem; line-height: 1.7;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .testi-author {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .testi-author img {
+    width: 50px; height: 50px; border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--pink);
+  }
+  .testi-author-name {
+    font-weight: 600; color: var(--white);
+    font-size: 0.98rem;
+  }
+  .testi-author-role {
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    margin-top: 2px;
+  }
+
+  /* ============ BOOKING ============ */
+  .booking-section {
+    background: linear-gradient(135deg, #FDF2F8 0%, #F5F3FF 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .booking-visual {
+    position: relative;
+    height: 620px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+  }
+  .booking-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .booking-visual::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(26, 11, 46, 0.75) 100%);
+  }
+  .booking-visual-text {
+    position: absolute;
+    bottom: 40px; left: 40px; right: 40px;
+    color: var(--white);
+    z-index: 2;
+  }
+  .booking-visual-text h3 {
+    color: var(--white);
+    font-size: 2.2rem; font-weight: 500;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .booking-visual-text p {
+    font-size: 0.95rem; line-height: 1.7;
+    color: rgba(255,255,255,0.88);
+  }
+  .booking-badge {
+    position: absolute;
+    top: 30px; left: 30px;
+    background: var(--white);
+    padding: 12px 20px;
+    border-radius: 999px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--ink);
+    z-index: 2;
+    box-shadow: var(--shadow-md);
+  }
+  .booking-badge i { color: var(--pink); }
+
+  .booking-form-wrap {
+    background: var(--white);
+    padding: 48px 44px;
+    border-radius: 28px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--line);
+  }
+  .booking-form-wrap h3 {
+    font-size: 2rem; margin-bottom: 10px;
+  }
+  .booking-form-wrap h3 em {
+    font-style: italic;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+  }
+  .booking-form-wrap > p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 16px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    background: var(--off-white);
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--ink);
+    transition: all 0.3s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--pink);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.08);
+  }
+  .form-group textarea {
+    resize: vertical; min-height: 100px;
+  }
+
+  /* ============ CONTACT ============ */
+  .contact-section { background: var(--white); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .contact-card {
+    background: var(--white);
+    padding: 44px 32px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    transition: all 0.4s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: 0;
+  }
+  .contact-card > * { position: relative; z-index: 1; transition: color 0.4s; }
+  .contact-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .contact-card:hover::before { opacity: 1; }
+  .contact-card:hover h4, .contact-card:hover p, .contact-card:hover a { color: var(--white); }
+  .contact-card:hover .contact-icon { background: var(--white); color: var(--pink); }
+
+  .contact-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 22px;
+    box-shadow: 0 10px 24px rgba(236, 72, 153, 0.3);
+    transition: all 0.4s;
+  }
+  .contact-card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .contact-card p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .contact-card a {
+    color: var(--ink); font-weight: 600;
+    display: block; margin-top: 4px;
+    transition: color 0.3s;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    padding: 90px 0 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo {
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .footer-brand p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 360px;
+  }
+  .social-row { display: flex; gap: 10px; }
+  .social-row a {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    transition: all 0.3s;
+  }
+  .social-row a:hover {
+    background: var(--gradient);
+    border-color: transparent;
+    transform: translateY(-3px) rotate(-10deg);
+  }
+  .footer-col h5 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.25em;
+    color: var(--gold-light);
+    margin-bottom: 22px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.92rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .newsletter-form {
+    display: flex;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    padding: 4px;
+  }
+  .newsletter-form input {
+    flex: 1; border: none; outline: none;
+    background: transparent; color: var(--white);
+    padding: 12px 18px;
+    font-family: inherit; font-size: 0.9rem;
+  }
+  .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .newsletter-form button {
+    background: var(--gradient);
+    border: none; border-radius: 999px;
+    color: var(--white);
+    padding: 0 22px;
+    font-weight: 600; font-size: 0.85rem;
+  }
+  .footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 0.85rem;
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .nav-links, .nav-phone { display: none; }
+    .menu-toggle { display: block; }
+    .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+    .hero-visual { height: 500px; max-width: 500px; margin: 0 auto; }
+    .about-grid, .booking-grid { grid-template-columns: 1fr; gap: 60px; }
+    .stats-grid, .services-grid, .team-grid, .gallery-grid, .testi-grid, .pricing-grid, .contact-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:nth-child(1), .gallery-item:nth-child(6) { grid-row: auto; }
+    .gallery-item:nth-child(4) { grid-column: auto; }
+    .price-card.featured { transform: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    section { padding: 80px 0; }
+    .hero { padding: 110px 0 60px; }
+    .hero-visual { height: 440px; }
+    .hero-img-small { width: 160px; height: 200px; }
+    .hero-float-card { padding: 14px 16px; }
+    .hero-float-card.card-1 { left: 10px; }
+    .hero-float-card.card-2 { right: 10px; }
+    .stats-grid, .services-grid, .team-grid, .gallery-grid, .testi-grid, .pricing-grid, .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    .form-row { grid-template-columns: 1fr; }
+    .booking-form-wrap { padding: 32px 24px; }
+    .marquee-track { font-size: 1.2rem; gap: 40px; }
+    .about-visual { height: 440px; }
+    .about-small-img { height: 200px; }
+    .hero-cta { flex-direction: column; }
+    .hero-cta .btn { width: 100%; }
+    .hero-circle { width: 90px; height: 90px; top: 10px; left: 10px; }
+    .hero-circle-text { font-size: 0.7rem; }
+    .hero-circle-text strong { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-wrap">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-spa"></i></div>
+      <span>LUMIÈRE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#team">Stylists</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:+15551234567" class="nav-phone">
+        <i class="fas fa-phone"></i> (555) 123-4567
+      </a>
+      <a href="#booking" class="nav-cta">Book Now <i class="fas fa-arrow-right"></i></a>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#team">Stylists</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="hero-badge-icon"><i class="fas fa-crown"></i></div>
+          <span>#1 Luxury Salon in the City</span>
+          <span class="dot"></span>
+        </div>
+
+        <h1>
+          <span class="line">Where beauty</span>
+          <span class="line">becomes <em>art</em></span>
+          <span class="line">& you shine.</span>
+        </h1>
+
+        <p class="hero-lead">Welcome to Lumière — a luxury hair & beauty sanctuary where world-class stylists craft bespoke looks using only the finest products. Indulge in an experience as radiant as you are.</p>
+
+        <div class="hero-cta">
+          <a href="#booking" class="btn btn-primary">Book Appointment <i class="fas fa-calendar-check"></i></a>
+          <a href="#services" class="btn btn-ghost"><i class="fas fa-sparkles"></i> Explore Services</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="hero-avatars">
+            <img src="https://i.pravatar.cc/100?img=47" alt="">
+            <img src="https://i.pravatar.cc/100?img=45" alt="">
+            <img src="https://i.pravatar.cc/100?img=48" alt="">
+            <img src="https://i.pravatar.cc/100?img=49" alt="">
+            <img src="https://i.pravatar.cc/100?img=44" alt="">
+          </div>
+          <div class="hero-trust-text">
+            <strong>5,000+ Happy Clients</strong>
+            <span class="stars">★★★★★</span> 4.9/5 from 2,400+ reviews
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-main">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&h=1200&fit=crop" alt="Luxury salon">
+        </div>
+        <div class="hero-img-small">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&h=600&fit=crop" alt="Hair styling">
+        </div>
+
+        <div class="hero-circle">
+          <div class="hero-circle-text">
+            Since
+            <strong>2008</strong>
+          </div>
+        </div>
+
+        <div class="hero-float-card card-1">
+          <div class="float-icon"><i class="fas fa-award"></i></div>
+          <div class="float-text">
+            <div class="ft-title">Award Winner</div>
+            <div class="ft-sub">Best Salon 2024</div>
+          </div>
+        </div>
+
+        <div class="hero-float-card card-2">
+          <div class="float-icon"><i class="fas fa-heart"></i></div>
+          <div class="float-text">
+            <div class="ft-title">98% Love It</div>
+            <div class="ft-sub">Client satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Balayage <span class="dot"></span> Bridal Styling <span class="dot"></span> Keratin <span class="dot"></span> Facials <span class="dot"></span> Manicure <span class="dot"></span> Color Correction <span class="dot"></span> Scalp Therapy <span class="dot"></span> Nail Art <span class="dot"></span></span>
+    <span>Balayage <span class="dot"></span> Bridal Styling <span class="dot"></span> Keratin <span class="dot"></span> Facials <span class="dot"></span> Manicure <span class="dot"></span> Color Correction <span class="dot"></span> Scalp Therapy <span class="dot"></span> Nail Art <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-icon"><i class="fas fa-gem"></i></div>
+        <div class="stat-num"><span class="counter" data-target="16">0</span>+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-icon"><i class="fas fa-heart"></i></div>
+        <div class="stat-num"><span class="counter" data-target="5000">0</span>+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="stat-num"><span class="counter" data-target="28">0</span>+</div>
+        <div class="stat-label">Expert Stylists</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+        <div class="stat-num"><span class="counter" data-target="45">0</span>+</div>
+        <div class="stat-label">Awards Won</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><i class="fas fa-circle"></i> Our Signature Services</div>
+      <h2>Crafted for <em>every</em> you.</h2>
+      <p>From precision haircuts to lavish spa treatments, every service is designed with artistry, care, and only the finest products.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag hot">Signature</span>
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=450&fit=crop" alt="Haircut">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-cut"></i></div>
+            <div class="service-rating">★★★★★ <span>4.9</span></div>
+          </div>
+          <h3>Haircut & Styling</h3>
+          <p class="service-desc">Precision cuts tailored to your face, hair type, and lifestyle by our master stylists.</p>
+          <div class="service-foot">
+            <div class="service-price">$75<small>From · 60 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag hot">Popular</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCR24r43ipXLJrKjMZ_jej5u1ICudfwcjSS57KoHT54lBH7H9P3SpmElQ&s=10" alt="Hair coloring">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-palette"></i></div>
+            <div class="service-rating">★★★★★ <span>5.0</span></div>
+          </div>
+          <h3>Hair Coloring</h3>
+          <p class="service-desc">Balayage, highlights, ombré, and full color using premium ammonia-free formulas.</p>
+          <div class="service-foot">
+            <div class="service-price">$150<small>From · 120 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag">Luxury</span>
+          <img src="https://img.magnific.com/free-photo/woman-washing-head-hairsalon_1157-27179.jpg?semt=ais_hybrid&w=740&q=80" alt="Hair treatment">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-spa"></i></div>
+            <div class="service-rating">★★★★★ <span>4.8</span></div>
+          </div>
+          <h3>Hair Treatments</h3>
+          <p class="service-desc">Keratin smoothing, bond repair, and deep conditioning to restore your hair's vitality.</p>
+          <div class="service-foot">
+            <div class="service-price">$120<small>From · 90 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag hot">Premium</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDKyJkcBNZdZ5E3ol_x6wCDa3bsfWlvQMX4No6mGztS2PZjkcSJ1e_05w&s=10" alt="Bridal">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-gem"></i></div>
+            <div class="service-rating">★★★★★ <span>5.0</span></div>
+          </div>
+          <h3>Bridal & Event</h3>
+          <p class="service-desc">Bespoke bridal hair, trial sessions, and on-location styling for your special day.</p>
+          <div class="service-foot">
+            <div class="service-price">$450<small>From · 180 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag">Wellness</span>
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=450&fit=crop" alt="Facial">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-leaf"></i></div>
+            <div class="service-rating">★★★★★ <span>4.9</span></div>
+          </div>
+          <h3>Facial & Spa</h3>
+          <p class="service-desc">Rejuvenating facials and anti-aging treatments tailored to your skin type.</p>
+          <div class="service-foot">
+            <div class="service-price">$110<small>From · 75 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag">Classic</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN39pQzMgRpz1jwblV8NCo2JEMRLkTgxWQCzrKW7sArNaemtMaCDl2dOo&s=10" alt="Nails">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+            <div class="service-rating">★★★★★ <span>4.9</span></div>
+          </div>
+          <h3>Luxury Nail Care</h3>
+          <p class="service-desc">Manicures, pedicures, gel polish, and custom nail art in a relaxing setting.</p>
+          <div class="service-foot">
+            <div class="service-price">$55<small>From · 45 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag">Men</span>
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=450&fit=crop" alt="Beard">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+            <div class="service-rating">★★★★★ <span>4.8</span></div>
+          </div>
+          <h3>Gentlemen's Grooming</h3>
+          <p class="service-desc">Expert beard trimming, hot towel shaves, and premium beard treatments.</p>
+          <div class="service-foot">
+            <div class="service-price">$50<small>From · 45 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-img">
+          <span class="service-tag">Therapy</span>
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&h=450&fit=crop" alt="Scalp">
+        </div>
+        <div class="service-body">
+          <div class="service-icon-row">
+            <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+            <div class="service-rating">★★★★★ <span>4.9</span></div>
+          </div>
+          <h3>Scalp Therapy</h3>
+          <p class="service-desc">Deep scalp analysis, detox, and revitalizing massages for healthy hair growth.</p>
+          <div class="service-foot">
+            <div class="service-price">$95<small>From · 60 min</small></div>
+            <a href="#booking" class="service-link"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-badge-float">
+          <div class="ab-icon"><i class="fas fa-crown"></i></div>
+          <div class="ab-text">
+            <strong>16+ Years</strong>
+            <span>Of Excellence</span>
+          </div>
+        </div>
+        <div class="about-main-img">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&h=1100&fit=crop" alt="Salon interior">
+        </div>
+        <div class="about-small-img">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=500&fit=crop" alt="Stylist at work">
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="eyebrow"><i class="fas fa-circle"></i> Our Story</div>
+        <h2>More than a salon — a <em>creative</em> sanctuary.</h2>
+        <p>Founded in 2008, Lumière was born from a simple belief: beauty is a form of self-expression, and every client deserves a stylist who truly listens. Our studio blends Parisian elegance with modern craft.</p>
+        <p>We invest in continuous education, premium products, and a culture of creativity — so you leave looking and feeling extraordinary.</p>
+
+        <ul class="about-features">
+          <li><i class="fas fa-check"></i> Internationally trained master stylists</li>
+          <li><i class="fas fa-check"></i> Premium, cruelty-free luxury products</li>
+          <li><i class="fas fa-check"></i> Personalized consultations every visit</li>
+          <li><i class="fas fa-check"></i> Satisfaction guaranteed on every service</li>
+        </ul>
+
+        <a href="#booking" class="btn btn-primary">Meet Our Team <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><i class="fas fa-circle"></i> Our Portfolio</div>
+      <h2>A glimpse of our <em>recent</em> work.</h2>
+      <p>Real transformations from real clients. Browse our latest looks and get inspired for your next visit.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQv95YRqHT1hMSnUwssY9r20TWirihvImzbuG6SME4CWZtUUsHmaQU2Rfn&s=10" alt="Balayage">
+        <div class="gallery-caption">
+          <span>Balayage</span>
+          <h4>Golden Hour Glow</h4>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&h=500&fit=crop" alt="Modern bob">
+        <div class="gallery-caption">
+          <span>Precision Cut</span>
+          <h4>Modern Bob</h4>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?w=600&h=500&fit=crop" alt="Copper">
+        <div class="gallery-caption">
+          <span>Color</span>
+          <h4>Copper Dream</h4>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=900&h=500&fit=crop" alt="Bridal">
+        <div class="gallery-caption">
+          <span>Bridal</span>
+          <h4>Eternal Elegance</h4>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-wbabeJzomC8Y3a7x9apxFI72ili7esbA8YeiiCw2v4ak2FMlna2AoPsg&s=10" alt="Hollywood waves">
+        <div class="gallery-caption">
+          <span>Styling</span>
+          <h4>Hollywood Waves</h4>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="team-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><i class="fas fa-circle"></i> Meet the Artists</div>
+      <h2>Our <em>master</em> stylists.</h2>
+      <p>A team of passionate artists with years of training and a love for what they do. Your perfect stylist is waiting.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=800&fit=crop" alt="Sophie">
+          <div class="team-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <h4>Sophie Laurent</h4>
+        <div class="team-role">Creative Director</div>
+        <div class="team-exp">15+ years · Color Specialist</div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1619899763636-5f4c8c4c8c4c?w=600&h=800&fit=crop&q=80" alt="Marcus" onerror="this.src='https://i.pravatar.cc/600?img=12'">
+          <div class="team-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <h4>Marcus Chen</h4>
+        <div class="team-role">Master Stylist</div>
+        <div class="team-exp">12+ years · Precision Cuts</div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=800&fit=crop" alt="Isabella">
+          <div class="team-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <h4>Isabella Rossi</h4>
+        <div class="team-role">Bridal Expert</div>
+        <div class="team-exp">10+ years · Updos & Events</div>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&h=800&fit=crop" alt="James">
+          <div class="team-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <h4>James Okafor</h4>
+        <div class="team-role">Texture Specialist</div>
+        <div class="team-exp">8+ years · Natural Hair</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><i class="fas fa-circle"></i> Membership Plans</div>
+      <h2>Beauty that <em>fits</em> your lifestyle.</h2>
+      <p>Choose the perfect membership for your routine. Every plan includes booking priority and exclusive perks.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-name">Essentials</div>
+        <div class="price-amount"><span class="currency">$</span>89<small>/month</small></div>
+        <p class="price-desc">Perfect for maintaining your signature look every month.</p>
+        <ul class="price-list">
+          <li><i class="fas fa-check"></i> 1 haircut & style per month</li>
+          <li><i class="fas fa-check"></i> 10% off all color services</li>
+          <li><i class="fas fa-check"></i> Priority booking</li>
+          <li><i class="fas fa-check"></i> Complimentary beverages</li>
+          <li><i class="fas fa-check"></i> Member-only events</li>
+        </ul>
+        <a href="#booking" class="btn btn-ghost">Choose Plan</a>
+      </div>
+
+      <div class="price-card featured reveal">
+        <span class="price-tag">Most Popular</span>
+        <div class="price-name">Signature</div>
+        <div class="price-amount"><span class="currency">$</span>179<small>/month</small></div>
+        <p class="price-desc">Our most-loved plan for clients who love to experiment.</p>
+        <ul class="price-list">
+          <li><i class="fas fa-check"></i> 2 haircuts & styles per month</li>
+          <li><i class="fas fa-check"></i> 1 full color service quarterly</li>
+          <li><i class="fas fa-check"></i> 20% off all treatments</li>
+          <li><i class="fas fa-check"></i> Monthly scalp therapy session</li>
+          <li><i class="fas fa-check"></i> Dedicated stylist match</li>
+          <li><i class="fas fa-check"></i> Guest passes (2/month)</li>
+        </ul>
+        <a href="#booking" class="btn btn-gold">Choose Plan</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-name">Lumière VIP</div>
+        <div class="price-amount"><span class="currency">$</span>329<small>/month</small></div>
+        <p class="price-desc">The ultimate luxury experience with unlimited access.</p>
+        <ul class="price-list">
+          <li><i class="fas fa-check"></i> Unlimited cuts & styling</li>
+          <li><i class="fas fa-check"></i> Monthly color & treatments</li>
+          <li><i class="fas fa-check"></i> Full spa & nail access</li>
+          <li><i class="fas fa-check"></i> Private VIP suite</li>
+          <li><i class="fas fa-check"></i> Home visits available</li>
+          <li><i class="fas fa-check"></i> 24/7 stylist hotline</li>
+        </ul>
+        <a href="#booking" class="btn btn-ghost">Choose Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><i class="fas fa-circle"></i> Client Love</div>
+      <h2>What our clients are saying.</h2>
+      <p>Real stories from real clients who've made Lumière their beauty home.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Sophie transformed my hair for my wedding day. Every detail was perfect — from the trial to the final touch-up. I felt like a movie star!</p>
+        <div class="testi-author">
+          <img src="https://i.pravatar.cc/100?img=23" alt="">
+          <div>
+            <div class="testi-author-name">Emma Rodriguez</div>
+            <div class="testi-author-role">Bridal Client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I've been to dozens of salons, but Lumière is on another level. The balayage Marcus gave me is absolutely flawless. Worth every penny!</p>
+        <div class="testi-author">
+          <img src="https://i.pravatar.cc/100?img=34" alt="">
+          <div>
+            <div class="testi-author-name">Aisha Thompson</div>
+            <div class="testi-author-role">Regular · 3 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">The Signature membership is the best investment I've made. My hair has never looked better, and the spa treatments are pure heaven.</p>
+        <div class="testi-author">
+          <img src="https://i.pravatar.cc/100?img=12" alt="">
+          <div>
+            <div class="testi-author-name">David Park</div>
+            <div class="testi-author-role">VIP Member</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="booking-section">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-visual reveal">
+        <div class="booking-badge"><i class="fas fa-sparkles"></i> Quick Booking</div>
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&h=1100&fit=crop" alt="Booking">
+        <div class="booking-visual-text">
+          <h3>Ready for your transformation?</h3>
+          <p>Book your appointment online in under 60 seconds. We'll confirm your slot within minutes and send you a personalized prep guide.</p>
+        </div>
+      </div>
+
+      <div class="booking-form-wrap reveal">
+        <h3>Book your <em>appointment</em></h3>
+        <p>Fill in the form below and we'll confirm your booking within minutes.</p>
+
+        <form onsubmit="event.preventDefault(); alert('Booking request received! We will contact you shortly.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="jane@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 123-4567" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Service</label>
+              <select required>
+                <option>Haircut & Styling</option>
+                <option>Hair Coloring</option>
+                <option>Hair Treatments</option>
+                <option>Bridal & Event</option>
+                <option>Facial & Spa</option>
+                <option>Luxury Nail Care</option>
+                <option>Gentlemen's Grooming</option>
+                <option>Scalp Therapy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Stylist</label>
+              <select>
+                <option>Any Available</option>
+                <option>Sophie Laurent</option>
+                <option>Marcus Chen</option>
+                <option>Isabella Rossi</option>
+                <option>James Okafor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date" required>
+            </div>
+            <div class="form-group">
+              <label>Preferred Time</label>
+              <select required>
+                <option>9:00 AM</option>
+                <option>11:00 AM</option>
+                <option>2:00 PM</option>
+                <option>4:00 PM</option>
+                <option>7:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea placeholder="Tell us about your vision..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Booking <i class="fas fa-check"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow"><i class="fas fa-circle"></i> Visit Us</div>
+      <h2>Come say <em>hello</em>.</h2>
+      <p>Our studio is located in the heart of the city. Drop by, call, or send a message — we'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+        <h4>Our Studio</h4>
+        <p>123 Elegance Avenue<br>SoHo District, New York<br>NY 10012</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <h4>Opening Hours</h4>
+        <p>Mon – Fri: 9am – 9pm<br>Saturday: 9am – 8pm<br>Sunday: 10am – 6pm</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+        <h4>Get In Touch</h4>
+        <p>Call: <a href="tel:+15551234567">(555) 123-4567</a><br>Email: <a href="mailto:hello@lumiere.com">hello@lumiere.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon"><i class="fas fa-spa"></i></div>
+          <span>LUMIÈRE</span>
+        </a>
+        <p>A luxury hair & beauty sanctuary where world-class stylists craft bespoke looks using only the finest products.</p>
+        <div class="social-row">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Haircut & Styling</a></li>
+          <li><a href="#services">Hair Coloring</a></li>
+          <li><a href="#services">Bridal & Event</a></li>
+          <li><a href="#services">Spa & Facials</a></li>
+          <li><a href="#services">Nail Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Newsletter</h5>
+        <p style="font-size: 0.9rem; margin-bottom: 16px;">Get beauty tips & exclusive offers monthly.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lumière. All rights reserved.</p>
+      <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => menu.classList.toggle('active'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('active')));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const counters = document.querySelectorAll('.counter');
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = +el.dataset.target;
+        let count = 0;
+        const step = Math.max(1, target / 60);
+        const tick = () => {
+          count += step;
+          if (count < target) {
+            el.textContent = Math.floor(count);
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = target;
+          }
+        };
+        tick();
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObs.observe(c));
+</script>
+</body>
+</html>
