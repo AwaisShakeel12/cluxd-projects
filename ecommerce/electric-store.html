@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilal Electric Store — Power Up Your World</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+/* ============ ROOT / BASE ============ */
+:root{
+  --ink:#07162b; --ink-2:#3d5470; --ink-3:#7e93ab;
+  --sky:#0ea5e9; --sky-2:#38bdf8; --sky-3:#7dd3fc; --deep:#0369a1; --deep-2:#075985;
+  --mist:#eef7fe; --mist-2:#e3f2fd; --line:rgba(3,105,161,.14);
+  --amber:#ffb020; --white:#fff;
+  --grad:linear-gradient(120deg,#0ea5e9 0%,#38bdf8 55%,#7dd3fc 100%);
+  --grad-navy:linear-gradient(135deg,#06121f 0%,#082c4a 55%,#0e6aa8 100%);
+  --r:20px;
+  --sh:0 24px 60px -24px rgba(3,105,161,.28);
+  --ease:cubic-bezier(.22,.61,.21,1);
+}
+*{outline:none}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{font-family:'Manrope',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{text-decoration:none}
+::selection{background:var(--sky-2);color:#fff}
+h1,h2,h3,.display-font{font-family:'Unbounded',sans-serif}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#eaf4fb}
+::-webkit-scrollbar-thumb{background:linear-gradient(#38bdf8,#0369a1);border-radius:10px}
+
+/* noise film */
+.noise{position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:.045;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* preloader */
+#loader{position:fixed;inset:0;z-index:4000;background:var(--grad-navy);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;transition:opacity .6s,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .bolt{font-size:3rem;color:#7dd3fc;animation:zap .9s ease-in-out infinite}
+@keyframes zap{0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px #38bdf8)}50%{transform:scale(1.25);filter:drop-shadow(0 0 24px #7dd3fc)}}
+#loader .ltxt{font-family:'Unbounded';color:#fff;letter-spacing:.35em;font-size:.8rem}
+
+/* scroll progress */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:1300;box-shadow:0 0 12px #38bdf8}
+
+/* ============ BUTTONS / CHIPS ============ */
+.btn-volt{background:var(--grad);color:#fff;border:0;border-radius:999px;padding:.85rem 1.9rem;font-weight:800;letter-spacing:.02em;box-shadow:0 14px 30px -10px rgba(14,165,233,.55);transition:.35s var(--ease);display:inline-flex;align-items:center;gap:.55rem}
+.btn-volt:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(14,165,233,.65);color:#fff}
+.btn-ghosty{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:.85rem 1.9rem;font-weight:700;backdrop-filter:blur(6px);transition:.35s var(--ease);display:inline-flex;align-items:center;gap:.55rem}
+.btn-ghosty:hover{background:#fff;color:var(--deep);transform:translateY(-3px)}
+.btn-line{border:2px solid var(--line);color:var(--ink);border-radius:999px;padding:.8rem 1.8rem;font-weight:800;transition:.35s var(--ease);display:inline-flex;gap:.5rem;align-items:center;background:#fff}
+.btn-line:hover{border-color:var(--sky);color:var(--deep);transform:translateY(-3px);box-shadow:var(--sh)}
+.chip{display:inline-flex;align-items:center;gap:.45rem;border-radius:999px;padding:.4rem 1rem;font-size:.78rem;font-weight:700}
+
+/* section headings */
+.section{padding:clamp(66px,9vw,118px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;color:var(--deep);font-weight:800;letter-spacing:.32em;text-transform:uppercase;font-size:.72rem}
+.eyebrow::before{content:"";width:36px;height:2px;background:var(--grad);border-radius:2px}
+.sec-title{font-weight:700;font-size:clamp(1.7rem,4vw,2.9rem);line-height:1.12;margin:.7rem 0 .4rem}
+.sec-sub{color:var(--ink-2);max-width:560px;font-size:1.02rem}
+.grad-text{background:linear-gradient(92deg,#0ea5e9,#7dd3fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* reveal system */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.rv-l{transform:translateX(-40px)}.reveal.rv-r{transform:translateX(40px)}.reveal.rv-zoom{transform:scale(.92)}
+.reveal.in{opacity:1;transform:none}
+.lm{overflow:hidden;display:block}
+.lm>span{display:block;transform:translateY(115%);transition:transform 1s var(--ease)}
+.in .lm>span,.lm.in>span{transform:translateY(0)}
+
+/* ============ TOPBAR ============ */
+.topbar{background:#061120;color:#bcd7ee;font-size:.8rem;padding:.45rem 0}
+.topbar a{color:#bcd7ee;transition:.25s}.topbar a:hover{color:#7dd3fc}
+.topbar .sep{opacity:.3;margin:0 .7rem}
+
+
+/* ============ WHATSAPP ORDER BUTTON (was missing!) ============ */
+.wa-btn{position:relative;width:46px;height:46px;flex:0 0 46px;border:0;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-size:1.3rem;display:grid;place-items:center;transition:.35s var(--ease);box-shadow:0 10px 22px -8px rgba(37,211,102,.55)}
+.wa-btn::before{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.45);animation:waPulse 2.6s ease-out infinite}
+@keyframes waPulse{70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-btn:hover{transform:translateY(-3px) scale(1.08) rotate(-8deg);color:#fff;box-shadow:0 16px 32px -10px rgba(37,211,102,.7)}
+.wa-btn:active{transform:scale(.9)}
+
+/* ============ MOBILE / RESPONSIVE FIXES ============ */
+.hero > .container > .row{padding-top:clamp(120px,16vh,155px)!important;padding-bottom:100px!important}
+@media(max-width:991px){
+  .navbar-row{padding:.65rem 0}
+  .brand-logo{width:40px;height:40px;font-size:1.15rem;border-radius:12px}
+  .brand-txt{font-size:.95rem}
+}
+@media(max-width:575px){
+  .filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start!important;padding-bottom:6px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .fbtn{flex:0 0 auto}
+  .hero .btn-volt,.hero .btn-ghosty{width:100%;justify-content:center}
+  .hero-stats{gap:1.5rem}
+  .wa-btn{width:42px;height:42px;flex-basis:42px;font-size:1.15rem}
+  .count-box{min-width:62px;padding:.55rem .3rem}
+  .count-box b{font-size:1.25rem}
+  .p-name{font-size:.92rem}
+  .svc-panel{padding:1.2rem}
+  .tst-card{padding:1.5rem}
+}
+
+
+/* ============ NAVBAR ============ */
+html,body{overflow-x:hidden;max-width:100%}
+.navwrap{position:fixed;top:0;left:0;right:0;z-index:1100}
+.navbar-row{position:relative;padding:.95rem 0;transition:.4s var(--ease);background:transparent}
+.navbar-row::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,17,32,.6),rgba(4,17,32,0));pointer-events:none;transition:opacity .4s}
+.navwrap.scrolled .navbar-row{padding:.6rem 0;background:rgba(255,255,255,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 40px -18px rgba(3,105,161,.3);border-bottom:1px solid rgba(3,105,161,.08)}
+.navwrap.scrolled .navbar-row::before{opacity:0}
+
+.brand-logo{width:44px;height:44px;border-radius:13px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:1.35rem;box-shadow:0 8px 20px -6px rgba(14,165,233,.6);flex:0 0 auto}
+.brand-txt{font-family:'Unbounded';font-weight:700;font-size:1.05rem;line-height:1;color:#fff;transition:.3s}
+.brand-txt small{display:block;font-family:'Manrope';font-weight:700;font-size:.58rem;letter-spacing:.42em;opacity:.75;margin-top:3px}
+.navwrap.scrolled .brand-txt{color:var(--ink)}
+
+.nav-list{gap:.2rem}
+.nav-link{color:#fff;font-weight:700;font-size:.9rem;padding:.55rem 1.05rem;border-radius:999px;white-space:nowrap;transition:.3s var(--ease)}
+.nav-link::after{display:none}
+.nav-link:hover{color:#7dd3fc;background:rgba(255,255,255,.14)}
+.nav-link.active{color:#fff!important;background:var(--grad);box-shadow:0 8px 18px -8px rgba(14,165,233,.65)}
+.navwrap.scrolled .nav-link{color:var(--ink-2)}
+.navwrap.scrolled .nav-link:hover{color:var(--deep);background:var(--mist)}
+.navwrap.scrolled .nav-link.active{color:#fff!important;background:var(--grad)}
+
+.search-pill{border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:.82rem;padding:.55rem 1.1rem;display:flex;gap:.55rem;align-items:center;cursor:pointer;transition:.3s}
+.search-pill:hover{background:rgba(255,255,255,.2)}
+.navwrap.scrolled .search-pill{background:#fff;border-color:var(--line);color:var(--ink)}
+
+.icon-btn{position:relative;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:1.15rem;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;transition:.3s var(--ease)}
+.icon-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.navwrap.scrolled .icon-btn{background:var(--mist);border-color:var(--line);color:var(--ink)}
+
+.cart-badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:999px;background:var(--amber);color:#061120;font-size:.68rem;font-weight:800;display:grid;place-items:center;padding:0 4px}
+.cart-badge.bump{animation:bump .5s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.55)}100%{transform:scale(1)}}
+.fly-dot{position:fixed;z-index:3000;width:16px;height:16px;border-radius:50%;background:var(--grad);box-shadow:0 0 14px #38bdf8;pointer-events:none}
+
+.nav-cta{background:var(--grad);color:#fff;border-radius:999px;padding:.6rem 1.2rem;font-weight:800;font-size:.82rem;display:inline-flex;align-items:center;gap:.45rem;box-shadow:0 8px 20px -8px rgba(14,165,233,.6);transition:.3s var(--ease);white-space:nowrap}
+.nav-cta:hover{color:#fff;transform:translateY(-2px);filter:brightness(1.08)}
+
+/* Offcanvas fix - white text on dark bg */
+.oc{background:var(--grad-navy)!important;color:#fff!important}
+.oc .btn-close{filter:invert(1)}
+.oc .offcanvas-header{border-bottom:1px solid rgba(255,255,255,.1)}
+.oc .nav-link{color:#fff!important;font-family:'Unbounded';font-size:1.05rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08);background:none!important;box-shadow:none!important}
+.oc .nav-link:hover,.oc .nav-link.active{color:#7dd3fc!important}
+.oc b{color:#fff}
+
+/* WhatsApp button */
+.wa-btn{position:relative;width:46px;height:46px;flex:0 0 46px;border:0;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-size:1.3rem;display:grid;place-items:center;transition:.35s var(--ease);box-shadow:0 10px 22px -8px rgba(37,211,102,.55)}
+.wa-btn::before{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.45);animation:waPulse 2.6s ease-out infinite}
+@keyframes waPulse{70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-btn:hover{transform:translateY(-3px) scale(1.08) rotate(-8deg);color:#fff;box-shadow:0 16px 32px -10px rgba(37,211,102,.7)}
+.wa-btn:active{transform:scale(.9)}
+
+/* Mobile responsive */
+.hero > .container > .row{padding-top:clamp(100px,14vh,130px)!important;padding-bottom:80px!important}
+@media(max-width:991px){
+  .navbar-row{padding:.7rem 0}
+  .brand-logo{width:40px;height:40px;font-size:1.15rem;border-radius:12px}
+  .brand-txt{font-size:.95rem}
+}
+@media(max-width:575px){
+  .filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start!important;padding-bottom:6px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .fbtn{flex:0 0 auto}
+  .hero .btn-volt,.hero .btn-ghosty{width:100%;justify-content:center}
+  .hero-stats{gap:1.5rem}
+  .wa-btn{width:42px;height:42px;flex-basis:42px;font-size:1.15rem}
+}
+/* ============ HERO ============ */
+
+
+/* ============ HERO (REDONE) ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #07162b;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  position: relative;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6.5vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 0 0 1.2rem;
+  color: #07162b;
+}
+
+.hero-title .tline {
+  display: block;
+  min-height: 1.1em;
+}
+
+.hero-sub {
+  color: #3d5470;
+  max-width: 650px;
+  font-size: clamp(.95rem, 1.3vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+.hero-ctas .btn-volt {
+  font-size: 1.05rem;
+  padding: 1rem 2.2rem;
+  box-shadow: 0 8px 20px -5px rgba(14,165,233,0.35);
+}
+
+.hero-ctas .btn-ghosty {
+  font-size: 1.05rem;
+  padding: 1rem 1.8rem;
+  border: 2px solid #0ea5e9;
+  background: white;
+  color: #0ea5e9;
+  transition: all .3s;
+}
+
+.hero-ctas .btn-ghosty:hover {
+  background: #0ea5e9;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px -5px rgba(14,165,233,0.4);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.stat-box {
+  text-align: center;
+  background: white;
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(3,105,161,0.08);
+  transition: transform .3s;
+}
+
+.stat-box:hover {
+  transform: translateY(-8px);
+}
+
+.stat-box .num {
+  font-family: 'Unbounded';
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #0ea5e9;
+  line-height: 1;
+}
+
+.stat-box .lbl {
+  font-size: .9rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #3d5470;
+  margin-top: .4rem;
+}
+
+.hero-trust {
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+  max-width: 650px;
+  margin: 1.5rem auto 0;
+}
+
+.hero-trust .avatar-stack img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -10px;
+}
+
+.hero-badges .chip-hero {
+  background: white;
+  border: 1px solid rgba(255,255,255,.7);
+  backdrop-filter: blur(8px);
+  padding: .6rem 1.2rem;
+  font-size: .9rem;
+  color: #3d5470;
+  box-shadow: 0 4px 12px rgba(3,105,161,0.08);
+  transition: all .3s;
+}
+
+.hero-badges .chip-hero:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(3,105,161,0.15);
+}
+
+/* Remove all old hero elements */
+.hero-bg,
+.hero-overlay,
+.hero-grid,
+.float-card,
+.float-chip,
+.scroll-hint {
+  display: none !important;
+}
+
+/* ticker */
+.ticker {
+  background: #061120;
+  border-top: 1px solid rgba(125,211,252,.15);
+  border-bottom: 1px solid rgba(125,211,252,.15);
+  overflow: hidden;
+  padding: .8rem 0;
+}
+
+/* ticker */
+.ticker{background:#061120;border-top:1px solid rgba(125,211,252,.15);border-bottom:1px solid rgba(125,211,252,.15);overflow:hidden;padding:.8rem 0}
+.ticker-track{display:flex;gap:3rem;width:max-content;animation:marq 26s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{color:#cfe6f7;font-weight:700;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:3rem;white-space:nowrap}
+.ticker-track i{color:#38bdf8}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ============ CATEGORY BENTO ============ */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:225px;gap:18px}
+.b-tile{position:relative;border-radius:var(--r);overflow:hidden;isolation:isolate}
+.b-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.b-tile:hover img{transform:scale(1.09)}
+.b-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,17,32,0) 30%,rgba(4,17,32,.88) 100%);transition:.4s}
+.b-tile:hover::after{background:linear-gradient(180deg,rgba(6,60,110,.15) 0%,rgba(4,20,40,.92) 100%)}
+.b-in{position:absolute;left:0;right:0;bottom:0;padding:1.3rem;z-index:2;color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:.8rem}
+.b-in h3{font-size:1.05rem;font-weight:600;margin:0}
+.b-in .cnt{font-size:.75rem;color:#9fd4f5;font-weight:700;letter-spacing:.1em}
+.b-arrow{width:42px;height:42px;flex:0 0 42px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;transform:translateY(14px) rotate(-45deg);opacity:0;transition:.4s var(--ease)}
+.b-tile:hover .b-arrow{transform:translateY(0) rotate(0);opacity:1}
+.b1{grid-column:span 2;grid-row:span 2}
+.b2{grid-column:span 1}.b3{grid-column:span 1}
+.b4{grid-column:span 1}.b5{grid-column:span 1}
+.b6{grid-column:span 2}
+@media(max-width:991px){.bento{grid-template-columns:repeat(2,1fr)}.b1{grid-column:span 2;grid-row:span 1}.b6{grid-column:span 2}}
+@media(max-width:575px){.bento{grid-template-columns:1fr;grid-auto-rows:200px}.b1,.b2,.b3,.b4,.b5,.b6{grid-column:span 1}}
+
+/* ============ PRODUCTS ============ */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.fbtn{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:.5rem 1.2rem;font-weight:700;font-size:.83rem;color:var(--ink-2);transition:.3s var(--ease)}
+.fbtn:hover{border-color:var(--sky-2);color:var(--deep)}
+.fbtn.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 22px -8px rgba(14,165,233,.55)}
+.p-card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.45s var(--ease);height:100%;display:flex;flex-direction:column}
+.p-card:hover{transform:translateY(-9px);box-shadow:var(--sh);border-color:transparent}
+.p-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--mist)}
+.p-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.p-card:hover .p-img img{transform:scale(1.09)}
+.p-badge{position:absolute;top:12px;left:12px;z-index:2;background:var(--grad);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:.35rem .8rem;border-radius:999px;text-transform:uppercase}
+.p-badge.alt{background:#061120}
+.p-heart{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);border:0;display:grid;place-items:center;color:var(--ink-2);font-size:1rem;transition:.3s;box-shadow:0 6px 16px -6px rgba(2,30,55,.3)}
+.p-heart:hover{color:#e0245e;transform:scale(1.12)}
+.p-heart.on{color:#e0245e;animation:pop .4s var(--ease)}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.p-body{padding:1.15rem 1.25rem 1.35rem;display:flex;flex-direction:column;flex:1}
+.p-brand{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--sky)}
+.p-name{font-weight:800;font-size:.98rem;margin:.35rem 0 .4rem;line-height:1.35}
+.p-rate{font-size:.78rem;color:var(--ink-3)}
+.p-rate i{color:var(--amber)}
+.p-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:.9rem}
+.p-price{font-family:'Unbounded';font-weight:600;font-size:1.02rem;color:var(--ink)}
+.p-old{font-size:.78rem;color:var(--ink-3);text-decoration:line-through;font-weight:600}
+.add-btn{width:44px;height:44px;border-radius:14px;border:0;background:var(--grad);color:#fff;font-size:1.05rem;display:grid;place-items:center;transition:.35s var(--ease);box-shadow:0 10px 22px -8px rgba(14,165,233,.6)}
+.add-btn:hover{transform:rotate(-8deg) scale(1.1)}
+.add-btn:active{transform:scale(.9)}
+.pop-in{animation:popIn .5s var(--ease) both}
+@keyframes popIn{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
+
+/* ============ DEAL ============ */
+.deal{position:relative;border-radius:30px;overflow:hidden;background:var(--grad-navy);color:#fff}
+.deal .kb{position:absolute;inset:0;opacity:.35}
+.deal .kb img{width:100%;height:100%;object-fit:cover;animation:kenburns 18s ease-in-out infinite alternate}
+.deal-in{position:relative;z-index:2}
+.count-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);border-radius:16px;min-width:76px;padding:.7rem .4rem;text-align:center}
+.count-box b{font-family:'Unbounded';font-size:1.5rem;display:block;line-height:1}
+.count-box span{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:#9fd4f5}
+.count-box.tick b{animation:flipTick .4s var(--ease)}
+@keyframes flipTick{0%{transform:translateY(-40%);opacity:0}100%{transform:none;opacity:1}}
+.sold-bar{height:9px;border-radius:99px;background:rgba(255,255,255,.15);overflow:hidden}
+.sold-bar>div{height:100%;width:0;background:repeating-linear-gradient(45deg,#ffb020 0 10px,#ffc95c 10px 20px);border-radius:99px;transition:width 1.6s var(--ease)}
+
+/* ============ SERVICES (sticky + stacked) ============ */
+.svc-sticky{position:sticky;top:110px}
+.svc-panel{position:sticky;background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.6rem;display:flex;gap:1.4rem;align-items:center;box-shadow:0 -18px 44px -28px rgba(3,60,110,.35);transition:.35s;margin-bottom:1.4rem}
+.svc-panel:hover{border-color:transparent;box-shadow:var(--sh)}
+.svc-num{font-family:'Unbounded';font-weight:800;font-size:2.4rem;color:transparent;-webkit-text-stroke:1.5px rgba(14,165,233,.45);line-height:1;flex:0 0 auto}
+.svc-panel img{width:118px;height:118px;object-fit:cover;border-radius:18px;flex:0 0 118px}
+.svc-panel h4{font-size:1.08rem;font-weight:700;margin:0 0 .35rem}
+.svc-panel p{font-size:.86rem;color:var(--ink-2);margin:0 0 .6rem}
+.tagchip{font-size:.68rem;font-weight:800;background:var(--mist);color:var(--deep);border-radius:999px;padding:.3rem .75rem;display:inline-block;margin:0 .3rem .3rem 0}
+.svc-book{margin-left:auto;flex:0 0 auto;width:52px;height:52px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--deep);font-size:1.15rem;transition:.35s var(--ease)}
+.svc-book:hover{background:var(--grad);color:#fff;border-color:transparent;transform:rotate(-45deg)}
+@media(max-width:991px){.svc-sticky{position:static}}
+@media(max-width:575px){.svc-panel{flex-wrap:wrap}.svc-book{margin-left:0}}
+
+/* emergency band */
+.emerg{background:var(--grad-navy);border-radius:26px;color:#fff;position:relative;overflow:hidden}
+.emerg .big-bolt{position:absolute;right:-30px;top:-46px;font-size:13rem;color:rgba(125,211,252,.08);transform:rotate(12deg)}
+.pulse-dot{width:12px;height:12px;border-radius:50%;background:#4ade80;position:relative;flex:0 0 auto}
+.pulse-dot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #4ade80;animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.6);opacity:0}}
+
+/* ============ WHY BENTO ============ */
+.w-tile{border-radius:24px;padding:1.9rem;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;transition:.4s var(--ease);position:relative;overflow:hidden}
+.w-tile:hover{transform:translateY(-6px);box-shadow:var(--sh)}
+.w-white{background:#fff;border:1px solid var(--line)}
+.w-grad{background:var(--grad-navy);color:#fff}
+.w-sky{background:linear-gradient(140deg,#e0f2fe,#f2faff)}
+.w-img{padding:0;min-height:240px}
+.w-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kenburns 16s ease-in-out infinite alternate}
+.w-img .cap{position:absolute;left:1.4rem;bottom:1.2rem;z-index:2;color:#fff;font-weight:800}
+.w-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(4,17,32,.8))}
+.w-ico{width:54px;height:54px;border-radius:16px;background:var(--mist);color:var(--deep);display:grid;place-items:center;font-size:1.4rem}
+.w-grad .w-ico{background:rgba(255,255,255,.12);color:#7dd3fc}
+.big-count{font-family:'Unbounded';font-weight:800;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1}
+.avatar-stack img{width:38px;height:38px;border-radius:50%;border:2.5px solid #fff;margin-left:-10px;object-fit:cover}
+.avatar-stack img:first-child{margin-left:0}
+
+/* ============ BRANDS ============ */
+.brands{overflow:hidden}
+.brand-row{display:flex;gap:4rem;width:max-content;animation:marq 30s linear infinite;align-items:center;padding:1rem 0}
+.brand-row.rev{animation-direction:reverse;animation-duration:38s}
+.brand-row span{font-family:'Unbounded';font-weight:600;font-size:clamp(1.3rem,2.6vw,2rem);color:#b9d6ea;white-space:nowrap;display:flex;align-items:center;gap:4rem;transition:.3s}
+.brand-row span:hover{color:var(--deep)}
+.brand-row span i{color:#38bdf8;font-size:1rem}
+.brand-row span:nth-child(even){color:transparent;-webkit-text-stroke:1px #b9d6ea}
+.brand-row span:nth-child(even):hover{-webkit-text-stroke:1px var(--deep)}
+
+/* ============ TESTIMONIALS ============ */
+.tst-viewport{overflow:hidden;border-radius:26px}
+.tst-track{display:flex;transition:transform .75s var(--ease)}
+.tst-slide{min-width:100%;padding:.4rem}
+.tst-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:2.2rem;height:100%;position:relative}
+.tst-card .qm{position:absolute;top:1.2rem;right:1.6rem;font-family:'Unbounded';font-size:4.5rem;line-height:1;color:var(--mist-2)}
+.tst-txt{font-size:1.05rem;color:var(--ink-2);line-height:1.75;font-weight:500}
+.tst-ava{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid var(--mist-2)}
+.tst-nav button{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--deep);font-size:1.1rem;transition:.3s}
+.tst-nav button:hover{background:var(--grad);color:#fff;border-color:transparent;transform:translateY(-3px)}
+.tst-dot{width:9px;height:9px;border-radius:99px;background:#c8e2f4;border:0;transition:.35s;padding:0}
+.tst-dot.active{width:30px;background:var(--grad)}
+.tst-progress{height:3px;background:var(--mist-2);border-radius:99px;overflow:hidden;margin-top:1.2rem}
+.tst-progress>div{height:100%;width:0;background:var(--grad)}
+.rate-bar{height:8px;border-radius:99px;background:var(--mist-2);overflow:hidden}
+.rate-bar>div{height:100%;background:var(--grad);border-radius:99px}
+
+/* ============ NEWSLETTER ============ */
+.news-panel{background:var(--grad-navy);border-radius:30px;position:relative;overflow:hidden;color:#fff}
+.news-panel .n-bolt{position:absolute;font-size:11rem;color:rgba(125,211,252,.07)}
+.news-form{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.45rem;display:flex;gap:.5rem;backdrop-filter:blur(8px)}
+.news-form input{flex:1;background:transparent;border:0;color:#fff;padding:.5rem 1.2rem;min-width:0}
+.news-form input::placeholder{color:#9fc3dd}
+.news-form input:focus{outline:none}
+.news-form button{border:0;border-radius:999px;background:var(--grad);color:#fff;font-weight:800;padding:.7rem 1.6rem;white-space:nowrap;transition:.3s}
+.news-form button:hover{filter:brightness(1.1)}
+.contact-mini{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:1.1rem 1.3rem;display:flex;gap:1rem;align-items:center;transition:.3s;height:100%}
+.contact-mini:hover{background:rgba(255,255,255,.13);transform:translateY(-4px)}
+.contact-mini i{width:46px;height:46px;flex:0 0 46px;border-radius:13px;background:var(--grad);display:grid;place-items:center;font-size:1.2rem}
+
+/* ============ FOOTER ============ */
+footer{background:#061120;color:#a9c4da}
+footer a{color:#a9c4da;transition:.25s;font-size:.9rem}
+footer a:hover{color:#7dd3fc;padding-left:4px}
+.f-head{font-family:'Unbounded';font-size:.82rem;color:#fff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem}
+.pay-pill{border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.3rem .9rem;font-size:.72rem;font-weight:700;color:#cfe6f7}
+.soc{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;color:#cfe6f7;transition:.3s}
+.soc:hover{background:var(--grad);color:#fff;border-color:transparent;transform:translateY(-4px);padding-left:0}
+#toTop{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:16px;border:0;background:var(--grad);color:#fff;font-size:1.2rem;z-index:1080;opacity:0;visibility:hidden;transform:translateY(18px);transition:.4s var(--ease);box-shadow:0 14px 30px -10px rgba(14,165,233,.6)}
+#toTop.show{opacity:1;visibility:visible;transform:none}
+#toTop:hover{transform:translateY(-4px)}
+
+/* mobile call bar */
+.mobile-call{position:fixed;left:12px;right:12px;bottom:12px;z-index:1070;display:none;background:var(--grad-navy);border-radius:18px;padding:.6rem;box-shadow:0 18px 40px -12px rgba(2,20,40,.6);backdrop-filter:blur(10px)}
+.mobile-call a{flex:1;border-radius:13px;padding:.7rem;font-weight:800;font-size:.88rem;display:flex;align-items:center;justify-content:center;gap:.45rem;color:#fff}
+.mobile-call .mc-call{background:var(--grad)}
+.mobile-call .mc-wa{background:#22c55e}
+@media(max-width:767px){.mobile-call{display:flex;gap:.5rem}body{padding-bottom:78px}#toTop{bottom:84px}}
+
+/* toasts */
+#toasts{position:fixed;right:20px;bottom:24px;z-index:3500;display:flex;flex-direction:column;gap:.6rem}
+@media(max-width:767px){#toasts{bottom:92px;right:12px}}
+.toastx{background:#061120;color:#fff;border-radius:16px;padding:.85rem 1.2rem;display:flex;gap:.7rem;align-items:center;font-size:.88rem;font-weight:600;box-shadow:0 18px 44px -14px rgba(2,20,40,.6);transform:translateX(120%);transition:.5s var(--ease);border-left:4px solid var(--sky-2);max-width:320px}
+.toastx.show{transform:none}
+.toastx i{color:#7dd3fc;font-size:1.1rem}
+
+@media(max-width:991px){.float-card,.float-chip{display:none}}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important}
+  .lm>span{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<!-- PRELOADER -->
+<div id="loader">
+  <i class="bi bi-lightning-charge-fill bolt"></i>
+  <div class="ltxt">BILAL ELECTRIC</div>
+</div>
+
+<div id="progress"></div>
+
+<!-- ============ NAVBAR (fixed, no topbar) ============ -->
+<header class="navwrap" id="navwrap">
+  <div class="navbar-row">
+    <div class="container d-flex align-items-center gap-3">
+      <a class="d-flex align-items-center gap-2 flex-shrink-0" href="#home">
+        <span class="brand-logo"><i class="bi bi-lightning-charge-fill"></i></span>
+        <span class="brand-txt">Bilal<small>ELECTRIC STORE</small></span>
+      </a>
+      <nav class="nav-list d-none d-lg-flex align-items-center mx-auto">
+        <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#categories">Categories</a>
+        <a class="nav-link" href="#shop">Shop</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#reviews">Reviews</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="ms-auto d-flex align-items-center gap-2 flex-shrink-0">
+        <div class="search-pill d-none d-xl-flex"><i class="bi bi-search"></i><span>Search 1,200+ products…</span></div>
+        <a href="tel:03079098545" class="nav-cta d-none d-md-inline-flex"><i class="bi bi-telephone-fill"></i> 0307-9098545</a>
+        <button class="icon-btn" id="cartBtn" aria-label="cart"><i class="bi bi-bag"></i><span class="cart-badge" id="cartCount">0</span></button>
+        <button class="icon-btn d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#ocMenu" aria-label="menu"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="offcanvas offcanvas-end oc" id="ocMenu">
+  <div class="offcanvas-header">
+    <span class="d-flex align-items-center gap-2"><span class="brand-logo" style="width:38px;height:38px;font-size:1.1rem"><i class="bi bi-lightning-charge-fill"></i></span><b style="font-family:'Unbounded'">Bilal Electric</b></span>
+    <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a class="nav-link active" href="#home" data-bs-dismiss="offcanvas">Home</a>
+    <a class="nav-link" href="#categories" data-bs-dismiss="offcanvas">Categories</a>
+    <a class="nav-link" href="#shop" data-bs-dismiss="offcanvas">Shop</a>
+    <a class="nav-link" href="#deal" data-bs-dismiss="offcanvas">Deal of the Day</a>
+    <a class="nav-link" href="#services" data-bs-dismiss="offcanvas">Services</a>
+    <a class="nav-link" href="#reviews" data-bs-dismiss="offcanvas">Reviews</a>
+    <a class="nav-link" href="#contact" data-bs-dismiss="offcanvas">Contact</a>
+    <a href="tel:03079098545" class="btn-volt w-100 justify-content-center mt-4"><i class="bi bi-telephone-fill"></i> 0307-9098545</a>
+  </div>
+</div>
+
+<!-- ============ 1. HERO (REDONE) ============ -->
+<section class="hero" id="home" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <!-- Badges -->
+      <div class="col-12 mb-4">
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <span class="chip chip-hero bg-white border" style="box-shadow: 0 4px 12px rgba(3,105,161,0.08)">
+            <i class="bi bi-patch-check-fill text-primary"></i> Licensed Since 2009
+          </span>
+          <span class="chip chip-hero bg-white border" style="box-shadow: 0 4px 12px rgba(3,105,161,0.08)">
+            <i class="bi bi-lightning-charge-fill text-primary"></i> Same-Day Service
+          </span>
+          <span class="chip chip-hero bg-white border d-none d-sm-flex" style="box-shadow: 0 4px 12px rgba(3,105,161,0.08)">
+            <i class="bi bi-shield-check text-primary"></i> 100% Genuine
+          </span>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <div class="col-lg-8">
+        <h1 class="hero-title" style="color: #07162b; font-weight: 800; line-height: 1.1">
+          <span class="tline" data-scramble>POWER UP</span>
+          <span class="tline grad-text" data-scramble>YOUR WORLD.</span>
+          <span class="tline" style="font-size: clamp(1.8rem, 5vw, 3.8rem); color: #3d5470; font-weight: 500; margin-top: 0.5rem">
+            Wiring. Lighting. Solar. Done Right.
+          </span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="hero-sub lm" style="color: #3d5470; max-width: 650px; margin: 1.5rem auto">
+          <span>Lahore's most trusted electric store — 1,200+ genuine products from 40+ brands, plus certified electricians who install everything we sell.</span>
+        </p>
+
+        <!-- Stats -->
+        <div class="hero-stats d-flex justify-content-center gap-4 mt-5 flex-wrap" style="max-width: 700px; margin: 0 auto">
+          <div class="stat-box" style="background: white; padding: 1.2rem; border-radius: 16px; box-shadow: 0 4px 12px rgba(3,105,161,0.08)">
+            <div class="num" style="font-family: 'Unbounded'; font-weight: 700; font-size: 2.2rem; color: #0ea5e9; line-height: 1">
+              <span data-count="15">0</span>+
+            </div>
+            <div class="lbl" style="font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; color: #3d5470; margin-top: .4rem">Years Trusted</div>
+          </div>
+          <div class="stat-box" style="background: white; padding: 1.2rem; border-radius: 16px; box-shadow: 0 4px 12px rgba(3,105,161,0.08)">
+            <div class="num" style="font-family: 'Unbounded'; font-weight: 700; font-size: 2.2rem; color: #0ea5e9; line-height: 1">
+              <span data-count="40">0</span>+
+            </div>
+            <div class="lbl" style="font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; color: #3d5470; margin-top: .4rem">Top Brands</div>
+          </div>
+          <div class="stat-box" style="background: white; padding: 1.2rem; border-radius: 16px; box-shadow: 0 4px 12px rgba(3,105,161,0.08)">
+            <div class="num" style="font-family: 'Unbounded'; font-weight: 700; font-size: 2.2rem; color: #0ea5e9; line-height: 1">
+              <span data-count="25000">0</span>+
+            </div>
+            <div class="lbl" style="font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; color: #3d5470; margin-top: .4rem">Happy Clients</div>
+          </div>
+        </div>
+
+        <!-- Trust row -->
+        <div class="hero-trust d-flex justify-content-center align-items-center gap-3 mt-5 pt-4" style="border-top: 1px solid rgba(255,255,255,.15); max-width: 650px; margin: 1.5rem auto 0">
+          <div class="avatar-stack d-flex">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="rounded-circle border border-white" style="width: 42px; height: 42px; border: 2px solid white; margin-left: -10px">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" class="rounded-circle border border-white" style="width: 42px; height: 42px; border: 2px solid white; margin-left: -10px">
+            <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="" class="rounded-circle border border-white" style="width: 42px; height: 42px; border: 2px solid white; margin-left: -10px">
+          </div>
+          <div>
+            <div class="d-flex align-items-center gap-1" style="color: #ffb020">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <div style="font-size: .9rem; color: #3d5470">2,400+ verified reviews</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="hero-ctas d-flex justify-content-center flex-wrap gap-3 mt-5">
+          <a href="#shop" class="btn-volt" style="font-size: 1.05rem; padding: 1rem 2.2rem; box-shadow: 0 8px 20px -5px rgba(14,165,233,0.35)">
+            <i class="bi bi-bag-check-fill"></i> Shop Bestsellers
+            <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+          <a href="https://wa.me/923079098545" target="_blank" class="btn-ghosty" style="font-size: 1.05rem; padding: 1rem 1.8rem; border: 2px solid #0ea5e9; background: white">
+            <i class="bi bi-whatsapp text-primary"></i> Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ticker -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <span><i class="bi bi-lightning-charge-fill"></i> Free delivery over Rs. 5,000</span>
+    <span><i class="bi bi-lightning-charge-fill"></i> 100% genuine brands</span>
+    <span><i class="bi bi-lightning-charge-fill"></i> 7-day easy replacement</span>
+    <span><i class="bi bi-lightning-charge-fill"></i> Cash on delivery</span>
+    <span><i class="bi bi-lightning-charge-fill"></i> 24/7 emergency electrician</span>
+  </div>
+</div>
+
+<!-- ============ 2. CATEGORIES ============ -->
+<section class="section" id="categories">
+  <div class="container">
+    <div class="row align-items-end mb-5">
+      <div class="col-lg-7 reveal">
+        <span class="eyebrow">Shop by Category</span>
+        <h2 class="sec-title">Every circuit.<br>Every corner. <span class="grad-text">Covered.</span></h2>
+      </div>
+      <div class="col-lg-5 reveal" style="transition-delay:.15s">
+        <p class="sec-sub ms-lg-auto mb-0">From a single LED bulb to a full solar rig — browse six power-packed departments stocked daily.</p>
+      </div>
+    </div>
+    <div class="bento">
+      <a href="#shop" class="b-tile b1 reveal rv-zoom">
+        <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?auto=format&fit=crop&w=1000&q=80" alt="Lighting" onerror="this.onerror=null;this.src='https://picsum.photos/seed/lighting-bulbs/1000/1000'">
+        <div class="b-in"><div><div class="cnt">128 PRODUCTS</div><h3>Lighting & LEDs</h3></div><span class="b-arrow"><i class="bi bi-arrow-right"></i></span></div>
+      </a>
+      <a href="#shop" class="b-tile b2 reveal" style="transition-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" alt="Wiring" onerror="this.onerror=null;this.src='https://picsum.photos/seed/copper-wire/700/700'">
+        <div class="b-in"><div><div class="cnt">96 PRODUCTS</div><h3>Wiring & Cables</h3></div><span class="b-arrow"><i class="bi bi-arrow-right"></i></span></div>
+      </a>
+      <a href="#shop" class="b-tile b3 reveal" style="transition-delay:.18s">
+        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=700&q=80" alt="Switches" onerror="this.onerror=null;this.src='https://picsum.photos/seed/smart-switch/700/700'">
+        <div class="b-in"><div><div class="cnt">74 PRODUCTS</div><h3>Switches & Sockets</h3></div><span class="b-arrow"><i class="bi bi-arrow-right"></i></span></div>
+      </a>
+      <a href="#shop" class="b-tile b4 reveal" style="transition-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80" alt="Tools" onerror="this.onerror=null;this.src='https://picsum.photos/seed/power-drill/700/700'">
+        <div class="b-in"><div><div class="cnt">52 PRODUCTS</div><h3>Power Tools</h3></div><span class="b-arrow"><i class="bi bi-arrow-right"></i></span></div>
+      </a>
+      <a href="#shop" class="b-tile b5 reveal" style="transition-delay:.18s">
+        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=700&q=80" alt="Appliances" onerror="this.onerror=null;this.src='https://picsum.photos/seed/ceiling-fan/700/700'">
+        <div class="b-in"><div><div class="cnt">85 PRODUCTS</div><h3>Fans & Appliances</h3></div><span class="b-arrow"><i class="bi bi-arrow-right"></i></span></div>
+      </a>
+      <a href="#shop" class="b-tile b6 reveal" style="transition-delay:.24s">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80" alt="Solar" onerror="this.onerror=null;this.src='https://picsum.photos/seed/solar-panel/1200/700'">
+        <div class="b-in"><div><div class="cnt">31 PRODUCTS</div><h3>Solar & Inverters</h3></div><span class="b-arrow"><i class="bi bi-arrow-right"></i></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. FEATURED PRODUCTS ============ -->
+<!-- ============ 3. FEATURED PRODUCTS ============ -->
+<section class="section" id="shop" style="background:linear-gradient(180deg,#fff 0%,var(--mist) 45%,#fff 100%)">
+  <div class="container">
+    <div class="row align-items-end mb-4">
+      <div class="col-lg-6 reveal">
+        <span class="eyebrow">Bestselling Gear</span>
+        <h2 class="sec-title">This week's <span class="grad-text">hot sellers</span></h2>
+        <p class="sec-sub">Every item tested on our own bench before it ships. Tap the <i class="bi bi-whatsapp text-success"></i> button to order instantly on WhatsApp.</p>
+      </div>
+      <div class="col-lg-6 reveal" style="transition-delay:.15s">
+        <div class="filters justify-content-lg-end">
+          <button class="fbtn active" data-f="all">All</button>
+          <button class="fbtn" data-f="lighting">Lighting</button>
+          <button class="fbtn" data-f="wiring">Wiring</button>
+          <button class="fbtn" data-f="tools">Tools</button>
+          <button class="fbtn" data-f="appliances">Appliances</button>
+          <button class="fbtn" data-f="solar">Solar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4" id="pGrid">
+      <!-- 1 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="lighting">
+        <div class="p-card">
+          <div class="p-img">
+            <span class="p-badge">Best Seller</span>
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?auto=format&fit=crop&w=700&q=80" alt="LED Bulbs" onerror="this.onerror=null;this.src='https://picsum.photos/seed/led-bulb/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Philips</span>
+            <div class="p-name">12W LED Bulb — Pack of 4 (Cool Daylight)</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.8 (212)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 1,850</div><div class="p-old">Rs. 2,200</div></div>
+            <button class="wa-btn add-cart" data-name="Philips LED 4-Pack" data-price="1,850" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="lighting">
+        <div class="p-card">
+          <div class="p-img">
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80" alt="LED Strip" onerror="this.onerror=null;this.src='https://picsum.photos/seed/led-strip/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Osram</span>
+            <div class="p-name">RGB Smart LED Strip — 5m + Remote</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> 4.5 (98)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 2,190</div></div>
+            <button class="wa-btn add-cart" data-name="RGB LED Strip 5m" data-price="2,190" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="wiring">
+        <div class="p-card">
+          <div class="p-img">
+            <span class="p-badge alt">Pro Choice</span>
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" alt="Copper Wire" onerror="this.onerror=null;this.src='https://picsum.photos/seed/copper-wire/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Pakistan Cables</span>
+            <div class="p-name">Copper Flex Wire 2.5mm — 90m Coil</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.7 (164)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 6,750</div></div>
+            <button class="wa-btn add-cart" data-name="Copper Flex Wire 90m" data-price="6,750" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="wiring">
+        <div class="p-card">
+          <div class="p-img">
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80" alt="Breaker Panel" onerror="this.onerror=null;this.src='https://picsum.photos/seed/breaker-panel/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Schneider</span>
+            <div class="p-name">24-Way Distribution Board + MCBs</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 4.9 (77)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 9,450</div></div>
+            <button class="wa-btn add-cart" data-name="24-Way Distribution Board" data-price="9,450" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="tools">
+        <div class="p-card">
+          <div class="p-img">
+            <span class="p-badge">-10%</span>
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80" alt="Drill" onerror="this.onerror=null;this.src='https://picsum.photos/seed/power-drill/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Bosch</span>
+            <div class="p-name">GSB 550 Impact Drill — 13mm Kit</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 4.9 (340)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 12,990</div><div class="p-old">Rs. 14,500</div></div>
+            <button class="wa-btn add-cart" data-name="Bosch GSB 550 Drill" data-price="12,990" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="lighting">
+        <div class="p-card">
+          <div class="p-img">
+            <span class="p-badge alt">New</span>
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=700&q=80" alt="Smart Switch" onerror="this.onerror=null;this.src='https://picsum.photos/seed/smart-switch/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Havells</span>
+            <div class="p-name">Smart Touch Wall Switch — WiFi</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.6 (59)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 3,450</div></div>
+            <button class="wa-btn add-cart" data-name="Smart Touch Switch" data-price="3,450" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 7 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="appliances">
+        <div class="p-card">
+          <div class="p-img">
+            <span class="p-badge">Hot</span>
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=700&q=80" alt="Ceiling Fan" onerror="this.onerror=null;this.src='https://picsum.photos/seed/ceiling-fan/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Orient</span>
+            <div class="p-name">56" BLDC Ceiling Fan — Energy Saver</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.7 (421)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 8,999</div><div class="p-old">Rs. 10,200</div></div>
+            <button class="wa-btn add-cart" data-name="Orient 56-inch Fan" data-price="8,999" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+      <!-- 8 -->
+      <div class="col-12 col-sm-6 col-lg-3 pcard-col" data-cat="solar">
+        <div class="p-card">
+          <div class="p-img">
+            <span class="p-badge">Save Big</span>
+            <button class="p-heart" aria-label="wishlist"><i class="bi bi-heart"></i></button>
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=700&q=80" alt="Solar Panel" onerror="this.onerror=null;this.src='https://picsum.photos/seed/solar-panel/700/700'">
+          </div>
+          <div class="p-body">
+            <span class="p-brand">Inverex</span>
+            <div class="p-name">550W Solar Panel + Hybrid Kit</div>
+            <div class="p-rate"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> 4.9 (88)</div>
+            <div class="p-foot"><div><div class="p-price">Rs. 24,500</div></div>
+            <button class="wa-btn add-cart" data-name="550W Solar Kit" data-price="24,500" aria-label="order on whatsapp"><i class="bi bi-whatsapp"></i></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5 reveal"><a href="#" class="btn-line" style="background:#25D366;color:#fff;border-color:transparent;box-shadow:0 10px 22px -8px rgba(37,211,102,.45)"><i class="bi bi-whatsapp"></i> Order Anything on WhatsApp · 0307-9098545 <i class="bi bi-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- ============ 4. DEAL OF THE DAY ============ -->
+<section class="section" id="deal">
+  <div class="container">
+    <div class="deal reveal rv-zoom">
+      <div class="kb"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=1600&q=80" alt="" onerror="this.onerror=null;this.src='https://picsum.photos/seed/deal-fan/1600/900'"></div>
+      <div class="deal-in p-4 p-lg-5">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <span class="chip" style="background:rgba(255,176,32,.15);color:#ffd57a;border:1px solid rgba(255,176,32,.4)"><i class="bi bi-fire"></i> DEAL OF THE DAY — 28% OFF</span>
+            <h2 class="sec-title mt-3" style="color:#fff">Orient 56" BLDC<br>Energy-Saver Fan</h2>
+            <p style="color:#b9d6ea;max-width:440px">65% less electricity, silent motor, 5-year official warranty — free installation by our team inside Lahore.</p>
+            <div class="d-flex align-items-center gap-3 my-3 flex-wrap">
+              <span style="font-family:'Unbounded';font-weight:700;font-size:2rem;color:#7dd3fc">Rs. 8,999</span>
+              <s style="color:#7e93ab">Rs. 12,499</s>
+              <span class="chip" style="background:#ffb020;color:#061120"><i class="bi bi-star-fill"></i> 4.7</span>
+            </div>
+            <div class="sold-bar mb-2" style="max-width:380px"><div id="soldBar"></div></div>
+            <div class="d-flex justify-content-between mb-4" style="max-width:380px;font-size:.78rem;color:#9fd4f5;font-weight:700"><span><i class="bi bi-fire me-1"></i>37 sold</span><span>Only 13 left</span></div>
+            <button class="btn-volt add-cart" data-name="Orient 56-inch Fan (Deal)"><i class="bi bi-bag-check-fill"></i> Grab This Deal</button>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="d-flex gap-2 justify-content-lg-end" id="countdown">
+              <div class="count-box"><b id="cdH">00</b><span>Hours</span></div>
+              <div class="count-box"><b id="cdM">00</b><span>Mins</span></div>
+              <div class="count-box"><b id="cdS">00</b><span>Secs</span></div>
+            </div>
+            <div class="mt-4 d-none d-lg-flex gap-3" style="color:#9fd4f5;font-size:.85rem;font-weight:700">
+              <span><i class="bi bi-shield-check me-1 text-info"></i>5-yr warranty</span>
+              <span><i class="bi bi-truck me-1 text-info"></i>Free install</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. SERVICES ============ -->
+<section class="section" id="services" style="background:linear-gradient(180deg,#fff, var(--mist) 50%, #fff)">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="svc-sticky reveal">
+          <span class="eyebrow">Our Services</span>
+          <h2 class="sec-title">Beyond the shelf — we <span class="grad-text">wire it up</span> too.</h2>
+          <p class="sec-sub">Buying from Bilal Electric means a licensed team handles the fitting, the faults and the future. Scroll through what we do — then book in one tap.</p>
+          <ul class="list-unstyled my-4 d-grid gap-3">
+            <li class="d-flex gap-2 align-items-center fw-semibold"><i class="bi bi-patch-check-fill text-info"></i> Government-licensed electricians</li>
+            <li class="d-flex gap-2 align-items-center fw-semibold"><i class="bi bi-geo-fill text-info"></i> Same-day visits across Lahore</li>
+            <li class="d-flex gap-2 align-items-center fw-semibold"><i class="bi bi-receipt text-info"></i> Transparent written quotes — no surprises</li>
+          </ul>
+          <a href="tel:03079098545" class="btn-volt"><i class="bi bi-telephone-fill"></i> Book an Electrician</a>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="svc-panel" style="top:100px">
+          <span class="svc-num d-none d-sm-block">01</span>
+          <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=400&q=80" alt="Wiring" onerror="this.onerror=null;this.src='https://picsum.photos/seed/wiring-service/400/400'">
+          <div>
+            <h4>Residential Wiring & Installation</h4>
+            <p>Complete new-home wiring, DB dressing & breaker setup with premium copper.</p>
+            <span class="tagchip">New Builds</span><span class="tagchip">Renovations</span><span class="tagchip">Safety Audit</span>
+          </div>
+          <button class="svc-book" aria-label="book"><i class="bi bi-arrow-right"></i></button>
+        </div>
+        <div class="svc-panel" style="top:118px">
+          <span class="svc-num d-none d-sm-block">02</span>
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80" alt="Repair" onerror="this.onerror=null;this.src='https://picsum.photos/seed/repair-service/400/400'">
+          <div>
+            <h4>Fault Repair & Troubleshooting</h4>
+            <p>Tripping breakers, flickering lights, dead sockets — diagnosed and fixed same day.</p>
+            <span class="tagchip">Same-Day</span><span class="tagchip">Short-Circuit</span><span class="tagchip">Load Balancing</span>
+          </div>
+          <button class="svc-book" aria-label="book"><i class="bi bi-arrow-right"></i></button>
+        </div>
+        <div class="svc-panel" style="top:136px">
+          <span class="svc-num d-none d-sm-block">03</span>
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=400&q=80" alt="Solar" onerror="this.onerror=null;this.src='https://picsum.photos/seed/solar-service/400/400'">
+          <div>
+            <h4>Solar & UPS Systems</h4>
+            <p>Design, supply & install — hybrid inverters and net-metering handled end to end.</p>
+            <span class="tagchip">Net Metering</span><span class="tagchip">Hybrid Inverters</span><span class="tagchip">Free Survey</span>
+          </div>
+          <button class="svc-book" aria-label="book"><i class="bi bi-arrow-right"></i></button>
+        </div>
+        <div class="svc-panel" style="top:154px;margin-bottom:0">
+          <span class="svc-num d-none d-sm-block">04</span>
+          <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?auto=format&fit=crop&w=400&q=80" alt="Commercial" onerror="this.onerror=null;this.src='https://picsum.photos/seed/commercial-amc/400/400'">
+          <div>
+            <h4>Commercial Maintenance (AMC)</h4>
+            <p>Monthly checkups for shops, offices & plazas with priority emergency response.</p>
+            <span class="tagchip">Offices</span><span class="tagchip">Retail</span><span class="tagchip">Monthly Checks</span>
+          </div>
+          <button class="svc-book" aria-label="book"><i class="bi bi-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- emergency band -->
+    <div class="emerg mt-5 p-4 p-lg-5 d-flex flex-wrap align-items-center gap-4 reveal">
+      <i class="bi bi-lightning-charge-fill big-bolt"></i>
+      <div class="d-flex align-items-center gap-3">
+        <span class="pulse-dot"></span>
+        <div>
+          <div class="fw-bold" style="font-family:'Unbounded';font-size:1.05rem">24/7 Emergency Electrician</div>
+          <div style="color:#9fd4f5;font-size:.88rem">Sparks, smoke or blackout? We answer in under 60 seconds.</div>
+        </div>
+      </div>
+      <div class="ms-auto d-flex align-items-center gap-3 flex-wrap">
+        <a href="tel:03079098545" class="text-white" style="font-family:'Unbounded';font-weight:700;font-size:clamp(1.2rem,3vw,1.8rem)"><i class="bi bi-telephone-fill me-2" style="color:#7dd3fc"></i>0307-9098545</a>
+        <a href="#" class="btn-volt" style="background:#22c55e;box-shadow:0 14px 30px -10px rgba(34,197,94,.5)"><i class="bi bi-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. WHY CHOOSE US ============ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="eyebrow justify-content-center" style="display:inline-flex">Why Bilal Electric</span>
+      <h2 class="sec-title">Built on <span class="grad-text">trust</span>, wired for <span class="grad-text">speed</span>.</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-5 reveal">
+        <div class="w-tile w-grad">
+          <div><span class="w-ico"><i class="bi bi-award-fill"></i></span></div>
+          <div>
+            <div class="big-count"><span data-count="15">0</span>+</div>
+            <div class="fw-bold mt-1" style="font-size:1.05rem">Years powering Lahore</div>
+            <p class="mb-0" style="color:#9fd4f5;font-size:.88rem">From one Hall Road counter to 25,000+ served homes and businesses.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 reveal" style="transition-delay:.1s">
+        <div class="w-tile w-white">
+          <span class="w-ico"><i class="bi bi-patch-check-fill"></i></span>
+          <div>
+            <h3 style="font-size:1rem">100% Genuine Brands</h3>
+            <p class="mb-0" style="font-size:.85rem;color:var(--ink-2)">Authorized dealer — every item carries official warranty cards.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 reveal" style="transition-delay:.18s">
+        <div class="w-tile w-img">
+          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80" alt="Certified electricians" onerror="this.onerror=null;this.src='https://picsum.photos/seed/electrician-team/900/600'">
+          <div class="cap"><i class="bi bi-person-badge me-1"></i> Certified, background-checked team</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 reveal">
+        <div class="w-tile w-sky">
+          <span class="w-ico" style="background:#fff"><i class="bi bi-truck"></i></span>
+          <div>
+            <h3 style="font-size:1rem">Same-Day Delivery</h3>
+            <p class="mb-0" style="font-size:.85rem;color:var(--ink-2)">Order by 3 PM — get it before dinner. Free over Rs. 5,000.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-6 reveal" style="transition-delay:.1s">
+        <div class="w-tile w-white flex-row align-items-center flex-wrap gap-4">
+          <div>
+            <div class="big-count grad-text">4.9<span style="font-size:1.4rem">★</span></div>
+            <div class="fw-bold">2,400+ verified reviews</div>
+          </div>
+          <div class="ms-lg-auto">
+            <div class="avatar-stack mb-2">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt=""><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><img src="https://randomuser.me/api/portraits/men/56.jpg" alt=""><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+            </div>
+            <div style="font-size:.78rem;color:var(--ink-3)">Real customers, real homes ⚡</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 reveal" style="transition-delay:.18s">
+        <div class="w-tile w-white">
+          <span class="w-ico"><i class="bi bi-arrow-repeat"></i></span>
+          <div>
+            <h3 style="font-size:1rem">7-Day Replacement</h3>
+            <p class="mb-0" style="font-size:.85rem;color:var(--ink-2)">Not right? Swap it, no questions, no receipt hunting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. BRANDS MARQUEE ============ -->
+<section class="brands section" style="padding-top:20px" id="brands">
+  <div class="container reveal mb-3">
+    <div class="text-center"><span class="eyebrow justify-content-center" style="display:inline-flex">40+ Authorized Brands</span></div>
+  </div>
+  <div class="brand-row" id="brandRow1">
+    <span>PHILIPS <i class="bi bi-lightning-charge-fill"></i></span><span>OSRAM <i class="bi bi-lightning-charge-fill"></i></span><span>SCHNEIDER <i class="bi bi-lightning-charge-fill"></i></span><span>PANASONIC <i class="bi bi-lightning-charge-fill"></i></span><span>DAWLANCE <i class="bi bi-lightning-charge-fill"></i></span><span>ORIENT <i class="bi bi-lightning-charge-fill"></i></span><span>HAVELLS <i class="bi bi-lightning-charge-fill"></i></span><span>SIEMENS <i class="bi bi-lightning-charge-fill"></i></span>
+  </div>
+  <div class="brand-row rev" id="brandRow2">
+    <span>ABB <i class="bi bi-lightning-charge-fill"></i></span><span>BOSCH <i class="bi bi-lightning-charge-fill"></i></span><span>INVEREX <i class="bi bi-lightning-charge-fill"></i></span><span>LUMINOUS <i class="bi bi-lightning-charge-fill"></i></span><span>KENWOOD <i class="bi bi-lightning-charge-fill"></i></span><span>TCL <i class="bi bi-lightning-charge-fill"></i></span><span>SINGER <i class="bi bi-lightning-charge-fill"></i></span><span>PEAKO <i class="bi bi-lightning-charge-fill"></i></span>
+  </div>
+</section>
+
+<!-- ============ 8. TESTIMONIALS ============ -->
+<section class="section" id="reviews" style="background:linear-gradient(180deg,#fff, var(--mist) 50%, #fff)">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-4 reveal rv-l">
+        <span class="eyebrow">Customer Stories</span>
+        <h2 class="sec-title">2,400+ homes<br><span class="grad-text">switched on</span> happy.</h2>
+        <div class="d-flex align-items-center gap-3 my-4">
+          <div class="big-count grad-text">4.9</div>
+          <div>
+            <i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i>
+            <div style="font-size:.8rem;color:var(--ink-3)">Average rating this year</div>
+          </div>
+        </div>
+        <div class="d-grid gap-2" style="font-size:.8rem;font-weight:700;color:var(--ink-2)">
+          <div class="d-flex align-items-center gap-2" style="min-width:220px">5★ <div class="rate-bar flex-grow-1"><div data-w="82%"></div></div> 82%</div>
+          <div class="d-flex align-items-center gap-2">4★ <div class="rate-bar flex-grow-1"><div data-w="13%"></div></div> 13%</div>
+          <div class="d-flex align-items-center gap-2">3★ <div class="rate-bar flex-grow-1"><div data-w="4%"></div></div> 4%</div>
+        </div>
+      </div>
+      <div class="col-lg-8 reveal rv-r">
+        <div class="tst-viewport">
+          <div class="tst-track" id="tstTrack">
+            <div class="tst-slide"><div class="tst-card">
+              <span class="qm">"</span>
+              <i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i>
+              <p class="tst-txt mt-3">"Ordered wiring for my whole house renovation. Bilal sb's team delivered same day, and their electrician even re-dressed my DB for free. Genuinely the best electric shop in Lahore."</p>
+              <div class="d-flex align-items-center gap-3 mt-3"><img class="tst-ava" src="https://randomuser.me/api/portraits/men/32.jpg" alt=""><div><b>Imran Sheikh</b><div style="font-size:.8rem;color:var(--ink-3)">Homeowner — DHA Phase 5</div></div></div>
+            </div></div>
+            <div class="tst-slide"><div class="tst-card">
+              <span class="qm">"</span>
+              <i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i>
+              <p class="tst-txt mt-3">"They installed my 5kW solar system in two days. Paperwork, net metering, everything handled. My bill dropped from 38k to almost zero. Highly recommended!"</p>
+              <div class="d-flex align-items-center gap-3 mt-3"><img class="tst-ava" src="https://randomuser.me/api/portraits/women/44.jpg" alt=""><div><b>Ayesha Malik</b><div style="font-size:.8rem;color:var(--ink-3)">Solar Customer — Gulberg III</div></div></div>
+            </div></div>
+            <div class="tst-slide"><div class="tst-card">
+              <span class="qm">"</span>
+              <i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-half" style="color:var(--amber)"></i>
+              <p class="tst-txt mt-3">"My shop runs on their AMC plan. Any fault, their guy shows up within the hour. Prices are honest and everything is original — you can check the seals yourself."</p>
+              <div class="d-flex align-items-center gap-3 mt-3"><img class="tst-ava" src="https://randomuser.me/api/portraits/men/56.jpg" alt=""><div><b>Rashid Bhatti</b><div style="font-size:.8rem;color:var(--ink-3)">Retailer — Anarkali Bazaar</div></div></div>
+            </div></div>
+            <div class="tst-slide"><div class="tst-card">
+              <span class="qm">"</span>
+              <i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i><i class="bi bi-star-fill" style="color:var(--amber)"></i>
+              <p class="tst-txt mt-3">"Called at 11 PM for a burning-wire emergency — they picked up instantly and had an electrician at my door in 40 minutes. That's why the whole street buys from them."</p>
+              <div class="d-flex align-items-center gap-3 mt-3"><img class="tst-ava" src="https://randomuser.me/api/portraits/women/68.jpg" alt=""><div><b>Sana Tariq</b><div style="font-size:.8rem;color:var(--ink-3)">Homeowner — Model Town</div></div></div>
+            </div></div>
+          </div>
+        </div>
+        <div class="tst-progress"><div id="tstBar"></div></div>
+        <div class="d-flex align-items-center gap-3 mt-3">
+          <div class="tst-nav d-flex gap-2">
+            <button id="tstPrev" aria-label="previous"><i class="bi bi-arrow-left"></i></button>
+            <button id="tstNext" aria-label="next"><i class="bi bi-arrow-right"></i></button>
+          </div>
+          <div class="d-flex gap-2 ms-auto" id="tstDots"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. NEWSLETTER + CONTACT ============ -->
+<section class="section" id="contact" style="padding-top:20px">
+  <div class="container">
+    <div class="news-panel p-4 p-lg-5 reveal rv-zoom">
+      <i class="bi bi-lightning-charge-fill n-bolt" style="left:-40px;bottom:-50px"></i>
+      <i class="bi bi-lightning-charge-fill n-bolt" style="right:8%;top:-56px;transform:rotate(-15deg)"></i>
+      <div class="row g-4 align-items-center position-relative">
+        <div class="col-lg-5">
+          <span class="eyebrow" style="color:#7dd3fc">Stay Charged</span>
+          <h2 class="sec-title" style="color:#fff;font-size:clamp(1.4rem,3vw,2.1rem)">Join the Voltage Club ⚡</h2>
+          <p style="color:#b9d6ea;font-size:.95rem">Weekly deals, load-shedding survival kits and solar tips — straight to your inbox. No spam, ever.</p>
+        </div>
+        <div class="col-lg-7">
+          <form class="news-form" id="newsForm">
+            <input type="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe <i class="bi bi-send-fill ms-1"></i></button>
+          </form>
+          <div id="newsOk" class="mt-3 fw-bold" style="color:#7dd3fc;display:none"><i class="bi bi-check-circle-fill me-2"></i>You're in! Watch your inbox for sparks.</div>
+        </div>
+        <div class="col-12">
+          <div class="row g-3 mt-2">
+            <div class="col-md-4"><div class="contact-mini"><i class="bi bi-geo-alt-fill"></i><div><b style="color:#fff;font-size:.9rem">Visit the Store</b><div style="font-size:.8rem;color:#9fd4f5">Shop #12, Hall Road, Lahore</div></div></div></div>
+            <div class="col-md-4"><div class="contact-mini"><i class="bi bi-telephone-fill"></i><div><b style="color:#fff;font-size:.9rem">Call / WhatsApp</b><div style="font-size:.8rem;color:#9fd4f5">0307-9098545 · 042-35761234</div></div></div></div>
+            <div class="col-md-4"><div class="contact-mini"><i class="bi bi-clock-fill"></i><div><b style="color:#fff;font-size:.9rem">Opening Hours</b><div style="font-size:.8rem;color:#9fd4f5">Mon–Sat 10 AM – 9 PM · Sun 2–8</div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container pt-5 pb-4">
+    <div class="row g-4 pb-4" style="border-bottom:1px solid rgba(255,255,255,.1)">
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="brand-logo"><i class="bi bi-lightning-charge-fill"></i></span>
+          <span class="brand-txt" style="color:#fff">Bilal<small style="color:#7dd3fc">ELECTRIC STORE</small></span>
+        </div>
+        <p style="font-size:.9rem;max-width:320px">Lahore's trusted electric store since 2009. Genuine products, honest prices, and electricians who treat your home like their own.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="soc" aria-label="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="soc" aria-label="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="soc" aria-label="youtube"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="soc" aria-label="whatsapp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2"><div class="f-head">Shop</div>
+        <ul class="list-unstyled d-grid gap-2"><li><a href="#categories">Lighting</a></li><li><a href="#categories">Wiring & Cables</a></li><li><a href="#categories">Power Tools</a></li><li><a href="#categories">Solar Systems</a></li><li><a href="#deal">Deal of the Day</a></li></ul>
+      </div>
+      <div class="col-6 col-lg-2"><div class="f-head">Company</div>
+        <ul class="list-unstyled d-grid gap-2"><li><a href="#home">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Careers</a></li></ul>
+      </div>
+      <div class="col-6 col-lg-2"><div class="f-head">Support</div>
+        <ul class="list-unstyled d-grid gap-2"><li><a href="#">Track Order</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li><li><a href="#">FAQs</a></li></ul>
+      </div>
+      <div class="col-6 col-lg-2"><div class="f-head">Contact</div>
+        <ul class="list-unstyled d-grid gap-2" style="font-size:.88rem">
+          <li><i class="bi bi-geo-alt me-2 text-info"></i>Hall Road, Lahore</li>
+          <li><i class="bi bi-telephone me-2 text-info"></i>0307-9098545</li>
+          <li><i class="bi bi-envelope me-2 text-info"></i>hello@bilalelectric.pk</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 pt-4">
+      <div class="d-flex flex-wrap gap-2">
+        <span class="pay-pill"><i class="bi bi-credit-card me-1"></i>VISA</span>
+        <span class="pay-pill"><i class="bi bi-credit-card me-1"></i>Mastercard</span>
+        <span class="pay-pill">JazzCash</span><span class="pay-pill">EasyPaisa</span>
+        <span class="pay-pill"><i class="bi bi-cash me-1"></i>COD</span>
+      </div>
+      <div style="font-size:.82rem">© <span id="yr"></span> Bilal Electric Store · Made with <i class="bi bi-lightning-charge-fill text-info"></i> in Lahore</div>
+    </div>
+  </div>
+</footer>
+
+<!-- mobile call bar -->
+<div class="mobile-call">
+  <a href="tel:03079098545" class="mc-call"><i class="bi bi-telephone-fill"></i> Call Now</a>
+  <a href="#" class="mc-wa"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+</div>
+
+<button id="toTop" aria-label="back to top"><i class="bi bi-arrow-up"></i></button>
+<div id="toasts"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* loader */
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('done'); startScramble(); }, RM ? 0 : 650);
+});
+
+/* scroll progress + navbar */
+const navwrap = document.getElementById('navwrap'), prog = document.getElementById('progress'), toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  navwrap.classList.toggle('scrolled', h.scrollTop > 40);
+  toTop.classList.toggle('show', h.scrollTop > 620);
+}, {passive:true});
+toTop.onclick = () => window.scrollTo({top:0, behavior: RM ? 'auto' : 'smooth'});
+
+/* duplicate marquees for seamless loop */
+['tickerTrack','brandRow1','brandRow2'].forEach(id => {
+  const el = document.getElementById(id); el.innerHTML += el.innerHTML;
+});
+
+/* scramble decode headline */
+function scramble(el, delay){
+  const chars = '!<>-_/[]{}=+*#01';
+  const target = el.textContent; el.textContent = '';
+  let frame = 0;
+  const total = target.length;
+  setTimeout(function run(){
+    frame++;
+    const solved = Math.floor(frame / 2.4);
+    let out = '';
+    for(let i=0;i<total;i++){
+      out += i < solved ? target[i] : (target[i]===' ' ? ' ' : chars[Math.floor(Math.random()*chars.length)]);
+    }
+    el.textContent = out;
+    if(solved < total) setTimeout(run, 34); else el.textContent = target;
+  }, delay);
+}
+function startScramble(){
+  document.querySelectorAll('[data-scramble]').forEach((el,i)=>{
+    if(RM) return; scramble(el, i*420);
+  });
+}
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.12});
+document.querySelectorAll('.reveal,.lm').forEach(el => io.observe(el));
+
+/* counters */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return; cio.unobserve(e.target);
+  const el = e.target, end = +el.dataset.count;
+  if(RM){ el.textContent = end.toLocaleString(); return; }
+  const t0 = performance.now(), dur = 1500;
+  (function tick(t){
+    const p = Math.min((t-t0)/dur, 1), ease = 1 - Math.pow(1-p, 3);
+    el.textContent = Math.round(end*ease).toLocaleString();
+    if(p<1) requestAnimationFrame(tick);
+  })(t0);
+}), {threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+/* rating bars */
+const bio = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.style.width = e.target.dataset.w; bio.unobserve(e.target); }
+}), {threshold:.5});
+document.querySelectorAll('.rate-bar>div').forEach(el => bio.observe(el));
+
+/* countdown */
+const target = Date.now() + (20*3600 + 14*60 + 45) * 1000;
+const cdH = document.getElementById('cdH'), cdM = document.getElementById('cdM'), cdS = document.getElementById('cdS');
+function pad(n){ return String(n).padStart(2,'0'); }
+function setBox(box, v){ if(box.textContent !== v){ box.textContent = v; if(!RM){ box.classList.remove('tick'); void box.offsetWidth; box.classList.add('tick'); } } }
+setInterval(() => {
+  let d = Math.max(0, target - Date.now()) / 1000;
+  setBox(cdH, pad(Math.floor(d/3600))); setBox(cdM, pad(Math.floor(d/60)%60)); setBox(cdS, pad(Math.floor(d)%60));
+}, 1000);
+
+/* sold bar */
+setTimeout(() => document.getElementById('soldBar').style.width = '74%', 700);
+
+/* product filters */
+document.querySelectorAll('.fbtn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const f = btn.dataset.f; let i = 0;
+  document.querySelectorAll('.pcard-col').forEach(col => {
+    const show = f === 'all' || col.dataset.cat === f;
+    col.style.display = show ? '' : 'none';
+    if(show){
+      const card = col.querySelector('.p-card');
+      card.classList.remove('pop-in'); void card.offsetWidth;
+      card.style.animationDelay = (RM ? 0 : i*0.06) + 's';
+      card.classList.add('pop-in'); i++;
+    }
+  });
+}));
+
+/* cart + fly + toast */
+let cart = 0;
+const cartBadge = document.getElementById('cartCount');
+function toast(msg, icon='bi-check-circle-fill'){
+  const t = document.createElement('div'); t.className = 'toastx';
+  t.innerHTML = `<i class="bi ${icon}"></i><span>${msg}</span>`;
+  document.getElementById('toasts').appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 500); }, 2600);
+}
+function fly(fromEl){
+  if(RM) return;
+  const cartEl = document.getElementById('cartBtn');
+  const a = fromEl.getBoundingClientRect(), b = cartEl.getBoundingClientRect();
+  const dot = document.createElement('span'); dot.className = 'fly-dot';
+  dot.style.left = a.left + a.width/2 + 'px'; dot.style.top = a.top + a.height/2 + 'px';
+  document.body.appendChild(dot);
+  dot.animate([
+    {transform:'translate(0,0) scale(1)', opacity:1},
+    {transform:`translate(${b.left - a.left}px, ${b.top - a.top}px) scale(.35)`, opacity:.7}
+  ], {duration:700, easing:'cubic-bezier(.4,0,.3,1)'}).onfinish = () => dot.remove();
+}
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.add-cart');
+  if(btn){
+    const name  = btn.dataset.name  || 'Product';
+    const price = btn.dataset.price || '';
+    const phone = '923079098545'; // WhatsApp international format
+    const msg   = `Hi Bilal Electric! ⚡ I'd like to order:
+*${name}${price ? ' — Rs. ' + price : ''}*
+Please confirm availability and delivery.
+From: Bilal Electric Store website`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    if(btn.classList.contains('wa-btn')){
+      window.open(url, '_blank');
+      fly(btn);
+      toast(`Opening WhatsApp for <b>${name}</b>...`, 'bi-whatsapp');
+    } else {
+      cart++; cartBadge.textContent = cart;
+      cartBadge.classList.remove('bump'); void cartBadge.offsetWidth; cartBadge.classList.add('bump');
+      fly(btn); toast(`<b>${name}</b>&nbsp;added to cart`, 'bi-bag-check-fill');
+    }
+  }
+  const heart = e.target.closest('.p-heart');
+  if(heart){
+    heart.classList.toggle('on');
+    heart.querySelector('i').className = heart.classList.contains('on') ? 'bi bi-heart-fill' : 'bi bi-heart';
+    if(heart.classList.contains('on')) toast('Saved to wishlist', 'bi-heart-fill');
+  }
+});
+document.getElementById('cartBtn').onclick = () => toast(cart ? `You have <b>${cart}</b> item${cart>1?'s':''} in your bag ⚡` : 'Your bag is empty — add something sparky!', 'bi-bag');
+
+/* testimonials carousel */
+const track = document.getElementById('tstTrack'), slides = track.children.length;
+const dotsWrap = document.getElementById('tstDots'), bar = document.getElementById('tstBar');
+let idx = 0, timer = null; const INTERVAL = 5000;
+for(let i=0;i<slides;i++){
+  const d = document.createElement('button'); d.className = 'tst-dot' + (i===0?' active':'');
+  d.setAttribute('aria-label','slide '+(i+1)); d.onclick = () => { go(i); restart(); }; dotsWrap.appendChild(d);
+}
+function go(i){
+  idx = (i + slides) % slides;
+  track.style.transform = `translateX(-${idx*100}%)`;
+  [...dotsWrap.children].forEach((d,k) => d.classList.toggle('active', k===idx));
+  if(!RM){ bar.style.transition='none'; bar.style.width='0'; void bar.offsetWidth; bar.style.transition = `width ${INTERVAL}ms linear`; bar.style.width='100%'; }
+}
+function restart(){ if(RM) return; clearInterval(timer); timer = setInterval(() => go(idx+1), INTERVAL); }
+document.getElementById('tstNext').onclick = () => { go(idx+1); restart(); };
+document.getElementById('tstPrev').onclick = () => { go(idx-1); restart(); };
+track.parentElement.addEventListener('mouseenter', () => { clearInterval(timer); if(!RM){ bar.style.transition='none'; } });
+track.parentElement.addEventListener('mouseleave', () => { restart(); });
+go(0); restart();
+
+/* newsletter */
+document.getElementById('newsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  e.target.style.display = 'none';
+  document.getElementById('newsOk').style.display = 'block';
+  toast('Subscribed to Voltage Club ⚡', 'bi-envelope-check-fill');
+});
+
+/* scrollspy */
+const spy = new IntersectionObserver(es => es.forEach(en => {
+  if(en.isIntersecting){
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+  }
+}), {rootMargin:'-40% 0px -55% 0px'});
+['home','categories','shop','deal','services','why','reviews','contact'].forEach(id => { const s = document.getElementById(id); if(s) spy.observe(s); });
+</script>
+</body>
+</html>
