@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noor Medical Center — Riyadh | مركز نور الطبي</title>
+
+<!-- Fonts: Sora/Manrope (Latin) + Cairo/Tajawal (Arabic) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Cairo:wght@500;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap + Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#161b28; --ink2:#4b5266; --mute:#8a8fa3;
+  --or1:#ff8a00; --or2:#ff5e3a;
+  --grad:linear-gradient(120deg,var(--or1),var(--or2));
+  --cream:#fff7ef; --soft:#fff1e3; --peach:#ffd9b4;
+  --line:#f0e5d8; --white:#fff;
+  --fd:'Sora','Cairo',sans-serif; --fb:'Manrope','Tajawal',sans-serif;
+  --sh:0 26px 60px -22px rgba(22,27,40,.18);
+  --sho:0 18px 44px -14px rgba(255,94,58,.45);
+}
+html[lang="ar"]{--fd:'Cairo','Sora',sans-serif;--fb:'Tajawal','Manrope',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--ink);background:#fff;overflow-x:hidden;font-size:16px}
+h1,h2,h3,h4,h5,.fd{font-family:var(--fd);font-weight:700}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] .fd{font-weight:800}
+section{scroll-margin-top:96px}
+::selection{background:var(--or1);color:#fff}
+a{text-decoration:none}
+img{max-width:100%}
+html[lang="ar"] .uline,html[lang="ar"] .ring-txt{display:none}
+.txt-s{text-align:start!important}
+.sec{padding:100px 0}
+@media(max-width:991px){.sec{padding:70px 0}}
+
+/* plus pattern decor */
+.plus-o{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M15 9v12M9 15h12' stroke='%23ff8a00' stroke-opacity='.08' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")}
+.plus-w{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M15 9v12M9 15h12' stroke='%23ffffff' stroke-opacity='.16' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")}
+
+/* ============ MICRO ELEMENTS ============ */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--soft);color:#e35c13;border:1px solid #ffdcb8;padding:7px 16px;border-radius:999px;font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--fd)}
+html[lang="ar"] .eyebrow{letter-spacing:0;font-size:.82rem}
+.eyebrow i{font-size:.9rem}
+.sec-head{max-width:640px;margin-bottom:3.2rem}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.15;margin:18px 0 14px}
+.sec-head h2 em,.hl{font-style:normal;color:#ee5c12;position:relative;white-space:nowrap}
+.hl .uline{position:absolute;left:-2%;right:-2%;bottom:-.28em;width:104%;height:.34em;overflow:visible}
+.hl .uline path{fill:none;stroke:var(--or1);stroke-width:5;stroke-linecap:round;stroke-dasharray:230;stroke-dashoffset:230;transition:stroke-dashoffset 1.1s ease .5s}
+.revealed .hl .uline,.hero .uline path{stroke-dashoffset:0}
+.sec-head .lead{color:var(--ink2);font-size:1.05rem;font-weight:500}
+.arch{border-radius:300px 300px 26px 26px}
+
+.btn-o{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#fff;border:0;border-radius:999px;padding:.95rem 1.9rem;font-weight:800;font-family:var(--fd);font-size:.95rem;box-shadow:var(--sho);transition:.35s}
+.btn-o:hover{transform:translateY(-3px);box-shadow:0 26px 50px -14px rgba(255,94,58,.6);color:#fff}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border:1.5px solid #e6ddd0;border-radius:999px;padding:.9rem 1.8rem;font-weight:800;font-family:var(--fd);font-size:.95rem;transition:.35s}
+.btn-ghost:hover{border-color:var(--or1);color:#ee5c12;transform:translateY(-3px)}
+.btn-w{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#ee5c12;border:0;border-radius:999px;padding:.95rem 1.9rem;font-weight:800;font-family:var(--fd);transition:.35s}
+.btn-w:hover{transform:translateY(-3px);color:#c94a08}
+
+/* ============ PROGRESS + TOP ============ */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:2000}
+#toTop{position:fixed;bottom:26px;inset-inline-end:26px;width:52px;height:52px;border-radius:16px 16px 16px 4px;background:var(--grad);color:#fff;border:0;font-size:1.2rem;box-shadow:var(--sho);opacity:0;pointer-events:none;transform:translateY(14px);transition:.4s;z-index:1500}
+#toTop.show{opacity:1;pointer-events:auto;transform:none}
+
+/* ============ TOPBAR ============ */
+.topbar{background:var(--ink);color:#cfd3df;font-size:.8rem;font-weight:600}
+.topbar a{color:#cfd3df}
+.topbar a:hover{color:#ffb066}
+.em-chip{background:var(--grad);color:#fff;border-radius:999px;padding:3px 12px;font-weight:800;font-size:.72rem;display:inline-flex;gap:6px;align-items:center}
+.em-chip .dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ============ NAVBAR ============ */
+.nav-wrap{position:sticky;top:0;z-index:1040;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);transition:.4s}
+.nav-wrap.scrolled{background:rgba(255,255,255,.95);box-shadow:0 14px 34px -22px rgba(22,27,40,.3)}
+.navbar{padding:16px 0;transition:.4s}
+.nav-wrap.scrolled .navbar{padding:9px 0}
+.brand-mark{width:44px;height:44px;border-radius:14px 14px 14px 4px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:1.35rem;box-shadow:var(--sho)}
+.brand-txt{font-family:var(--fd);font-weight:800;font-size:1.28rem;line-height:1;color:var(--ink)}
+.brand-txt small{display:block;font-size:.56rem;letter-spacing:.34em;color:#b0764a;font-weight:700;margin-top:4px}
+html[lang="ar"] .brand-txt small{letter-spacing:.06em}
+.navbar-nav .nav-link{font-weight:700;color:var(--ink);font-size:.93rem;margin-inline:6px;position:relative}
+.navbar-nav .nav-link::after{content:"";position:absolute;bottom:-2px;inset-inline-start:50%;width:0;height:3px;border-radius:99px;background:var(--grad);transition:.3s;transform:translateX(0)}
+html[dir="ltr"] .navbar-nav .nav-link::after{transform:translateX(-50%)}
+html[dir="rtl"] .navbar-nav .nav-link::after{transform:translateX(50%)}
+.navbar-nav .nav-link:hover,.navbar-nav .nav-link.active{color:#ee5c12}
+.navbar-nav .nav-link.active::after{width:22px}
+.lang-pill{display:flex;background:#f5efe6;border-radius:999px;padding:4px;gap:2px;border:1px solid #efe3d2}
+.lang-pill button{border:0;background:transparent;padding:5px 15px;border-radius:999px;font-weight:800;font-size:.8rem;color:var(--ink2);font-family:var(--fd);transition:.3s}
+.lang-pill button.on{background:var(--grad);color:#fff;box-shadow:0 6px 16px -6px rgba(255,94,58,.6)}
+.navbar-toggler{border:0;width:46px;height:46px;border-radius:13px;background:var(--soft);display:grid;place-items:center;color:#e35c13;font-size:1.35rem}
+.oc-panel{background:#fff;width:320px;padding:26px;display:flex;flex-direction:column;gap:4px}
+.oc-panel a{font-family:var(--fd);font-weight:700;color:var(--ink);padding:11px 8px;border-bottom:1px solid var(--line);border-radius:8px}
+.oc-panel a:hover{background:var(--cream);color:#ee5c12}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;color:#fff;padding:150px 0 190px;overflow:hidden;background:var(--ink)}
+.hero-bg,.hero-bg img{position:absolute;inset:0;width:100%;height:100%}
+.hero-bg img{object-fit:cover;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.13) translateY(-2.5%)}}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(94deg,rgba(12,15,26,.92) 8%,rgba(12,15,26,.62) 52%,rgba(12,15,26,.18) 100%)}
+.hero-ov::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:radial-gradient(60% 90% at 18% 100%,rgba(255,122,26,.35),transparent 70%)}
+.hero .eyebrow{background:rgba(255,138,0,.16);border-color:rgba(255,176,102,.4);color:#ffb066;backdrop-filter:blur(4px)}
+.hero h1{font-size:clamp(2.6rem,5.8vw,4.5rem);font-weight:800;line-height:1.06;margin:22px 0 20px}
+.hero h1 .hl{color:#ffa254}
+.hero h1 .hl .uline path{stroke:#ffb066}
+.lm{display:block;overflow:hidden;padding-bottom:.08em}
+.lm>span{display:inline-block;transform:translateY(118%);animation:rise 1s cubic-bezier(.2,.85,.25,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{to{transform:translateY(0)}}
+.hero .sub{color:#c9cedd;font-size:1.08rem;max-width:560px;font-weight:500;line-height:1.8}
+.hero-stats{display:flex;gap:clamp(18px,4vw,48px);margin-top:44px;flex-wrap:wrap}
+.hstat b{font-family:var(--fd);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;color:#fff;display:flex;align-items:baseline;gap:2px}
+.hstat b i{font-style:normal;color:var(--or1);font-size:.7em}
+.hstat span{color:#9aa0b5;font-size:.82rem;font-weight:600}
+.hstat+.hstat{border-inline-start:1px solid rgba(255,255,255,.14);padding-inline-start:clamp(18px,4vw,48px)}
+.qbook{background:#fff;color:var(--ink);border-radius:28px 28px 28px 8px;padding:26px;box-shadow:0 40px 80px -20px rgba(10,12,20,.55);transform:translateY(120px);position:relative;z-index:5}
+.qbook h6{font-weight:800}
+.qbook .form-control,.qbook .form-select{border:1.5px solid #eee1d1;border-radius:13px;background:#fbf7f1;padding:.7rem .9rem;font-weight:600;font-size:.9rem}
+.qbook .form-control:focus,.qbook .form-select:focus{border-color:var(--or1);box-shadow:0 0 0 4px rgba(255,138,0,.14)}
+.qbook small{color:var(--mute);font-weight:600}
+.scroll-hint{position:absolute;bottom:26px;inset-inline-start:50%;transform:translateX(-50%);color:#ffffff90;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:4}
+html[dir="rtl"] .scroll-hint{transform:translateX(50%)}
+.scroll-hint span{width:1.5px;height:44px;background:linear-gradient(#ff8a00,transparent);display:block;animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:991px){.hero{padding:130px 0 70px;min-height:auto}.qbook{transform:none;margin-top:40px}.scroll-hint{display:none}}
+
+/* ============ MARQUEE ============ */
+.mq{background:var(--grad);padding:15px 0;overflow:hidden;position:relative}
+.mq-track{display:flex;gap:52px;width:max-content;animation:mq 32s linear infinite}
+.mq:hover .mq-track{animation-play-state:paused}
+.mq span{display:inline-flex;align-items:center;gap:52px;color:#fff;font-family:var(--fd);font-weight:800;font-size:.92rem;letter-spacing:.06em;white-space:nowrap;text-transform:uppercase}
+html[lang="ar"] .mq span{letter-spacing:0}
+.mq i{font-size:.7rem;opacity:.85}
+@keyframes mq{to{transform:translateX(-50%)}}
+html[dir="rtl"] .mq-track{animation-name:mqR}
+@keyframes mqR{to{transform:translateX(50%)}}
+
+/* ============ ABOUT ============ */
+.sticky-col{position:sticky;top:110px}
+.about-img{position:relative}
+.about-img .main{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about-img .chip{position:absolute;bottom:26px;inset-inline-end:-20px;background:#fff;border-radius:20px 20px 20px 6px;box-shadow:var(--sh);padding:16px 20px;display:flex;gap:12px;align-items:center}
+.about-img .chip .ic{width:44px;height:44px;border-radius:13px;background:var(--soft);color:#ee5c12;display:grid;place-items:center;font-size:1.2rem}
+.about-img .chip b{font-family:var(--fd);display:block;font-size:1rem}
+.about-img .chip span{font-size:.74rem;color:var(--mute);font-weight:600}
+.spin-badge{position:absolute;top:-38px;inset-inline-start:-34px;width:128px;height:128px;z-index:3}
+.spin-badge svg{width:100%;height:100%;animation:spin 16s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin-badge .core{position:absolute;inset:34px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:1.5rem;box-shadow:var(--sho)}
+.ring-txt{font-family:var(--fd);font-size:9.2px;font-weight:700;letter-spacing:2.6px;fill:#b0764a;text-transform:uppercase}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+@media(max-width:575px){.feat-grid{grid-template-columns:1fr}}
+.feat{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border:1px solid #f6e8d8;border-radius:16px;padding:14px 16px;font-weight:700;font-size:.9rem;transition:.3s}
+.feat:hover{border-color:#ffc98f;transform:translateY(-3px)}
+.feat i{color:#ee5c12;font-size:1.1rem;margin-top:2px}
+.sig{display:flex;align-items:center;gap:16px;margin-top:30px;padding-top:26px;border-top:1px dashed var(--line)}
+.sig img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid var(--soft)}
+.sig b{font-family:var(--fd);display:block}
+.sig span{color:var(--mute);font-size:.82rem;font-weight:600}
+
+/* ============ SERVICES BENTO ============ */
+.sec-services{background:var(--cream)}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{position:relative;background:#fff;border:1px solid var(--line);border-radius:26px 26px 26px 8px;padding:30px;overflow:hidden;transition:.4s;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end}
+.tile:hover{transform:translateY(-6px);box-shadow:0 30px 55px -25px rgba(255,94,58,.35);border-color:#ffc98f}
+.t-num{position:absolute;top:16px;inset-inline-end:22px;font-family:var(--fd);font-weight:800;font-size:3.4rem;color:#f4ead9;transition:.4s;line-height:1}
+.tile:hover .t-num{color:#ffd9ae}
+.t-ic{width:58px;height:58px;border-radius:18px 18px 18px 5px;background:var(--soft);color:#ee5c12;display:grid;place-items:center;font-size:1.55rem;margin-bottom:auto;transition:.4s}
+.tile:hover .t-ic{background:var(--grad);color:#fff;transform:rotate(-6deg) scale(1.05);box-shadow:var(--sho)}
+.tile h3{font-size:1.18rem;margin:20px 0 8px;font-weight:700}
+.tile p{color:var(--ink2);font-size:.88rem;font-weight:500;line-height:1.7;margin:0}
+.t-link{display:inline-flex;align-items:center;gap:8px;color:#ee5c12;font-weight:800;font-size:.82rem;margin-top:14px;font-family:var(--fd)}
+.t-link i{transition:.35s}
+.tile:hover .t-link i{transform:translateX(6px)}
+html[dir="rtl"] .tile:hover .t-link i{transform:translateX(-6px) scaleX(-1)}
+html[dir="rtl"] .t-link i{transform:scaleX(-1)}
+.t-tall{grid-row:span 2;min-height:500px;color:#fff;border:0;padding:34px}
+.t-tall img,.t-wide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.t-tall:hover img,.t-wide:hover img{transform:scale(1.06)}
+.t-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,14,24,.92) 12%,rgba(12,14,24,.25) 55%,rgba(12,14,24,.05))}
+.t-tall h3,.t-wide h3{position:relative}
+.t-tall p,.t-wide p{position:relative;color:#d9dbe4}
+.t-tall .t-num,.t-wide .t-num{color:rgba(255,255,255,.22)}
+.t-247{position:absolute;top:24px;inset-inline-start:24px;background:var(--grad);color:#fff;font-weight:800;font-size:.75rem;padding:6px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;z-index:2}
+.t-247 .dot{width:8px;height:8px;background:#fff;border-radius:50%;animation:blink 1.4s infinite}
+.t-wide{grid-column:span 2;flex-direction:row;align-items:flex-end;min-height:250px;color:#fff;border:0}
+.t-wide .body{position:relative;max-width:60%}
+@media(max-width:991px){.bento{grid-template-columns:1fr 1fr}.t-tall{grid-row:span 1;grid-column:span 2;min-height:380px}.t-wide{grid-column:span 2}.t-wide .body{max-width:100%}}
+@media(max-width:640px){.bento{grid-template-columns:1fr}.t-tall,.t-wide{grid-column:span 1}.tile{min-height:200px}}
+
+/* ============ DEPARTMENTS RAIL ============ */
+.rail-arrows button{width:50px;height:50px;border-radius:15px 15px 15px 5px;border:1.5px solid #e8ddcd;background:#fff;color:var(--ink);font-size:1.1rem;transition:.3s}
+.rail-arrows button:hover{background:var(--grad);color:#fff;border-color:transparent;box-shadow:var(--sho)}
+.rail{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 26px;cursor:grab;scrollbar-width:thin;scrollbar-color:#ffc58f transparent}
+.rail.drag{cursor:grabbing}
+.rail::-webkit-scrollbar{height:7px}
+.rail::-webkit-scrollbar-thumb{background:var(--peach);border-radius:99px}
+.dcard{flex:0 0 272px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:.4s;user-select:none}
+.dcard:hover{transform:translateY(-8px);box-shadow:var(--sh);border-color:#ffd0a1}
+.dcard .im{height:210px;overflow:hidden;margin:14px 14px 0;border-radius:180px 180px 16px 16px}
+.dcard .im img{width:100%;height:100%;object-fit:cover;transition:.6s;pointer-events:none}
+.dcard:hover .im img{transform:scale(1.08)}
+.dcard .bd{padding:18px 20px 20px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.dcard h5{font-size:1rem;margin:0;font-weight:700}
+.dcard span{font-size:.75rem;color:var(--mute);font-weight:700}
+.dcard .go{width:38px;height:38px;border-radius:12px;background:var(--soft);color:#ee5c12;display:grid;place-items:center;flex:0 0 auto;transition:.3s}
+.dcard:hover .go{background:var(--grad);color:#fff}
+
+/* ============ STATS BAND ============ */
+.stat-band{background:var(--grad);border-radius:34px 34px 34px 10px;padding:56px 40px;color:#fff;position:relative;overflow:hidden}
+.stat-band::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.14);top:-160px;inset-inline-end:-90px}
+.sb-item{text-align:center;position:relative}
+.sb-item b{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:800;display:block}
+.sb-item span{font-weight:600;color:#ffeeda;font-size:.9rem}
+
+/* ============ TEAM ============ */
+.sec-team{background:var(--cream)}
+.doc{position:relative;transition:.4s}
+.doc .ph{border-radius:190px 190px 18px 18px;overflow:hidden;position:relative}
+.doc .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:.6s}
+.doc:hover .ph img{transform:scale(1.06)}
+.doc .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(238,92,18,.55),transparent 55%);opacity:0;transition:.4s}
+.doc:hover .ph::after{opacity:1}
+.doc .plate{background:#fff;border-radius:18px 18px 18px 5px;box-shadow:var(--sh);margin:-34px 18px 0;padding:16px 18px;position:relative;z-index:2;text-align:center}
+.doc .plate b{font-family:var(--fd);display:block;font-size:.98rem}
+.doc .plate span{color:#ee5c12;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+html[lang="ar"] .doc .plate span{letter-spacing:0}
+@media(min-width:992px){.doc.lift{margin-top:46px}}
+.doc .plate em{display:block;font-style:normal;color:var(--mute);font-size:.74rem;font-weight:600;margin-top:5px}
+
+/* ============ TESTIMONIALS (dark) ============ */
+.sec-tst{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.sec-tst .eyebrow{background:rgba(255,138,0,.14);border-color:rgba(255,176,102,.35);color:#ffb066}
+.sec-tst h2 em{color:#ffa254}
+.tst-wrap{max-width:780px;margin-inline:auto;position:relative}
+.qmark{position:absolute;top:-70px;inset-inline-start:-16px;font-size:9rem;line-height:1;color:rgba(255,138,0,.16);font-family:Georgia,serif;pointer-events:none}
+.tst-vp{overflow:hidden}
+.tst-track{display:flex;transition:transform .6s cubic-bezier(.25,.8,.3,1)}
+.tst-slide{flex:0 0 100%;padding:10px}
+.t-stars{color:var(--or1);font-size:.95rem;letter-spacing:3px;margin-bottom:20px}
+.t-txt{font-size:clamp(1.08rem,2.2vw,1.42rem);line-height:1.85;font-weight:500;color:#e8eaf2}
+.t-who{display:flex;align-items:center;gap:14px;margin-top:28px}
+.t-ava{width:54px;height:54px;border-radius:17px 17px 17px 5px;background:var(--grad);display:grid;place-items:center;font-family:var(--fd);font-weight:800;font-size:1.1rem;flex:0 0 auto}
+.t-who b{font-family:var(--fd);display:block}
+.t-who span{color:#9aa0b5;font-size:.8rem;font-weight:600}
+.t-ctl{display:flex;align-items:center;gap:18px;margin-top:36px;justify-content:center}
+.t-ctl button{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;transition:.3s}
+.t-ctl button:hover{background:var(--grad);border-color:transparent}
+.t-dots{display:flex;gap:8px}
+.t-dots i{width:9px;height:9px;border-radius:99px;background:rgba(255,255,255,.25);transition:.35s;cursor:pointer}
+.t-dots i.on{background:var(--or1);width:28px}
+
+/* ============ PACKAGES ============ */
+.pkg{background:#fff;border:1px solid var(--line);border-radius:28px 28px 28px 9px;padding:34px 30px;height:100%;transition:.4s;position:relative}
+.pkg:hover{transform:translateY(-8px);box-shadow:var(--sh)}
+.pkg h5{font-weight:800}
+.pkg .prc{font-family:var(--fd);font-weight:800;font-size:2.5rem;margin:14px 0 2px}
+.pkg .prc small{font-size:.85rem;color:var(--mute);font-weight:700}
+.pkg ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:12px}
+.pkg li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;font-weight:600;color:var(--ink2)}
+.pkg li i{color:var(--or1);margin-top:3px}
+.pkg.feat-p{background:var(--ink);color:#fff;border:0;transform:translateY(-16px);box-shadow:0 40px 70px -25px rgba(22,27,40,.55)}
+.pkg.feat-p:hover{transform:translateY(-24px)}
+.pkg.feat-p li{color:#c9cedd}
+.pkg.feat-p .prc small{color:#9aa0b5}
+.pkg.feat-p::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad);border-radius:28px 28px 0 0}
+.pop-badge{position:absolute;top:-15px;inset-inline-end:24px;background:var(--grad);color:#fff;font-size:.7rem;font-weight:800;padding:7px 16px;border-radius:999px;box-shadow:var(--sho);text-transform:uppercase;letter-spacing:.08em}
+html[lang="ar"] .pop-badge{letter-spacing:0}
+@media(max-width:991px){.pkg.feat-p{transform:none}.pkg.feat-p:hover{transform:translateY(-8px)}}
+
+/* ============ BOOKING ============ */
+.sec-book{background:var(--cream)}
+.book-visual{position:relative}
+.book-visual .main{width:100%;aspect-ratio:4/5;object-fit:cover}
+.book-visual .sub{position:absolute;bottom:-30px;inset-inline-end:-14px;width:44%;aspect-ratio:1;object-fit:cover;border-radius:24px 24px 24px 7px;border:6px solid var(--cream);box-shadow:var(--sh)}
+.form-card{background:#fff;border-radius:30px 30px 30px 10px;padding:clamp(26px,4vw,44px);box-shadow:var(--sh);border:1px solid #f3e9dc}
+.form-card.flash{animation:flash 1.1s ease}
+@keyframes flash{0%,100%{box-shadow:var(--sh)}40%{box-shadow:0 0 0 8px rgba(255,138,0,.3)}}
+.form-label{font-weight:800;font-size:.8rem;color:var(--ink)}
+.form-control,.form-select{border:1.5px solid #ecdfcf;border-radius:14px;background:#fbf7f1;padding:.8rem 1rem;font-weight:600;font-size:.92rem;transition:.3s}
+.form-control:focus,.form-select:focus{border-color:var(--or1);box-shadow:0 0 0 4px rgba(255,138,0,.14);background:#fff}
+.success-panel{text-align:center;padding:30px 10px}
+.success-panel .ok{width:90px;height:90px;margin:0 auto 22px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:2.3rem;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0)}}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.chip-i{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid #f0e2d0;border-radius:999px;padding:9px 16px;font-size:.8rem;font-weight:700;color:var(--ink2)}
+.chip-i i{color:#ee5c12}
+
+/* ============ FAQ ============ */
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:20px 20px 20px 7px;margin-bottom:14px;overflow:hidden;transition:.3s}
+.faq-item:has(.accordion-button:not(.collapsed)){border-color:#ffc98f;box-shadow:0 18px 40px -22px rgba(255,94,58,.35)}
+.faq-item .accordion-button{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--ink);background:transparent;padding:20px 22px;gap:14px;box-shadow:none!important}
+.faq-item .accordion-button::after{display:none}
+.faq-ic{width:36px;height:36px;border-radius:11px;background:var(--soft);color:#ee5c12;display:grid;place-items:center;flex:0 0 auto;transition:.35s;font-size:1rem}
+.accordion-button:not(.collapsed) .faq-ic{background:var(--grad);color:#fff;transform:rotate(45deg)}
+.faq-item .accordion-body{color:var(--ink2);font-size:.92rem;line-height:1.85;padding:0 22px 22px 72px;font-weight:500}
+html[dir="rtl"] .faq-item .accordion-body{padding:0 72px 22px 22px}
+.support-card{background:var(--grad);color:#fff;border-radius:26px 26px 26px 8px;padding:28px;box-shadow:var(--sho)}
+.support-card .ic{width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px}
+
+/* ============ CONTACT ============ */
+.sec-contact{background:var(--cream)}
+.cinfo{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid #f3e7d7;border-radius:20px 20px 20px 7px;padding:20px 22px;transition:.3s}
+.cinfo:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+.cinfo .ic{width:50px;height:50px;border-radius:15px 15px 15px 5px;background:var(--soft);color:#ee5c12;display:grid;place-items:center;font-size:1.3rem;flex:0 0 auto}
+.cinfo b{font-family:var(--fd);display:block;font-size:.95rem}
+.cinfo span,.cinfo a{color:var(--ink2);font-size:.86rem;font-weight:600}
+.map-frame{border-radius:30px 30px 30px 10px;overflow:hidden;box-shadow:var(--sh);border:1px solid #f0e3d2;position:relative;height:100%;min-height:380px}
+.map-frame iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:saturate(.9)}
+.map-chip{position:absolute;top:18px;inset-inline-start:18px;background:#fff;border-radius:999px;padding:9px 18px;font-weight:800;font-size:.8rem;box-shadow:var(--sh);display:flex;gap:8px;align-items:center}
+.map-chip i{color:#ee5c12}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:#aab0c2}
+.f-brand p{font-size:.9rem;line-height:1.9;max-width:300px}
+.f-h{font-family:var(--fd);color:#fff;font-weight:700;font-size:1rem;margin-bottom:22px;position:relative;padding-bottom:12px}
+.f-h::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:34px;height:3px;border-radius:99px;background:var(--grad)}
+.f-links a{display:block;color:#aab0c2;font-size:.9rem;font-weight:600;padding:6px 0;transition:.3s}
+.f-links a:hover{color:#ffb066;padding-inline-start:8px}
+.f-soc a{width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;font-size:1rem;transition:.3s}
+.f-soc a:hover{background:var(--grad);border-color:transparent;transform:translateY(-4px)}
+.f-news .form-control{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:.75rem 1.2rem;color:#fff;font-size:.87rem}
+.f-news .form-control::placeholder{color:#7d8399}
+.f-news .form-control:focus{box-shadow:0 0 0 4px rgba(255,138,0,.18);border-color:var(--or1);background:rgba(255,255,255,.1)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.08);padding:22px 0;font-size:.82rem;font-weight:600}
+
+/* ============ REVEAL ============ */
+[data-reveal]{opacity:0;transform:translateY(34px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+[data-reveal="l"]{transform:translateX(-40px)}
+[data-reveal="r"]{transform:translateX(40px)}
+[data-reveal="z"]{transform:scale(.92)}
+[data-reveal].revealed{opacity:1;transform:none}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+  .lm>span{transform:none;animation:none}
+  .hero-bg img{animation:none}
+  .mq-track{animation:none;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<!-- ===== TOPBAR ===== -->
+<div class="topbar d-none d-lg-block">
+  <div class="container d-flex justify-content-between align-items-center py-2">
+    <div class="d-flex gap-4 align-items-center">
+      <span><i class="bi bi-clock me-2 text-warning"></i><span data-en="Sat – Thu · 8:00 AM – 10:00 PM" data-ar="السبت – الخميس · 8:00 صباحًا – 10:00 مساءً"></span></span>
+      <a href="tel:+966112345678"><i class="bi bi-telephone me-2 text-warning"></i>+966 11 234 5678</a>
+      <a href="mailto:care@noormedical.sa"><i class="bi bi-envelope me-2 text-warning"></i>care@noormedical.sa</a>
+    </div>
+    <div class="d-flex gap-3 align-items-center">
+      <span class="em-chip"><span class="dot"></span><span data-en="24/7 Emergency" data-ar="طوارئ 24/7"></span></span>
+      <a href="#" aria-label="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" aria-label="x"><i class="bi bi-twitter-x"></i></a>
+      <a href="#" aria-label="whatsapp"><i class="bi bi-whatsapp"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<div class="nav-wrap" id="navwrap">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-3" href="#home">
+        <span class="brand-mark"><i class="bi bi-plus-lg"></i></span>
+        <span class="brand-txt"><span data-en="Noor" data-ar="نور"></span><small data-en="MEDICAL CENTER" data-ar="مركز طبي"></small></span>
+      </a>
+      <div class="d-flex align-items-center gap-3 order-lg-2">
+        <div class="lang-pill d-none d-sm-flex">
+          <button id="lb-en" class="on" type="button">EN</button>
+          <button id="lb-ar" type="button">عربي</button>
+        </div>
+        <a href="#booking" class="btn-o d-none d-lg-inline-flex" style="padding:.75rem 1.5rem"><i class="bi bi-calendar2-check"></i><span data-en="Book Now" data-ar="احجز الآن"></span></a>
+        <button class="navbar-toggler d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mnav" aria-label="menu"><i class="bi bi-list"></i></button>
+      </div>
+      <div class="collapse navbar-collapse order-lg-1 justify-content-center" id="navMenu">
+        <ul class="navbar-nav d-none d-lg-flex">
+          <li class="nav-item"><a class="nav-link" href="#home" data-en="Home" data-ar="الرئيسية"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-ar="من نحن"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#services" data-en="Services" data-ar="خدماتنا"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#departments" data-en="Departments" data-ar="الأقسام"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#team" data-en="Doctors" data-ar="الأطباء"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#packages" data-en="Packages" data-ar="الباقات"></a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-ar="اتصل بنا"></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- mobile offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mnav">
+  <div class="offcanvas-body p-0 h-100">
+    <div class="oc-panel h-100">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="fd fw-bold fs-5"><span data-en="Noor Medical" data-ar="مركز نور الطبي"></span></span>
+        <button class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
+      </div>
+      <a href="#home" data-en="Home" data-ar="الرئيسية"></a>
+      <a href="#about" data-en="About" data-ar="من نحن"></a>
+      <a href="#services" data-en="Services" data-ar="خدماتنا"></a>
+      <a href="#departments" data-en="Departments" data-ar="الأقسام"></a>
+      <a href="#team" data-en="Doctors" data-ar="الأطباء"></a>
+      <a href="#packages" data-en="Packages" data-ar="الباقات"></a>
+      <a href="#contact" data-en="Contact" data-ar="اتصل بنا"></a>
+      <div class="lang-pill mt-3 align-self-start">
+        <button id="lb-en-m" type="button">EN</button>
+        <button id="lb-ar-m" type="button">عربي</button>
+      </div>
+      <a href="#booking" class="btn-o justify-content-center mt-auto" data-bs-dismiss="offcanvas"><i class="bi bi-calendar2-check"></i><span data-en="Book Appointment" data-ar="احجز موعدك"></span></a>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ===== 1. HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=2000&q=80" alt="Medical team at Noor Medical Center" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-hero-hospital/1900/1100'">
+  </div>
+  <div class="hero-ov"></div>
+  <div class="container position-relative" style="z-index:3">
+    <div class="row">
+      <div class="col-lg-7">
+        <span class="eyebrow"><i class="bi bi-heart-pulse"></i><span data-en="Trusted in Riyadh since 1998" data-ar="ثقة أهل الرياض منذ 1998"></span></span>
+        <h1>
+          <span class="lm"><span style="--d:.1s" data-en="World-class medicine," data-ar="طبابة عالمية المستوى،"></span></span>
+          <span class="lm"><span style="--d:.28s"><span data-en="delivered" data-ar="تُقدَّم"></span> <span class="hl"><span data-en="with heart." data-ar="بقلب."></span><svg class="uline" viewBox="0 0 220 22" aria-hidden="true"><path d="M4 16 C 60 5, 150 3, 216 13"/></svg></span></span></span>
+        </h1>
+        <p class="sub" data-en="50+ consultants, next-generation technology and care designed around you — all under one roof on King Fahd Road, Riyadh." data-ar="أكثر من 50 استشاريًا، وتقنيات من الجيل القادم، ورعاية تُصمَّم حولك — كل ذلك تحت سقف واحد على طريق الملك فهد، الرياض."></p>
+        <div class="d-flex gap-3 flex-wrap mt-4">
+          <a href="#booking" class="btn-o"><span data-en="Book an Appointment" data-ar="احجز موعدك"></span><i class="bi bi-arrow-right"></i></a>
+          <a href="#services" class="btn-ghost"><span data-en="Explore Services" data-ar="اكتشف خدماتنا"></span></a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><b>25<i>+</i></b><span data-en="Years of Excellence" data-ar="سنة من التميّز"></span></div>
+          <div class="hstat"><b>50<i>+</i></b><span data-en="Expert Consultants" data-ar="استشاريًا خبيرًا"></span></div>
+          <div class="hstat"><b>120K<i>+</i></b><span data-en="Patients Cared For" data-ar="مريض نال رعايتنا"></span></div>
+        </div>
+      </div>
+      <div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+        <form class="qbook" id="qform">
+          <h6 class="fd mb-1"><span data-en="Quick Booking" data-ar="حجز سريع"></span> <i class="bi bi-lightning-charge-fill text-warning"></i></h6>
+          <small class="d-block mb-3" data-en="Reserve your visit in under a minute." data-ar="احجز زيارتك خلال أقل من دقيقة."></small>
+          <select class="form-select mb-2 qdept" required>
+            <option value="" data-en="Select department" data-ar="اختر القسم"></option>
+            <option data-en="Cardiology" data-ar="أمراض القلب">Cardiology</option>
+            <option data-en="Pediatrics" data-ar="طب الأطفال">Pediatrics</option>
+            <option data-en="Dental" data-ar="طب الأسنان">Dental</option>
+            <option data-en="Orthopedics" data-ar="جراحة العظام">Orthopedics</option>
+            <option data-en="Dermatology" data-ar="الجلدية والتجميل">Dermatology</option>
+            <option data-en="General Check-up" data-ar="فحص عام">General Check-up</option>
+          </select>
+          <input type="date" class="form-control mb-2" required>
+          <button class="btn-o w-100 justify-content-center" type="submit"><span data-en="Check Availability" data-ar="تحقّق من المواعيد"></span></button>
+          <small class="d-block text-center mt-2" data-en="Free cancellation · Reply within 15 minutes" data-ar="إلغاء مجاني · نرد خلال 15 دقيقة"></small>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span data-en="Scroll" data-ar="مرّر"></span><span class="d-block"></span></div>
+</section>
+
+<!-- ===== 2. MARQUEE ===== -->
+<div class="mq plus-w" aria-hidden="true">
+  <div class="mq-track" id="mqTrack">
+    <span><b data-en="Cardiology" data-ar="أمراض القلب"></b><i class="bi bi-plus-lg"></i><b data-en="Neurology" data-ar="طب الأعصاب"></b><i class="bi bi-plus-lg"></i><b data-en="Pediatrics" data-ar="طب الأطفال"></b><i class="bi bi-plus-lg"></i><b data-en="Dental Care" data-ar="طب الأسنان"></b><i class="bi bi-plus-lg"></i><b data-en="Radiology" data-ar="الأشعة"></b><i class="bi bi-plus-lg"></i><b data-en="Laboratory" data-ar="المختبر"></b><i class="bi bi-plus-lg"></i><b data-en="Orthopedics" data-ar="جراحة العظام"></b><i class="bi bi-plus-lg"></i><b data-en="Emergency 24/7" data-ar="طوارئ 24/7"></b><i class="bi bi-plus-lg"></i></span>
+  </div>
+</div>
+
+<!-- ===== 3. ABOUT ===== -->
+<section class="sec" id="about">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5">
+        <div class="sticky-col">
+          <div class="about-img" data-reveal="l">
+            <div class="spin-badge d-none d-md-block">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="cP" d="M60 60 m -46 0 a 46 46 0 1 1 92 0 a 46 46 0 1 1 -92 0"/></defs><text class="ring-txt"><textPath href="#cP">NOOR MEDICAL CENTER • SINCE 1998 • RIYADH • </textPath></text></svg>
+              <span class="core"><i class="bi bi-heart-pulse"></i></span>
+            </div>
+            <img class="main arch" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80" alt="Senior consultant at Noor" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-doctor-portrait/800/1000'">
+            <div class="chip">
+              <span class="ic"><i class="bi bi-award"></i></span>
+              <div><b data-en="JCI Accredited" data-ar="اعتماد JCI"></b><span data-en="International Gold Standard" data-ar="المعيار الذهبي الدولي"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 offset-lg-1" data-reveal>
+        <span class="eyebrow"><i class="bi bi-stars"></i><span data-en="About Noor" data-ar="عن مركز نور"></span></span>
+        <h2 class="mt-3"><span data-en="A legacy of healing," data-ar="إرثٌ من الشفاء،"></span><br><em data-en="since 1998." data-ar="منذ عام 1998."></em></h2>
+        <p class="lead mt-3" style="color:var(--ink2)" data-en="For over 25 years, Noor Medical Center has been Riyadh's quiet promise: medicine practiced at the highest international standard, delivered with the warmth of family." data-ar="على مدى أكثر من 25 عامًا، كان مركز نور الطبي وعدًا هادئًا لأهل الرياض: طبابة بأعلى المعايير العالمية، تُقدَّم بدفء العائلة."></p>
+        <p class="mt-2" style="color:var(--mute);font-weight:500" data-en="From our accredited facilities to our multidisciplinary teams, every detail — from diagnosis to recovery — is designed around one thing: you." data-ar="من منشآتنا المعتمدة إلى فرقنا متعددة التخصصات، كل تفصيلة — من التشخيص إلى التعافي — مصمَّمة حول شيء واحد: أنت."></p>
+        <div class="feat-grid">
+          <div class="feat"><i class="bi bi-patch-check"></i><span data-en="JCI International Accreditation" data-ar="اعتماد JCI الدولي"></span></div>
+          <div class="feat"><i class="bi bi-people"></i><span data-en="Multidisciplinary Care Teams" data-ar="فرق رعاية متعددة التخصصات"></span></div>
+          <div class="feat"><i class="bi bi-cpu"></i><span data-en="AI-Assisted Smart Diagnostics" data-ar="تشخيص ذكي بالذكاء الاصطناعي"></span></div>
+          <div class="feat"><i class="bi bi-gem"></i><span data-en="Private Family & VIP Suites" data-ar="أجنحة خاصة وعائلية فاخرة"></span></div>
+        </div>
+        <div class="sig">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=200&q=80" alt="Dr. Khalid Al-Rashid" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-cmo/200/200'">
+          <div>
+            <b><span data-en="Dr. Khalid Al-Rashid" data-ar="د. خالد الراشد"></span></b>
+            <span data-en="Chief Medical Officer, Noor Medical Center" data-ar="كبير المسؤولين الطبيين، مركز نور الطبي"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. SERVICES (bento) ===== -->
+<section class="sec sec-services plus-o" id="services">
+  <div class="container">
+    <div class="sec-head d-lg-flex justify-content-between align-items-end" style="max-width:none" data-reveal>
+      <div>
+        <span class="eyebrow"><i class="bi bi-grid-1x2"></i><span data-en="Our Services" data-ar="خدماتنا"></span></span>
+        <h2><span data-en="Complete care under" data-ar="رعاية متكاملة تحت"></span> <em data-en="one roof" data-ar="سقف واحد"></em></h2>
+        <p class="lead mb-0" data-en="From everyday check-ups to complex surgery — departments that work as one team." data-ar="من الفحوصات الدورية إلى الجراحات المعقدة — أقسام تعمل كفريق واحد."></p>
+      </div>
+      <a href="#booking" class="btn-ghost d-none d-lg-inline-flex mt-4 mt-lg-0"><span data-en="All Services" data-ar="كل الخدمات"></span><i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    <div class="bento">
+      <div class="tile t-tall" data-reveal>
+        <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=900&q=80" alt="Emergency department" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-emergency/900/1200'">
+        <div class="t-shade"></div>
+        <span class="t-247"><span class="dot"></span>24/7</span>
+        <span class="t-num">01</span>
+        <h3 data-en="Emergency & ICU" data-ar="الطوارئ والعناية المركزة"></h3>
+        <p data-en="Trauma-ready ER, dedicated ICU teams and 3-minute triage — around the clock, every day." data-ar="طوارئ مجهزة للحالات الحرجة، فرق عناية مركزة وفرز خلال 3 دقائق — على مدار الساعة."></p>
+        <a href="#booking" class="t-link"><span data-en="Learn more" data-ar="اعرف المزيد"></span><i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="tile" data-reveal style="transition-delay:.08s">
+        <span class="t-num">02</span>
+        <span class="t-ic"><i class="bi bi-heart-pulse"></i></span>
+        <h3 data-en="Cardiology" data-ar="أمراض القلب"></h3>
+        <p data-en="Advanced cath lab, echocardiography and preventive heart programs." data-ar="مختبر قسطرة متقدم، إيكو قلب، وبرامج وقائية لصحة القلب."></p>
+      </div>
+      <div class="tile" data-reveal style="transition-delay:.16s">
+        <span class="t-num">03</span>
+        <span class="t-ic"><i class="bi bi-emoji-smile"></i></span>
+        <h3 data-en="Dental & Smile" data-ar="طب الأسنان والابتسامة"></h3>
+        <p data-en="Implants, clear aligners and aesthetic dentistry suites." data-ar="زراعة أسنان، تقويم شفاف، وأجنحة تجميل متكاملة."></p>
+      </div>
+      <div class="tile t-wide" data-reveal style="transition-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80" alt="Radiology and imaging" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-radiology/1200/600'">
+        <div class="t-shade" style="background:linear-gradient(90deg,rgba(12,14,24,.92) 20%,rgba(12,14,24,.25))"></div>
+        <span class="t-num">04</span>
+        <div class="body">
+          <h3 data-en="Radiology & Imaging" data-ar="الأشعة والتصوير الطبي"></h3>
+          <p data-en="3T MRI, 128-slice CT and AI-assisted reporting — results in under 4 hours." data-ar="رنين مغناطيسي 3 تسلا، أشعة مقطعية 128 شريحة، وتقارير بالذكاء الاصطناعي خلال أقل من 4 ساعات."></p>
+          <a href="#booking" class="t-link" style="color:#ffb066"><span data-en="Learn more" data-ar="اعرف المزيد"></span><i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="tile" data-reveal style="transition-delay:.14s">
+        <span class="t-num">05</span>
+        <span class="t-ic"><i class="bi bi-eyedropper"></i></span>
+        <h3 data-en="Laboratory" data-ar="المختبر والتحاليل"></h3>
+        <p data-en="400+ tests, home sample collection, results straight to your phone." data-ar="أكثر من 400 تحليل، سحب عينات منزلي، ونتائج تصل إلى جوالك."></p>
+      </div>
+      <div class="tile" data-reveal style="transition-delay:.2s">
+        <span class="t-num">06</span>
+        <span class="t-ic"><i class="bi bi-balloon-heart"></i></span>
+        <h3 data-en="Pediatrics" data-ar="طب الأطفال"></h3>
+        <p data-en="From neonatal ICU to teen care — gentle, family-first medicine." data-ar="من العناية بالخدّج إلى رعاية المراهقين — طبابة لطيفة تراعي العائلة أولًا."></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. DEPARTMENTS RAIL ===== -->
+<section class="sec" id="departments">
+  <div class="container">
+    <div class="sec-head d-flex justify-content-between align-items-end flex-wrap gap-3" style="max-width:none" data-reveal>
+      <div>
+        <span class="eyebrow"><i class="bi bi-building"></i><span data-en="Departments" data-ar="الأقسام الطبية"></span></span>
+        <h2 class="mb-0"><span data-en="Find your" data-ar="اعثر على"></span> <em data-en="department" data-ar="قسمك"></em></h2>
+      </div>
+      <div class="rail-arrows d-flex gap-2">
+        <button id="railPrev" aria-label="previous"><i class="bi bi-arrow-left"></i></button>
+        <button id="railNext" aria-label="next"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="rail" id="rail">
+      <!-- cards injected by JS -->
+    </div>
+    <p class="text-center mt-2" style="color:var(--mute);font-weight:700;font-size:.78rem"><i class="bi bi-hand-index me-1"></i><span data-en="Drag, swipe or use arrows to explore" data-ar="اسحب أو استخدم الأسهم للاستكشاف"></span></p>
+  </div>
+</section>
+
+<!-- ===== 6. STATS BAND ===== -->
+<section class="py-5" aria-label="statistics">
+  <div class="container">
+    <div class="stat-band plus-w" data-reveal="z">
+      <div class="row g-4 position-relative">
+        <div class="col-6 col-lg-3 sb-item"><b><span class="count" data-count="25">0</span>+</b><span data-en="Years of Experience" data-ar="سنة من الخبرة"></span></div>
+        <div class="col-6 col-lg-3 sb-item"><b><span class="count" data-count="50">0</span>+</b><span data-en="Expert Consultants" data-ar="استشاريًا خبيرًا"></span></div>
+        <div class="col-6 col-lg-3 sb-item"><b><span class="count" data-count="120000">0</span>+</b><span data-en="Happy Patients" data-ar="مريض سعيد"></span></div>
+        <div class="col-6 col-lg-3 sb-item"><b><span class="count" data-count="98">0</span>%</b><span data-en="Satisfaction Rate" data-ar="نسبة رضا المرضى"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. TEAM ===== -->
+<section class="sec sec-team plus-o" id="team">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><i class="bi bi-person-badge"></i><span data-en="Our Specialists" data-ar="استشاريونا"></span></span>
+      <h2><span data-en="The hands behind" data-ar="الأيدي التي تقف خلف"></span> <em data-en="the healing" data-ar="الشفاء"></em></h2>
+      <p class="lead mb-0" data-en="Board-certified consultants trained at the world's leading institutions." data-ar="استشاريون معتمدون من البورد، تدرّبوا في أعرق المؤسسات العالمية."></p>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-lg-3"><div class="doc" data-reveal>
+        <div class="ph"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80" alt="Dr. Khalid Al-Rashid" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-cardio-doc/600/750'"></div>
+        <div class="plate"><b data-en="Dr. Khalid Al-Rashid" data-ar="د. خالد الراشد"></b><span data-en="Chief Cardiologist" data-ar="استشاري أمراض القلب"></span><em data-en="22 yrs · London, UK" data-ar="22 سنة خبرة · لندن"></em></div>
+      </div></div>
+      <div class="col-6 col-lg-3"><div class="doc lift" data-reveal style="transition-delay:.1s">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80" alt="Dr. Layla Al-Hamdan" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-peds-doc/600/750'"></div>
+        <div class="plate"><b data-en="Dr. Layla Al-Hamdan" data-ar="د. ليلى الحمدان"></b><span data-en="Pediatric Specialist" data-ar="استشارية طب الأطفال"></span><em data-en="15 yrs · Toronto, CA" data-ar="15 سنة خبرة · تورنتو"></em></div>
+      </div></div>
+      <div class="col-6 col-lg-3"><div class="doc" data-reveal style="transition-delay:.2s">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=700&q=80" alt="Dr. Omar Al-Turki" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-ortho-doc/600/750'"></div>
+        <div class="plate"><b data-en="Dr. Omar Al-Turki" data-ar="د. عمر التركي"></b><span data-en="Orthopedic Surgeon" data-ar="استشاري جراحة العظام"></span><em data-en="18 yrs · Berlin, DE" data-ar="18 سنة خبرة · برلين"></em></div>
+      </div></div>
+      <div class="col-6 col-lg-3"><div class="doc lift" data-reveal style="transition-delay:.3s">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1594824476961-13674713fd94?auto=format&fit=crop&w=700&q=80" alt="Dr. Huda Al-Qahtani" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-derma-doc/600/750'"></div>
+        <div class="plate"><b data-en="Dr. Huda Al-Qahtani" data-ar="د. هدى القحطاني"></b><span data-en="Dermatology" data-ar="استشارية الجلدية والتجميل"></span><em data-en="12 yrs · Dubai, UAE" data-ar="12 سنة خبرة · دبي"></em></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. TESTIMONIALS (dark, auto-scroll) ===== -->
+<section class="sec sec-tst plus-w" id="testimonials">
+  <div class="container">
+    <div class="text-center sec-head mx-auto" data-reveal>
+      <span class="eyebrow"><i class="bi bi-chat-quote"></i><span data-en="Patient Stories" data-ar="قصص مرضانا"></span></span>
+      <h2 class="mx-auto"><span data-en="Voices from" data-ar="أصوات من"></span> <em data-en="our family" data-ar="عائلتنا"></em></h2>
+    </div>
+    <div class="tst-wrap" data-reveal="z">
+      <span class="qmark">"</span>
+      <div class="tst-vp" id="tstVp">
+        <div class="tst-track" id="tstTrack">
+          <div class="tst-slide"><div class="t-stars">★★★★★</div>
+            <p class="t-txt" data-en="“From reception to recovery, everything felt effortless. My father's heart surgery was handled with a level of care I have never seen before.”" data-ar="«من الاستقبال إلى التعافي، كان كل شيء سلسًا. عملية قلب والدي أُجريت بمستوى من العناية لم أرَ مثله من قبل.»"></p>
+            <div class="t-who"><span class="t-ava">ع</span><div><b data-en="Abdullah Al-Otaibi" data-ar="عبدالله العتيبي"></b><span data-en="Riyadh · Cardiac Patient's Family" data-ar="الرياض · عائلة مريض قلب"></span></div></div>
+          </div>
+          <div class="tst-slide"><div class="t-stars">★★★★★</div>
+            <p class="t-txt" data-en="“The pediatrics team treated my daughter like their own. They explained everything patiently and followed up even after discharge.”" data-ar="«فريق طب الأطفال تعامل مع ابنتي وكأنها طفلتهم. شرحوا لنا كل شيء بصبر وتابعوا حالتها حتى بعد الخروج.»"></p>
+            <div class="t-who"><span class="t-ava">ن</span><div><b data-en="Noura Al-Qahtani" data-ar="نورة القحطاني"></b><span data-en="Riyadh · Mother of a Patient" data-ar="الرياض · والدة مريضة"></span></div></div>
+          </div>
+          <div class="tst-slide"><div class="t-stars">★★★★★</div>
+            <p class="t-txt" data-en="“Booked online at midnight, was seen by a specialist at 9 AM the same day. This is what modern healthcare should look like.”" data-ar="«حجزت عبر الموقع منتصف الليل، وكشفت عند الاستشاري الساعة 9 صباحًا في نفس اليوم. هكذا يجب أن تكون الرعاية الصحية الحديثة.»"></p>
+            <div class="t-who"><span class="t-ava">م</span><div><b data-en="Mohammed Al-Harbi" data-ar="محمد الحربي"></b><span data-en="Jeddah · Orthopedics" data-ar="جدة · جراحة عظام"></span></div></div>
+          </div>
+          <div class="tst-slide"><div class="t-stars">★★★★★</div>
+            <p class="t-txt" data-en="“The executive health package was worth every riyal — thorough, organized, and results were on my phone before I got home.”" data-ar="«باقة الفحص التنفيذي كانت تستحق كل ريال — شاملة ومنظمة، ووصلتني النتائج على جوالي قبل أن أصل إلى البيت.»"></p>
+            <div class="t-who"><span class="t-ava">س</span><div><b data-en="Sarah Al-Dossari" data-ar="سارة الدوسري"></b><span data-en="Dammam · Executive Check-up" data-ar="الدمام · فحص تنفيذي"></span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="t-ctl">
+        <button id="tPrev" aria-label="previous testimonial"><i class="bi bi-arrow-left"></i></button>
+        <div class="t-dots" id="tDots"></div>
+        <button id="tNext" aria-label="next testimonial"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. PACKAGES ===== -->
+<section class="sec" id="packages">
+  <div class="container">
+    <div class="sec-head text-center mx-auto" data-reveal>
+      <span class="eyebrow"><i class="bi bi-box-seam"></i><span data-en="Health Packages" data-ar="الباقات الصحية"></span></span>
+      <h2><span data-en="Prevention," data-ar="الوقاية،"></span> <em data-en="priced fairly" data-ar="بأسعار عادلة"></em></h2>
+      <p class="lead mb-0" data-en="Transparent packages with same-day results. All prices in SAR, VAT included." data-ar="باقات شفافة بنتائج في نفس اليوم. جميع الأسعار بالريال السعودي شاملة الضريبة."></p>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-4" data-reveal>
+        <div class="pkg">
+          <h5 data-en="Essential Check" data-ar="الفحص الأساسي"></h5>
+          <p style="color:var(--mute);font-size:.84rem;font-weight:600" data-en="A smart yearly baseline for adults." data-ar="خط أساس سنوي ذكي للبالغين."></p>
+          <div class="prc">299 <small data-en="SAR / visit" data-ar="ر.س / زيارة"></small></div>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Full physical consultation" data-ar="استشارة فحص سريري شامل"></span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="CBC + blood sugar + lipids" data-ar="تحليل دم شامل + سكر + دهون"></span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Blood pressure & BMI report" data-ar="قياس ضغط الدم ومؤشر كتلة الجسم"></span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Same-day digital results" data-ar="نتائج رقمية في نفس اليوم"></span></li>
+          </ul>
+          <a href="#booking" class="btn-ghost w-100 justify-content-center" data-en="Choose Essential" data-ar="اختر الأساسية"></a>
+        </div>
+      </div>
+      <div class="col-lg-4" data-reveal style="transition-delay:.12s">
+        <div class="pkg feat-p">
+          <span class="pop-badge" data-en="Most Popular" data-ar="الأكثر طلبًا"></span>
+          <h5 data-en="Executive Health" data-ar="الفحص التنفيذي"></h5>
+          <p style="color:#9aa0b5;font-size:.84rem;font-weight:600" data-en="Our deepest full-body screening." data-ar="أشمل فحص كامل للجسم لدينا."></p>
+          <div class="prc">699 <small data-en="SAR / visit" data-ar="ر.س / زيارة"></small></div>
+          <ul>
+            <li><i class="bi bi-check-circle-fill" style="color:#ffb066"></i><span data-en="Everything in Essential" data-ar="كل ما في الباقة الأساسية"></span></li>
+            <li><i class="bi bi-check-circle-fill" style="color:#ffb066"></i><span data-en="ECG + chest X-ray" data-ar="تخطيط قلب + أشعة صدر"></span></li>
+            <li><i class="bi bi-check-circle-fill" style="color:#ffb066"></i><span data-en="Thyroid, liver & kidney profile" data-ar="تحاليل الغدة الدرقية والكبد والكلى"></span></li>
+            <li><i class="bi bi-check-circle-fill" style="color:#ffb066"></i><span data-en="Nutritionist consultation" data-ar="استشارة أخصائي تغذية"></span></li>
+            <li><i class="bi bi-check-circle-fill" style="color:#ffb066"></i><span data-en="Priority VIP lounge access" data-ar="أولوية في صالة كبار الشخصيات"></span></li>
+          </ul>
+          <a href="#booking" class="btn-w w-100 justify-content-center" data-en="Choose Executive" data-ar="اختر التنفيذية"></a>
+        </div>
+      </div>
+      <div class="col-lg-4" data-reveal style="transition-delay:.2s">
+        <div class="pkg">
+          <h5 data-en="Family Wellness" data-ar="صحة العائلة"></h5>
+          <p style="color:var(--mute);font-size:.84rem;font-weight:600" data-en="Covering 2 adults + up to 3 kids." data-ar="تغطي شخصين بالغين وحتى 3 أطفال."></p>
+          <div class="prc">499 <small data-en="SAR / family" data-ar="ر.س / عائلة"></small></div>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Check-ups for the whole family" data-ar="فحوصات لجميع أفراد العائلة"></span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Pediatric growth assessment" data-ar="تقييم نمو الأطفال"></span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Vision & dental screening" data-ar="فحص نظر وأسنان"></span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span data-en="Vaccination schedule review" data-ar="مراجعة جدول التطعيمات"></span></li>
+          </ul>
+          <a href="#booking" class="btn-ghost w-100 justify-content-center" data-en="Choose Family" data-ar="اختر العائلة"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. BOOKING ===== -->
+<section class="sec sec-book" id="booking">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="book-visual sticky-col" data-reveal="l">
+          <img class="main arch" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=900&q=80" alt="Nurse welcoming a patient" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-nurse/800/1000'">
+          <img class="sub" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=500&q=80" alt="Operating team" onerror="this.onerror=null;this.src='https://picsum.photos/seed/noor-surgery/500/500'">
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="sec-head mb-4" data-reveal>
+          <span class="eyebrow"><i class="bi bi-calendar2-heart"></i><span data-en="Book a Visit" data-ar="احجز زيارتك"></span></span>
+          <h2 class="mb-0"><span data-en="Your appointment," data-ar="موعدك،"></span> <em data-en="in one minute" data-ar="في دقيقة واحدة"></em></h2>
+        </div>
+        <div class="form-card" id="formCard" data-reveal style="transition-delay:.1s">
+          <form id="bkForm" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6"><label class="form-label" data-en="Full Name *" data-ar="الاسم الكامل *"></label><input class="form-control" required data-ph-en="e.g. Ahmed Al-Salem" data-ph-ar="مثال: أحمد السالم"></div>
+              <div class="col-md-6"><label class="form-label" data-en="Mobile Number *" data-ar="رقم الجوال *"></label><input type="tel" class="form-control" required placeholder="+966 5X XXX XXXX"></div>
+              <div class="col-md-6"><label class="form-label" data-en="Department *" data-ar="القسم *"></label>
+                <select class="form-select" id="bkDept" required>
+                  <option value="" data-en="Select department" data-ar="اختر القسم"></option>
+                  <option data-en="Cardiology" data-ar="أمراض القلب">Cardiology</option>
+                  <option data-en="Pediatrics" data-ar="طب الأطفال">Pediatrics</option>
+                  <option data-en="Dental" data-ar="طب الأسنان">Dental</option>
+                  <option data-en="Orthopedics" data-ar="جراحة العظام">Orthopedics</option>
+                  <option data-en="Dermatology" data-ar="الجلدية والتجميل">Dermatology</option>
+                  <option data-en="General Check-up" data-ar="فحص عام">General Check-up</option>
+                </select></div>
+              <div class="col-md-3"><label class="form-label" data-en="Preferred Date" data-ar="التاريخ المفضل"></label><input type="date" class="form-control"></div>
+              <div class="col-md-3"><label class="form-label" data-en="Preferred Time" data-ar="الوقت المفضل"></label>
+                <select class="form-select">
+                  <option data-en="Morning" data-ar="صباحًا">Morning</option>
+                  <option data-en="Afternoon" data-ar="ظهرًا">Afternoon</option>
+                  <option data-en="Evening" data-ar="مساءً">Evening</option>
+                </select></div>
+              <div class="col-12"><label class="form-label" data-en="Notes (optional)" data-ar="ملاحظات (اختياري)"></label><textarea class="form-control" rows="3" data-ph-en="Symptoms, insurance, or anything we should know…" data-ar="الأعراض، التأمين، أو أي شيء يجب أن نعرفه…"></textarea></div>
+              <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                <button class="btn-o" type="submit"><i class="bi bi-calendar2-check"></i><span data-en="Confirm Booking" data-ar="تأكيد الحجز"></span></button>
+                <small style="color:var(--mute);font-weight:600"><i class="bi bi-shield-check me-1" style="color:#ee5c12"></i><span data-en="Your data is private & secure." data-ar="بياناتك خاصة وآمنة تمامًا."></span></small>
+              </div>
+            </div>
+          </form>
+          <div class="success-panel d-none" id="bkSuccess">
+            <div class="ok"><i class="bi bi-check-lg"></i></div>
+            <h4 data-en="Thank you!" data-ar="شكرًا لك!"></h4>
+            <p style="color:var(--ink2);font-weight:500" data-en="Your request has been received. Our care team will call you within 30 minutes to confirm your slot." data-ar="تم استلام طلبك بنجاح. سيتصل بك فريقنا خلال 30 دقيقة لتأكيد موعدك."></p>
+            <button class="btn-ghost mt-2" id="bkAgain" data-en="Book Another Visit" data-ar="احجز زيارة أخرى"></button>
+          </div>
+        </div>
+        <div class="chips" data-reveal>
+          <span class="chip-i"><i class="bi bi-shield-check"></i><span data-en="All major insurance accepted" data-ar="نقبل جميع شركات التأمين"></span></span>
+          <span class="chip-i"><i class="bi bi-phone"></i><span dir="ltr">+966 11 234 5678</span></span>
+          <span class="chip-i"><i class="bi bi-whatsapp"></i><span data-en="WhatsApp booking available" data-ar="الحجز عبر واتساب متاح"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11. FAQ ===== -->
+<section class="sec" id="faq">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="sticky-col" data-reveal="l">
+          <span class="eyebrow"><i class="bi bi-question-circle"></i><span data-en="FAQ" data-ar="الأسئلة الشائعة"></span></span>
+          <h2 class="mt-3"><span data-en="Questions," data-ar="أسئلة،"></span><br><em data-en="answered." data-ar="أجبنا عنها."></em></h2>
+          <div class="support-card mt-4 plus-w">
+            <span class="ic"><i class="bi bi-headset"></i></span>
+            <h5 class="text-white" data-en="Still need help?" data-ar="ما زلت بحاجة إلى مساعدة؟"></h5>
+            <p class="mb-3" style="color:#ffeeda;font-size:.9rem" data-en="Our care line answers in under a minute, 24/7." data-ar="خط الرعاية لدينا يرد خلال أقل من دقيقة، على مدار الساعة."></p>
+            <a href="tel:+966112345678" class="btn-w w-100 justify-content-center" style="padding:.7rem 1.4rem"><i class="bi bi-telephone"></i><span dir="ltr">+966 11 234 5678</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8" data-reveal>
+        <div class="accordion" id="faqAcc">
+          <div class="faq-item accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1"><span class="faq-ic"><i class="bi bi-plus-lg"></i></span><span data-en="Do you accept health insurance?" data-ar="هل تقبلون التأمين الصحي؟"></span></button></h2>
+            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body" data-en="Yes — we work with all major insurance providers in Saudi Arabia, including Bupa, Tawuniya, Medgulf and CCHI-approved plans. Just bring your ID and insurance card." data-ar="نعم — نتعامل مع جميع شركات التأمين الكبرى في المملكة، بما فيها بوبا والتعاونية وميدغلف والخطط المعتمدة من مجلس الضمان الصحي. أحضر فقط هويتك وبطاقة التأمين."></div></div>
+          </div>
+          <div class="faq-item accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2"><span class="faq-ic"><i class="bi bi-plus-lg"></i></span><span data-en="What are your working hours?" data-ar="ما هي ساعات العمل لديكم؟"></span></button></h2>
+            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body" data-en="Clinics run Saturday to Thursday, 8:00 AM – 10:00 PM. Our Emergency department and ICU operate 24/7, including Fridays and public holidays." data-ar="تعمل العيادات من السبت إلى الخميس، من 8:00 صباحًا حتى 10:00 مساءً. أما قسم الطوارئ والعناية المركزة فيعملان على مدار الساعة، بما في ذلك الجمعة والأعياد الرسمية."></div></div>
+          </div>
+          <div class="faq-item accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3"><span class="faq-ic"><i class="bi bi-plus-lg"></i></span><span data-en="Can I have a video consultation?" data-ar="هل يمكنني الحصول على استشارة عن بُعد؟"></span></button></h2>
+            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body" data-en="Absolutely. Telemedicine visits are available daily from 8 AM to midnight for follow-ups, prescriptions and minor ailments — book online and join from your phone." data-ar="بالتأكيد. الاستشارات عن بُعد متاحة يوميًا من 8 صباحًا حتى منتصف الليل للمتابعات والوصفات والحالات البسيطة — احجز عبر الموقع وانضم من جوالك."></div></div>
+          </div>
+          <div class="faq-item accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4"><span class="faq-ic"><i class="bi bi-plus-lg"></i></span><span data-en="Do you offer home visits and lab collection?" data-ar="هل توفرون زيارات منزلية وسحب عينات؟"></span></button></h2>
+            <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body" data-en="Yes. Our home-care team covers greater Riyadh for consultations, nursing care and lab sample collection — results are delivered directly to your phone." data-ar="نعم. يغطي فريق الرعاية المنزلية لدينا منطقة الرياض الكبرى للاستشارات والتمريض وسحب العينات — وتصل النتائج مباشرة إلى جوالك."></div></div>
+          </div>
+          <div class="faq-item accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5"><span class="faq-ic"><i class="bi bi-plus-lg"></i></span><span data-en="Is parking available at the center?" data-ar="هل تتوفر مواقف سيارات في المركز؟"></span></button></h2>
+            <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body" data-en="We offer free covered parking for all patients and visitors, with valet service at the main entrance and wheelchair-friendly access throughout." data-ar="نوفر مواقف مغطاة مجانية لجميع المرضى والزوار، مع خدمة صف السيارات عند المدخل الرئيسي وممرات مهيّأة للكراسي المتحركة في كل الأرجاء."></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 12. CONTACT ===== -->
+<section class="sec sec-contact plus-o" id="contact">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><i class="bi bi-geo-alt"></i><span data-en="Visit Us" data-ar="زورونا"></span></span>
+      <h2><span data-en="In the heart of" data-ar="في قلب"></span> <em data-en="Riyadh" data-ar="الرياض"></em></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="d-flex flex-column gap-3" data-reveal="l">
+          <div class="cinfo"><span class="ic"><i class="bi bi-geo-alt"></i></span><div><b data-en="Address" data-ar="العنوان"></b><span data-en="King Fahd Road, Al Olaya District, Riyadh 12212, Saudi Arabia" data-ar="طريق الملك فهد، حي العليا، الرياض 12212، المملكة العربية السعودية"></span></div></div>
+          <div class="cinfo"><span class="ic"><i class="bi bi-telephone"></i></span><div><b data-en="Phone" data-ar="الهاتف"></b><a href="tel:+966112345678" dir="ltr">+966 11 234 5678</a> · <a href="tel:937" dir="ltr">937</a></div></div>
+          <div class="cinfo"><span class="ic"><i class="bi bi-envelope"></i></span><div><b data-en="Email" data-ar="البريد الإلكتروني"></b><a href="mailto:care@noormedical.sa">care@noormedical.sa</a></div></div>
+          <div class="cinfo"><span class="ic"><i class="bi bi-clock-history"></i></span><div><b data-en="Working Hours" data-ar="ساعات العمل"></b><span data-en="Sat – Thu: 8:00 AM – 10:00 PM" data-ar="السبت – الخميس: 8:00 صباحًا – 10:00 مساءً"></span><br><span style="color:#ee5c12;font-weight:800" data-en="Emergency: 24/7" data-ar="الطوارئ: على مدار الساعة"></span></div></div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-reveal="r">
+        <div class="map-frame">
+          <span class="map-chip"><i class="bi bi-pin-angle-fill"></i><span data-en="Noor Medical Center" data-ar="مركز نور الطبي"></span></span>
+          <iframe title="Noor Medical Center location" loading="lazy" src="https://maps.google.com/maps?q=King%20Fahd%20Road%2C%20Al%20Olaya%2C%20Riyadh&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container pt-5 pb-4">
+    <div class="row g-5 py-4">
+      <div class="col-lg-4 f-brand">
+        <a class="d-flex align-items-center gap-3 mb-3" href="#home">
+          <span class="brand-mark"><i class="bi bi-plus-lg"></i></span>
+          <span class="brand-txt text-white"><span data-en="Noor" data-ar="نور"></span><small style="color:#ffb066" data-en="MEDICAL CENTER" data-ar="مركز طبي"></small></span>
+        </a>
+        <p data-en="A JCI-accredited medical center in the heart of Riyadh — combining world-class specialists, advanced technology and genuinely human care since 1998." data-ar="مركز طبي معتمد من JCI في قلب الرياض — يجمع نخبة الاستشاريين والتقنيات المتقدمة ورعاية إنسانية حقيقية منذ عام 1998."></p>
+        <div class="f-soc d-flex gap-2 mt-3">
+          <a href="#" aria-label="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="x"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="whatsapp"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" aria-label="snapchat"><i class="bi bi-snapchat"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2 f-links">
+        <h6 class="f-h" data-en="Quick Links" data-ar="روابط سريعة"></h6>
+        <a href="#about" data-en="About Us" data-ar="من نحن"></a>
+        <a href="#team" data-en="Our Doctors" data-ar="أطباؤنا"></a>
+        <a href="#packages" data-en="Health Packages" data-ar="الباقات الصحية"></a>
+        <a href="#faq" data-en="FAQ" data-ar="الأسئلة الشائعة"></a>
+        <a href="#booking" data-en="Book a Visit" data-ar="احجز زيارة"></a>
+      </div>
+      <div class="col-6 col-lg-3 f-links">
+        <h6 class="f-h" data-en="Services" data-ar="خدماتنا"></h6>
+        <a href="#services" data-en="Emergency & ICU" data-ar="الطوارئ والعناية المركزة"></a>
+        <a href="#services" data-en="Cardiology" data-ar="أمراض القلب"></a>
+        <a href="#services" data-en="Dental & Smile" data-ar="طب الأسنان والابتسامة"></a>
+        <a href="#services" data-en="Radiology & Imaging" data-ar="الأشعة والتصوير الطبي"></a>
+        <a href="#services" data-en="Laboratory" data-ar="المختبر والتحاليل"></a>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="f-h" data-en="Stay Healthy" data-ar="ابقَ بصحة جيدة"></h6>
+        <p style="font-size:.88rem;font-weight:500" data-en="Health tips, once a month. No spam." data-ar="نصائح صحية مرة في الشهر. بدون إزعاج."></p>
+        <form class="f-news d-flex gap-2" onsubmit="event.preventDefault();this.reset();this.querySelector('button').innerHTML='<i class=\'bi bi-check-lg\'></i>';setTimeout(()=>location.reload&&null,900)">
+          <input class="form-control" type="email" required data-ph-en="Your email address" data-ph-ar="بريدك الإلكتروني">
+          <button class="btn-o" style="padding:.7rem 1.1rem" type="submit"><i class="bi bi-send"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <div class="container d-flex justify-content-between flex-wrap gap-2">
+      <span><span data-en="©" data-ar="©"></span> <span id="yr">2025</span> <span data-en="Noor Medical Center. All rights reserved." data-ar="مركز نور الطبي. جميع الحقوق محفوظة."></span></span>
+      <span data-en="King Fahd Rd, Riyadh, Saudi Arabia" data-ar="طريق الملك فهد، الرياض، المملكة العربية السعودية"></span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const html=document.documentElement;
+
+/* ---------- i18N ---------- */
+function applyLang(l){
+  html.lang=l==='ar'?'ar':'en'; html.dir=l==='ar'?'rtl':'ltr';
+  $$('[data-en]').forEach(el=>{const t=el.dataset[l==='ar'?'ar':'en'];if(t!=null)el.textContent=t;});
+  $$('[data-ph-en]').forEach(el=>el.placeholder=l==='ar'?el.dataset.phAr:el.dataset.phEn);
+  document.title=l==='ar'?'مركز نور الطبي — الرياض | Noor Medical Center':'Noor Medical Center — Riyadh | مركز نور الطبي';
+  const on=['en','ar'].map(x=>x===l);
+  $('#lb-en').classList.toggle('on',on[0]);$('#lb-en-m').classList.toggle('on',on[0]);
+  $('#lb-ar').classList.toggle('on',on[1]);$('#lb-ar-m').classList.toggle('on',on[1]);
+  try{localStorage.setItem('noor-lang',l)}catch(e){}
+  buildRail(); // refresh department cards for language
+}
+['lb-en','lb-ar','lb-en-m','lb-ar-m'].forEach(id=>$('#'+id).addEventListener('click',()=>applyLang(id.includes('ar')?'ar':'en')));
+
+/* ---------- Departments rail data ---------- */
+const DEPTS=[
+ {en:'Cardiology',ar:'أمراض القلب',n:12,img:'photo-1530026405186-ed1f139313f8',seed:'dept-cardiology'},
+ {en:'Neurology',ar:'طب الأعصاب',n:8,img:'photo-1559757148-5c350d0d3c56',seed:'dept-neurology'},
+ {en:'Pediatrics',ar:'طب الأطفال',n:10,img:'photo-1584515933487-779824d29309',seed:'dept-pediatrics'},
+ {en:'Dermatology',ar:'الجلدية والتجميل',n:7,img:'photo-1576091160399-112ba8d25d1d',seed:'dept-dermatology'},
+ {en:'Orthopedics',ar:'جراحة العظام',n:9,img:'photo-1579684385127-1ef15d508118',seed:'dept-orthopedics'},
+ {en:'Ophthalmology',ar:'طب العيون',n:6,img:'photo-1584982751601-97dcc096659c',seed:'dept-ophthalmology'},
+ {en:'ENT',ar:'الأنف والأذن والحنجرة',n:5,img:'photo-1559839734-2b71ea197ec2',seed:'dept-ent'},
+ {en:'Internal Medicine',ar:'الباطنية',n:14,img:'photo-1622253692010-333f2da6031d',seed:'dept-internal'}
+];
+function buildRail(){
+  const ar=html.dir==='rtl',rail=$('#rail');if(!rail)return;
+  rail.innerHTML=DEPTS.map(d=>`
+   <div class="dcard">
+     <div class="im"><img loading="lazy" src="https://images.unsplash.com/${d.img}?auto=format&fit=crop&w=600&q=75" alt="${d.en}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/${d.seed}/600/600'"></div>
+     <div class="bd"><div><h5>${ar?d.ar:d.en}</h5><span>${ar?d.n+' استشاريًا':d.n+' Specialists'}</span></div><span class="go"><i class="bi bi-arrow-up-right"></i></span></div>
+   </div>`).join('');
+}
+
+/* ---------- Rail arrows + drag ---------- */
+$('#railNext').addEventListener('click',()=>$('#rail').scrollBy({left:600*(html.dir==='rtl'?-1:1),behavior:'smooth'}));
+$('#railPrev').addEventListener('click',()=>$('#rail').scrollBy({left:-600*(html.dir==='rtl'?-1:1),behavior:'smooth'}));
+const rail=$('#rail');let down=false,sx=0,sl=0;
+rail.addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sl=rail.scrollLeft;rail.classList.add('drag')});
+addEventListener('pointerup',()=>{down=false;rail.classList.remove('drag')});
+rail.addEventListener('pointermove',e=>{if(!down)return;rail.scrollLeft=sl-(e.clientX-sx)});
+
+/* ---------- Testimonials slider ---------- */
+const track=$('#tstTrack'),slides=$$('.tst-slide'),dots=$('#tstVp');let ti=0,timer;
+$('#tDots').innerHTML=slides.map((_,i)=>`<i data-i="${i}" class="${i===0?'on':''}"></i>`).join('');
+function tGo(i){ti=(i+slides.length)%slides.length;track.style.transform=`translateX(-${ti*100}%)`;$$('#tDots i').forEach((d,k)=>d.classList.toggle('on',k===ti));}
+$('#tNext').addEventListener('click',()=>{tGo(ti+1);tReset()});
+$('#tPrev').addEventListener('click',()=>{tGo(ti-1);tReset()});
+$$('#tDots i').forEach(d=>d.addEventListener('click',()=>{tGo(+d.dataset.i);tReset()}));
+function tReset(){clearInterval(timer);if(!reduced)timer=setInterval(()=>tGo(ti+1),4800);}
+tReset();
+$('#tstVp').parentElement.addEventListener('mouseenter',()=>clearInterval(timer));
+$('#tstVp').parentElement.addEventListener('mouseleave',tReset);
+let tx0=null;
+$('#tstVp').addEventListener('pointerdown',e=>tx0=e.clientX);
+$('#tstVp').addEventListener('pointerup',e=>{if(tx0===null)return;const d=e.clientX-tx0;if(Math.abs(d)>40){tGo(ti+(d<0?1:-1));tReset()}tx0=null;});
+
+/* ---------- Counters ---------- */
+const cObs=new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting)return;cObs.unobserve(en.target);
+  const el=en.target,target=+el.dataset.count,dur=reduced?1:1700,t0=performance.now();
+  (function step(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*e).toLocaleString('en-US');
+    if(p<1)requestAnimationFrame(step);})(t0);
+}),{threshold:.5});
+$$('.count').forEach(c=>cObs.observe(c));
+
+/* ---------- Reveal on scroll ---------- */
+const rObs=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){en.target.classList.add('revealed');rObs.unobserve(en.target);}
+}),{threshold:.14});
+$$('[data-reveal]').forEach(el=>rObs.observe(el));
+
+/* ---------- Scrollspy + nav state ---------- */
+const links=$$('.navbar-nav .nav-link');
+const sObs=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+en.target.id));
+}),{rootMargin:'-40% 0px -55% 0px'});
+$$('main section[id]').forEach(s=>sObs.observe(s));
+
+addEventListener('scroll',()=>{
+  const st=scrollY;
+  $('#navwrap').classList.toggle('scrolled',st>40);
+  $('#toTop').classList.toggle('show',st>600);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  $('#pbar').style.width=(h?st/h*100:0)+'%';
+},{passive:true});
+$('#toTop').addEventListener('click',()=>scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
+
+/* ---------- Quick book → booking form ---------- */
+$('#qform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const sel=$('#bkDept'),q=e.target.querySelector('.qdept');
+  if(q.value){[...sel.options].forEach(o=>{if(o.dataset.en===q.value)sel.value=o.value;});}
+  document.getElementById('booking').scrollIntoView({behavior:reduced?'auto':'smooth'});
+  const fc=$('#formCard');fc.classList.remove('flash');void fc.offsetWidth;fc.classList.add('flash');
+  setTimeout(()=>fc.querySelector('input.form-control')?.focus(),700);
+});
+
+/* ---------- Booking submit ---------- */
+$('#bkForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!this.checkValidity()){this.classList.add('was-validated');return;}
+  const btn=this.querySelector('button[type=submit]');
+  btn.disabled=true;btn.innerHTML='<span class="spinner-border spinner-border-sm"></span>';
+  setTimeout(()=>{this.classList.add('d-none');$('#bkSuccess').classList.remove('d-none');},1100);
+});
+$('#bkAgain').addEventListener('click',()=>{
+  const f=$('#bkForm');f.reset();f.classList.remove('was-validated','d-none');
+  const btn=f.querySelector('button[type=submit]');btn.disabled=false;
+  btn.innerHTML='<i class="bi bi-calendar2-check"></i> '+(html.dir==='rtl'?'تأكيد الحجز':'Confirm Booking');
+  $('#bkSuccess').classList.add('d-none');
+});
+
+/* ---------- Marquee duplication ---------- */
+const mt=$('#mqTrack');mt.innerHTML+=mt.innerHTML;
+
+/* ---------- Init ---------- */
+$('#yr').textContent=new Date().getFullYear();
+let saved='en';try{saved=localStorage.getItem('noor-lang')||'en'}catch(e){}
+applyLang(saved);
+</script>
+</body>
+</html>

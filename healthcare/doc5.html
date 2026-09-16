@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Abdullah Al-Rashid | Medical Excellence</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-lighter: #60a5fa;
+            --primary-bg: #dbeafe;
+            --secondary: #d4a017;
+            --secondary-light: #f59e0b;
+            --accent: #1e3a8a;
+            --dark: #0f172a;
+            --light: #ffffff;
+            --gray: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%);
+            --gradient-card: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+            --gradient-gold: linear-gradient(135deg, #d4a017 0%, #f59e0b 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.92) 0%, rgba(37, 99, 235, 0.88) 100%);
+            --shadow-sm: 0 2px 8px rgba(37, 99, 235, 0.08);
+            --shadow-md: 0 8px 24px rgba(37, 99, 235, 0.15);
+            --shadow-lg: 0 20px 50px rgba(37, 99, 235, 0.2);
+            --shadow-xl: 0 30px 80px rgba(37, 99, 235, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #ffffff;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        body.rtl {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: var(--gradient-primary); border-radius: 10px; }
+
+        /* ===== NAVBAR - FIXED FOR MOBILE ===== */
+        .navbar-custom {
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999;
+            backdrop-filter: blur(20px);
+            background: transparent;
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(37, 99, 235, 0.1);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-brand i {
+            -webkit-text-fill-color: transparent;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 1.4rem;
+        }
+
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            margin: 0 0.6rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .navbar-custom.scrolled .nav-link {
+            color: var(--dark) !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        body.rtl .navbar-custom .nav-link::after {
+            left: auto;
+            right: 0;
+        }
+
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            width: 100%;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: var(--secondary-light) !important;
+        }
+
+        .navbar-custom.scrolled .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .nav-btn {
+            background: var(--gradient-primary);
+            color: white !important;
+            padding: 0.6rem 1.6rem !important;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: white !important;
+        }
+
+        .nav-btn::after {
+            display: none !important;
+        }
+
+        .lang-switch {
+            background: rgba(255,255,255,0.15);
+            border: 1.5px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            margin-right: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-custom.scrolled .lang-switch {
+            background: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.3);
+            color: var(--primary);
+        }
+
+        .lang-switch:hover {
+            transform: scale(1.05);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hamburger */
+        .navbar-toggler {
+            border: 2px solid rgba(255,255,255,0.6);
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-custom.scrolled .navbar-toggler {
+            border-color: var(--primary);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 22px;
+            height: 22px;
+        }
+
+        .navbar-custom.scrolled .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(37, 99, 235, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--gradient-hero),
+                        url('https://images.unsplash.com/photo-1631815588090-d4bfec51b07a?w=1920&q=80') center/cover;
+            padding-top: 100px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"%3E%3Cpath d="M30 0L60 30L30 60L0 30L30 0Z" fill="%23ffffff" opacity="0.03"/%3E%3C/svg%3E');
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            animation: slideInLeft 1s ease;
+        }
+
+        .hero-badge i { color: var(--secondary-light); }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5.5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: slideInUp 1s ease;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+            animation: slideInUp 1.2s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: slideInUp 1.4s ease;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #f59e0b 0%, #d4a017 100%);
+            color: white;
+            padding: 1rem 2.2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            text-decoration: none;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.2rem;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            z-index: 3;
+            animation: floatUp 1s ease;
+        }
+
+        .hero-image {
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-card.card-1 { top: 10%; right: -20px; animation-delay: 0s; }
+        .floating-card.card-2 { bottom: 15%; left: -30px; animation-delay: 1.5s; }
+
+        .floating-card i { font-size: 2rem; color: var(--primary); }
+
+        .floating-card h5 {
+            margin: 0;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .floating-card p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-padding { padding: 5rem 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            color: var(--primary);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-title span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            padding: 0 1rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .about-image-wrapper { position: relative; }
+
+        .about-image {
+            border-radius: 30px;
+            width: 100%;
+            box-shadow: var(--shadow-xl);
+            transition: transform 0.5s;
+        }
+
+        .about-image-wrapper:hover .about-image { transform: scale(1.02); }
+
+        .about-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            bottom: -30px;
+            right: -30px;
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .about-content h3 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-content h3 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features { list-style: none; padding: 0; margin: 2rem 0; }
+
+        .about-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .about-features li i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.4s;
+            margin-top: 1rem;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-section {
+            background: white;
+            position: relative;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        body.rtl .service-card::before { transform-origin: right; }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .service-icon.icon-1 { background: var(--gradient-primary); }
+        .service-icon.icon-2 { background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%); }
+        .service-icon.icon-3 { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); }
+        .service-icon.icon-4 { background: var(--gradient-gold); }
+        .service-icon.icon-5 { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+        .service-icon.icon-6 { background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .service-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+
+        .service-link:hover {
+            gap: 15px;
+            color: var(--primary-dark);
+        }
+
+        .service-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(37, 99, 235, 0.08);
+            line-height: 1;
+        }
+
+        body.rtl .service-number {
+            right: auto;
+            left: 1.5rem;
+        }
+
+        /* ===== SPECIALTIES SECTION ===== */
+        .specialties-section {
+            background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        .specialty-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s;
+            height: 100%;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .specialty-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .specialty-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .specialty-item:hover .specialty-image { transform: scale(1.1); }
+
+        .specialty-image-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .specialty-image-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+        }
+
+        .specialty-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-gold);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        body.rtl .specialty-tag {
+            right: auto;
+            left: 1rem;
+        }
+
+        .specialty-content { padding: 1.5rem; }
+
+        .specialty-content h5 {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .specialty-content p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-section {
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath d="M50 0L100 50L50 100L0 50L50 0Z" fill="%23ffffff" opacity="0.03"/%3E%3C/svg%3E');
+        }
+
+        .why-section .section-title { color: white; }
+
+        .why-section .section-title span {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .why-section .section-subtitle { color: rgba(255,255,255,0.9); }
+
+        .why-section .section-tag {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .why-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            height: 100%;
+            transition: all 0.4s;
+        }
+
+        .why-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .why-card-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-card h5 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .why-card p {
+            color: rgba(255,255,255,0.85);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            margin: 1rem 0.5rem;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .testimonial-card:hover { box-shadow: var(--shadow-lg); }
+
+        .quote-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 4rem;
+            color: rgba(37, 99, 235, 0.1);
+            line-height: 1;
+        }
+
+        body.rtl .quote-icon {
+            right: auto;
+            left: 1.5rem;
+            transform: scaleX(-1);
+        }
+
+        .testimonial-rating {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-lighter);
+        }
+
+        .testimonial-author h6 {
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: var(--dark);
+        }
+
+        .testimonial-author p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        /* ===== AWARDS SECTION ===== */
+        .awards-section { background: white; }
+
+        .award-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            transition: all 0.4s;
+            background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            height: 100%;
+        }
+
+        .award-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .award-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.3);
+        }
+
+        .award-card h5 {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .award-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .award-year {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* ===== BLOG SECTION ===== */
+        .blog-section {
+            background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s;
+            height: 100%;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .blog-card:hover .blog-image { transform: scale(1.1); }
+
+        .blog-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        body.rtl .blog-category {
+            left: auto;
+            right: 1rem;
+        }
+
+        .blog-content { padding: 1.5rem; }
+
+        .blog-date {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-content h5 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .blog-content h5 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .blog-content h5 a:hover { color: var(--primary); }
+
+        .blog-content p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== APPOINTMENT SECTION ===== */
+        .appointment-section {
+            background: white;
+            position: relative;
+        }
+
+        .appointment-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .form-control-custom {
+            padding: 1rem 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            background: #f8fafc;
+            width: 100%;
+        }
+
+        .form-control-custom:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .appointment-info { padding: 2rem 1rem; }
+
+        .info-card {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            border-radius: 16px;
+            transition: all 0.3s;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .info-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        body.rtl .info-card:hover { transform: translateX(-5px); }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-card h6 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .info-card p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s;
+            width: 100%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-secondary);
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer h5 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li { margin-bottom: 0.8rem; }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-lighter);
+            transform: translateX(5px);
+        }
+
+        body.rtl .footer-links a:hover { transform: translateX(-5px); }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            outline: none;
+            min-width: 0;
+        }
+
+        .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+
+        .newsletter-form button {
+            background: var(--gradient-gold);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+            border: none;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover { transform: translateY(-5px); }
+
+        body.rtl .scroll-top {
+            right: auto;
+            left: 30px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes floatUp {
+            from { opacity: 0; transform: translateY(50px) perspective(1000px) rotateY(-5deg); }
+            to { opacity: 1; transform: translateY(0) perspective(1000px) rotateY(-5deg); }
+        }
+
+        /* ===== RESPONSIVE FIXES ===== */
+        @media (max-width: 991px) {
+            .navbar-custom {
+                padding: 0.75rem 0;
+            }
+
+            .navbar-custom.scrolled {
+                padding: 0.5rem 0;
+            }
+
+            /* FIXED MOBILE MENU */
+            .navbar-custom .navbar-collapse {
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 20px;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                box-shadow: 0 10px 40px rgba(37, 99, 235, 0.15);
+                border: 1px solid rgba(37, 99, 235, 0.1);
+            }
+
+            .navbar-custom .nav-link {
+                color: var(--dark) !important;
+                margin: 0.5rem 0;
+                padding: 0.75rem 1rem !important;
+                border-radius: 10px;
+                transition: all 0.3s;
+            }
+
+            .navbar-custom .nav-link:hover,
+            .navbar-custom .nav-link.active {
+                background: rgba(37, 99, 235, 0.08);
+                color: var(--primary) !important;
+            }
+
+            .navbar-custom .nav-link::after {
+                display: none;
+            }
+
+            .navbar-right {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(37, 99, 235, 0.1);
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .lang-switch {
+                color: var(--primary) !important;
+                background: rgba(37, 99, 235, 0.08) !important;
+                border-color: rgba(37, 99, 235, 0.2) !important;
+                margin-right: 0;
+            }
+
+            .nav-btn {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem 1.6rem !important;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding-top: 80px;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-padding {
+                padding: 3.5rem 0;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .appointment-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-image {
+                transform: none;
+                margin-top: 3rem;
+                max-width: 400px;
+            }
+
+            .about-image-wrapper {
+                margin-bottom: 2rem;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+
+            .quote-icon {
+                font-size: 3rem;
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .info-card {
+                padding: 1rem;
+            }
+
+            .footer {
+                text-align: center;
+                padding: 3rem 0 1.5rem;
+            }
+
+            .footer-links {
+                margin-bottom: 2rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+
+            body.rtl .scroll-top {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .appointment-form {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-control-custom {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .award-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .footer-brand {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .btn-primary-custom,
+            .btn-outline-custom {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.9rem;
+            }
+        }
+
+        /* ============================================================
+   📱 RESPONSIVE + NAVBAR FIX PATCH  (v2 - paste at END of <style>)
+   ============================================================ */
+
+/* ---------- 1) KILL HORIZONTAL OVERFLOW (white strip on right) ---------- */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+img, svg, video, iframe { max-width: 100%; }
+.hero, section, footer { overflow-x: clip; }
+.carousel-inner, #testimonialCarousel { overflow: hidden; }
+
+/* ---------- 2) NAVBAR: truly fixed + logo visible on hero (desktop & mobile) ---------- */
+.navbar-custom {
+    position: fixed !important;
+    top: 0; left: 0; right: 0;
+    z-index: 1050;
+}
+/* When navbar is transparent over hero → make logo WHITE so it's visible */
+.navbar-custom:not(.scrolled) .navbar-brand,
+.navbar-custom:not(.scrolled) .navbar-brand i {
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+}
+
+/* ---------- 3) TABLET & MOBILE (≤991px) ---------- */
+@media (max-width: 991.98px) {
+
+    /* Solid white navbar ALWAYS on mobile → logo + links never invisible */
+    .navbar-custom,
+    .navbar-custom.scrolled {
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.12);
+        padding: 0.6rem 0;
+    }
+
+    /* Logo = dark blue on white navbar */
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-brand i,
+    .navbar-custom:not(.scrolled) .navbar-brand,
+    .navbar-custom:not(.scrolled) .navbar-brand i {
+        background: none;
+        -webkit-background-clip: border-box;
+        background-clip: border-box;
+        -webkit-text-fill-color: #1e40af;
+        color: #1e40af;
+    }
+    .navbar-custom .navbar-brand i,
+    .navbar-custom:not(.scrolled) .navbar-brand i {
+        -webkit-text-fill-color: #2563eb;
+        color: #2563eb;
+    }
+
+    /* Hamburger button: white box + blue lines (always visible) */
+    .navbar-custom .navbar-toggler,
+    .navbar-custom.scrolled .navbar-toggler {
+        border: 2px solid rgba(37, 99, 235, 0.35);
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 0.45rem 0.65rem;
+        min-height: 44px;
+    }
+    .navbar-custom .navbar-toggler-icon,
+    .navbar-custom.scrolled .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(30, 64, 175, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Dropdown panel: clean white card, scrollable if menu is long */
+    .navbar-custom .navbar-collapse {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 1rem;
+        margin: 0.75rem 0 0;
+        border: 1px solid rgba(37, 99, 235, 0.12);
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+        max-height: calc(100vh - 150px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Menu links: dark text, tap-friendly rows, blue highlight */
+    .navbar-custom .navbar-nav .nav-link,
+    .navbar-custom.scrolled .navbar-nav .nav-link {
+        color: #0f172a !important;
+        margin: 2px 0;
+        padding: 0.75rem 1rem !important;
+        border-radius: 10px;
+        font-size: 1rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    .navbar-custom .navbar-nav .nav-link.active,
+    .navbar-custom .navbar-nav .nav-link:hover {
+        background: rgba(37, 99, 235, 0.08);
+        color: #2563eb !important;
+    }
+    .navbar-custom .nav-link::after { display: none; }
+
+    /* Language button + Book Now: full width, stacked */
+    .navbar-right {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(37, 99, 235, 0.12);
+        gap: 0.6rem;
+    }
+    .lang-switch,
+    .navbar-custom.scrolled .lang-switch {
+        color: #2563eb !important;
+        background: rgba(37, 99, 235, 0.08) !important;
+        border-color: rgba(37, 99, 235, 0.25) !important;
+        justify-content: center;
+        margin: 0;
+        min-height: 44px;
+    }
+    .nav-btn {
+        margin: 0;
+        text-align: center;
+        padding: 0.8rem 1rem !important;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* HERO mobile layout */
+    .hero {
+        min-height: auto;
+        padding-top: 96px;
+        padding-bottom: 80px;
+        text-align: center;
+    }
+    .hero-content { padding: 1rem 0 0; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .hero-image {
+        margin: 2.5rem auto 0;
+        transform: none !important;
+        max-width: min(420px, 88vw);
+    }
+    .hero-wave { height: 60px; }
+    .floating-card { display: none !important; }
+    .about-decoration { width: 80px; height: 80px; right: -10px; bottom: -10px; }
+}
+
+/* ---------- 4) PHONES (≤767px) ---------- */
+@media (max-width: 767.98px) {
+    .section-padding { padding: 3.5rem 0; }
+    .section-header { margin-bottom: 2.4rem; }
+
+    /* Carousel arrows hidden on phones (swipe works natively) */
+    #testimonialCarousel .carousel-control-prev,
+    #testimonialCarousel .carousel-control-next { display: none; }
+
+    .hero { padding-top: 88px; }
+    .hero h1 { font-size: clamp(1.7rem, 7.5vw, 2.3rem); }
+    .hero-buttons { flex-direction: column; align-items: stretch; }
+    .hero-buttons a { width: 100%; justify-content: center; }
+
+    .footer { text-align: center; }
+    .social-links { justify-content: center; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form input, .newsletter-form button { width: 100%; }
+}
+
+/* ---------- 5) SMALL PHONES (≤575px) ---------- */
+@media (max-width: 575.98px) {
+    .hero { padding-top: 82px; }
+    .hero-badge { font-size: 0.78rem; padding: 0.45rem 1rem; max-width: 100%; }
+    .section-padding { padding: 3rem 0; }
+    .section-title { font-size: 1.55rem; }
+
+    /* 16px font stops iPhone auto-zoom on form focus */
+    .form-control-custom,
+    select.form-control-custom,
+    textarea.form-control-custom { font-size: 16px; padding: 0.85rem 1rem; }
+    .submit-btn { font-size: 16px; min-height: 48px; }
+
+    .appointment-form { padding: 1.4rem 1.1rem; border-radius: 20px; }
+    .service-card, .testimonial-card { padding: 1.6rem 1.25rem; }
+    .service-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+    .stat-card { padding: 1rem 0.4rem; }
+    .stat-number { font-size: 1.7rem; }
+    .award-card { padding: 1.6rem 1rem; }
+    .award-icon { width: 70px; height: 70px; font-size: 2rem; }
+    .blog-image-wrapper { height: 200px; }
+    .specialty-image { height: 200px; }
+    .quote-icon { font-size: 2.6rem; top: 1rem; right: 1rem; }
+    .testimonial-card { margin: 0.5rem 0; }
+
+    .scroll-top { bottom: 18px; right: 18px; width: 46px; height: 46px; }
+    body.rtl .scroll-top { left: 18px; right: auto; }
+}
+
+/* ---------- 6) EXTRA SMALL (≤380px) ---------- */
+@media (max-width: 380px) {
+    .hero h1 { font-size: 1.6rem; }
+    .btn-primary-custom, .btn-outline-custom { padding: 0.85rem 1.2rem; font-size: 0.9rem; }
+    .navbar-brand { font-size: 1.25rem; }
+    .info-card { padding: 0.9rem; gap: 10px; }
+    .info-icon { width: 42px; height: 42px; font-size: 1rem; }
+}
+
+/* ---------- 7) iPhone safe-area (notch / home bar) ---------- */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+    .scroll-top { bottom: calc(20px + env(safe-area-inset-bottom)); }
+}
+
+/* ---------- 8) RTL mobile safety ---------- */
+body.rtl .navbar-custom { left: 0; right: 0; }
+body.rtl .navbar-custom .nav-link { text-align: right; }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-heartbeat"></i> <span data-en="MedElite" data-ar="ميد إيليت">MedElite</span>
+            </a>
+            <div class="d-flex align-items-center order-lg-last">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-ar="عني">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#specialties" data-en="Specialties" data-ar="التخصصات">Specialties</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials" data-en="Reviews" data-ar="التقييمات">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog" data-en="Blog" data-ar="المدونة">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-ar="تواصل">Contact</a></li>
+                </ul>
+                <div class="navbar-right">
+                    <button class="lang-switch" onclick="toggleLanguage()">
+                        <i class="fas fa-globe"></i>
+                        <span id="langLabel">العربية</span>
+                    </button>
+                    <a href="#appointment" class="nav-btn" data-en="Book Now" data-ar="احجز الآن">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content" data-aos="fade-right">
+                    <div class="hero-badge">
+                        <i class="fas fa-award"></i>
+                        <span data-en="Top Rated Cardiologist in Riyadh" data-ar="أفضل طبيب قلب في الرياض">Top Rated Cardiologist in Riyadh</span>
+                    </div>
+                    <h1 data-en="Expert Care for a <span>Healthier</span> Tomorrow" data-ar="رعاية متخصصة من أجل <span>غدٍ</span> أكثر صحة">Expert Care for a <span>Healthier</span> Tomorrow</h1>
+                    <p data-en="Dr. Abdullah Al-Rashid combines decades of expertise with cutting-edge medical technology to provide world-class cardiac care for patients across the Kingdom." data-ar="يجمع الدكتور عبدالله الراشد بين عقود من الخبرة والتقنيات الطبية الحديثة لتقديم رعاية قلبية عالمية المستوى للمرضى في جميع أنحاء المملكة.">Dr. Abdullah Al-Rashid combines decades of expertise with cutting-edge medical technology to provide world-class cardiac care for patients across the Kingdom.</p>
+                    <div class="hero-buttons">
+                        <a href="#appointment" class="btn-primary-custom">
+                            <span data-en="Book Appointment" data-ar="احجز موعد">Book Appointment</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#about" class="btn-outline-custom">
+                            <i class="fas fa-play-circle"></i>
+                            <span data-en="Watch Introduction" data-ar="شاهد التعريف">Watch Introduction</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80" alt="Doctor" class="hero-image">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-user-md"></i>
+                            <div>
+                                <h5>25+</h5>
+                                <p data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h5>15,000+</h5>
+                                <p data-en="Happy Patients" data-ar="مريض سعيد">Happy Patients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path fill="#ffffff" d="M0,50 C360,100 720,0 1440,50 L1440,100 L0,100 Z"></path>
+        </svg>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="about-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80" alt="Doctor" class="about-image">
+                        <div class="about-decoration"></div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="about-content">
+                        <span class="section-tag" data-en="About Dr. Abdullah" data-ar="عن الدكتور عبدالله">About Dr. Abdullah</span>
+                        <h3 data-en="Dedicated to <span>Excellence</span> in Cardiology" data-ar="مكرس <span>للتميز</span> في طب القلب">Dedicated to <span>Excellence</span> in Cardiology</h3>
+                        <p data-en="Dr. Abdullah Al-Rashid is a board-certified cardiologist with over 25 years of experience in treating complex cardiac conditions. He graduated from King Saud University and completed his fellowship at the Cleveland Clinic, USA." data-ar="الدكتور عبدالله الراشد هو طبيب قلب معتمد دوليًا مع أكثر من 25 عامًا من الخبرة في علاج أمراض القلب المعقدة. تخرج من جامعة الملك سعود وأكمل زمالته في كليفلاند كلينك بالولايات المتحدة.">Dr. Abdullah Al-Rashid is a board-certified cardiologist with over 25 years of experience in treating complex cardiac conditions. He graduated from King Saud University and completed his fellowship at the Cleveland Clinic, USA.</p>
+                        <ul class="about-features">
+                            <li><i class="fas fa-check"></i> <span data-en="Board Certified Cardiologist" data-ar="طبيب قلب معتمد دوليًا">Board Certified Cardiologist</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Fellowship at Cleveland Clinic, USA" data-ar="زمالة في كليفلاند كلينك، أمريكا">Fellowship at Cleveland Clinic, USA</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Member of Saudi Heart Association" data-ar="عضو جمعية القلب السعودية">Member of Saudi Heart Association</span></li>
+                            <li><i class="fas fa-check"></i> <span data-en="Advanced Interventional Techniques" data-ar="تقنيات تدخلية متقدمة">Advanced Interventional Techniques</span></li>
+                        </ul>
+                        <div class="row g-3 mt-4">
+                            <div class="col-sm-4">
+                                <div class="stat-card text-center">
+                                    <div class="stat-number">25+</div>
+                                    <p class="stat-label" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="stat-card text-center">
+                                    <div class="stat-number">15K+</div>
+                                    <p class="stat-label" data-en="Happy Patients" data-ar="مريض سعيد">Happy Patients</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="stat-card text-center">
+                                    <div class="stat-number">98%</div>
+                                    <p class="stat-label" data-en="Success Rate" data-ar="نسبة النجاح">Success Rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Our Services" data-ar="خدماتنا">Our Services</span>
+                <h2 class="section-title" data-en="Comprehensive <span>Medical Services</span>" data-ar="خدمات <span>طبية شاملة</span>">Comprehensive <span>Medical Services</span></h2>
+                <p class="section-subtitle" data-en="We offer a full range of cardiovascular services with the latest technology and compassionate care." data-ar="نقدم مجموعة كاملة من خدمات القلب والأوعية الدموية بأحدث التقنيات والرعاية المتميزة.">We offer a full range of cardiovascular services with the latest technology and compassionate care.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-number">01</div>
+                        <div class="service-icon icon-1"><i class="fas fa-heartbeat"></i></div>
+                        <h4 data-en="Cardiac Diagnostics" data-ar="تشخيص القلب">Cardiac Diagnostics</h4>
+                        <p data-en="Comprehensive cardiac testing including ECG, stress tests, and echocardiography." data-ar="فحوصات شاملة للقلب تشمل تخطيط القلب واختبارات الجهد والإيكو.">Comprehensive cardiac testing including ECG, stress tests, and echocardiography.</p>
+                        <a href="#" class="service-link"><span data-en="Learn More" data-ar="اعرف المزيد">Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-number">02</div>
+                        <div class="service-icon icon-2"><i class="fas fa-stethoscope"></i></div>
+                        <h4 data-en="Interventional Cardiology" data-ar="طب القلب التدخلي">Interventional Cardiology</h4>
+                        <p data-en="Advanced catheter-based treatments for coronary artery disease and structural heart issues." data-ar="علاجات متقدمة بالقسطرة لأمراض الشرايين التاجية ومشاكل القلب الهيكلية.">Advanced catheter-based treatments for coronary artery disease and structural heart issues.</p>
+                        <a href="#" class="service-link"><span data-en="Learn More" data-ar="اعرف المزيد">Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-number">03</div>
+                        <div class="service-icon icon-3"><i class="fas fa-lungs"></i></div>
+                        <h4 data-en="Heart Failure Management" data-ar="إدارة فشل القلب">Heart Failure Management</h4>
+                        <p data-en="Personalized treatment plans for chronic heart failure with cutting-edge therapies." data-ar="خطط علاج شخصية لفشل القلب المزمن بأحدث العلاجات.">Personalized treatment plans for chronic heart failure with cutting-edge therapies.</p>
+                        <a href="#" class="service-link"><span data-en="Learn More" data-ar="اعرف المزيد">Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-number">04</div>
+                        <div class="service-icon icon-4"><i class="fas fa-dna"></i></div>
+                        <h4 data-en="Preventive Cardiology" data-ar="طب القلب الوقائي">Preventive Cardiology</h4>
+                        <p data-en="Risk assessment and prevention programs to keep your heart healthy for life." data-ar="تقييم المخاطر وبرامج الوقاية للحفاظ على صحة قلبك مدى الحياة.">Risk assessment and prevention programs to keep your heart healthy for life.</p>
+                        <a href="#" class="service-link"><span data-en="Learn More" data-ar="اعرف المزيد">Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-number">05</div>
+                        <div class="service-icon icon-5"><i class="fas fa-atom"></i></div>
+                        <h4 data-en="Cardiac Imaging" data-ar="تصوير القلب">Cardiac Imaging</h4>
+                        <p data-en="State-of-the-art cardiac MRI, CT scans, and nuclear cardiology for accurate diagnosis." data-ar="أحدث تقنيات الرنين المغناطيسي والأشعة المقطعية للقلب والتشخيص الدقيق.">State-of-the-art cardiac MRI, CT scans, and nuclear cardiology for accurate diagnosis.</p>
+                        <a href="#" class="service-link"><span data-en="Learn More" data-ar="اعرف المزيد">Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="service-number">06</div>
+                        <div class="service-icon icon-6"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h4 data-en="Cardiac Rehabilitation" data-ar="تأهيل القلب">Cardiac Rehabilitation</h4>
+                        <p data-en="Structured exercise and lifestyle programs to recover after heart surgery or events." data-ar="برامج تمارين ونمط حياة منظم للتعافي بعد جراحات القلب أو الأحداث القلبية.">Structured exercise and lifestyle programs to recover after heart surgery or events.</p>
+                        <a href="#" class="service-link"><span data-en="Learn More" data-ar="اعرف المزيد">Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIALTIES SECTION -->
+    <section id="specialties" class="specialties-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Specialties" data-ar="التخصصات">Specialties</span>
+                <h2 class="section-title" data-en="Areas of <span>Expertise</span>" data-ar="مجالات <span>الخبرة</span>">Areas of <span>Expertise</span></h2>
+                <p class="section-subtitle" data-en="Dr. Al-Rashid specializes in various complex cardiac conditions with precision and care." data-ar="يتخصص الدكتور الراشد في مختلف أمراض القلب المعقدة بدقة وعناية.">Dr. Al-Rashid specializes in various complex cardiac conditions with precision and care.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="specialty-item">
+                        <div class="specialty-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1579154204601-015855228079?w=600&q=80" alt="Coronary" class="specialty-image">
+                            <span class="specialty-tag" data-en="Advanced" data-ar="متقدم">Advanced</span>
+                        </div>
+                        <div class="specialty-content">
+                            <h5 data-en="Coronary Artery Disease" data-ar="مرض الشريان التاجي">Coronary Artery Disease</h5>
+                            <p data-en="Expert treatment of blockages and plaque buildup in coronary arteries." data-ar="علاج متقدم للانسدادات وتراكم اللويحات في الشرايين التاجية.">Expert treatment of blockages and plaque buildup in coronary arteries.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="specialty-item">
+                        <div class="specialty-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1628352081506-83c43123ed6d?w=600&q=80" alt="Arrhythmia" class="specialty-image">
+                            <span class="specialty-tag" data-en="Specialized" data-ar="متخصص">Specialized</span>
+                        </div>
+                        <div class="specialty-content">
+                            <h5 data-en="Cardiac Arrhythmias" data-ar="عدم انتظام ضربات القلب">Cardiac Arrhythmias</h5>
+                            <p data-en="Diagnosis and treatment of abnormal heart rhythms and electrical disorders." data-ar="تشخيص وعلاج اضطرابات نظم القلب والمشاكل الكهربائية.">Diagnosis and treatment of abnormal heart rhythms and electrical disorders.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="specialty-item">
+                        <div class="specialty-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=80" alt="Valvular" class="specialty-image">
+                            <span class="specialty-tag" data-en="Premium" data-ar="متميز">Premium</span>
+                        </div>
+                        <div class="specialty-content">
+                            <h5 data-en="Valvular Heart Disease" data-ar="أمراض صمامات القلب">Valvular Heart Disease</h5>
+                            <p data-en="Treatment of valve problems including stenosis and regurgitation." data-ar="علاج مشاكل الصمامات بما في ذلك التضيق والارتجاع.">Treatment of valve problems including stenosis and regurgitation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="specialty-item">
+                        <div class="specialty-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Hypertension" class="specialty-image">
+                            <span class="specialty-tag" data-en="Essential" data-ar="أساسي">Essential</span>
+                        </div>
+                        <div class="specialty-content">
+                            <h5 data-en="Hypertension Management" data-ar="إدارة ارتفاع ضغط الدم">Hypertension Management</h5>
+                            <p data-en="Comprehensive management of high blood pressure with personalized plans." data-ar="إدارة شاملة لارتفاع ضغط الدم بخطط مخصصة.">Comprehensive management of high blood pressure with personalized plans.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="specialty-item">
+                        <div class="specialty-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1559757175-5700dde67fbc?w=600&q=80" alt="Congenital" class="specialty-image">
+                            <span class="specialty-tag" data-en="Expert" data-ar="خبير">Expert</span>
+                        </div>
+                        <div class="specialty-content">
+                            <h5 data-en="Congenital Heart Defects" data-ar="عيوب القلب الخلقية">Congenital Heart Defects</h5>
+                            <p data-en="Specialized care for heart conditions present from birth in adults." data-ar="رعاية متخصصة لأمراض القلب الموجودة منذ الولادة لدى البالغين.">Specialized care for heart conditions present from birth in adults.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="specialty-item">
+                        <div class="specialty-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=600&q=80" alt="Sports" class="specialty-image">
+                            <span class="specialty-tag" data-en="New" data-ar="جديد">New</span>
+                        </div>
+                        <div class="specialty-content">
+                            <h5 data-en="Sports Cardiology" data-ar="طب القلب الرياضي">Sports Cardiology</h5>
+                            <p data-en="Cardiac evaluation and clearance for professional athletes and active individuals." data-ar="تقييم القلب والتصريح للرياضيين المحترفين والأشخاص النشطين.">Cardiac evaluation and clearance for professional athletes and active individuals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="why-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Why Choose Us" data-ar="لماذا نحن">Why Choose Us</span>
+                <h2 class="section-title" data-en="Why Patients <span>Trust Us</span>" data-ar="لماذا يثق <span>المرضى بنا</span>">Why Patients <span>Trust Us</span></h2>
+                <p class="section-subtitle" data-en="Experience world-class care with a personal touch, backed by excellence and innovation." data-ar="احصل على رعاية عالمية بلمسة شخصية، مدعومة بالتميز والابتكار.">Experience world-class care with a personal touch, backed by excellence and innovation.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-card">
+                        <div class="why-card-icon"><i class="fas fa-user-md"></i></div>
+                        <h5 data-en="Expert Team" data-ar="فريق خبير">Expert Team</h5>
+                        <p data-en="A dedicated team of specialists trained at top international institutions." data-ar="فريق متخصص مدرب في أفضل المؤسسات الدولية.">A dedicated team of specialists trained at top international institutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-card">
+                        <div class="why-card-icon"><i class="fas fa-microscope"></i></div>
+                        <h5 data-en="Latest Technology" data-ar="أحدث التقنيات">Latest Technology</h5>
+                        <p data-en="State-of-the-art diagnostic and treatment equipment for optimal outcomes." data-ar="أحدث معدات التشخيص والعلاج لأفضل النتائج.">State-of-the-art diagnostic and treatment equipment for optimal outcomes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-card">
+                        <div class="why-card-icon"><i class="fas fa-clock"></i></div>
+                        <h5 data-en="24/7 Support" data-ar="دعم على مدار الساعة">24/7 Support</h5>
+                        <p data-en="Round-the-clock emergency services and patient support whenever needed." data-ar="خدمات طوارئ ودعم للمرضى على مدار الساعة عند الحاجة.">Round-the-clock emergency services and patient support whenever needed.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="why-card">
+                        <div class="why-card-icon"><i class="fas fa-hand-holding-medical"></i></div>
+                        <h5 data-en="Personalized Care" data-ar="رعاية مخصصة">Personalized Care</h5>
+                        <p data-en="Individualized treatment plans tailored to each patient's unique needs." data-ar="خطط علاج فردية مصممة لاحتياجات كل مريض الفريدة.">Individualized treatment plans tailored to each patient's unique needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Testimonials" data-ar="آراء المرضى">Testimonials</span>
+                <h2 class="section-title" data-en="What Our <span>Patients Say</span>" data-ar="ماذا يقول <span>مرضانا</span>">What Our <span>Patients Say</span></h2>
+                <p class="section-subtitle" data-en="Real stories from real patients who trusted us with their heart health." data-ar="قصص حقيقية من مرضى حقيقيين وثقوا بنا في رعاية قلوبهم.">Real stories from real patients who trusted us with their heart health.</p>
+            </div>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <i class="fas fa-quote-right quote-icon"></i>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text" data-en="Dr. Abdullah saved my life with his exceptional expertise. His care and professionalism are unmatched. I am forever grateful for the outstanding treatment I received." data-ar="أنقذ الدكتور عبدالله حياتي بخبرته الاستثنائية. رعايته ومهنيته لا مثيل لها. أنا ممتن إلى الأبد للعلاج المتميز الذي تلقيته.">Dr. Abdullah saved my life with his exceptional expertise. His care and professionalism are unmatched. I am forever grateful for the outstanding treatment I received.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Patient" class="testimonial-avatar">
+                                        <div>
+                                            <h6 data-en="Mohammed Al-Saud" data-ar="محمد آل سعود">Mohammed Al-Saud</h6>
+                                            <p data-en="Business Executive, Riyadh" data-ar="رجل أعمال، الرياض">Business Executive, Riyadh</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <i class="fas fa-quote-right quote-icon"></i>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text" data-en="The entire team at MedElite is phenomenal. From reception to the operating room, every step was handled with precision and care. Truly a five-star experience." data-ar="الفريق بأكمله في ميد إيليت رائع. من الاستقبال إلى غرفة العمليات، كل خطوة تم التعامل معها بدقة ورعاية. تجربة خمس نجوم حقًا.">The entire team at MedElite is phenomenal. From reception to the operating room, every step was handled with precision and care. Truly a five-star experience.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Patient" class="testimonial-avatar">
+                                        <div>
+                                            <h6 data-en="Fatima Al-Qasim" data-ar="فاطمة القاسم">Fatima Al-Qasim</h6>
+                                            <p data-en="Teacher, Jeddah" data-ar="معلمة، جدة">Teacher, Jeddah</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <i class="fas fa-quote-right quote-icon"></i>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text" data-en="I was nervous about my procedure, but Dr. Al-Rashid explained everything clearly and made me feel at ease. His confidence and skill gave me peace of mind." data-ar="كنت متوترًا بشأن العملية، لكن الدكتور الراشرح كل شيء بوضوح وجعلني أشعر بالراحة. ثقته ومهارته منحتني السلام.">I was nervous about my procedure, but Dr. Al-Rashid explained everything clearly and made me feel at ease. His confidence and skill gave me peace of mind.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Patient" class="testimonial-avatar">
+                                        <div>
+                                            <h6 data-en="Khalid Al-Harbi" data-ar="خالد الحربي">Khalid Al-Harbi</h6>
+                                            <p data-en="Engineer, Dammam" data-ar="مهندس، الدمام">Engineer, Dammam</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="testimonial-card">
+                                    <i class="fas fa-quote-right quote-icon"></i>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="testimonial-text" data-en="Outstanding care from start to finish. The staff is incredibly attentive and the facilities are world-class. I recommend Dr. Al-Rashid to anyone in need." data-ar="رعاية متميزة من البداية إلى النهاية. الموظفون منتبهون للغاية والمرافق عالمية. أوصي بالدكتور الراشد لأي شخص يحتاج رعاية.">Outstanding care from start to finish. The staff is incredibly attentive and the facilities are world-class. I recommend Dr. Al-Rashid to anyone in need.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" alt="Patient" class="testimonial-avatar">
+                                        <div>
+                                            <h6 data-en="Aisha Al-Otaibi" data-ar="عائشة العتيبي">Aisha Al-Otaibi</h6>
+                                            <p data-en="Doctor, Mecca" data-ar="طبيبة، مكة">Doctor, Mecca</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); left: -10px; opacity: 1; z-index: 10;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); right: -10px; opacity: 1; z-index: 10;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWARDS SECTION -->
+    <section class="awards-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Awards & Recognition" data-ar="الجوائز والتقدير">Awards & Recognition</span>
+                <h2 class="section-title" data-en="Honors & <span>Achievements</span>" data-ar="التكريمات <span>والإنجازات</span>">Honors & <span>Achievements</span></h2>
+                <p class="section-subtitle" data-en="Recognized nationally and internationally for excellence in cardiac care." data-ar="معترف به وطنيًا ودوليًا للتميز في رعاية القلب.">Recognized nationally and internationally for excellence in cardiac care.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="award-card">
+                        <div class="award-icon"><i class="fas fa-trophy"></i></div>
+                        <h5 data-en="Best Cardiologist" data-ar="أفضل طبيب قلب">Best Cardiologist</h5>
+                        <p data-en="Saudi Medical Excellence Awards" data-ar="جوائز التميز الطبي السعودي">Saudi Medical Excellence Awards</p>
+                        <span class="award-year">2024</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="award-card">
+                        <div class="award-icon"><i class="fas fa-medal"></i></div>
+                        <h5 data-en="Lifetime Achievement" data-ar="الإنجاز مدى الحياة">Lifetime Achievement</h5>
+                        <p data-en="Saudi Heart Association" data-ar="جمعية القلب السعودية">Saudi Heart Association</p>
+                        <span class="award-year">2023</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="award-card">
+                        <div class="award-icon"><i class="fas fa-certificate"></i></div>
+                        <h5 data-en="Research Excellence" data-ar="التميز البحثي">Research Excellence</h5>
+                        <p data-en="International Cardiology Forum" data-ar="المنتدى الدولي لطب القلب">International Cardiology Forum</p>
+                        <span class="award-year">2023</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="award-card">
+                        <div class="award-icon"><i class="fas fa-star"></i></div>
+                        <h5 data-en="Patient Choice Award" data-ar="جائزة اختيار المريض">Patient Choice Award</h5>
+                        <p data-en="Gulf Healthcare Excellence" data-ar="التميز الصحي الخليجي">Gulf Healthcare Excellence</p>
+                        <span class="award-year">2022</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section id="blog" class="blog-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Latest News" data-ar="آخر الأخبار">Latest News</span>
+                <h2 class="section-title" data-en="Health <span>Insights</span> & Tips" data-ar="نصائح <span>صحية</span> ومعلومات">Health <span>Insights</span> & Tips</h2>
+                <p class="section-subtitle" data-en="Stay informed with the latest medical news, research, and health tips from Dr. Al-Rashid." data-ar="ابق على اطلاع بأحدث الأخبار الطبية والأبحاث والنصائح الصحية من الدكتور الراشد.">Stay informed with the latest medical news, research, and health tips from Dr. Al-Rashid.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-card">
+                        <div class="blog-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&q=80" alt="Blog" class="blog-image">
+                            <span class="blog-category" data-en="Cardiology" data-ar="طب القلب">Cardiology</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar"></i> <span data-en="September 10, 2026" data-ar="10 سبتمبر 2026">September 10, 2026</span></div>
+                            <h5><a href="#" data-en="Understanding Heart Health: A Complete Guide" data-ar="فهم صحة القلب: دليل شامل">Understanding Heart Health: A Complete Guide</a></h5>
+                            <p data-en="Learn the essential steps to maintain a healthy heart throughout your life." data-ar="تعرف على الخطوات الأساسية للحفاظ على صحة قلبك طوال حياتك.">Learn the essential steps to maintain a healthy heart throughout your life.</p>
+                            <a href="#" class="service-link"><span data-en="Read More" data-ar="اقرأ المزيد">Read More</span> <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card">
+                        <div class="blog-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Blog" class="blog-image">
+                            <span class="blog-category" data-en="Prevention" data-ar="الوقاية">Prevention</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar"></i> <span data-en="September 5, 2026" data-ar="5 سبتمبر 2026">September 5, 2026</span></div>
+                            <h5><a href="#" data-en="Top 10 Foods for Heart Health" data-ar="أفضل 10 أطعمة لصحة القلب">Top 10 Foods for Heart Health</a></h5>
+                            <p data-en="Discover which foods can significantly improve your cardiovascular health." data-ar="اكتشف الأطعمة التي يمكن أن تحسن صحة القلب والأوعية الدموية بشكل كبير.">Discover which foods can significantly improve your cardiovascular health.</p>
+                            <a href="#" class="service-link"><span data-en="Read More" data-ar="اقرأ المزيد">Read More</span> <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-card">
+                        <div class="blog-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Blog" class="blog-image">
+                            <span class="blog-category" data-en="Treatment" data-ar="العلاج">Treatment</span>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date"><i class="far fa-calendar"></i> <span data-en="August 28, 2026" data-ar="28 أغسطس 2026">August 28, 2026</span></div>
+                            <h5><a href="#" data-en="Advances in Minimally Invasive Cardiac Surgery" data-ar="تطورات في جراحة القلب طفيفة التوغل">Advances in Minimally Invasive Cardiac Surgery</a></h5>
+                            <p data-en="How modern techniques are revolutionizing heart surgery with faster recovery." data-ar="كيف تُحدث التقنيات الحديثة ثورة في جراحة القلب مع تعافي أسرع.">How modern techniques are revolutionizing heart surgery with faster recovery.</p>
+                            <a href="#" class="service-link"><span data-en="Read More" data-ar="اقرأ المزيد">Read More</span> <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPOINTMENT SECTION -->
+    <section id="appointment" class="appointment-section section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag" data-en="Book Appointment" data-ar="حجز موعد">Book Appointment</span>
+                <h2 class="section-title" data-en="Schedule Your <span>Visit Today</span>" data-ar="حدد موعد <span>زيارتك اليوم</span>">Schedule Your <span>Visit Today</span></h2>
+                <p class="section-subtitle" data-en="Take the first step towards better heart health. Book your consultation with Dr. Abdullah." data-ar="اتخذ الخطوة الأولى نحو صحة قلب أفضل. احجز استشارتك مع الدكتور عبدالله.">Take the first step towards better heart health. Book your consultation with Dr. Abdullah.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <form class="appointment-form" onsubmit="handleSubmit(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control-custom" placeholder="Full Name" data-en="Full Name" data-ar="الاسم الكامل" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control-custom" placeholder="Phone Number" data-en="Phone Number" data-ar="رقم الهاتف" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control-custom" placeholder="Email Address" data-en="Email Address" data-ar="البريد الإلكتروني" required>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control-custom" required>
+                                    <option value="" data-en="Select Service" data-ar="اختر الخدمة">Select Service</option>
+                                    <option data-en="Cardiac Diagnostics" data-ar="تشخيص القلب">Cardiac Diagnostics</option>
+                                    <option data-en="Interventional Cardiology" data-ar="طب القلب التدخلي">Interventional Cardiology</option>
+                                    <option data-en="Heart Failure Management" data-ar="إدارة فشل القلب">Heart Failure Management</option>
+                                    <option data-en="Preventive Cardiology" data-ar="طب القلب الوقائي">Preventive Cardiology</option>
+                                    <option data-en="Other" data-ar="أخرى">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control-custom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="time" class="form-control-custom" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control-custom" rows="4" placeholder="Your Message (optional)" data-en="Your Message (optional)" data-ar="رسالتك (اختياري)"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="submit-btn">
+                                    <i class="fas fa-calendar-check me-2"></i>
+                                    <span data-en="Confirm Appointment" data-ar="تأكيد الحجز">Confirm Appointment</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="appointment-info">
+                        <h3 class="mb-4" data-en="Contact Information" data-ar="معلومات التواصل">Contact Information</h3>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h6 data-en="Visit Our Clinic" data-ar="قم بزيارة عيادتنا">Visit Our Clinic</h6>
+                                <p data-en="King Fahd Medical City, Riyadh, Saudi Arabia" data-ar="مدينة الملك فهد الطبية، الرياض، المملكة العربية السعودية">King Fahd Medical City, Riyadh, Saudi Arabia</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h6 data-en="Call Us" data-ar="اتصل بنا">Call Us</h6>
+                                <p>+966 11 123 4567<br>+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h6 data-en="Email Us" data-ar="راسلنا">Email Us</h6>
+                                <p>contact@medelite.sa<br>appointments@medelite.sa</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h6 data-en="Working Hours" data-ar="ساعات العمل">Working Hours</h6>
+                                <p data-en="Sun - Thu: 9:00 AM - 8:00 PM" data-ar="الأحد - الخميس: 9:00 ص - 8:00 م">Sun - Thu: 9:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand"><i class="fas fa-heartbeat"></i> MedElite</div>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8;" data-en="Providing world-class cardiac care with compassion and expertise. Your heart is in trusted hands." data-ar="نقدم رعاية قلبية عالمية بالرعاية والخبرة. قلبك في أيدٍ أمينة.">Providing world-class cardiac care with compassion and expertise. Your heart is in trusted hands.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-en="Home" data-ar="الرئيسية"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about" data-en="About" data-ar="عني"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#services" data-en="Services" data-ar="الخدمات"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#specialties" data-en="Specialties" data-ar="التخصصات"><i class="fas fa-chevron-right"></i> Specialties</a></li>
+                        <li><a href="#appointment" data-en="Appointment" data-ar="الحجز"><i class="fas fa-chevron-right"></i> Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 data-en="Services" data-ar="الخدمات">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" data-en="Cardiac Diagnostics" data-ar="تشخيص القلب"><i class="fas fa-chevron-right"></i> Cardiac Diagnostics</a></li>
+                        <li><a href="#" data-en="Interventional" data-ar="التدخل"><i class="fas fa-chevron-right"></i> Interventional</a></li>
+                        <li><a href="#" data-en="Heart Failure" data-ar="فشل القلب"><i class="fas fa-chevron-right"></i> Heart Failure</a></li>
+                        <li><a href="#" data-en="Preventive Care" data-ar="الرعاية الوقائية"><i class="fas fa-chevron-right"></i> Preventive Care</a></li>
+                        <li><a href="#" data-en="Rehabilitation" data-ar="التأهيل"><i class="fas fa-chevron-right"></i> Rehabilitation</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 data-en="Newsletter" data-ar="النشرة الإخبارية">Newsletter</h5>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;" data-en="Subscribe for health tips and updates." data-ar="اشترك للحصول على نصائح صحية وتحديثات.">Subscribe for health tips and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" data-en="Your Email" data-ar="بريدك الإلكتروني">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="© 2026 MedElite by Dr. Abdullah Al-Rashid. All Rights Reserved. | Licensed by Saudi Ministry of Health" data-ar="© 2026 ميد إيليت للدكتور عبدالله الراشد. جميع الحقوق محفوظة. | مرخص من وزارة الصحة السعودية">© 2026 MedElite by Dr. Abdullah Al-Rashid. All Rights Reserved. | Licensed by Saudi Ministry of Health</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const body = document.body;
+            const langLabel = document.getElementById('langLabel');
+            
+            if (currentLang === 'ar') {
+                body.classList.add('rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                document.documentElement.setAttribute('dir', 'rtl');
+                langLabel.textContent = 'English';
+            } else {
+                body.classList.remove('rtl');
+                document.documentElement.setAttribute('lang', 'en');
+                document.documentElement.setAttribute('dir', 'ltr');
+                langLabel.textContent = 'العربية';
+            }
+
+            document.querySelectorAll('[data-' + currentLang + ']').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + currentLang);
+            });
+
+            document.querySelectorAll('input[data-' + currentLang + '], textarea[data-' + currentLang + '], option[data-' + currentLang + ']').forEach(el => {
+                if (el.getAttribute('placeholder')) {
+                    el.setAttribute('placeholder', el.getAttribute('data-' + currentLang));
+                }
+                if (el.tagName === 'OPTION') {
+                    el.textContent = el.getAttribute('data-' + currentLang);
+                }
+            });
+
+            AOS.refresh();
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-custom');
+            const scrollTop = document.querySelector('.scroll-top');
+            
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+
+            if (window.scrollY > 300) scrollTop.classList.add('active');
+            else scrollTop.classList.remove('active');
+
+            const sections = document.querySelectorAll('section[id]');
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                const bottom = top + section.offsetHeight;
+                const id = section.getAttribute('id');
+                const link = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (link) {
+                    if (window.scrollY >= top && window.scrollY < bottom) {
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const msg = currentLang === 'ar' 
+                ? 'تم استلام طلبك! سنتواصل معك قريبًا.' 
+                : 'Your appointment has been received! We will contact you soon.';
+            alert(msg);
+            e.target.reset();
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link, .nav-btn').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.querySelector('.navbar-collapse');
+                if (menu.classList.contains('show')) {
+                    new bootstrap.Collapse(menu).hide();
+                }
+            });
+        });
+
+        // Close mobile menu on click outside
+        document.addEventListener('click', (e) => {
+            const navbar = document.querySelector('.navbar-custom');
+            const menu = document.querySelector('.navbar-collapse');
+            const toggler = document.querySelector('.navbar-toggler');
+            if (window.innerWidth < 992 && menu.classList.contains('show') && 
+                !navbar.contains(e.target)) {
+                new bootstrap.Collapse(menu).hide();
+            }
+        });
+    </script>
+</body>
+</html>

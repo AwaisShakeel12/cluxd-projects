@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Ahmed Al-Rashid — Cardiology & Internal Medicine</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<!-- AOS Animations -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+<style>
+:root{
+  --primary:#2bb673;
+  --primary-dark:#1f8f5a;
+  --primary-light:#a8e6cf;
+  --primary-soft:#e8f8ef;
+  --accent:#7cd4a8;
+  --dark:#0f2e25;
+  --muted:#5b6b66;
+  --white:#ffffff;
+  --grad:linear-gradient(135deg,#a8e6cf 0%,#7cd4a8 50%,#2bb673 100%);
+  --grad-soft:linear-gradient(135deg,#f0fdf6 0%,#e0f7ec 100%);
+  --grad-hero:radial-gradient(circle at 20% 20%,#d4f5e4 0%,transparent 50%),radial-gradient(circle at 80% 60%,#a8e6cf33 0%,transparent 50%),#ffffff;
+  --shadow-sm:0 6px 20px rgba(43,182,115,.08);
+  --shadow-md:0 14px 40px rgba(43,182,115,.12);
+  --shadow-lg:0 25px 60px rgba(43,182,115,.18);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--dark);
+  background:#ffffff;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+body.ar{font-family:'Tajawal',sans-serif;}
+
+/* ===== LOADING SCREEN ===== */
+#loader{
+  position:fixed;inset:0;z-index:99999;
+  background:#ffffff;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .6s ease,visibility .6s ease;
+}
+#loader.hide{opacity:0;visibility:hidden;}
+.loader-logo{
+  width:90px;height:90px;border-radius:26px;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-lg);
+  animation:pulse 1.6s infinite;
+  color:#fff;font-size:42px;
+}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.loader-text{margin-top:22px;font-weight:600;color:var(--primary-dark);letter-spacing:2px;}
+.loader-bar{width:180px;height:4px;border-radius:20px;background:#eef6f1;margin-top:14px;overflow:hidden;}
+.loader-bar::after{
+  content:'';display:block;height:100%;width:40%;
+  background:var(--grad);border-radius:20px;
+  animation:loadbar 1.2s infinite;
+}
+@keyframes loadbar{0%{margin-left:-40%;}100%{margin-left:100%;}}
+
+/* ===== NAVBAR ===== */
+.navbar-custom{
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  padding:14px 0;
+  transition:all .35s ease;
+  border-bottom:1px solid rgba(43,182,115,.08);
+}
+.navbar-custom.scrolled{
+  padding:8px 0;
+  box-shadow:0 8px 30px rgba(43,182,115,.1);
+  background:rgba(255,255,255,.95);
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.brand-icon{
+  width:44px;height:44px;border-radius:14px;
+  background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:var(--shadow-sm);
+}
+.brand-text{font-weight:700;font-size:18px;color:var(--dark);line-height:1.1;}
+.brand-text small{display:block;font-size:11px;color:var(--muted);font-weight:500;letter-spacing:1px;text-transform:uppercase;}
+
+.nav-link-custom{
+  color:var(--dark)!important;
+  font-weight:500;font-size:14.5px;
+  padding:10px 16px!important;
+  position:relative;transition:color .25s;
+}
+.nav-link-custom::after{
+  content:'';position:absolute;left:16px;right:16px;bottom:4px;height:2px;
+  background:var(--grad);border-radius:2px;
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.nav-link-custom:hover,.nav-link-custom.active{color:var(--primary-dark)!important;}
+.nav-link-custom:hover::after,.nav-link-custom.active::after{transform:scaleX(1);}
+
+.lang-switch{
+  background:var(--grad);color:#fff;border:none;
+  padding:9px 18px;border-radius:30px;font-weight:600;font-size:13px;
+  cursor:pointer;transition:transform .25s,box-shadow .25s;
+  display:flex;align-items:center;gap:7px;
+}
+.lang-switch:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+.btn-book{
+  background:var(--grad);color:#fff;border:none;
+  padding:11px 26px;border-radius:30px;font-weight:600;font-size:14px;
+  box-shadow:var(--shadow-sm);transition:all .3s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-book:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);color:#fff;}
+
+/* ===== HERO ===== */
+.hero{
+  padding:140px 0 80px;
+  background:var(--grad-hero);
+  position:relative;overflow:hidden;
+  min-height:100vh;display:flex;align-items:center;
+}
+.hero::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,#a8e6cf44,transparent 70%);
+  filter:blur(40px);
+}
+.hero::after{
+  content:'';position:absolute;bottom:-150px;left:-100px;
+  width:450px;height:450px;border-radius:50%;
+  background:radial-gradient(circle,#7cd4a833,transparent 70%);
+  filter:blur(40px);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid var(--primary-light);
+  padding:8px 18px;border-radius:30px;font-size:13px;font-weight:500;color:var(--primary-dark);
+  margin-bottom:24px;box-shadow:var(--shadow-sm);
+}
+.hero-badge i{color:var(--primary);background:var(--primary-soft);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.hero h1{
+  font-size:clamp(36px,5.5vw,64px);
+  font-weight:800;line-height:1.08;margin-bottom:22px;
+  letter-spacing:-1px;
+}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero p.lead{font-size:17px;color:var(--muted);max-width:540px;margin-bottom:34px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-primary-grad{
+  background:var(--grad);color:#fff;border:none;
+  padding:15px 32px;border-radius:40px;font-weight:600;font-size:15px;
+  box-shadow:var(--shadow-md);transition:all .3s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-primary-grad:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);color:#fff;}
+.btn-outline-soft{
+  background:#fff;color:var(--dark);border:1.5px solid #e5efe9;
+  padding:15px 28px;border-radius:40px;font-weight:600;font-size:15px;
+  transition:all .3s;display:inline-flex;align-items:center;gap:10px;
+}
+.btn-outline-soft:hover{border-color:var(--primary);color:var(--primary-dark);transform:translateY(-3px);}
+
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.hero-stats .stat strong{display:block;font-size:30px;font-weight:800;color:var(--dark);line-height:1;}
+.hero-stats .stat strong span{color:var(--primary);}
+.hero-stats .stat small{color:var(--muted);font-size:13px;}
+
+.hero-image-wrap{
+  position:relative;
+  display:flex;justify-content:center;align-items:center;
+}
+.hero-img{
+  width:100%;max-width:500px;
+  border-radius:30px;
+  box-shadow:var(--shadow-lg);
+  position:relative;z-index:2;
+  border:6px solid #fff;
+}
+.hero-img-wrap{position:relative;}
+.hero-img-wrap::before{
+  content:'';position:absolute;inset:-20px;
+  background:var(--grad);border-radius:40px;
+  z-index:1;opacity:.25;filter:blur(30px);
+}
+.floating-card{
+  position:absolute;background:#fff;padding:14px 18px;border-radius:18px;
+  box-shadow:var(--shadow-md);display:flex;align-items:center;gap:12px;z-index:3;
+  animation:float 4s ease-in-out infinite;
+}
+.floating-card i{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--primary-soft);color:var(--primary);}
+.floating-card strong{display:block;font-size:14px;}
+.floating-card small{color:var(--muted);font-size:11.5px;}
+.fc1{top:18%;left:-10px;animation-delay:0s;}
+.fc2{bottom:18%;right:-20px;animation-delay:1.5s;}
+.fc3{bottom:5%;left:10%;animation-delay:3s;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+/* ===== SECTION GENERAL ===== */
+section{padding:100px 0;position:relative;}
+.section-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--primary-dark);font-weight:600;font-size:13px;
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;
+}
+.section-tag::before{content:'';width:36px;height:2px;background:var(--grad);border-radius:2px;}
+.section-title{font-size:clamp(28px,3.5vw,42px);font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-.5px;}
+.section-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.section-sub{color:var(--muted);font-size:16px;max-width:620px;}
+
+/* ===== ABOUT ===== */
+.about-img-wrap{position:relative;}
+.about-img{width:100%;border-radius:28px;box-shadow:var(--shadow-lg);}
+.about-img-wrap::before{
+  content:'';position:absolute;top:-20px;left:-20px;right:30px;bottom:30px;
+  border:3px solid var(--primary-light);border-radius:28px;z-index:-1;
+}
+.about-mini{
+  position:absolute;background:#fff;border-radius:18px;padding:18px;
+  box-shadow:var(--shadow-md);display:flex;align-items:center;gap:12px;
+}
+.about-mini.top{top:20px;right:-10px;}
+.about-mini.bottom{bottom:-20px;left:20px;}
+.about-mini .ico{width:50px;height:50px;border-radius:14px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.about-mini strong{display:block;font-size:15px;}
+.about-mini small{color:var(--muted);font-size:12px;}
+.about-list{list-style:none;padding:0;}
+.about-list li{display:flex;gap:12px;margin-bottom:14px;font-size:15px;}
+.about-list i{color:var(--primary);background:var(--primary-soft);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:3px;}
+
+/* ===== SERVICES ===== */
+.services{background:linear-gradient(180deg,#f8fdfb 0%,#fff 100%);}
+.service-card{
+  background:#fff;border-radius:24px;padding:36px 30px;
+  box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  border:1px solid #eef6f1;
+  height:100%;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:5px;
+  background:var(--grad);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s;
+}
+.service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);border-color:var(--primary-light);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-card:hover .service-icon{transform:rotate(-8deg) scale(1.05);}
+.service-icon{
+  width:70px;height:70px;border-radius:22px;
+  background:var(--grad-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;color:var(--primary-dark);
+  margin-bottom:22px;transition:transform .4s;
+  position:relative;
+}
+.service-icon::after{
+  content:'';position:absolute;inset:-6px;border-radius:26px;
+  border:2px dashed var(--primary-light);opacity:0;transition:opacity .3s;
+}
+.service-card:hover .service-icon::after{opacity:1;}
+.service-card h5{font-weight:700;font-size:19px;margin-bottom:12px;}
+.service-card p{color:var(--muted);font-size:14.5px;margin-bottom:18px;}
+.service-card .read-more{
+  color:var(--primary-dark);font-weight:600;font-size:13.5px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;transition:gap .25s;
+}
+.service-card .read-more:hover{gap:12px;}
+
+/* ===== SPECIALTIES ===== */
+.spec-item{
+  background:#fff;border-radius:20px;padding:26px;
+  border:1px solid #eef6f1;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:all .3s;
+  height:100%;
+}
+.spec-item:hover{border-color:var(--primary);box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.spec-ico{
+  width:58px;height:58px;border-radius:18px;
+  background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;box-shadow:var(--shadow-sm);
+}
+.spec-item h6{font-weight:700;margin-bottom:6px;font-size:16px;}
+.spec-item p{color:var(--muted);font-size:13.5px;margin:0;}
+
+/* ===== WHY US ===== */
+.why-us{background:var(--grad-soft);position:relative;overflow:hidden;}
+.why-us::before{
+  content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;
+  background:radial-gradient(circle,#a8e6cf33,transparent 70%);border-radius:50%;filter:blur(60px);
+}
+.why-card{
+  background:#fff;border-radius:24px;padding:32px 28px;
+  box-shadow:var(--shadow-sm);transition:all .35s;
+  height:100%;text-align:center;
+  position:relative;overflow:hidden;
+}
+.why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+.why-card .num{
+  position:absolute;top:16px;right:20px;
+  font-size:54px;font-weight:800;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.18;line-height:1;
+}
+.why-card .ico{
+  width:68px;height:68px;border-radius:22px;
+  background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin:0 auto 20px;box-shadow:var(--shadow-sm);
+}
+.why-card h6{font-weight:700;font-size:18px;margin-bottom:10px;}
+.why-card p{color:var(--muted);font-size:14px;margin:0;}
+
+/* ===== TIMELINE ===== */
+.timeline-wrap{position:relative;padding-left:30px;}
+.timeline-wrap::before{
+  content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--primary-light),transparent);
+}
+.timeline-item{position:relative;padding-left:30px;margin-bottom:40px;}
+.timeline-item::before{
+  content:'';position:absolute;left:-27px;top:6px;width:18px;height:18px;
+  border-radius:50%;background:#fff;border:4px solid var(--primary);box-shadow:var(--shadow-sm);
+}
+.timeline-year{
+  display:inline-block;background:var(--grad);color:#fff;
+  padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:10px;
+}
+.timeline-item h6{font-weight:700;font-size:17px;margin-bottom:4px;}
+.timeline-item p{color:var(--muted);font-size:14px;margin:0;}
+
+/* ===== APPOINTMENT ===== */
+.appointment{background:#fff;position:relative;}
+.appt-form{
+  background:#fff;border-radius:28px;padding:40px;
+  box-shadow:var(--shadow-md);border:1px solid #eef6f1;
+}
+.appt-form .form-control,.appt-form .form-select{
+  border:1.5px solid #e5efe9;border-radius:14px;
+  padding:13px 18px;font-size:14.5px;background:#f8fdfb;
+  transition:all .25s;
+}
+.appt-form .form-control:focus,.appt-form .form-select:focus{
+  border-color:var(--primary);box-shadow:0 0 0 4px rgba(43,182,115,.12);background:#fff;
+}
+.appt-form label{font-weight:500;font-size:13.5px;margin-bottom:7px;color:var(--dark);}
+.appt-info{
+  background:var(--grad);color:#fff;border-radius:28px;padding:40px;height:100%;
+  position:relative;overflow:hidden;
+}
+.appt-info::before{
+  content:'';position:absolute;bottom:-80px;right:-80px;width:260px;height:260px;
+  background:rgba(255,255,255,.12);border-radius:50%;
+}
+.appt-info h4{color:#fff;font-weight:800;margin-bottom:22px;}
+.appt-info .info-row{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;position:relative;z-index:1;}
+.appt-info .info-row i{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.appt-info .info-row strong{display:block;font-weight:600;font-size:15px;}
+.appt-info .info-row small{opacity:.9;font-size:13px;}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{background:linear-gradient(180deg,#fff 0%,#f8fdfb 100%);}
+.testimonial-card{
+  background:#fff;border-radius:24px;padding:34px 30px;
+  box-shadow:var(--shadow-sm);border:1px solid #eef6f1;
+  height:100%;position:relative;
+}
+.testimonial-card::before{
+  content:'\f10e';font-family:'Font Awesome 6 Free';font-weight:900;
+  position:absolute;top:22px;right:26px;font-size:40px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.3;
+}
+.testimonial-card .stars{color:#ffb400;margin-bottom:14px;font-size:13px;}
+.testimonial-card p{color:var(--muted);font-size:14.5px;margin-bottom:22px;font-style:italic;}
+.testimonial-user{display:flex;align-items:center;gap:14px;}
+.testimonial-user img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid var(--primary-soft);}
+.testimonial-user strong{display:block;font-size:15px;}
+.testimonial-user small{color:var(--muted);font-size:12px;}
+
+.swiper-pagination-bullet{background:var(--primary);opacity:.3;}
+.swiper-pagination-bullet-active{opacity:1;width:26px;border-radius:6px;}
+
+/* ===== GALLERY ===== */
+.gallery-item{
+  position:relative;border-radius:22px;overflow:hidden;
+  box-shadow:var(--shadow-sm);height:260px;cursor:pointer;
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.gallery-item:hover img{transform:scale(1.1);}
+.gallery-item .overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,46,37,.85),transparent 60%);
+  display:flex;align-items:flex-end;padding:22px;
+  opacity:0;transition:opacity .35s;
+}
+.gallery-item:hover .overlay{opacity:1;}
+.gallery-item .overlay h6{color:#fff;font-weight:700;margin:0;}
+.gallery-item .overlay small{color:var(--primary-light);font-size:12px;}
+
+/* ===== CONTACT / FOOTER ===== */
+footer{
+  background:linear-gradient(180deg,#f8fdfb 0%,#e8f8ef 100%);
+  padding:80px 0 0;position:relative;overflow:hidden;
+}
+.footer-top{padding-bottom:50px;border-bottom:1px solid #d9efe1;}
+.footer-brand{margin-bottom:26px;}
+.footer-brand .brand-text{font-size:20px;}
+footer h6{font-weight:700;font-size:15px;margin-bottom:20px;color:var(--dark);text-transform:uppercase;letter-spacing:1px;}
+footer ul{list-style:none;padding:0;}
+footer ul li{margin-bottom:10px;}
+footer ul li a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s;}
+footer ul li a:hover{color:var(--primary-dark);}
+footer .contact-row{display:flex;gap:12px;margin-bottom:14px;color:var(--muted);font-size:14px;align-items:flex-start;}
+footer .contact-row i{color:var(--primary);width:22px;flex-shrink:0;margin-top:3px;}
+.social-row{display:flex;gap:10px;margin-top:16px;}
+.social-row a{
+  width:40px;height:40px;border-radius:12px;background:#fff;
+  color:var(--primary-dark);display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:all .25s;border:1px solid #e5efe9;
+}
+.social-row a:hover{background:var(--grad);color:#fff;transform:translateY(-3px);box-shadow:var(--shadow-sm);}
+.footer-bottom{padding:22px 0;text-align:center;color:var(--muted);font-size:13.5px;}
+.footer-bottom span{color:var(--primary-dark);font-weight:600;}
+
+/* ===== FLOATING ACTION ===== */
+.float-btn{
+  position:fixed;bottom:24px;right:24px;z-index:900;
+  width:58px;height:58px;border-radius:50%;
+  background:var(--grad);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;text-decoration:none;
+  box-shadow:var(--shadow-lg);transition:transform .25s;
+}
+.float-btn:hover{transform:scale(1.1) rotate(8deg);color:#fff;}
+
+/* ===== ARABIC / RTL ===== */
+body.ar{direction:rtl;text-align:right;}
+body.ar .nav-link-custom::after{transform-origin:right;}
+body.ar .timeline-wrap{padding-left:0;padding-right:30px;}
+body.ar .timeline-wrap::before{left:auto;right:8px;}
+body.ar .timeline-item{padding-left:0;padding-right:30px;}
+body.ar .timeline-item::before{left:auto;right:-27px;}
+body.ar .hero-stats .stat{border-right:none;border-left:none;}
+body.ar .section-tag::before{order:2;}
+body.ar .about-img-wrap::before{left:30px;right:-20px;}
+body.ar .about-mini.top{right:auto;left:-10px;}
+body.ar .about-mini.bottom{left:auto;right:20px;}
+body.ar .service-card::before{transform-origin:right;}
+body.ar .why-card .num{right:auto;left:20px;}
+body.ar .float-btn{right:auto;left:24px;}
+body.ar .fc1{left:auto;right:-10px;}
+body.ar .fc2{right:auto;left:-20px;}
+body.ar .fc3{left:auto;right:10%;}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:991.98px){
+  .navbar-custom{padding:10px 0;}
+  .nav-link-custom{padding:12px 0!important;}
+  .navbar-collapse{background:#fff;margin-top:12px;padding:20px;border-radius:20px;box-shadow:var(--shadow-md);}
+  .hero{padding:110px 0 60px;min-height:auto;}
+  .hero-image-wrap{margin-top:50px;}
+  .floating-card{padding:10px 14px;}
+  .floating-card i{width:36px;height:36px;}
+  section{padding:70px 0;}
+  .appt-form{padding:28px;}
+  .appt-info{padding:28px;margin-top:26px;}
+}
+@media (max-width:575.98px){
+  .hero-stats{gap:22px;}
+  .hero-stats .stat strong{font-size:24px;}
+  .fc1,.fc3{display:none;}
+  .appt-form,.appt-info{padding:22px;border-radius:22px;}
+  .service-card,.why-card,.testimonial-card{padding:26px 22px;}
+  .hero-img{border-radius:22px;}
+}
+
+/* ===== GLOBAL OVERFLOW GUARDS ===== */
+html, body { overflow-x: hidden; max-width: 100%; }
+img { max-width: 100%; }
+section { scroll-margin-top: 90px; } /* anchors don't hide under fixed navbar */
+
+/* ===== TABLET & MOBILE (≤991px) — NAVBAR REBUILD ===== */
+@media (max-width: 991.98px) {
+  .navbar-custom { padding: 10px 0; z-index: 1040; }
+  .navbar-custom .container { padding-left: 14px; padding-right: 14px; }
+
+  /* Proper 44px tap-target hamburger */
+  .navbar-toggler {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; background: var(--primary-soft);
+  }
+  .navbar-toggler:focus { box-shadow: none; outline: none; }
+  .navbar-toggler i { transition: transform .3s ease; }
+  .navbar-toggler[aria-expanded="true"] i { transform: rotate(90deg); }
+
+  /* Open menu = clean floating panel, scrollable, never overflows */
+  .navbar-collapse {
+    background: #ffffff;
+    border: 1px solid #e5efe9;
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(15, 46, 37, .14);
+    margin-top: 12px;
+    padding: 14px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Full-width tappable links with separators */
+  .navbar-nav { width: 100%; margin: 0; }
+  .nav-link-custom {
+    padding: 13px 12px !important;
+    font-size: 15px;
+    border-bottom: 1px dashed #e5efe9;
+  }
+  .nav-link-custom::after { display: none; }
+  .nav-item:last-child .nav-link-custom { border-bottom: none; }
+  .nav-link-custom.active {
+    background: var(--primary-soft);
+    border-radius: 12px;
+    color: var(--primary-dark) !important;
+  }
+
+  /* Lang switch + Book button stack full-width at bottom of menu */
+  .navbar-collapse .d-flex {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px !important;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px solid #e5efe9;
+  }
+  .lang-switch { width: 100%; justify-content: center; padding: 12px; }
+  .navbar-collapse .btn-book {
+    display: inline-flex !important; /* shows Book Now inside mobile menu */
+    width: 100%; justify-content: center; padding: 13px;
+  }
+
+  .hero { padding: 110px 0 60px; min-height: auto; }
+  .hero-image-wrap { margin-top: 45px; }
+  .appt-info { margin-top: 26px; }
+}
+
+/* ===== PHONES (≤575px) ===== */
+@media (max-width: 575.98px) {
+  .brand-icon { width: 40px; height: 40px; font-size: 18px; border-radius: 12px; }
+  .brand-text { font-size: 16px; }
+  .brand-text small { font-size: 10px; }
+
+  .hero { padding: 105px 0 55px; }
+  .hero h1 { font-size: 32px; letter-spacing: -.5px; }
+  .hero p.lead { font-size: 15px; }
+  .hero-badge { font-size: 12px; padding: 7px 14px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn-primary-grad,
+  .hero-actions .btn-outline-soft { width: 100%; justify-content: center; }
+
+  .hero-stats { width: 100%; justify-content: space-between; gap: 12px; }
+  .hero-stats .stat strong { font-size: 22px; }
+  .hero-stats .stat small { font-size: 11px; }
+
+  .hero-img { border-width: 4px; border-radius: 20px; }
+  .floating-card { padding: 10px 12px; border-radius: 14px; gap: 9px; }
+  .floating-card i { width: 34px; height: 34px; font-size: 15px; border-radius: 10px; }
+  .floating-card strong { font-size: 12.5px; }
+  .floating-card small { font-size: 10.5px; }
+  .fc2 { right: 6px; bottom: 10%; }
+
+  /* About badges pulled INSIDE the image (no off-screen overflow) */
+  .about-mini { padding: 12px; border-radius: 14px; max-width: calc(100% - 24px); gap: 10px; }
+  .about-mini .ico { width: 40px; height: 40px; font-size: 16px; border-radius: 10px; }
+  .about-mini strong { font-size: 13px; }
+  .about-mini small { font-size: 10.5px; }
+  .about-mini.top { top: 12px; right: 12px; }
+  .about-mini.bottom { bottom: 12px; left: 12px; }
+  body.ar .about-mini.top { left: 12px; right: auto; }
+  body.ar .about-mini.bottom { right: 12px; left: auto; }
+
+  section { padding: 64px 0; }
+  .section-sub { font-size: 14.5px; }
+  .service-card, .why-card, .testimonial-card { padding: 26px 20px; }
+  .spec-item { padding: 20px 16px; }
+  .spec-ico { width: 48px; height: 48px; font-size: 18px; }
+  .gallery-item { height: 210px; }
+  .appt-form, .appt-info { padding: 22px 18px; border-radius: 22px; }
+  .timeline-item { margin-bottom: 28px; }
+  .testimonial-card p { font-size: 13.5px; }
+
+  .float-btn { width: 50px; height: 50px; font-size: 19px; bottom: 16px; right: 16px; }
+  body.ar .float-btn { right: auto; left: 16px; }
+  .footer-bottom { font-size: 12.5px; padding: 18px 0; }
+}
+
+/* ===== VERY SMALL PHONES (≤380px) ===== */
+@media (max-width: 380px) {
+  .brand-text { font-size: 15px; }
+  .hero h1 { font-size: 27px; }
+  .hero-stats .stat strong { font-size: 20px; }
+  .section-title { font-size: 24px; }
+  .navbar-collapse { padding: 10px; }
+  .nav-link-custom { font-size: 14px; padding: 12px 10px !important; }
+  .fc2 { display: none; }
+}
+
+/* ===== LANDSCAPE PHONES ===== */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: 95px 0 50px; }
+  .navbar-collapse { max-height: calc(100vh - 85px); }
+}
+
+/* ===== iOS SAFE AREA (notch phones) ===== */
+@supports (padding: env(safe-area-inset-top)) {
+  .navbar-custom { padding-top: calc(10px + env(safe-area-inset-top)); }
+  .float-btn { bottom: calc(16px + env(safe-area-inset-bottom)); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loader">
+  <div class="loader-logo"><i class="fa-solid fa-heart-pulse"></i></div>
+  <div class="loader-text" data-en="LOADING" data-ar="جارِ التحميل">LOADING</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <div class="container">
+    <a class="brand" href="#home">
+      <span class="brand-icon"><i class="fa-solid fa-stethoscope"></i></span>
+      <span class="brand-text">Dr. Ahmed<small data-en="Cardiology Center" data-ar="مركز القلب">Cardiology Center</small></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fa-solid fa-bars" style="color:var(--primary-dark);font-size:20px;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link nav-link-custom active" href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#about" data-en="About" data-ar="من نحن">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#specialties" data-en="Specialties" data-ar="التخصصات">Specialties</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#why" data-en="Why Us" data-ar="لماذا نحن">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#appointment" data-en="Appointment" data-ar="حجز موعد">Appointment</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+      </ul>
+      <div class="d-flex gap-2 align-items-center">
+        <button class="lang-switch" onclick="toggleLang()" id="langBtn">
+          <i class="fa-solid fa-globe"></i><span id="langLabel">العربية</span>
+        </button>
+        <a href="#appointment" class="btn-book d-none d-lg-inline-flex" data-en="Book Now" data-ar="احجز الآن">Book Now</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="container position-relative">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="hero-badge">
+          <i class="fa-solid fa-shield-heart"></i>
+          <span data-en="Trusted by 15,000+ Patients" data-ar="موثوق من قبل أكثر من 15,000 مريض">Trusted by 15,000+ Patients</span>
+        </div>
+        <h1 data-en="Expert Cardiac Care with a <span>Human Touch</span>" data-ar="رعاية قلبية متخصصة <span>بلمسة إنسانية</span>">Expert Cardiac Care with a <span>Human Touch</span></h1>
+        <p class="lead" data-en="Dr. Ahmed Al-Rashid — Board-certified cardiologist with 20+ years of experience delivering world-class cardiovascular care in the Kingdom of Saudi Arabia." data-ar="د. أحمد الراشد — استشاري أمراض القلب معتمد بأكثر من 20 عامًا من الخبرة في تقديم رعاية قلبية عالمية المستوى في المملكة العربية السعودية.">Dr. Ahmed Al-Rashid — Board-certified cardiologist with 20+ years of experience delivering world-class cardiovascular care in the Kingdom of Saudi Arabia.</p>
+        <div class="hero-actions">
+          <a href="#appointment" class="btn-primary-grad"><i class="fa-regular fa-calendar-check"></i><span data-en="Book Appointment" data-ar="احجز موعدك">Book Appointment</span></a>
+          <a href="#services" class="btn-outline-soft"><i class="fa-solid fa-play"></i><span data-en="Explore Services" data-ar="استكشف الخدمات">Explore Services</span></a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>20<span>+</span></strong><small data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</small></div>
+          <div class="stat"><strong>15K<span>+</span></strong><small data-en="Happy Patients" data-ar="مريض سعيد">Happy Patients</small></div>
+          <div class="stat"><strong>98<span>%</span></strong><small data-en="Success Rate" data-ar="معدل النجاح">Success Rate</small></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="hero-image-wrap">
+          <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop" class="hero-img" alt="Dr. Ahmed">
+            <div class="floating-card fc1">
+              <i class="fa-solid fa-user-doctor"></i>
+              <div><strong data-en="Board Certified" data-ar="طبيب معتمد">Board Certified</strong><small data-en="Harvard Medical" data-ar="هارفارد الطبية">Harvard Medical</small></div>
+            </div>
+            <div class="floating-card fc2">
+              <i class="fa-solid fa-award"></i>
+              <div><strong data-en="Award Winner" data-ar="حائز جوائز">Award Winner</strong><small data-en="2023 Excellence" data-ar="التميز 2023">2023 Excellence</small></div>
+            </div>
+            <div class="floating-card fc3">
+              <i class="fa-solid fa-star"></i>
+              <div><strong>4.9 ★★★★★</strong><small data-en="Patient Reviews" data-ar="تقييمات المرضى">Patient Reviews</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&auto=format&fit=crop" class="about-img" alt="About">
+          <div class="about-mini top">
+            <div class="ico"><i class="fa-solid fa-certificate"></i></div>
+            <div><strong data-en="Certified Expert" data-ar="خبير معتمد">Certified Expert</strong><small data-en="SCFHS Licensed" data-ar="مرخص من الهيئة">SCFHS Licensed</small></div>
+          </div>
+          <div class="about-mini bottom">
+            <div class="ico"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div><strong data-en="Heart Specialist" data-ar="أخصائي قلب">Heart Specialist</strong><small data-en="Interventional" data-ar="تداخلي">Interventional</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <span class="section-tag" data-en="About The Doctor" data-ar="عن الطبيب">About The Doctor</span>
+        <h2 class="section-title" data-en="Dedicated to Your <span>Heart Health</span> & Wellbeing" data-ar="مكرّس <span>لصحة قلبك</span> ورفاهيتك">Dedicated to Your <span>Heart Health</span> & Wellbeing</h2>
+        <p class="section-sub" data-en="With over two decades of clinical and interventional experience, Dr. Ahmed provides compassionate, evidence-based cardiac care using the latest medical technologies." data-ar="مع أكثر من عقدين من الخبرة السريرية والتداخلية، يقدم د. أحمد رعاية قلبية رحيمة قائمة على الأدلة باستخدام أحدث التقنيات الطبية.">With over two decades of clinical and interventional experience, Dr. Ahmed provides compassionate, evidence-based cardiac care using the latest medical technologies.</p>
+        <ul class="about-list mt-4">
+          <li><i class="fa-solid fa-check"></i><span data-en="Fellowship in Interventional Cardiology — Johns Hopkins" data-ar="زمالة في القسطرة القلبية — جونز هوبكنز">Fellowship in Interventional Cardiology — Johns Hopkins</span></li>
+          <li><i class="fa-solid fa-check"></i><span data-en="Member of Saudi Heart Association & ESC" data-ar="عضو الجمعية السعودية للقلب والجمعية الأوروبية">Member of Saudi Heart Association & ESC</span></li>
+          <li><i class="fa-solid fa-check"></i><span data-en="Published 40+ research papers internationally" data-ar="نشر أكثر من 40 بحثاً دولياً">Published 40+ research papers internationally</span></li>
+          <li><i class="fa-solid fa-check"></i><span data-en="Fluent in Arabic, English & French" data-ar="يجيد العربية والإنجليزية والفرنسية">Fluent in Arabic, English & French</span></li>
+        </ul>
+        <a href="#appointment" class="btn-primary-grad mt-3"><span data-en="Schedule Consultation" data-ar="احجز استشارة">Schedule Consultation</span><i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-tag" data-en="Our Services" data-ar="خدماتنا">Our Services</span>
+      <h2 class="section-title" data-en="Comprehensive <span>Cardiac Services</span>" data-ar="خدمات قلبية <span>شاملة ومتكاملة</span>">Comprehensive <span>Cardiac Services</span></h2>
+      <p class="section-sub mx-auto" data-en="A complete spectrum of advanced cardiovascular diagnostics and treatments delivered with precision and care." data-ar="مجموعة كاملة من التشخيصات والعلاجات القلبية الوعائية المتقدمة المقدمة بدقة وعناية.">A complete spectrum of advanced cardiovascular diagnostics and treatments delivered with precision and care.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h5 data-en="Cardiac Consultation" data-ar="استشارة قلبية">Cardiac Consultation</h5>
+          <p data-en="Comprehensive cardiac evaluations including history, physical exam, and personalized treatment plans." data-ar="تقييمات قلبية شاملة تشمل التاريخ والفحص وخطط علاج مخصصة.">Comprehensive cardiac evaluations including history, physical exam, and personalized treatment plans.</p>
+          <a href="#" class="read-more"><span data-en="Learn more" data-ar="اعرف المزيد">Learn more</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-wave-square"></i></div>
+          <h5 data-en="ECG & Stress Testing" data-ar="تخطيط القلب والجهد">ECG & Stress Testing</h5>
+          <p data-en="Advanced electrocardiography and treadmill stress tests to evaluate heart function under exertion." data-ar="تخطيط كهربائي متقدم واختبارات الجهد لتقييم وظيفة القلب.">Advanced electrocardiography and treadmill stress tests to evaluate heart function under exertion.</p>
+          <a href="#" class="read-more"><span data-en="Learn more" data-ar="اعرف المزيد">Learn more</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-ultrasound"></i></div>
+          <h5 data-en="Echocardiography" data-ar="الإيكو القلبي">Echocardiography</h5>
+          <p data-en="Non-invasive ultrasound imaging of the heart to detect structural abnormalities and valve issues." data-ar="تصوير بالموجات فوق الصوتية غير جراحي للكشف عن التشوهات الهيكلية.">Non-invasive ultrasound imaging of the heart to detect structural abnormalities and valve issues.</p>
+          <a href="#" class="read-more"><span data-en="Learn more" data-ar="اعرف المزيد">Learn more</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-syringe"></i></div>
+          <h5 data-en="Cardiac Catheterization" data-ar="قسطرة القلب">Cardiac Catheterization</h5>
+          <p data-en="Minimally invasive diagnostic & interventional procedures including angiography and stenting." data-ar="إجراءات تشخيصية وتداخلية قليلة التوغل بما فيها التصوير والدعامات.">Minimally invasive diagnostic & interventional procedures including angiography and stenting.</p>
+          <a href="#" class="read-more"><span data-en="Learn more" data-ar="اعرف المزيد">Learn more</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-lungs"></i></div>
+          <h5 data-en="Hypertension Care" data-ar="رعاية ضغط الدم">Hypertension Care</h5>
+          <p data-en="Long-term blood pressure management with lifestyle counseling and modern medication protocols." data-ar="إدارة طويلة المدى لضغط الدم مع إرشادات نمط الحياة وبروتوكولات دوائية حديثة.">Long-term blood pressure management with lifestyle counseling and modern medication protocols.</p>
+          <a href="#" class="read-more"><span data-en="Learn more" data-ar="اعرف المزيد">Learn more</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-kit-medical"></i></div>
+          <h5 data-en="Preventive Screening" data-ar="الفحص الوقائي">Preventive Screening</h5>
+          <p data-en="Executive cardiac health check-ups with lipid profiling, risk scoring, and early disease detection." data-ar="فحوصات قلبية تنفيذية مع تحليل الدهون وتقييم المخاطر والكشف المبكر.">Executive cardiac health check-ups with lipid profiling, risk scoring, and early disease detection.</p>
+          <a href="#" class="read-more"><span data-en="Learn more" data-ar="اعرف المزيد">Learn more</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPECIALTIES ===== -->
+<section id="specialties">
+  <div class="container">
+    <div class="row align-items-end mb-5 g-3">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="section-tag" data-en="Specialties" data-ar="التخصصات">Specialties</span>
+        <h2 class="section-title" data-en="Areas of <span>Expert Focus</span>" data-ar="مجالات <span>الخبرة المتخصصة</span>">Areas of <span>Expert Focus</span></h2>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <p class="section-sub ms-lg-auto" data-en="Targeted expertise across the full spectrum of cardiovascular medicine." data-ar="خبرة مستهدفة عبر كامل طيف طب القلب والأوعية الدموية.">Targeted expertise across the full spectrum of cardiovascular medicine.</p>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="spec-item"><div class="spec-ico"><i class="fa-solid fa-heart"></i></div><div><h6 data-en="Coronary Artery Disease" data-ar="مرض الشريان التاجي">Coronary Artery Disease</h6><p data-en="Diagnosis and interventional management of blockages." data-ar="تشخيص وعلاج تداخلي للانسدادات.">Diagnosis and interventional management of blockages.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="spec-item"><div class="spec-ico"><i class="fa-solid fa-bolt"></i></div><div><h6 data-en="Arrhythmia Management" data-ar="إدارة اضطرابات النظم">Arrhythmia Management</h6><p data-en="Treatment of irregular heart rhythms and palpitations." data-ar="علاج عدم انتظام ضربات القلب والخفقان.">Treatment of irregular heart rhythms and palpitations.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="spec-item"><div class="spec-ico"><i class="fa-solid fa-fire"></i></div><div><h6 data-en="Heart Failure" data-ar="فشل القلب">Heart Failure</h6><p data-en="Advanced therapy for chronic heart failure patients." data-ar="علاج متقدم لمرضى فشل القلب المزمن.">Advanced therapy for chronic heart failure patients.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="spec-item"><div class="spec-ico"><i class="fa-solid fa-shield-heart"></i></div><div><h6 data-en="Valvular Heart Disease" data-ar="أمراض صمامات القلب">Valvular Heart Disease</h6><p data-en="Evaluation and repair of damaged heart valves." data-ar="تقييم وإصلاح صمامات القلب التالفة.">Evaluation and repair of damaged heart valves.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="spec-item"><div class="spec-ico"><i class="fa-solid fa-droplet"></i></div><div><h6 data-en="Lipid & Cholesterol" data-ar="الدهون والكوليسترول">Lipid & Cholesterol</h6><p data-en="Personalized lipid-lowering and diet programs." data-ar="برامج مخصصة لخفض الدهون والحمية.">Personalized lipid-lowering and diet programs.</p></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="spec-item"><div class="spec-ico"><i class="fa-solid fa-stethoscope"></i></div><div><h6 data-en="Preventive Cardiology" data-ar="طب القلب الوقائي">Preventive Cardiology</h6><p data-en="Risk assessment and early detection programs." data-ar="برامج تقييم المخاطر والكشف المبكر.">Risk assessment and early detection programs.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="why-us" id="why">
+  <div class="container position-relative">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-tag" data-en="Why Choose Us" data-ar="لماذا نحن">Why Choose Us</span>
+      <h2 class="section-title" data-en="The Difference <span>We Deliver</span>" data-ar="الفرق <span>الذي نقدمه</span>">The Difference <span>We Deliver</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up"><div class="why-card"><div class="num">01</div><div class="ico"><i class="fa-solid fa-user-doctor"></i></div><h6 data-en="Expert Doctor" data-ar="طبيب خبير">Expert Doctor</h6><p data-en="Internationally trained with 20+ years of experience." data-ar="مدرب دولياً مع أكثر من 20 عاماً من الخبرة.">Internationally trained with 20+ years of experience.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up"><div class="why-card"><div class="num">02</div><div class="ico"><i class="fa-solid fa-microscope"></i></div><h6 data-en="Modern Technology" data-ar="تكنولوجيا حديثة">Modern Technology</h6><p data-en="State-of-the-art diagnostic equipment." data-ar="معدات تشخيصية متطورة.">State-of-the-art diagnostic equipment.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up"><div class="why-card"><div class="num">03</div><div class="ico"><i class="fa-solid fa-hand-holding-heart"></i></div><h6 data-en="Compassionate Care" data-ar="رعاية حانية">Compassionate Care</h6><p data-en="Patient-first approach with 24/7 support." data-ar="نهج يضع المريض أولاً مع دعم على مدار الساعة.">Patient-first approach with 24/7 support.</p></div></div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up"><div class="why-card"><div class="num">04</div><div class="ico"><i class="fa-solid fa-clock"></i></div><h6 data-en="Quick Response" data-ar="استجابة سريعة">Quick Response</h6><p data-en="Same-day appointments and rapid results." data-ar="مواعيد في نفس اليوم ونتائج سريعة.">Same-day appointments and rapid results.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE / EXPERIENCE ===== -->
+<section id="experience">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5" data-aos="fade-right">
+        <span class="section-tag" data-en="Journey" data-ar="المسيرة">Journey</span>
+        <h2 class="section-title" data-en="A Legacy of <span>Excellence</span>" data-ar="إرث من <span>التميز</span>">A Legacy of <span>Excellence</span></h2>
+        <p class="section-sub" data-en="Two decades of clinical milestones shaping modern cardiac care in the region." data-ar="عقدان من الإنجازات السريرية التي شكّلت الرعاية القلبية الحديثة في المنطقة.">Two decades of clinical milestones shaping modern cardiac care in the region.</p>
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop" class="img-fluid rounded-4 mt-4" alt="Experience" style="box-shadow:var(--shadow-md);">
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="timeline-wrap">
+          <div class="timeline-item"><span class="timeline-year">2003</span><h6 data-en="MBBS — King Saud University" data-ar="بكالوريوس طب — جامعة الملك سعود">MBBS — King Saud University</h6><p data-en="Graduated with honors, top 5% of class." data-ar="تخرج بمرتبة الشرف، ضمن أعلى 5%.">Graduated with honors, top 5% of class.</p></div>
+          <div class="timeline-item"><span class="timeline-year">2008</span><h6 data-en="Residency — King Faisal Specialist Hospital" data-ar="الزمالة — مستشفى الملك فيصل التخصصي">Residency — King Faisal Specialist Hospital</h6><p data-en="Internal medicine residency with cardiac focus." data-ar="إقامة الطب الباطني مع تركيز قلبي.">Internal medicine residency with cardiac focus.</p></div>
+          <div class="timeline-item"><span class="timeline-year">2013</span><h6 data-en="Fellowship — Johns Hopkins, USA" data-ar="الزمالة — جونز هوبكنز، أمريكا">Fellowship — Johns Hopkins, USA</h6><p data-en="Interventional Cardiology advanced fellowship." data-ar="زمالة متقدمة في القسطرة التداخلية.">Interventional Cardiology advanced fellowship.</p></div>
+          <div class="timeline-item"><span class="timeline-year">2017</span><h6 data-en="Head of Cardiology — Riyadh Medical Center" data-ar="رئيس قسم القلب — المركز الطبي بالرياض">Head of Cardiology — Riyadh Medical Center</h6><p data-en="Led a team of 25 cardiologists and researchers." data-ar="قاد فريقاً من 25 طبيب قلب وباحث.">Led a team of 25 cardiologists and researchers.</p></div>
+          <div class="timeline-item"><span class="timeline-year">2023</span><h6 data-en="Opened Private Practice" data-ar="افتتاح العيادة الخاصة">Opened Private Practice</h6><p data-en="Launched state-of-the-art personal cardiac clinic." data-ar="إطلاق عيادة قلبية خاصة بأحدث التقنيات.">Launched state-of-the-art personal cardiac clinic.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPOINTMENT ===== -->
+<section class="appointment" id="appointment">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-tag" data-en="Book Appointment" data-ar="احجز موعدك">Book Appointment</span>
+      <h2 class="section-title" data-en="Schedule Your <span>Visit Today</span>" data-ar="احجز <span>زيارتك اليوم</span>">Schedule Your <span>Visit Today</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-7" data-aos="fade-right">
+        <form class="appt-form" onsubmit="event.preventDefault();alert(currentLang==='ar'?'تم إرسال طلبك بنجاح!':'Your request was sent successfully!');">
+          <div class="row g-3">
+            <div class="col-md-6"><label data-en="Full Name" data-ar="الاسم الكامل">Full Name</label><input type="text" class="form-control" placeholder="John Doe" required></div>
+            <div class="col-md-6"><label data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</label><input type="tel" class="form-control" placeholder="+966 5X XXX XXXX" required></div>
+            <div class="col-md-6"><label data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</label><input type="email" class="form-control" placeholder="you@email.com" required></div>
+            <div class="col-md-6"><label data-en="Service Type" data-ar="نوع الخدمة">Service Type</label>
+              <select class="form-select" required>
+                <option value="" data-en="Select a service" data-ar="اختر الخدمة">Select a service</option>
+                <option>Cardiac Consultation / استشارة قلبية</option>
+                <option>ECG & Stress Test / تخطيط القلب</option>
+                <option>Echocardiography / الإيكو</option>
+                <option>Cardiac Catheterization / القسطرة</option>
+                <option>Preventive Screening / الفحص الوقائي</option>
+              </select>
+            </div>
+            <div class="col-md-6"><label data-en="Preferred Date" data-ar="التاريخ المفضل">Preferred Date</label><input type="date" class="form-control" required></div>
+            <div class="col-md-6"><label data-en="Preferred Time" data-ar="الوقت المفضل">Preferred Time</label>
+              <select class="form-select"><option>Morning / صباحاً</option><option>Afternoon / ظهراً</option><option>Evening / مساءً</option></select>
+            </div>
+            <div class="col-12"><label data-en="Additional Notes" data-ar="ملاحظات إضافية">Additional Notes</label><textarea class="form-control" rows="3" placeholder="..."></textarea></div>
+            <div class="col-12"><button type="submit" class="btn-primary-grad w-100 justify-content-center"><i class="fa-regular fa-calendar-check"></i><span data-en="Confirm Appointment" data-ar="تأكيد الحجز">Confirm Appointment</span></button></div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="appt-info">
+          <h4 data-en="Get in Touch" data-ar="تواصل معنا">Get in Touch</h4>
+          <p style="opacity:.95;" data-en="We are here to answer your questions and book your consultation. Reach out today." data-ar="نحن هنا للإجابة على أسئلتك وحجز استشارتك. تواصل معنا اليوم.">We are here to answer your questions and book your consultation. Reach out today.</p>
+          <div class="info-row"><i class="fa-solid fa-phone"></i><div><strong>+966 11 234 5678</strong><small data-en="Available 24/7" data-ar="متاح 24/7">Available 24/7</small></div></div>
+          <div class="info-row"><i class="fa-solid fa-envelope"></i><div><strong>care@drahmed.sa</strong><small data-en="Email us anytime" data-ar="راسلنا في أي وقت">Email us anytime</small></div></div>
+          <div class="info-row"><i class="fa-solid fa-location-dot"></i><div><strong data-en="Riyadh, KSA" data-ar="الرياض، المملكة">Riyadh, KSA</strong><small data-en="King Fahd Road, Olaya District" data-ar="طريق الملك فهد، حي العليا">King Fahd Road, Olaya District</small></div></div>
+          <div class="info-row"><i class="fa-solid fa-clock"></i><div><strong data-en="Sun–Thu: 9AM–9PM" data-ar="الأحد–الخميس: 9ص–9م">Sun–Thu: 9AM–9PM</strong><small data-en="Fri–Sat: By appointment" data-ar="الجمعة–السبت: بموعد">Fri–Sat: By appointment</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-tag" data-en="Testimonials" data-ar="آراء المرضى">Testimonials</span>
+      <h2 class="section-title" data-en="What Our <span>Patients Say</span>" data-ar="ماذا يقول <span>مرضانا</span>">What Our <span>Patients Say</span></h2>
+    </div>
+    <div class="swiper testimonialSwiper" data-aos="fade-up">
+      <div class="swiper-wrapper pb-5">
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars">★★★★★</div><p data-en="Dr. Ahmed saved my life. His precision during my angioplasty was extraordinary, and his team treated me like family." data-ar="أنقذ د. أحمد حياتي. كانت دقته أثناء القسطرة استثنائية، وعاملني فريقه كأنني من العائلة.">Dr. Ahmed saved my life. His precision during my angioplasty was extraordinary, and his team treated me like family.</p><div class="testimonial-user"><img src="https://i.pravatar.cc/120?img=12" alt=""><div><strong data-en="Mohammed Al-Saud" data-ar="محمد السعود">Mohammed Al-Saud</strong><small data-en="Riyadh" data-ar="الرياض">Riyadh</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars">★★★★★</div><p data-en="The most thorough cardiac check-up I've ever had. Every question answered with patience and clarity." data-ar="أشمل فحص قلبي أجريته في حياتي. تمت الإجابة على كل سؤال بصبر ووضوح.">The most thorough cardiac check-up I've ever had. Every question answered with patience and clarity.</p><div class="testimonial-user"><img src="https://i.pravatar.cc/120?img=47" alt=""><div><strong data-en="Fatima Al-Harbi" data-ar="فاطمة الحربي">Fatima Al-Harbi</strong><small data-en="Jeddah" data-ar="جدة">Jeddah</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars">★★★★★</div><p data-en="Professional, compassionate, and genuinely world-class. I recommend Dr. Ahmed to everyone I know." data-ar="محترف، حنون، وعالمي المستوى حقاً. أنصح بد. أحمد لكل من أعرف.">Professional, compassionate, and genuinely world-class. I recommend Dr. Ahmed to everyone I know.</p><div class="testimonial-user"><img src="https://i.pravatar.cc/120?img=33" alt=""><div><strong data-en="Khalid Al-Qahtani" data-ar="خالد القحطاني">Khalid Al-Qahtani</strong><small data-en="Dammam" data-ar="الدمام">Dammam</small></div></div></div></div>
+        <div class="swiper-slide"><div class="testimonial-card"><div class="stars">★★★★★</div><p data-en="From first consultation to follow-up, the experience was seamless. A clinic that truly cares." data-ar="من أول استشارة إلى المتابعة، كانت التجربة سلسة. عيادة تهتم حقاً.">From first consultation to follow-up, the experience was seamless. A clinic that truly cares.</p><div class="testimonial-user"><img src="https://i.pravatar.cc/120?img=25" alt=""><div><strong data-en="Sara Al-Otaibi" data-ar="سارة العتيبي">Sara Al-Otaibi</strong><small data-en="Riyadh" data-ar="الرياض">Riyadh</small></div></div></div></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-tag" data-en="Our Clinic" data-ar="عيادتنا">Our Clinic</span>
+      <h2 class="section-title" data-en="Inside Our <span>Modern Facility</span>" data-ar="داخل <span>منشأتنا الحديثة</span>">Inside Our <span>Modern Facility</span></h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?w=600&auto=format&fit=crop" alt=""><div class="overlay"><div><h6 data-en="Reception" data-ar="الاستقبال">Reception</h6><small data-en="Warm welcome" data-ar="استقبال دافئ">Warm welcome</small></div></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&auto=format&fit=crop" alt=""><div class="overlay"><div><h6 data-en="Consultation Room" data-ar="غرفة الاستشارة">Consultation Room</h6><small data-en="Private & modern" data-ar="خاصة وحديثة">Private & modern</small></div></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&auto=format&fit=crop" alt=""><div class="overlay"><div><h6 data-en="Diagnostic Lab" data-ar="مختبر التشخيص">Diagnostic Lab</h6><small data-en="Cutting edge" data-ar="متطور">Cutting edge</small></div></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&auto=format&fit=crop" alt=""><div class="overlay"><div><h6 data-en="Operating Theater" data-ar="غرفة العمليات">Operating Theater</h6><small data-en="Sterile & safe" data-ar="معقمة وآمنة">Sterile & safe</small></div></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&auto=format&fit=crop" alt=""><div class="overlay"><div><h6 data-en="Recovery Suite" data-ar="جناح التعافي">Recovery Suite</h6><small data-en="Comfort focused" data-ar="راحة تامة">Comfort focused</small></div></div></div></div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&auto=format&fit=crop" alt=""><div class="overlay"><div><h6 data-en="Pharmacy" data-ar="الصيدلية">Pharmacy</h6><small data-en="On-site support" data-ar="دعم فوري">On-site support</small></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER / CONTACT ===== -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand brand">
+            <span class="brand-icon"><i class="fa-solid fa-stethoscope"></i></span>
+            <span class="brand-text">Dr. Ahmed<small data-en="Cardiology Center" data-ar="مركز القلب">Cardiology Center</small></span>
+          </div>
+          <p style="color:var(--muted);font-size:14.5px;max-width:360px;" data-en="Providing world-class cardiac care with compassion, integrity, and the latest medical innovations." data-ar="نقدم رعاية قلبية عالمية المستوى بالرحمة والنزاهة وأحدث الابتكارات الطبية.">Providing world-class cardiac care with compassion, integrity, and the latest medical innovations.</p>
+          <div class="social-row">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-2">
+          <h6 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h6>
+          <ul>
+            <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+            <li><a href="#about" data-en="About" data-ar="من نحن">About</a></li>
+            <li><a href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
+            <li><a href="#appointment" data-en="Appointment" data-ar="حجز موعد">Appointment</a></li>
+            <li><a href="#gallery" data-en="Gallery" data-ar="المعرض">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-2">
+          <h6 data-en="Services" data-ar="الخدمات">Services</h6>
+          <ul>
+            <li><a href="#" data-en="ECG Testing" data-ar="تخطيط القلب">ECG Testing</a></li>
+            <li><a href="#" data-en="Echocardiography" data-ar="الإيكو القلبي">Echocardiography</a></li>
+            <li><a href="#" data-en="Catheterization" data-ar="القسطرة">Catheterization</a></li>
+            <li><a href="#" data-en="Hypertension" data-ar="ضغط الدم">Hypertension</a></li>
+            <li><a href="#" data-en="Preventive Care" data-ar="الرعاية الوقائية">Preventive Care</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 data-en="Contact Info" data-ar="معلومات التواصل">Contact Info</h6>
+          <div class="contact-row"><i class="fa-solid fa-location-dot"></i><span data-en="King Fahd Road, Olaya District, Riyadh 12211, KSA" data-ar="طريق الملك فهد، حي العليا، الرياض 12211، المملكة">King Fahd Road, Olaya District, Riyadh 12211, KSA</span></div>
+          <div class="contact-row"><i class="fa-solid fa-phone"></i><span>+966 11 234 5678</span></div>
+          <div class="contact-row"><i class="fa-solid fa-envelope"></i><span>care@drahmed.sa</span></div>
+          <div class="contact-row"><i class="fa-solid fa-clock"></i><span data-en="Sun–Thu: 9AM–9PM" data-ar="الأحد–الخميس: 9ص–9م">Sun–Thu: 9AM–9PM</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 <span>Dr. Ahmed Al-Rashid</span>. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/966112345678" class="float-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'),600);
+});
+
+// AOS
+AOS.init({duration:800,once:true,easing:'ease-out-cubic'});
+
+// Navbar scroll
+const nav=document.querySelector('.navbar-custom');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Active nav link on scroll
+const sections=document.querySelectorAll('section,footer');
+const navLinks=document.querySelectorAll('.nav-link-custom');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-120) current=s.id;
+  });
+  navLinks.forEach(l=>{
+    l.classList.remove('active');
+    if(l.getAttribute('href')==='#'+current) l.classList.add('active');
+  });
+});
+
+// Swiper
+new Swiper('.testimonialSwiper',{
+  slidesPerView:1,spaceBetween:24,loop:true,autoplay:{delay:4500,disableOnInteraction:false},
+  pagination:{el:'.swiper-pagination',clickable:true},
+  breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:3}}
+});
+
+// Language switch
+let currentLang='en';
+function toggleLang(){
+  currentLang=currentLang==='en'?'ar':'en';
+  const html=document.getElementById('htmlRoot');
+  const body=document.body;
+  if(currentLang==='ar'){
+    html.setAttribute('lang','ar');html.setAttribute('dir','rtl');body.classList.add('ar');
+    document.getElementById('langLabel').textContent='English';
+  }else{
+    html.setAttribute('lang','en');html.setAttribute('dir','ltr');body.classList.remove('ar');
+    document.getElementById('langLabel').textContent='العربية';
+  }
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const txt=el.getAttribute('data-'+currentLang);
+    if(txt){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder=txt;
+      else el.innerHTML=txt;
+    }
+  });
+}
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-link-custom').forEach(l=>{
+  l.addEventListener('click',()=>{
+    const c=document.getElementById('navMenu');
+    if(c.classList.contains('show')) new bootstrap.Collapse(c).hide();
+  });
+});
+</script>
+</body>
+</html>
