@@ -30,10 +30,28 @@
     "description": "cluxd Healthcare — compassionate care, advanced medicine, trusted by thousands."
   },
   {
+    "name": "Dr. Abdullah Al-Rashid | Medical Excellence",
+    "category": "Healthcare",
+    "url": "healthcare/doc5.html",
+    "description": ""
+  },
+  {
+    "name": "Dr. Ahmed Al-Rashid — Cardiology & Internal Medicine",
+    "category": "Healthcare",
+    "url": "healthcare/doc4.html",
+    "description": ""
+  },
+  {
     "name": "Dr. Elena Brooks, MD — Dermatology & Skin Health",
     "category": "Healthcare",
     "url": "healthcare/doctor-portfolio.html",
     "description": "Board-certified dermatology: medical, cosmetic and surgical skin care with a modern, personal touch."
+  },
+  {
+    "name": "Noor Medical Center — Riyadh | مركز نور الطبي",
+    "category": "Healthcare",
+    "url": "healthcare/doc3.html",
+    "description": ""
   },
   {
     "name": "Anti Logistics — Smart Logistics, Strong Connections, Global Solutions",
