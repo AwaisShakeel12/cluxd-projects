@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Darna Estates | Real Estate in Saudi Arabia</title>
+
+<!-- Bootstrap 5 (LTR, swapped to RTL via JS) -->
+<link id="bsCss" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Fonts: Poppins (EN) + Cairo (AR) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ============ 1. VARIABLES & BASE ============ */
+:root{
+  --sky:#0ea5e9; --sky-dark:#0284c7; --sky-deep:#075985;
+  --sky-100:#e0f2fe; --sky-50:#f0f9ff;
+  --navy:#0b2540; --ink:#0f2b46; --muted:#5b7186;
+  --line:#e3f0fa; --white:#ffffff;
+  --grad:linear-gradient(135deg,#0284c7 0%,#0ea5e9 45%,#38bdf8 100%);
+  --grad-soft:linear-gradient(160deg,#f0f9ff 0%,#ffffff 45%,#e0f2fe 100%);
+  --shadow:0 20px 60px rgba(2,132,199,.12);
+  --radius:24px;
+}
+*{outline:none}
+html{scroll-behavior:smooth;scroll-padding-top:92px;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}
+body.lang-ar{font-family:'Cairo',sans-serif}
+body.lang-ar h1,body.lang-ar h2,body.lang-ar h3,body.lang-ar h4,body.lang-ar h5,body.lang-ar .fw-bold{letter-spacing:0!important}
+h1,h2,h3,h4,h5{font-weight:700;color:var(--navy)}
+p{color:var(--muted);line-height:1.8}
+a{text-decoration:none}
+img{max-width:100%;user-select:none}
+::selection{background:var(--sky);color:#fff}
+section{position:relative;padding:100px 0}
+.text-gradient{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Preloader */
+#preloader{position:fixed;inset:0;background:#fff;z-index:9999;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+#preloader .pl-logo{width:70px;height:70px;border-radius:20px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:30px;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(14,165,233,.45)}50%{transform:scale(1.06);box-shadow:0 0 0 22px rgba(14,165,233,0)}}
+body.loaded #preloader{opacity:0;visibility:hidden}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.65,.3,1),transform .9s cubic-bezier(.2,.65,.3,1);transition-delay:var(--d,0s)}
+.reveal.visible{opacity:1;transform:none}
+
+/* Section head */
+.sec-pill{display:inline-flex;align-items:center;gap:10px;background:var(--sky-100);color:var(--sky-dark);font-weight:600;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:999px}
+.sec-pill i{font-size:.7rem}
+.sec-title{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;line-height:1.25;margin:18px 0 14px}
+.sec-sub{max-width:640px;margin-inline:auto;font-size:1.02rem}
+
+/* Background blobs */
+.bg-blobs::before,.bg-blobs::after{content:"";position:absolute;border-radius:50%;filter:blur(10px);z-index:0;pointer-events:none}
+.bg-blobs::before{width:520px;height:520px;inset-inline-start:-180px;top:-140px;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 65%)}
+.bg-blobs::after{width:620px;height:620px;inset-inline-end:-220px;bottom:-200px;background:radial-gradient(circle,rgba(14,165,233,.12),transparent 65%)}
+.bg-blobs>.container{position:relative;z-index:1}
+.bg-soft{background:var(--grad-soft)}
+
+/* Buttons */
+.btn-grad{background:var(--grad);color:#fff;border:0;border-radius:999px;padding:14px 32px;font-weight:600;box-shadow:0 12px 30px rgba(14,165,233,.35);transition:.35s;display:inline-flex;align-items:center;gap:10px}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(14,165,233,.45);color:#fff}
+.btn-ghost{background:transparent;color:var(--sky-dark);border:2px solid var(--sky-100);border-radius:999px;padding:12px 30px;font-weight:600;transition:.35s;display:inline-flex;align-items:center;gap:10px}
+.btn-ghost:hover{background:var(--sky-100);color:var(--sky-deep)}
+
+/* ============ 2. NAVBAR ============ */
+#mainNav{padding:20px 0;transition:all .4s ease;background:transparent}
+#mainNav>.container{flex-wrap:nowrap}
+#mainNav .nav-link{color:#fff;font-weight:500;font-size:.95rem;padding:8px 16px!important;position:relative;transition:.3s}
+#mainNav .nav-link::after{content:"";position:absolute;inset-inline:16px;bottom:2px;height:2px;background:var(--grad);border-radius:2px;transform:scaleX(0);transform-origin:inline-start;transition:.35s}
+#mainNav .nav-link:hover::after,#mainNav .nav-link.active::after{transform:scaleX(1)}
+#mainNav .nav-link.active{color:#7dd3fc}
+#mainNav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 8px 30px rgba(2,132,199,.10);padding:10px 0}
+#mainNav.scrolled .nav-link{color:var(--ink)}
+#mainNav.scrolled .nav-link.active{color:var(--sky-dark)}
+#mainNav.scrolled .nav-link:hover{color:var(--sky-dark)}
+#mainNav.scrolled .brand-text .bt-1,#mainNav.scrolled .brand-text .bt-2{color:var(--navy)}
+#mainNav.scrolled .brand-text .bt-2{color:var(--sky-dark)}
+.brand-icon{width:46px;height:46px;border-radius:14px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 10px 24px rgba(14,165,233,.4);flex:none}
+.brand-text{line-height:1.05;min-width:0}
+.brand-text .bt-1{color:#fff;font-weight:800;font-size:1.25rem;letter-spacing:1px;display:block;transition:.3s;white-space:nowrap}
+.brand-text .bt-2{color:#7dd3fc;font-weight:600;font-size:.68rem;letter-spacing:4px;text-transform:uppercase;display:block;transition:.3s;white-space:nowrap}
+.lang-switch{display:flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);border-radius:999px;padding:3px;transition:.3s;flex:none}
+#mainNav.scrolled .lang-switch{background:var(--sky-50);border-color:var(--sky-100)}
+.lang-opt{border:0;background:transparent;color:#fff;font-weight:700;font-size:.78rem;padding:5px 14px;border-radius:999px;transition:.3s;line-height:1.4}
+#mainNav.scrolled .lang-opt{color:var(--sky-deep)}
+.lang-opt.active{background:var(--grad);color:#fff!important;box-shadow:0 6px 16px rgba(14,165,233,.4)}
+/* hamburger = glass pill so it's visible on ANY background */
+.nav-toggler{border:0;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);color:#fff;font-size:1.6rem;line-height:1;padding:6px 12px;border-radius:14px;transition:.3s;flex:none}
+#mainNav.scrolled .nav-toggler{background:var(--sky-50);border-color:var(--sky-100);color:var(--navy)}
+@media (max-width:991.98px){
+  #navMenu{background:#fff;border-start-start-radius:28px;border-start-end-radius:28px;max-width:86vw}
+  #navMenu .nav-link{color:var(--ink)!important;font-size:1.05rem;padding:12px 8px!important}
+  #navMenu .nav-link::after{inset-inline:8px}
+  .offcanvas-header .brand-text .bt-1{color:var(--navy)}
+  .offcanvas-header .brand-text .bt-2{color:var(--sky-dark)}
+}
+
+/* ============ 3. HERO ============ */
+#home{position:relative;min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;overflow:hidden}
+#home>.container{width:100%;flex:1 1 100%;min-width:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.1);transition:opacity 1.8s ease,transform 7s linear}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,26,44,.78) 0%,rgba(7,26,44,.45) 45%,rgba(7,26,44,.88) 100%)}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(12px);color:#e0f2fe;font-size:.82rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:10px 22px;border-radius:999px;max-width:100%}
+.hero-badge i{color:#7dd3fc}
+.hero-title{color:#fff;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.15;margin:26px 0 20px;overflow-wrap:break-word}
+.hero-title .text-gradient{background:linear-gradient(90deg,#7dd3fc,#38bdf8,#e0f2fe);-webkit-background-clip:text;background-clip:text}
+.hero-sub{color:#cbd5e1;font-size:clamp(.98rem,1.6vw,1.12rem);max-width:600px}
+/* Search bar */
+.search-bar{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-radius:22px;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.35);margin-top:36px}
+.search-field{padding:6px 18px;border-inline-end:1px solid var(--line);min-width:0}
+.search-field:last-of-type{border-inline-end:0}
+.search-field label{font-size:.68rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--sky-dark);margin-bottom:2px;display:flex;align-items:center;gap:6px}
+.search-field select{border:0;background:transparent;width:100%;font-weight:600;color:var(--ink);font-size:.92rem;padding:2px 0}
+.search-field select:focus{outline:none}
+.search-bar .btn-grad{width:100%;justify-content:center;padding:16px}
+@media(min-width:992px){.search-bar .btn-grad{width:auto;padding:16px 34px}}
+/* hero stats */
+.hero-stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px}
+.hero-stat{min-width:0}
+.hero-stat .hs-num{color:#7dd3fc;font-size:1.7rem;font-weight:800}
+.hero-stat .hs-num i{color:#7dd3fc;font-size:1.2rem}
+.hero-stat .hs-lbl{color:#94a3b8;font-size:.82rem;letter-spacing:1px;text-transform:uppercase}
+.hero-stat+.hero-stat{border-inline-start:1px solid rgba(255,255,255,.18);padding-inline-start:34px}
+/* floating glass cards */
+.float-card{position:absolute;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(16px);border-radius:20px;padding:18px 22px;display:flex;gap:14px;align-items:center;color:#fff;animation:floaty 6s ease-in-out infinite;z-index:2}
+.float-card .fc-icon{width:48px;height:48px;border-radius:14px;background:var(--grad);display:grid;place-items:center;font-size:1.25rem;flex:none}
+.float-card .fc-t{font-weight:700;font-size:.95rem}
+.float-card .fc-s{font-size:.78rem;color:#bae6fd}
+.float-card.fc-1{inset-inline-end:6%;top:26%}
+.float-card.fc-2{inset-inline-end:14%;bottom:20%;animation-delay:2s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+/* scroll indicator */
+.scroll-hint{position:absolute;bottom:26px;inset-inline-start:50%;transform:translateX(-50%);color:#e0f2fe;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2}
+.scroll-hint .mouse{width:26px;height:42px;border:2px solid rgba(255,255,255,.5);border-radius:20px;position:relative}
+.scroll-hint .mouse::after{content:"";position:absolute;top:7px;inset-inline-start:50%;transform:translateX(-50%);width:4px;height:9px;background:#7dd3fc;border-radius:4px;animation:wheel 1.6s infinite}
+@keyframes wheel{0%{opacity:1;top:7px}100%{opacity:0;top:22px}}
+
+/* ============ 4. PARTNERS MARQUEE ============ */
+.partners{padding:34px 0;background:#fff;border-bottom:1px solid var(--line);overflow:hidden}
+.partners .p-lbl{text-align:center;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:#94a3b8;font-weight:600;margin-bottom:22px;padding-inline:16px}
+.marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:70px;width:max-content;animation:scrollX 32s linear infinite;align-items:center}
+.marquee:hover .marquee-track{animation-play-state:paused}
+[dir="rtl"] .marquee-track{animation-direction:reverse}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+.mq-item{display:flex;align-items:center;gap:12px;color:#8aa2b8;font-weight:800;font-size:1.15rem;letter-spacing:2px;white-space:nowrap;opacity:.75;transition:.3s}
+.mq-item:hover{opacity:1;color:var(--sky-dark)}
+.mq-item i{color:var(--sky);font-size:1.3rem}
+
+/* ============ 5. ABOUT ============ */
+.about-imgs{position:relative;padding-bottom:70px;padding-inline-start:70px}
+.about-imgs .img-main{border-radius:32px;box-shadow:var(--shadow);width:100%;height:480px;object-fit:cover}
+.about-imgs .img-sub{position:absolute;bottom:0;inset-inline-start:0;width:55%;height:230px;object-fit:cover;border-radius:24px;border:8px solid #fff;box-shadow:var(--shadow)}
+.exp-badge{position:absolute;top:26px;inset-inline-start:0;background:var(--grad);color:#fff;border-radius:20px;padding:18px 24px;text-align:center;box-shadow:0 16px 40px rgba(14,165,233,.45)}
+.exp-badge .eb-n{font-size:1.9rem;font-weight:800;line-height:1}
+.exp-badge .eb-t{font-size:.72rem;letter-spacing:1px;text-transform:uppercase;opacity:.9}
+.about-list{list-style:none;padding:0;margin:26px 0 30px}
+.about-list li{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;font-weight:500;color:var(--ink)}
+.about-list li i{width:30px;height:30px;flex:none;border-radius:10px;background:var(--sky-100);color:var(--sky-dark);display:grid;place-items:center;font-size:.85rem}
+.sig-row{display:flex;align-items:center;gap:16px;margin-top:8px}
+.sig-row img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid var(--sky-100)}
+.sig-row .sn{font-weight:700;color:var(--navy)}
+.sig-row .sr{font-size:.82rem;color:var(--muted)}
+
+/* ============ 6. STATS BAND ============ */
+.stats-band{background:var(--grad);padding:70px 0;position:relative;overflow:hidden}
+.stats-band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1.5px,transparent 1.5px);background-size:26px 26px;opacity:.5}
+.stat-item{text-align:center;position:relative;z-index:1}
+.stat-item .si-icon{width:64px;height:64px;margin:0 auto 14px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff;font-size:1.6rem}
+.stat-item .si-num{color:#fff;font-size:2.6rem;font-weight:800;line-height:1}
+.stat-item .si-lbl{color:#e0f2fe;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
+
+/* ============ 7. SERVICES (bento) ============ */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:36px;position:relative;overflow:hidden;transition:transform .45s cubic-bezier(.2,.65,.3,1),box-shadow .45s;height:100%;min-width:0}
+.svc::before{content:"";position:absolute;inset-inline-start:-70px;top:-70px;width:220px;height:220px;background:radial-gradient(circle,rgba(56,189,248,.16),transparent 70%);transition:.5s}
+.svc::after{content:"";position:absolute;top:0;inset-inline:0;height:4px;background:var(--grad);transform:scaleX(0);transform-origin:inline-start;transition:.5s}
+.svc:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(2,132,199,.16)}
+.svc:hover::after{transform:scaleX(1)}
+.svc:hover::before{transform:scale(1.4)}
+.svc .num{position:absolute;top:22px;inset-inline-end:26px;font-size:3.6rem;font-weight:800;color:transparent;-webkit-text-stroke:1.5px #cbe7f8;line-height:1}
+.svc .icon{width:66px;height:66px;border-radius:20px;background:linear-gradient(135deg,var(--sky-100),var(--sky-50));color:var(--sky-dark);display:grid;place-items:center;font-size:1.7rem;transition:.45s;margin-bottom:22px}
+.svc:hover .icon{background:var(--grad);color:#fff;transform:rotate(-8deg) scale(1.08);box-shadow:0 14px 30px rgba(14,165,233,.4)}
+.svc h3{font-size:1.25rem;font-weight:700;margin-bottom:10px}
+.svc p{font-size:.93rem;margin-bottom:0}
+.svc .svc-link{display:inline-flex;align-items:center;gap:8px;color:var(--sky-dark);font-weight:600;font-size:.88rem;margin-top:18px}
+.svc .svc-link i{transition:.3s}
+.svc:hover .svc-link i{transform:translateX(4px)}
+[dir="rtl"] .svc:hover .svc-link i{transform:translateX(-4px)}
+.svc--feature{grid-column:span 2;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:0}
+.svc--feature .sf-body{padding:40px;min-width:0}
+.svc--feature img{width:100%;height:100%;min-height:300px;object-fit:cover;border-start-end-radius:var(--radius);border-end-end-radius:var(--radius)}
+[dir="rtl"] .svc--feature img{border-radius:var(--radius);border-start-start-radius:var(--radius);border-end-start-radius:var(--radius)}
+.svc--feature .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.svc--feature .tags span{background:var(--sky-50);border:1px solid var(--sky-100);color:var(--sky-deep);font-size:.78rem;font-weight:600;padding:6px 16px;border-radius:999px}
+.svc--cta{grid-column:1/-1;background:var(--grad);border:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:44px 48px}
+.svc--cta::before{background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);inset-inline-start:auto;inset-inline-end:-80px;top:-80px}
+.svc--cta h3{color:#fff;font-size:1.6rem}
+.svc--cta p{color:#e0f2fe;max-width:520px}
+.svc--cta .btn-white{background:#fff;color:var(--sky-dark);border-radius:999px;padding:14px 32px;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:.35s;box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.svc--cta .btn-white:hover{transform:translateY(-3px) scale(1.02)}
+@media(max-width:991.98px){
+  .bento{grid-template-columns:1fr 1fr}
+  .svc--feature{grid-column:1/-1;grid-template-columns:1fr}
+  .svc--feature img{min-height:230px;border-radius:0;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
+  [dir="rtl"] .svc--feature img{border-radius:0;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
+}
+@media(max-width:575.98px){.bento{grid-template-columns:1fr}.svc--cta{padding:34px 26px}}
+
+/* ============ 8. PROPERTIES ============ */
+.filter-bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:34px 0 44px}
+.filter-btn{border:1.5px solid var(--sky-100);background:#fff;color:var(--muted);font-weight:600;font-size:.88rem;padding:10px 26px;border-radius:999px;transition:.3s}
+.filter-btn:hover{border-color:var(--sky);color:var(--sky-dark)}
+.filter-btn.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 26px rgba(14,165,233,.35)}
+.prop-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .45s,box-shadow .45s;height:100%;display:flex;flex-direction:column}
+.prop-card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(2,132,199,.16)}
+.prop-media{position:relative;height:250px;overflow:hidden;flex:none}
+.prop-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.65,.3,1)}
+.prop-card:hover .prop-media img{transform:scale(1.1)}
+.prop-badge{position:absolute;top:16px;inset-inline-start:16px;background:var(--grad);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px 16px;border-radius:999px;box-shadow:0 8px 20px rgba(2,132,199,.4)}
+.prop-badge.rent{background:linear-gradient(135deg,#0f2b46,#1e4976)}
+.prop-actions{position:absolute;top:14px;inset-inline-end:14px;display:flex;flex-direction:column;gap:8px}
+.prop-actions button{width:38px;height:38px;border-radius:12px;border:0;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);color:var(--ink);transition:.3s;display:grid;place-items:center}
+.prop-actions button:hover{background:var(--grad);color:#fff;transform:scale(1.08)}
+.prop-price{position:absolute;bottom:14px;inset-inline-start:16px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);color:var(--sky-deep);font-weight:800;font-size:.95rem;padding:8px 18px;border-radius:999px;box-shadow:0 8px 22px rgba(0,0,0,.15)}
+.prop-body{padding:24px 24px 20px;display:flex;flex-direction:column;flex:1;min-width:0}
+.prop-body h3{font-size:1.12rem;font-weight:700;margin-bottom:6px}
+.prop-loc{color:var(--muted);font-size:.85rem;display:flex;align-items:center;gap:7px}
+.prop-loc i{color:var(--sky)}
+.prop-meta{display:flex;gap:18px;flex-wrap:wrap;border-top:1px dashed var(--line);margin-top:16px;padding-top:16px;color:var(--muted);font-size:.83rem;font-weight:500}
+.prop-meta span{display:flex;align-items:center;gap:7px}
+.prop-meta i{color:var(--sky-dark);font-size:1rem}
+.prop-foot{margin-top:auto;padding-top:16px;display:flex;align-items:center;justify-content:space-between}
+.prop-foot .pf-link{color:var(--sky-dark);font-weight:700;font-size:.86rem;display:inline-flex;align-items:center;gap:8px}
+.prop-foot .pf-link i{transition:.3s}
+.prop-card:hover .pf-link i{transform:translateX(5px)}
+[dir="rtl"] .prop-card:hover .pf-link i{transform:translateX(-5px)}
+.prop-foot .pf-id{font-size:.75rem;color:#a5b8c9;letter-spacing:1px}
+.prop-hide{display:none!important}
+.prop-anim{animation:popIn .5s cubic-bezier(.2,.65,.3,1)}
+@keyframes popIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+
+/* ============ 9. CITIES ============ */
+.city-card{position:relative;border-radius:var(--radius);overflow:hidden;height:340px;display:block}
+.city-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.65,.3,1)}
+.city-card:hover img{transform:scale(1.12)}
+.city-card .cc-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(7,26,44,.9) 100%);transition:.4s}
+.city-card:hover .cc-ov{background:linear-gradient(180deg,rgba(2,132,199,.25) 0%,rgba(7,26,44,.94) 100%)}
+.city-card .cc-body{position:absolute;bottom:0;inset-inline:0;padding:26px;color:#fff;display:flex;align-items:flex-end;justify-content:space-between}
+.city-card .cc-name{font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:2px}
+.city-card .cc-count{color:#7dd3fc;font-size:.83rem;font-weight:600;letter-spacing:1px}
+.city-card .cc-arrow{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff;opacity:0;transform:translateY(12px);transition:.4s;flex:none}
+.city-card:hover .cc-arrow{opacity:1;transform:none}
+[dir="rtl"] .cc-arrow i{transform:rotate(180deg)}
+
+/* ============ 10. PROCESS ============ */
+.step{text-align:center;position:relative;padding:0 12px}
+.step .dot{width:82px;height:82px;margin:0 auto 24px;border-radius:50%;background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:2px solid transparent;display:grid;place-items:center;font-size:1.5rem;font-weight:800;color:var(--sky-dark);box-shadow:0 14px 34px rgba(2,132,199,.16);position:relative;z-index:1;transition:.4s}
+.step:hover .dot{background:var(--grad) border-box;color:#fff;transform:translateY(-6px)}
+.step h3{font-size:1.15rem;margin-bottom:10px}
+.step p{font-size:.9rem}
+@media(min-width:992px){
+  .step:not(:first-child)::before{content:"";position:absolute;top:41px;inset-inline-start:-50%;width:100%;height:2px;background:repeating-linear-gradient(90deg,#bfe3f8 0 8px,transparent 8px 16px);z-index:0}
+}
+
+/* ============ 11. TESTIMONIALS ============ */
+.testi-wrap{max-width:820px;margin:0 auto;text-align:center;position:relative}
+.testi-wrap .q-icon{width:70px;height:70px;margin:0 auto 26px;border-radius:24px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:1.8rem;box-shadow:0 16px 40px rgba(14,165,233,.4);transform:rotate(-6deg)}
+.testi-text{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--ink);font-weight:500;line-height:1.8;margin-bottom:28px}
+.testi-stars{color:#fbbf24;font-size:1rem;letter-spacing:3px;margin-bottom:20px}
+.testi-person img{width:64px;height:64px;border-radius:50%;object-fit:cover;padding:3px;background:var(--grad)}
+.testi-person .tp-n{font-weight:700;color:var(--navy);margin-top:10px}
+.testi-person .tp-r{font-size:.83rem;color:var(--muted)}
+.carousel-indicators{margin-bottom:0;position:static;justify-content:center;gap:8px;margin-top:34px}
+.carousel-indicators [data-bs-target]{width:12px;height:12px;border-radius:999px;border:0;background:#cbe7f8;opacity:1;transition:.3s;margin:0}
+.carousel-indicators .active{background:var(--sky-dark);width:34px}
+
+/* ============ 12. CTA ============ */
+.cta-box{background:var(--grad);border-radius:36px;padding:clamp(44px,6vw,80px);position:relative;overflow:hidden;box-shadow:0 40px 90px rgba(2,132,199,.35)}
+.cta-box::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:2px dashed rgba(255,255,255,.25);top:-160px;inset-inline-end:-120px}
+.cta-box::after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.1);bottom:-120px;inset-inline-start:-80px}
+.cta-box h2{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800}
+.cta-box p{color:#e0f2fe;max-width:560px}
+.cta-box .btn-white{background:#fff;color:var(--sky-dark);border-radius:999px;padding:16px 36px;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:.35s;box-shadow:0 16px 40px rgba(0,0,0,.2)}
+.cta-box .btn-white:hover{transform:translateY(-3px)}
+.cta-box .btn-line{border:2px solid rgba(255,255,255,.5);color:#fff;border-radius:999px;padding:14px 32px;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:.35s}
+.cta-box .btn-line:hover{background:rgba(255,255,255,.14);color:#fff}
+
+/* ============ 13. CONTACT ============ */
+.info-card{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;transition:.35s;height:100%}
+.info-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.info-card .ic-icon{width:54px;height:54px;flex:none;border-radius:16px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:1.3rem;box-shadow:0 10px 26px rgba(14,165,233,.35)}
+.info-card h4{font-size:1rem;margin-bottom:4px}
+.info-card p{font-size:.9rem;margin:0}
+.form-card{background:#fff;border-radius:32px;padding:clamp(28px,4vw,48px);box-shadow:0 30px 90px rgba(2,132,199,.14);border:1px solid var(--line)}
+.form-card label{font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+.form-card .form-control,.form-card .form-select{border:1.5px solid var(--line);border-radius:14px;padding:14px 18px;font-size:.95rem;color:var(--ink);background:#fbfdff;transition:.3s}
+.form-card .form-control:focus,.form-card .form-select:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(14,165,233,.12);background:#fff}
+.form-ok{display:none;background:#ecfdf5;border:1px solid #a7f3d0;color:#047857;border-radius:14px;padding:14px 18px;font-weight:600;font-size:.9rem;margin-top:18px}
+.form-ok.show{display:block;animation:popIn .5s}
+
+/* ============ 14. FOOTER ============ */
+footer{background:#071a2c;color:#b9cfe0;padding:80px 0 0}
+footer h5{color:#fff;font-size:1.02rem;font-weight:700;margin-bottom:22px;letter-spacing:.5px}
+footer a.f-link{display:block;color:#b9cfe0;font-size:.92rem;margin-bottom:12px;transition:.3s}
+footer a.f-link:hover{color:#7dd3fc;padding-inline-start:6px}
+footer p{color:#8fa8bc;font-size:.92rem}
+.f-social{display:flex;gap:10px;margin-top:20px}
+.f-social a{width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#dbeafe;display:grid;place-items:center;font-size:1.05rem;transition:.35s}
+.f-social a:hover{background:var(--grad);color:#fff;transform:translateY(-4px)}
+.f-news{display:flex;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px;margin-top:18px}
+.f-news input{flex:1;background:transparent;border:0;color:#fff;padding:10px 20px;font-size:.9rem;min-width:0}
+.f-news input::placeholder{color:#7d95aa}
+.f-news input:focus{outline:none}
+.f-news button{border:0;background:var(--grad);color:#fff;border-radius:999px;padding:10px 24px;font-weight:700;font-size:.85rem;transition:.3s;flex:none}
+.f-news button:hover{filter:brightness(1.1)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:60px;padding:24px 0;font-size:.85rem;color:#7d95aa}
+.f-bottom a{color:#7d95aa;margin-inline-start:18px}
+.f-bottom a:hover{color:#7dd3fc}
+
+/* Floating buttons */
+#toTop,.wa-btn{position:fixed;bottom:26px;width:52px;height:52px;border-radius:18px;display:grid;place-items:center;font-size:1.3rem;z-index:900;transition:.4s;border:0}
+#toTop{inset-inline-end:26px;background:var(--grad);color:#fff;box-shadow:0 14px 34px rgba(14,165,233,.45);opacity:0;visibility:hidden;transform:translateY(20px)}
+#toTop.show{opacity:1;visibility:visible;transform:none}
+.wa-btn{inset-inline-start:26px;background:#25d366;color:#fff;box-shadow:0 14px 34px rgba(37,211,102,.4)}
+.wa-btn:hover{transform:translateY(-4px);color:#fff}
+
+/* RTL fine-tunes */
+[dir="rtl"] .hero-title,[dir="rtl"] .sec-title{line-height:1.5}
+[dir="rtl"] .brand-text .bt-1{letter-spacing:0}
+
+/* ================================================================
+   ★★★ 15. MOBILE-FIRST RESPONSIVE LAYER (NEW) ★★★
+   ================================================================ */
+
+/* ---------- TABLET & BELOW (≤991px) ---------- */
+@media (max-width:991.98px){
+  section{padding:80px 0}
+  #home{padding:130px 0 80px;min-height:auto}
+  .scroll-hint{display:none}                 /* no overlap with stats */
+  .float-card{display:none!important}
+  #mainNav{padding:14px 0}
+  #mainNav.scrolled{padding:8px 0}
+  .brand-icon{width:42px;height:42px;font-size:19px;border-radius:12px}
+  .brand-text .bt-1{font-size:1.1rem}
+  .brand-text .bt-2{font-size:.6rem;letter-spacing:3px}
+  .lang-opt{padding:4px 11px;font-size:.72rem}
+  /* hero */
+  .hero-title{margin:20px 0 16px}
+  .hero-sub{font-size:.95rem}
+  .search-bar{margin-top:28px;padding:10px;border-radius:18px}
+  .search-field{padding:10px 16px;border-inline-end:0;border-bottom:1px solid var(--line)}
+  .search-field:last-of-type{border-bottom:0}
+  .search-bar .btn-grad{width:100%;justify-content:center;padding:14px}
+  .hero-stats{gap:22px;margin-top:34px}
+  .hero-stat .hs-num{font-size:1.45rem}
+  .hero-stat .hs-lbl{font-size:.72rem}
+  .hero-stat+.hero-stat{padding-inline-start:22px}
+  /* marquee */
+  .marquee-track{gap:44px}
+  .mq-item{font-size:1rem;gap:9px;letter-spacing:1.5px}
+  .mq-item i{font-size:1.1rem}
+  /* about */
+  .about-imgs{padding-bottom:50px;padding-inline-start:50px}
+  .about-imgs .img-main{height:380px;border-radius:26px}
+  .about-imgs .img-sub{height:170px;border-radius:18px;border-width:6px}
+  .exp-badge{padding:14px 18px;border-radius:16px;top:18px}
+  .exp-badge .eb-n{font-size:1.5rem}
+  /* stats */
+  .stats-band{padding:54px 0}
+  .stat-item .si-icon{width:56px;height:56px;font-size:1.35rem;border-radius:16px}
+  .stat-item .si-num{font-size:2.1rem}
+  .stat-item .si-lbl{font-size:.72rem;letter-spacing:1px}
+  /* services */
+  .svc{padding:28px}
+  .svc .num{font-size:2.8rem;top:18px;inset-inline-end:20px}
+  .svc .icon{width:58px;height:58px;font-size:1.45rem;border-radius:16px;margin-bottom:18px}
+  .svc--feature .sf-body{padding:30px}
+  .svc--cta{padding:34px 30px}
+  /* properties */
+  .filter-bar{gap:9px;margin:26px 0 34px}
+  .filter-btn{padding:9px 20px;font-size:.82rem}
+  .prop-media{height:230px}
+  /* cities */
+  .city-card{height:280px}
+  .city-card .cc-body{padding:20px}
+  .city-card .cc-name{font-size:1.2rem}
+  /* process */
+  .step{padding:0 6px}
+  .step .dot{width:72px;height:72px;font-size:1.3rem;margin-bottom:20px}
+  /* testimonials */
+  .testi-wrap .q-icon{width:60px;height:60px;font-size:1.5rem;border-radius:18px;margin-bottom:20px}
+  .testi-text{font-size:1.02rem;margin-bottom:22px}
+  /* cta */
+  .cta-box{border-radius:28px}
+  /* contact */
+  .info-card{padding:20px}
+  .info-card .ic-icon{width:48px;height:48px;font-size:1.15rem;border-radius:14px}
+  .form-card{border-radius:24px}
+  /* footer */
+  footer{padding:64px 0 0}
+  .f-bottom{margin-top:44px}
+  /* floating */
+  #toTop,.wa-btn{width:48px;height:48px;border-radius:15px;font-size:1.15rem;bottom:20px}
+  #toTop{inset-inline-end:20px}
+  .wa-btn{inset-inline-start:20px}
+}
+
+/* ---------- MOBILE (≤767px) ---------- */
+@media (max-width:767.98px){
+  section{padding:70px 0}
+  .sec-title{font-size:clamp(1.65rem,7vw,2.1rem);line-height:1.35}
+  .sec-sub{font-size:.95rem;padding-inline:6px}
+  #home{padding:120px 0 70px}
+  .hero-badge{font-size:.68rem;padding:8px 16px;letter-spacing:1px;gap:7px}
+  .hero-title{font-size:clamp(2rem,9.5vw,2.6rem);line-height:1.22;margin:18px 0 14px}
+  body.lang-ar .hero-title{line-height:1.55}
+  /* stats become a clean 3-col grid, no floating borders */
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px;text-align:center}
+  .hero-stat+.hero-stat{border-inline-start:0;padding-inline-start:0}
+  .hero-stat .hs-num{font-size:1.25rem}
+  .hero-stat .hs-lbl{font-size:.62rem;letter-spacing:.5px}
+  /* marquee */
+  .partners{padding:26px 0}
+  .partners .p-lbl{font-size:.66rem;letter-spacing:2px}
+  .marquee-track{gap:34px}
+  .mq-item{font-size:.9rem}
+  /* about */
+  .about-imgs{padding-bottom:42px;padding-inline-start:42px}
+  .about-imgs .img-main{height:320px;border-radius:22px}
+  .about-imgs .img-sub{height:140px;width:60%;border-radius:16px;border-width:5px}
+  .exp-badge{padding:11px 14px;border-radius:14px;top:14px}
+  .exp-badge .eb-n{font-size:1.25rem}
+  .exp-badge .eb-t{font-size:.6rem}
+  .about-list li{font-size:.92rem;gap:11px}
+  .sig-row img{width:48px;height:48px}
+  /* stats band */
+  .stats-band{padding:46px 0}
+  .stat-item .si-icon{width:50px;height:50px;font-size:1.2rem;margin-bottom:10px}
+  .stat-item .si-num{font-size:1.7rem}
+  .stat-item .si-lbl{font-size:.62rem;margin-top:4px}
+  /* services */
+  .svc{padding:24px;border-radius:20px}
+  .svc h3{font-size:1.1rem}
+  .svc p{font-size:.88rem}
+  .svc--feature .sf-body{padding:24px}
+  .svc--feature img{min-height:200px}
+  .svc--cta{flex-direction:column;align-items:flex-start;padding:30px 24px;border-radius:20px}
+  .svc--cta h3{font-size:1.3rem}
+  .svc--cta p{font-size:.9rem}
+  /* properties */
+  .prop-media{height:215px}
+  .prop-body{padding:20px 18px 16px}
+  .prop-meta{gap:12px;font-size:.78rem}
+  .prop-price{font-size:.85rem;padding:7px 14px;bottom:12px;inset-inline-start:12px}
+  .prop-badge{top:12px;inset-inline-start:12px;font-size:.66rem;padding:6px 13px}
+  .prop-actions button{width:34px;height:34px;border-radius:10px}
+  /* cities */
+  .city-card{height:250px;border-radius:20px}
+  .city-card .cc-name{font-size:1.1rem}
+  .city-card .cc-count{font-size:.75rem}
+  .city-card .cc-arrow{width:40px;height:40px}
+  /* process */
+  .step .dot{width:66px;height:66px;font-size:1.15rem;margin-bottom:16px}
+  .step h3{font-size:1.05rem}
+  .step p{font-size:.86rem}
+  /* testimonials */
+  .testi-text{font-size:.98rem}
+  .testi-person img{width:56px;height:56px}
+  .testi-person .tp-n{font-size:.95rem}
+  /* cta */
+  .cta-box{padding:34px 24px;border-radius:24px}
+  .cta-box .btn-white,.cta-box .btn-line{width:100%;justify-content:center;padding:14px 24px;font-size:.95rem}
+  /* contact */
+  .form-card{padding:24px 20px;border-radius:20px}
+  .form-card .form-control,.form-card .form-select{padding:12px 15px;font-size:.9rem}
+  .info-card{padding:18px;gap:14px;border-radius:16px}
+  .info-card h4{font-size:.92rem}
+  .info-card p{font-size:.83rem}
+  /* footer */
+  footer{padding:54px 0 0}
+  footer h5{margin-bottom:16px}
+  .f-bottom{flex-direction:column;gap:10px;text-align:center}
+  .f-bottom a{margin-inline:9px}
+}
+
+/* ---------- SMALL PHONES (≤575px) ---------- */
+@media (max-width:575.98px){
+  section{padding:60px 0}
+  #home{padding:112px 0 60px}
+  #mainNav>.container{padding-inline:14px}
+  .brand-text .bt-2{display:none}          /* compact brand */
+  .brand-text .bt-1{font-size:1.05rem}
+  .lang-opt{padding:4px 9px;font-size:.68rem}
+  .nav-toggler{font-size:1.35rem;padding:5px 10px;border-radius:11px}
+  .search-bar{padding:8px;border-radius:16px}
+  .search-field{padding:9px 14px}
+  .search-field label{font-size:.62rem;letter-spacing:1px}
+  .search-field select{font-size:.88rem}
+  .hero-stats{grid-template-columns:repeat(3,1fr);gap:8px}
+  .hero-stat .hs-num{font-size:1.1rem}
+  .marquee-track{gap:28px}
+  .about-imgs{padding-inline-start:34px;padding-bottom:34px}
+  .about-imgs .img-main{height:270px;border-radius:18px}
+  .about-imgs .img-sub{height:120px;border-width:4px;border-radius:14px}
+  .exp-badge{padding:9px 12px;top:10px}
+  .exp-badge .eb-n{font-size:1.1rem}
+  .stats-band{padding:40px 0}
+  .stat-item .si-num{font-size:1.5rem}
+  .filter-bar{gap:7px}
+  .filter-btn{padding:8px 16px;font-size:.78rem}
+  .prop-media{height:200px}
+  .city-card{height:220px}
+  .step .dot{width:60px;height:60px;font-size:1.05rem}
+  .cta-box{padding:30px 20px}
+  #toTop,.wa-btn{width:44px;height:44px;border-radius:13px;font-size:1.05rem;bottom:16px}
+  #toTop{inset-inline-end:16px}
+  .wa-btn{inset-inline-start:16px}
+  .f-news{flex-direction:column;border-radius:18px;padding:6px}
+  .f-news input{padding:10px 14px;text-align:center}
+  .f-news button{width:100%;padding:11px}
+}
+
+/* ---------- EXTRA SMALL (≤400px) ---------- */
+@media (max-width:400px){
+  .brand-text .bt-1{font-size:.98rem}
+  .brand-icon{width:38px;height:38px;font-size:17px;border-radius:11px}
+  .hero-title{font-size:1.85rem}
+  .hero-badge{font-size:.62rem;padding:7px 13px}
+  .hero-stats{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .hero-stat .hs-num{font-size:1rem}
+  .hero-stat .hs-lbl{font-size:.56rem}
+  .sec-title{font-size:1.55rem}
+  .svc{padding:20px}
+  .svc--feature .sf-body{padding:20px}
+  .prop-body{padding:16px 14px 14px}
+  .prop-meta{gap:9px;font-size:.72rem}
+  .city-card{height:200px}
+  .cta-box h2{font-size:1.45rem}
+  .stat-item .si-num{font-size:1.35rem}
+  .stat-item .si-lbl{font-size:.56rem}
+}
+
+/* ---------- SHORT LANDSCAPE PHONES ---------- */
+@media (max-height:520px) and (orientation:landscape){
+  #home{min-height:auto;padding:120px 0 60px}
+  .hero-title{font-size:2rem}
+  .scroll-hint{display:none}
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion:reduce){
+  .marquee-track,.hero-slide,.float-card,.scroll-hint .mouse::after{animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navList" data-bs-root-margin="0px 0px -45%">
+
+<!-- PRELOADER -->
+<div id="preloader"><div class="pl-logo"><i class="bi bi-buildings-fill"></i></div></div>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2 gap-lg-3" href="#home">
+      <span class="brand-icon"><i class="bi bi-buildings-fill"></i></span>
+      <span class="brand-text">
+        <span class="bt-1" data-en="DARNA" data-ar="دارنا">DARNA</span>
+        <span class="bt-2" data-en="ESTATES" data-ar="العقارية">ESTATES</span>
+      </span>
+    </a>
+
+    <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
+      <div class="offcanvas-header d-lg-none">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="#home">
+          <span class="brand-icon"><i class="bi bi-buildings-fill"></i></span>
+          <span class="brand-text"><span class="bt-1" data-en="DARNA" data-ar="دارنا">DARNA</span><span class="bt-2" data-en="ESTATES" data-ar="العقارية">ESTATES</span></span>
+        </a>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#navMenu" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-lg-flex align-items-lg-center w-100">
+        <ul class="navbar-nav mx-lg-auto gap-lg-1" id="navList">
+          <li class="nav-item"><a class="nav-link" href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-ar="من نحن">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#properties" data-en="Properties" data-ar="العقارات">Properties</a></li>
+          <li class="nav-item"><a class="nav-link" href="#areas" data-en="Cities" data-ar="مدننا">Cities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#process" data-en="Process" data-ar="آلية العمل">Process</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials" data-en="Reviews" data-ar="آراء العملاء">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+        </ul>
+        <div class="d-lg-none mt-3 px-3 pb-3">
+          <a href="#contact" class="btn-grad w-100 justify-content-center"><i class="bi bi-plus-circle"></i><span data-en="Add +" data-ar="أضف عقارك">Add +</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-2 gap-lg-3">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-opt active" data-lang="en">EN</button>
+        <button class="lang-opt" data-lang="ar">عربي</button>
+      </div>
+      <a href="#contact" class="btn-grad d-none d-lg-inline-flex" style="padding:11px 26px"><i class="bi bi-plus-circle"></i><span data-en="Add" data-ar="أضف عقارك">Add</span></a>
+      <button class="nav-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navMenu" aria-controls="navMenu" aria-label="Menu"><i class="bi bi-list"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= 1. HERO ================= -->
+<header id="home">
+  <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="container position-relative" style="z-index:2">
+    <div class="row">
+      <div class="col-lg-9">
+        <span class="hero-badge reveal"><i class="bi bi-patch-check-fill"></i><span data-en="Trusted Across the Kingdom" data-ar="موثوقون في جميع أنحاء المملكة">Trusted Across the Kingdom</span></span>
+        <h1 class="hero-title reveal" style="--d:.1s">
+          <span data-en="Find Your" data-ar="اعثر على">Find Your</span>
+          <span class="text-gradient" data-en="Dream Home" data-ar="منزل أحلامك">Dream Home</span><br>
+          <span data-en="in the Heart of Saudi Arabia" data-ar="في قلب المملكة العربية السعودية">in the Heart of Saudi Arabia</span>
+        </h1>
+        <p class="hero-sub reveal" style="--d:.2s" data-en="From luxury villas in Riyadh to seafront apartments in Jeddah — Darna helps you buy, sell, rent and invest with total confidence." data-ar="من الفلل الفاخرة في الرياض إلى الشقق المطلة على البحر في جدة — دارنا تساعدك على الشراء والبيع والاستئجار والاستثمار بثقة كاملة.">From luxury villas in Riyadh to seafront apartments in Jeddah — Darna helps you buy, sell, rent and invest with total confidence.</p>
+
+        <!-- Search bar -->
+        <div class="search-bar reveal" style="--d:.3s">
+          <div class="row g-2 align-items-center">
+            <div class="col-md-3 search-field">
+              <label><i class="bi bi-geo-alt-fill"></i><span data-en="Location" data-ar="الموقع">Location</span></label>
+              <select>
+                <option data-en="All Cities" data-ar="كل المدن">All Cities</option>
+                <option data-en="Riyadh" data-ar="الرياض">Riyadh</option>
+                <option data-en="Jeddah" data-ar="جدة">Jeddah</option>
+                <option data-en="Makkah" data-ar="مكة المكرمة">Makkah</option>
+                <option data-en="Madinah" data-ar="المدينة المنورة">Madinah</option>
+                <option data-en="Dammam" data-ar="الدمام">Dammam</option>
+                <option data-en="AlUla" data-ar="العلا">AlUla</option>
+              </select>
+            </div>
+            <div class="col-md-3 search-field">
+              <label><i class="bi bi-house-door-fill"></i><span data-en="Property Type" data-ar="نوع العقار">Property Type</span></label>
+              <select>
+                <option data-en="Any Type" data-ar="كل الأنواع">Any Type</option>
+                <option data-en="Villa" data-ar="فيلا">Villa</option>
+                <option data-en="Apartment" data-ar="شقة">Apartment</option>
+                <option data-en="Penthouse" data-ar="بنتهاوس">Penthouse</option>
+                <option data-en="Commercial" data-ar="تجاري">Commercial</option>
+                <option data-en="Land" data-ar="أرض">Land</option>
+              </select>
+            </div>
+            <div class="col-md-3 search-field">
+              <label><i class="bi bi-wallet2"></i><span data-en="Budget" data-ar="الميزانية">Budget</span></label>
+              <select>
+                <option data-en="Any Budget" data-ar="كل الميزانيات">Any Budget</option>
+                <option data-en="Under 1M SAR" data-ar="أقل من 1 مليون ر.س">Under 1M SAR</option>
+                <option data-en="1M – 3M SAR" data-ar="1 – 3 مليون ر.س">1M – 3M SAR</option>
+                <option data-en="3M – 6M SAR" data-ar="3 – 6 مليون ر.س">3M – 6M SAR</option>
+                <option data-en="6M+ SAR" data-ar="أكثر من 6 مليون ر.س">6M+ SAR</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <button class="btn-grad" type="button"><i class="bi bi-search"></i><span data-en="Search" data-ar="ابحث">Search</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stats reveal" style="--d:.4s">
+          <div class="hero-stat"><div class="hs-num">4,500<i class="bi bi-plus-lg"></i></div><div class="hs-lbl" data-en="Listed Properties" data-ar="عقار معروض">Listed Properties</div></div>
+          <div class="hero-stat"><div class="hs-num">12<i class="bi bi-plus-lg"></i></div><div class="hs-lbl" data-en="Years of Trust" data-ar="عاماً من الثقة">Years of Trust</div></div>
+          <div class="hero-stat"><div class="hs-num">98<i class="bi bi-percent"></i></div><div class="hs-lbl" data-en="Client Satisfaction" data-ar="رضا العملاء">Client Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-card fc-1 d-none d-xl-flex">
+    <span class="fc-icon"><i class="bi bi-shield-check"></i></span>
+    <span><span class="fc-t" data-en="Verified Listings" data-ar="عقارات موثقة">Verified Listings</span><br><span class="fc-s" data-en="100% Government Verified" data-ar="موثقة 100% حكومياً">100% Government Verified</span></span>
+  </div>
+  <div class="float-card fc-2 d-none d-xl-flex">
+    <span class="fc-icon"><i class="bi bi-people-fill"></i></span>
+    <span><span class="fc-t" data-en="9,200+ Families Housed" data-ar="+9,200 عائلة سكنت">9,200+ Families Housed</span><br><span class="fc-s" data-en="Across 14 Saudi cities" data-ar="في 14 مدينة سعودية">Across 14 Saudi cities</span></span>
+  </div>
+
+  <div class="scroll-hint"><span data-en="Scroll" data-ar="مرر">Scroll</span><span class="mouse"></span></div>
+</header>
+
+<!-- ================= 2. PARTNERS MARQUEE ================= -->
+<div class="partners">
+  <div class="container"><p class="p-lbl mb-0" data-en="Trusted by the Kingdom's leading developers" data-ar="موثوقون لدى أبرز مطوري المملكة">Trusted by the Kingdom's leading developers</p></div>
+  <div class="marquee mt-4">
+    <div class="marquee-track">
+      <span class="mq-item"><i class="bi bi-building"></i>ROSHN</span>
+      <span class="mq-item"><i class="bi bi-buildings"></i>DAR AL ARKAN</span>
+      <span class="mq-item"><i class="bi bi-city"></i>RETAL</span>
+      <span class="mq-item"><i class="bi bi-building-fill"></i>KINAN</span>
+      <span class="mq-item"><i class="bi bi-bank"></i>SEDCO</span>
+      <span class="mq-item"><i class="bi bi-buildings-fill"></i>JABAL OMAR</span>
+      <span class="mq-item"><i class="bi bi-house-fill"></i>NHC</span>
+      <span class="mq-item"><i class="bi bi-shop"></i>AL AKARIA</span>
+      <span class="mq-item"><i class="bi bi-building"></i>ROSHN</span>
+      <span class="mq-item"><i class="bi bi-buildings"></i>DAR AL ARKAN</span>
+      <span class="mq-item"><i class="bi bi-city"></i>RETAL</span>
+      <span class="mq-item"><i class="bi bi-building-fill"></i>KINAN</span>
+      <span class="mq-item"><i class="bi bi-bank"></i>SEDCO</span>
+      <span class="mq-item"><i class="bi bi-buildings-fill"></i>JABAL OMAR</span>
+      <span class="mq-item"><i class="bi bi-house-fill"></i>NHC</span>
+      <span class="mq-item"><i class="bi bi-shop"></i>AL AKARIA</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 3. ABOUT ================= -->
+<section id="about" class="bg-blobs">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <div class="about-imgs">
+          <span class="exp-badge"><span class="eb-n">12+</span><span class="eb-t d-block" data-en="Years of Excellence" data-ar="عاماً من التميز">Years of Excellence</span></span>
+          <img class="img-main" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="About Darna" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'">
+          <img class="img-sub" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Darna project" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80'">
+        </div>
+      </div>
+      <div class="col-lg-6 reveal" style="--d:.15s">
+        <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="About Darna" data-ar="عن دارنا">About Darna</span></span>
+        <h2 class="sec-title"><span data-en="Redefining Real Estate" data-ar="نعيد تعريف">Redefining Real Estate</span> <span class="text-gradient" data-en="Excellence" data-ar="التميز العقاري">Excellence</span><br><span data-en="in the Kingdom" data-ar="في المملكة">in the Kingdom</span></h2>
+        <p data-en="Since 2014, Darna Estates has guided families, investors and businesses to the right property decisions across Saudi Arabia — combining deep local insight with a fully digital, transparent experience." data-ar="منذ 2014، تقود دارنا العقارية العائلات والمستثمرين والشركات نحو قرارات عقارية صائبة في جميع أنحاء المملكة — بجمعها بين المعرفة المحلية العميقة وتجربة رقمية شفافة بالكامل.">Since 2014, Darna Estates has guided families, investors and businesses to the right property decisions across Saudi Arabia — combining deep local insight with a fully digital, transparent experience.</p>
+        <ul class="about-list">
+          <li><i class="bi bi-check-lg"></i><span data-en="REGA-licensed certified advisors" data-ar="مستشارون معتمدون ومرخصون من الهيئة العامة للعقار">REGA-licensed certified advisors</span></li>
+          <li><i class="bi bi-check-lg"></i><span data-en="Fully digital contracts via Najiz &amp; Absher" data-ar="عقود رقمية بالكامل عبر ناجز وأبشر">Fully digital contracts via Najiz &amp; Absher</span></li>
+          <li><i class="bi bi-check-lg"></i><span data-en="Coverage across 14 cities of the Kingdom" data-ar="تغطية تشمل 14 مدينة في المملكة">Coverage across 14 cities of the Kingdom</span></li>
+        </ul>
+        <div class="d-flex flex-wrap align-items-center gap-4">
+          <a href="#services" class="btn-grad"><span data-en="Discover More" data-ar="اكتشف المزيد">Discover More</span><i class="bi bi-arrow-right-circle"></i></a>
+          <div class="sig-row">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="CEO" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'">
+            <span><span class="sn d-block" data-en="Faisal Al-Harbi" data-ar="فيصل الحربي">Faisal Al-Harbi</span><span class="sr" data-en="CEO &amp; Founder, Darna" data-ar="المؤسس والرئيس التنفيذي، دارنا">CEO &amp; Founder, Darna</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. STATS BAND ================= -->
+<div class="stats-band">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-lg-3 stat-item reveal"><span class="si-icon"><i class="bi bi-house-heart-fill"></i></span><div class="si-num"><span class="counter" data-target="4500">0</span>+</div><div class="si-lbl" data-en="Properties Sold" data-ar="عقار تم بيعه">Properties Sold</div></div>
+      <div class="col-6 col-lg-3 stat-item reveal" style="--d:.1s"><span class="si-icon"><i class="bi bi-people-fill"></i></span><div class="si-num"><span class="counter" data-target="9200">0</span>+</div><div class="si-lbl" data-en="Happy Clients" data-ar="عميل سعيد">Happy Clients</div></div>
+      <div class="col-6 col-lg-3 stat-item reveal" style="--d:.2s"><span class="si-icon"><i class="bi bi-geo-alt-fill"></i></span><div class="si-num"><span class="counter" data-target="14">0</span></div><div class="si-lbl" data-en="Cities Covered" data-ar="مدينة نغطيها">Cities Covered</div></div>
+      <div class="col-6 col-lg-3 stat-item reveal" style="--d:.3s"><span class="si-icon"><i class="bi bi-trophy-fill"></i></span><div class="si-num"><span class="counter" data-target="25">0</span></div><div class="si-lbl" data-en="Industry Awards" data-ar="جائزة في القطاع">Industry Awards</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 5. SERVICES (BENTO) ================= -->
+<section id="services" class="bg-soft bg-blobs">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="Our Services" data-ar="خدماتنا">Our Services</span></span>
+      <h2 class="sec-title"><span data-en="Everything Property," data-ar="كل ما يخص العقار">Everything Property,</span> <span class="text-gradient" data-en="Under One Roof" data-ar="تحت سقف واحد">Under One Roof</span></h2>
+      <p class="sec-sub" data-en="Six integrated services designed around your journey — from the first search to the final key." data-ar="ست خدمات متكاملة صُممت حول رحلتك — من أول بحث حتى استلام المفتاح.">Six integrated services designed around your journey — from the first search to the final key.</p>
+    </div>
+
+    <div class="bento mt-5">
+      <div class="svc svc--feature reveal">
+        <div class="sf-body">
+          <span class="num">01</span>
+          <span class="icon"><i class="bi bi-key-fill"></i></span>
+          <h3 data-en="Buy &amp; Sell" data-ar="البيع والشراء">Buy &amp; Sell</h3>
+          <p data-en="Market-ready listings, professional valuation and end-to-end negotiation for sellers and buyers alike — closed digitally, delivered personally." data-ar="عقارات جاهزة للسوق، تقييم احترافي وتفاوض متكامل للبائعين والمشترين — تُغلق الصفقات رقمياً وتُسلَّم شخصياً.">Market-ready listings, professional valuation and end-to-end negotiation for sellers and buyers alike — closed digitally, delivered personally.</p>
+          <div class="tags"><span data-en="Villas" data-ar="فلل">Villas</span><span data-en="Apartments" data-ar="شقق">Apartments</span><span data-en="Lands" data-ar="أراضي">Lands</span></div>
+          <a href="#contact" class="svc-link"><span data-en="Explore" data-ar="استكشف">Explore</span><i class="bi bi-arrow-right"></i></a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" alt="Buy and Sell" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80'">
+      </div>
+
+      <div class="svc reveal" style="--d:.1s"><span class="num">02</span><span class="icon"><i class="bi bi-calendar2-week-fill"></i></span>
+        <h3 data-en="Rent &amp; Lease" data-ar="التأجير والاستئجار">Rent &amp; Lease</h3>
+        <p data-en="Smart tenancy contracts, instant e-attestation and reliable tenant screening for landlords and tenants." data-ar="عقود إيجار ذكية، توثيق إلكتروني فوري وفرز موثوق للمستأجرين لأصحاب العقارات والمستأجرين.">Smart tenancy contracts, instant e-attestation and reliable tenant screening for landlords and tenants.</p>
+        <a href="#contact" class="svc-link"><span data-en="Explore" data-ar="استكشف">Explore</span><i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="svc reveal"><span class="num">03</span><span class="icon"><i class="bi bi-gear-fill"></i></span>
+        <h3 data-en="Property Management" data-ar="إدارة الأملاك">Property Management</h3>
+        <p data-en="We collect, maintain and report — your asset grows while you relax. Monthly statements, zero headaches." data-ar="نتولى التحصيل والصيانة والتقارير — أصلك ينمو وأنت مرتاح. كشوف شهرية وبدون عناء.">We collect, maintain and report — your asset grows while you relax. Monthly statements, zero headaches.</p>
+        <a href="#contact" class="svc-link"><span data-en="Explore" data-ar="استكشف">Explore</span><i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="svc reveal" style="--d:.1s"><span class="num">04</span><span class="icon"><i class="bi bi-graph-up-arrow"></i></span>
+        <h3 data-en="Investment Advisory" data-ar="الاستشارات الاستثمارية">Investment Advisory</h3>
+        <p data-en="Data-driven ROI studies for off-plan projects, land banking and REIT alternatives across the Kingdom." data-ar="دراسات عائد مبنية على البيانات للمشاريع تحت الإنشاء والأراضي والصناديق العقارية في المملكة.">Data-driven ROI studies for off-plan projects, land banking and REIT alternatives across the Kingdom.</p>
+        <a href="#contact" class="svc-link"><span data-en="Explore" data-ar="استكشف">Explore</span><i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="svc reveal" style="--d:.2s"><span class="num">05</span><span class="icon"><i class="bi bi-cash-coin"></i></span>
+        <h3 data-en="Valuation &amp; Appraisal" data-ar="التقييم العقاري">Valuation &amp; Appraisal</h3>
+        <p data-en="Certified valuers delivering bank-accepted, TAQEEM-compliant reports within 48 hours." data-ar="مقيمون معتمدون يقدمون تقارير مقبولة بنكياً ومتوافقة مع «تقييم» خلال 48 ساعة.">Certified valuers delivering bank-accepted, TAQEEM-compliant reports within 48 hours.</p>
+        <a href="#contact" class="svc-link"><span data-en="Explore" data-ar="استكشف">Explore</span><i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div class="svc svc--cta reveal">
+        <div>
+          <h3 data-en="Need something custom?" data-ar="تحتاج حلاً مخصصاً؟">Need something custom?</h3>
+          <p class="mb-0" data-en="Our legal &amp; notary desk handles everything else — from title transfers to litigation support." data-ar="مكتبنا القانوني والتوثيقي يتولى كل ما عدا ذلك — من إفراغ الصكوك إلى الدعم القضائي.">Our legal &amp; notary desk handles everything else — from title transfers to litigation support.</p>
+        </div>
+        <a href="#contact" class="btn-white"><i class="bi bi-headset"></i><span data-en="Talk to an Expert" data-ar="تحدث مع خبير">Talk to an Expert</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. PROPERTIES ================= -->
+<section id="properties" class="bg-blobs">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="Featured Listings" data-ar="عقارات مميزة">Featured Listings</span></span>
+      <h2 class="sec-title"><span data-en="Handpicked for" data-ar="منتقاة بعناية">Handpicked for</span> <span class="text-gradient" data-en="You" data-ar="لك">You</span></h2>
+      <p class="sec-sub" data-en="A live selection of our finest verified properties across the Kingdom." data-ar="تشكيلة حية من أرقى عقاراتنا الموثقة في أنحاء المملكة.">A live selection of our finest verified properties across the Kingdom.</p>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all" data-en="All" data-ar="الكل">All</button>
+      <button class="filter-btn" data-filter="villa" data-en="Villas" data-ar="فلل">Villas</button>
+      <button class="filter-btn" data-filter="apartment" data-en="Apartments" data-ar="شقق">Apartments</button>
+      <button class="filter-btn" data-filter="commercial" data-en="Commercial" data-ar="تجاري">Commercial</button>
+      <button class="filter-btn" data-filter="land" data-en="Lands" data-ar="أراضي">Lands</button>
+    </div>
+
+    <div class="row g-4" id="propGrid">
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="villa"><div class="prop-card reveal">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Villa" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge" data-en="For Sale" data-ar="للبيع">For Sale</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 3.2M" data-ar="3.2 مليون ر.س">SAR 3.2M</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Modern Villa in Al Malqa" data-ar="فيلا عصرية في الملقا">Modern Villa in Al Malqa</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Al Malqa, Riyadh" data-ar="الملقا، الرياض">Al Malqa, Riyadh</span></span>
+          <div class="prop-meta"><span><i class="bi bi-door-closed-fill"></i><span data-en="6 Beds" data-ar="6 غرف">6 Beds</span></span><span><i class="bi bi-droplet-fill"></i><span data-en="6 Baths" data-ar="6 حمامات">6 Baths</span></span><span><i class="bi bi-rulers"></i><span>620 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1041</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="apartment"><div class="prop-card reveal" style="--d:.1s">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80" alt="Apartment" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge rent" data-en="For Rent" data-ar="للإيجار">For Rent</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 85K / yr" data-ar="85 ألف ر.س / سنوياً">SAR 85K / yr</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Seafront Apartment" data-ar="شقة مطلة على البحر">Seafront Apartment</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Al Shatee, Jeddah" data-ar="الشاطئ، جدة">Al Shatee, Jeddah</span></span>
+          <div class="prop-meta"><span><i class="bi bi-door-closed-fill"></i><span data-en="3 Beds" data-ar="3 غرف">3 Beds</span></span><span><i class="bi bi-droplet-fill"></i><span data-en="3 Baths" data-ar="3 حمامات">3 Baths</span></span><span><i class="bi bi-rulers"></i><span>210 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1088</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="apartment"><div class="prop-card reveal" style="--d:.2s">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80" alt="Penthouse" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge" data-en="For Sale" data-ar="للبيع">For Sale</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 6.5M" data-ar="6.5 مليون ر.س">SAR 6.5M</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Sky Penthouse" data-ar="بنتهاوس السماء">Sky Penthouse</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="King Abdulaziz Dist., Jeddah" data-ar="حي الملك عبدالعزيز، جدة">King Abdulaziz Dist., Jeddah</span></span>
+          <div class="prop-meta"><span><i class="bi bi-door-closed-fill"></i><span data-en="4 Beds" data-ar="4 غرف">4 Beds</span></span><span><i class="bi bi-droplet-fill"></i><span data-en="5 Baths" data-ar="5 حمامات">5 Baths</span></span><span><i class="bi bi-rulers"></i><span>480 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1120</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="commercial"><div class="prop-card reveal" style="--d:.3s">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80" alt="Office" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge rent" data-en="For Rent" data-ar="للإيجار">For Rent</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 240K / yr" data-ar="240 ألف ر.س / سنوياً">SAR 240K / yr</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Office Floor, Olaya Tower" data-ar="طابق مكاتب، برج العليا">Office Floor, Olaya Tower</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Olaya, Riyadh" data-ar="العليا، الرياض">Olaya, Riyadh</span></span>
+          <div class="prop-meta"><span><i class="bi bi-diagram-3-fill"></i><span data-en="12 Offices" data-ar="12 مكتباً">12 Offices</span></span><span><i class="bi bi-droplet-fill"></i><span data-en="4 Baths" data-ar="4 حمامات">4 Baths</span></span><span><i class="bi bi-rulers"></i><span>850 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1155</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="land"><div class="prop-card reveal">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Land" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge" data-en="For Sale" data-ar="للبيع">For Sale</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 4.8M" data-ar="4.8 مليون ر.س">SAR 4.8M</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Land in Al Narjis" data-ar="أرض في النرجس">Land in Al Narjis</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Al Narjis, Riyadh" data-ar="النرجس، الرياض">Al Narjis, Riyadh</span></span>
+          <div class="prop-meta"><span><i class="bi bi-houses-fill"></i><span data-en="Residential zoning" data-ar="تصنيف سكني">Residential zoning</span></span><span><i class="bi bi-signpost-2-fill"></i><span data-en="Corner plot" data-ar="قطعة زاوية">Corner plot</span></span><span><i class="bi bi-rulers"></i><span>1,500 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1190</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="villa"><div class="prop-card reveal" style="--d:.1s">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="Villa" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge" data-en="For Sale" data-ar="للبيع">For Sale</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 5.4M" data-ar="5.4 مليون ر.س">SAR 5.4M</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Courtyard Villa in Al Yasmin" data-ar="فيلا بفناء في الياسمين">Courtyard Villa in Al Yasmin</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Al Yasmin, Riyadh" data-ar="الياسمين، الرياض">Al Yasmin, Riyadh</span></span>
+          <div class="prop-meta"><span><i class="bi bi-door-closed-fill"></i><span data-en="5 Beds" data-ar="5 غرف">5 Beds</span></span><span><i class="bi bi-droplet-fill"></i><span data-en="5 Baths" data-ar="5 حمامات">5 Baths</span></span><span><i class="bi bi-rulers"></i><span>540 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1203</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="commercial"><div class="prop-card reveal" style="--d:.2s">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Showroom" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge rent" data-en="For Rent" data-ar="للإيجار">For Rent</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 310K / yr" data-ar="310 ألف ر.س / سنوياً">SAR 310K / yr</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Showroom, King Fahd Rd" data-ar="معرض، طريق الملك فهد">Showroom, King Fahd Rd</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Dammam" data-ar="الدمام">Dammam</span></span>
+          <div class="prop-meta"><span><i class="bi bi-layers-fill"></i><span data-en="2 Floors" data-ar="طابقان">2 Floors</span></span><span><i class="bi bi-p-square-fill"></i><span data-en="6 Parking" data-ar="6 مواقف">6 Parking</span></span><span><i class="bi bi-rulers"></i><span>940 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1244</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+      <div class="col-sm-6 col-lg-3 prop-col" data-cat="apartment"><div class="prop-card reveal" style="--d:.3s">
+        <div class="prop-media"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80" alt="Apartment" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80'">
+          <span class="prop-badge rent" data-en="For Rent" data-ar="للإيجار">For Rent</span>
+          <div class="prop-actions"><button aria-label="Save"><i class="bi bi-heart"></i></button><button aria-label="Share"><i class="bi bi-share"></i></button></div>
+          <span class="prop-price" data-en="SAR 120K / yr" data-ar="120 ألف ر.س / سنوياً">SAR 120K / yr</span>
+        </div>
+        <div class="prop-body">
+          <h3 data-en="Luxury Apartment in Hittin" data-ar="شقة فاخرة في حطين">Luxury Apartment in Hittin</h3>
+          <span class="prop-loc"><i class="bi bi-geo-alt-fill"></i><span data-en="Hittin, Riyadh" data-ar="حطين، الرياض">Hittin, Riyadh</span></span>
+          <div class="prop-meta"><span><i class="bi bi-door-closed-fill"></i><span data-en="2 Beds" data-ar="غرفتان">2 Beds</span></span><span><i class="bi bi-droplet-fill"></i><span data-en="2 Baths" data-ar="حمامان">2 Baths</span></span><span><i class="bi bi-rulers"></i><span>145 m²</span></span></div>
+          <div class="prop-foot"><span class="pf-id">#DR-1277</span><a href="#contact" class="pf-link"><span data-en="View Details" data-ar="عرض التفاصيل">View Details</span><i class="bi bi-arrow-right"></i></a></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="text-center mt-5 reveal"><a href="#contact" class="btn-ghost"><span data-en="Browse All 4,500 Listings" data-ar="تصفح كل العقارات (4,500)">Browse All 4,500 Listings</span><i class="bi bi-arrow-right"></i></a></div>
+  </div>
+</section>
+
+<!-- ================= 7. CITIES ================= -->
+<section id="areas" class="bg-soft bg-blobs">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="Coverage" data-ar="تغطيتنا">Coverage</span></span>
+      <h2 class="sec-title"><span data-en="Cities We Call" data-ar="مدن نسميها">Cities We Call</span> <span class="text-gradient" data-en="Home" data-ar="ديارنا">Home</span></h2>
+      <p class="sec-sub" data-en="Local teams on the ground in every major market of the Kingdom." data-ar="فرق محلية على الأرض في كل أسواق المملكة الرئيسية.">Local teams on the ground in every major market of the Kingdom.</p>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6 col-lg-4 reveal"><a href="#properties" class="city-card"><img src="https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=900&q=80" alt="Riyadh" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80'"><span class="cc-ov"></span><span class="cc-body"><span><span class="cc-name d-block" data-en="Riyadh" data-ar="الرياض">Riyadh</span><span class="cc-count" data-en="1,240 Listings" data-ar="1,240 عقار">1,240 Listings</span></span><span class="cc-arrow"><i class="bi bi-arrow-right"></i></span></span></a></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.08s"><a href="#properties" class="city-card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="Jeddah" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80'"><span class="cc-ov"></span><span class="cc-body"><span><span class="cc-name d-block" data-en="Jeddah" data-ar="جدة">Jeddah</span><span class="cc-count" data-en="860 Listings" data-ar="860 عقار">860 Listings</span></span><span class="cc-arrow"><i class="bi bi-arrow-right"></i></span></span></a></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.16s"><a href="#properties" class="city-card"><img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=900&q=80" alt="Makkah" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=900&q=80'"><span class="cc-ov"></span><span class="cc-body"><span><span class="cc-name d-block" data-en="Makkah" data-ar="مكة المكرمة">Makkah</span><span class="cc-count" data-en="420 Listings" data-ar="420 عقار">420 Listings</span></span><span class="cc-arrow"><i class="bi bi-arrow-right"></i></span></span></a></div>
+      <div class="col-md-6 col-lg-4 reveal"><a href="#properties" class="city-card"><img src="https://images.unsplash.com/photo-1564769625905-aa6524f15c9d?auto=format&fit=crop&w=900&q=80" alt="Madinah" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=900&q=80'"><span class="cc-ov"></span><span class="cc-body"><span><span class="cc-name d-block" data-en="Madinah" data-ar="المدينة المنورة">Madinah</span><span class="cc-count" data-en="380 Listings" data-ar="380 عقار">380 Listings</span></span><span class="cc-arrow"><i class="bi bi-arrow-right"></i></span></span></a></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.08s"><a href="#properties" class="city-card"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80" alt="Dammam" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80'"><span class="cc-ov"></span><span class="cc-body"><span><span class="cc-name d-block" data-en="Dammam" data-ar="الدمام">Dammam</span><span class="cc-count" data-en="310 Listings" data-ar="310 عقار">310 Listings</span></span><span class="cc-arrow"><i class="bi bi-arrow-right"></i></span></span></a></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.16s"><a href="#properties" class="city-card"><img src="https://images.unsplash.com/photo-1547235001-d703406d3f17?auto=format&fit=crop&w=900&q=80" alt="AlUla" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80'"><span class="cc-ov"></span><span class="cc-body"><span><span class="cc-name d-block" data-en="AlUla" data-ar="العلا">AlUla</span><span class="cc-count" data-en="120 Listings" data-ar="120 عقار">120 Listings</span></span><span class="cc-arrow"><i class="bi bi-arrow-right"></i></span></span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. PROCESS ================= -->
+<section id="process" class="bg-blobs">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="How It Works" data-ar="آلية العمل">How It Works</span></span>
+      <h2 class="sec-title"><span data-en="Four Steps to Your" data-ar="أربع خطوات نحو">Four Steps to Your</span> <span class="text-gradient" data-en="New Address" data-ar="عنوانك الجديد">New Address</span></h2>
+    </div>
+    <div class="row g-4 mt-3">
+      <div class="col-md-6 col-lg-3 step reveal"><span class="dot">01</span><h3 data-en="Discover" data-ar="اكتشف">Discover</h3><p data-en="Tell us your brief; receive a smart shortlist within 24 hours." data-ar="أخبرنا بمتطلباتك واستلم قائمة مختارة ذكية خلال 24 ساعة.">Tell us your brief; receive a smart shortlist within 24 hours.</p></div>
+      <div class="col-md-6 col-lg-3 step reveal" style="--d:.1s"><span class="dot">02</span><h3 data-en="Tour" data-ar="جولة">Tour</h3><p data-en="Private viewings in person or through immersive 3D virtual tours." data-ar="معاينات خاصة حضورياً أو عبر جولات افتراضية ثلاثية الأبعاد.">Private viewings in person or through immersive 3D virtual tours.</p></div>
+      <div class="col-md-6 col-lg-3 step reveal" style="--d:.2s"><span class="dot">03</span><h3 data-en="Close" data-ar="أبرم الصفقة">Close</h3><p data-en="We negotiate, attest and transfer the title — fully digital." data-ar="نتفاوض ونوثق ونفرغ الصك — رقمياً بالكامل.">We negotiate, attest and transfer the title — fully digital.</p></div>
+      <div class="col-md-6 col-lg-3 step reveal" style="--d:.3s"><span class="dot">04</span><h3 data-en="Move In" data-ar="استلم مفتاحك">Move In</h3><p data-en="Keys, utilities setup and a full year of aftercare service." data-ar="المفاتيح، تجهيز الخدمات وعناية متكاملة لسنة كاملة.">Keys, utilities setup and a full year of aftercare service.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. TESTIMONIALS ================= -->
+<section id="testimonials" class="bg-soft bg-blobs">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="Testimonials" data-ar="آراء العملاء">Testimonials</span></span>
+      <h2 class="sec-title"><span data-en="Loved by Families &amp;" data-ar="محبوبون من العائلات">Loved by Families &amp;</span> <span class="text-gradient" data-en="Investors" data-ar="والمستثمرين">Investors</span></h2>
+    </div>
+
+    <div class="testi-wrap reveal">
+      <div id="testiCar" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <span class="q-icon"><i class="bi bi-quote"></i></span>
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text" data-en="“Darna found us a villa in Al Malqa within three weeks — every step was online, every riyal transparent.”" data-ar="«وجدت لنا دارنا فيلا في الملقا خلال ثلاثة أسابيع — كل خطوة كانت عبر الإنترنت وكل ريال بشفافية.»">“Darna found us a villa in Al Malqa within three weeks — every step was online, every riyal transparent.”</p>
+            <div class="testi-person"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Client" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'"><div class="tp-n" data-en="Abdullah Al-Qahtani" data-ar="عبدالله القحطاني">Abdullah Al-Qahtani</div><div class="tp-r" data-en="Homeowner, Riyadh" data-ar="مالك منزل، الرياض">Homeowner, Riyadh</div></div>
+          </div>
+          <div class="carousel-item">
+            <span class="q-icon"><i class="bi bi-quote"></i></span>
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text" data-en="“As an investor, their ROI studies are simply the best in the market. This is my third deal with them this year.”" data-ar="«كمستثمر، دراسات العائد لديهم هي الأفضل في السوق بلا منازع. هذه ثالث صفقة لي معهم هذا العام.»">“As an investor, their ROI studies are simply the best in the market. This is my third deal with them this year.”</p>
+            <div class="testi-person"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Client" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80'"><div class="tp-n" data-en="Khalid Al-Otaibi" data-ar="خالد العتيبي">Khalid Al-Otaibi</div><div class="tp-r" data-en="Investor, Dammam" data-ar="مستثمر، الدمام">Investor, Dammam</div></div>
+          </div>
+          <div class="carousel-item">
+            <span class="q-icon"><i class="bi bi-quote"></i></span>
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text" data-en="“They manage my four apartments in Jeddah — rent collected, maintenance handled, reports every month.”" data-ar="«يديرون أربع شقق لي في جدة — تحصيل الإيجار والصيانة وتقارير شهرية دون أي عناء.»">“They manage my four apartments in Jeddah — rent collected, maintenance handled, reports every month.”</p>
+            <div class="testi-person"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Client" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80'"><div class="tp-n" data-en="Sara Al-Mutairi" data-ar="سارة المطيري">Sara Al-Mutairi</div><div class="tp-r" data-en="Landlord, Jeddah" data-ar="مالكة عقار، جدة">Landlord, Jeddah</div></div>
+          </div>
+        </div>
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#testiCar" data-bs-slide-to="0" class="active" aria-current="true" aria-label="1"></button>
+          <button type="button" data-bs-target="#testiCar" data-bs-slide-to="1" aria-label="2"></button>
+          <button type="button" data-bs-target="#testiCar" data-bs-slide-to="2" aria-label="3"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. CTA ================= -->
+<section style="padding:40px 0 100px">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="row align-items-center position-relative" style="z-index:1">
+        <div class="col-lg-7">
+          <h2 data-en="Ready to Make Your Next Move?" data-ar="جاهز لخطوتك القادمة؟">Ready to Make Your Next Move?</h2>
+          <p class="mb-0 mt-3" data-en="Book a free 30-minute consultation with a licensed advisor today — in Arabic or English." data-ar="احجز استشارة مجانية لمدة 30 دقيقة مع مستشار مرخص اليوم — بالعربية أو الإنجليزية.">Book a free 30-minute consultation with a licensed advisor today — in Arabic or English.</p>
+        </div>
+        <div class="col-lg-5 text-lg-end mt-4 mt-lg-0 d-flex flex-wrap gap-3 justify-content-lg-end">
+          <a href="#contact" class="btn-white"><i class="bi bi-calendar2-check"></i><span data-en="Book a Consultation" data-ar="احجز استشارة">Book a Consultation</span></a>
+          <a href="tel:+966112345678" class="btn-line"><i class="bi bi-telephone-fill"></i><span>+966 11 234 5678</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11. CONTACT ================= -->
+<section id="contact" class="bg-soft bg-blobs" style="padding-top:60px">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-pill"><i class="bi bi-circle-fill"></i><span data-en="Contact Us" data-ar="تواصل معنا">Contact Us</span></span>
+      <h2 class="sec-title"><span data-en="Let's Talk" data-ar="لنتحدث عن">Let's Talk</span> <span class="text-gradient" data-en="Property" data-ar="العقار">Property</span></h2>
+      <p class="sec-sub" data-en="Visit our Riyadh headquarters or send a message — we reply within one business hour." data-ar="زر مقرنا في الرياض أو أرسل رسالة — نرد خلال ساعة عمل واحدة.">Visit our Riyadh headquarters or send a message — we reply within one business hour.</p>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-lg-5">
+        <div class="row g-3">
+          <div class="col-sm-6 reveal"><div class="info-card"><span class="ic-icon"><i class="bi bi-geo-alt-fill"></i></span><div><h4 data-en="Head Office" data-ar="المقر الرئيسي">Head Office</h4><p data-en="King Fahd Rd, Al Olaya, Riyadh" data-ar="طريق الملك فهد، العليا، الرياض">King Fahd Rd, Al Olaya, Riyadh</p></div></div></div>
+          <div class="col-sm-6 reveal" style="--d:.08s"><div class="info-card"><span class="ic-icon"><i class="bi bi-telephone-fill"></i></span><div><h4 data-en="Call Us" data-ar="اتصل بنا">Call Us</h4><p dir="ltr">+966 11 234 5678</p></div></div></div>
+          <div class="col-sm-6 reveal" style="--d:.16s"><div class="info-card"><span class="ic-icon"><i class="bi bi-envelope-fill"></i></span><div><h4 data-en="Email" data-ar="البريد الإلكتروني">Email</h4><p dir="ltr">hello@darna.sa</p></div></div></div>
+          <div class="col-sm-6 reveal" style="--d:.24s"><div class="info-card"><span class="ic-icon"><i class="bi bi-clock-fill"></i></span><div><h4 data-en="Working Hours" data-ar="ساعات العمل">Working Hours</h4><p data-en="Sun – Thu, 9:00 AM – 6:00 PM" data-ar="الأحد – الخميس، 9:00 ص – 6:00 م">Sun – Thu, 9:00 AM – 6:00 PM</p></div></div></div>
+        </div>
+      </div>
+      <div class="col-lg-7 reveal" style="--d:.1s">
+        <form class="form-card" id="contactForm" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6"><label data-en="Full Name" data-ar="الاسم الكامل">Full Name</label><input type="text" class="form-control" required data-en-ph="e.g. Mohammed Ahmed" data-ar-ph="مثال: محمد أحمد" placeholder="e.g. Mohammed Ahmed"></div>
+            <div class="col-md-6"><label data-en="Email" data-ar="البريد الإلكتروني">Email</label><input type="email" class="form-control" required placeholder="you@email.com"></div>
+            <div class="col-md-6"><label data-en="Phone" data-ar="رقم الجوال">Phone</label><input type="tel" class="form-control" required placeholder="+966 5X XXX XXXX"></div>
+            <div class="col-md-6"><label data-en="I'm interested in" data-ar="أنا مهتم بـ">I'm interested in</label>
+              <select class="form-select">
+                <option data-en="Buying" data-ar="الشراء">Buying</option>
+                <option data-en="Selling" data-ar="البيع">Selling</option>
+                <option data-en="Renting" data-ar="الاستئجار">Renting</option>
+                <option data-en="Investing" data-ar="الاستثمار">Investing</option>
+              </select>
+            </div>
+            <div class="col-12"><label data-en="Message" data-ar="رسالتك">Message</label><textarea class="form-control" rows="4" data-en-ph="Tell us about your dream property..." data-ar-ph="حدثنا عن عقار أحلامك..." placeholder="Tell us about your dream property..."></textarea></div>
+            <div class="col-12"><button class="btn-grad" type="submit"><i class="bi bi-send-fill"></i><span data-en="Send Request" data-ar="إرسال الطلب">Send Request</span></button>
+              <div class="form-ok" id="formOk"><i class="bi bi-check-circle-fill me-2"></i><span data-en="Thank you! Your request was received — an advisor will call you shortly." data-ar="شكراً لك! تم استلام طلبك — سيتصل بك مستشارنا قريباً.">Thank you! Your request was received — an advisor will call you shortly.</span></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12. FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <a class="d-flex align-items-center gap-3 mb-3" href="#home">
+          <span class="brand-icon"><i class="bi bi-buildings-fill"></i></span>
+          <span class="brand-text"><span class="bt-1" style="color:#fff" data-en="DARNA" data-ar="دارنا">DARNA</span><span class="bt-2" data-en="ESTATES" data-ar="العقارية">ESTATES</span></span>
+        </a>
+        <p data-en="Darna Estates — a Saudi real estate house building trust since 2014. Licensed by REGA (License #12345)." data-ar="دارنا العقارية — بيت عقاري سعودي يبني الثقة منذ 2014. مرخص من الهيئة العامة للعقار (رخصة #12345).">Darna Estates — a Saudi real estate house building trust since 2014. Licensed by REGA (License #12345).</p>
+        <div class="f-social">
+          <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Snapchat"><i class="bi bi-snapchat"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h5 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h5>
+        <a class="f-link" href="#about" data-en="About Us" data-ar="من نحن">About Us</a>
+        <a class="f-link" href="#properties" data-en="Properties" data-ar="العقارات">Properties</a>
+        <a class="f-link" href="#areas" data-en="Cities" data-ar="مدننا">Cities</a>
+        <a class="f-link" href="#testimonials" data-en="Reviews" data-ar="آراء العملاء">Reviews</a>
+        <a class="f-link" href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h5 data-en="Services" data-ar="خدماتنا">Services</h5>
+        <a class="f-link" href="#services" data-en="Buy &amp; Sell" data-ar="البيع والشراء">Buy &amp; Sell</a>
+        <a class="f-link" href="#services" data-en="Rent &amp; Lease" data-ar="التأجير والاستئجار">Rent &amp; Lease</a>
+        <a class="f-link" href="#services" data-en="Property Management" data-ar="إدارة الأملاك">Property Management</a>
+        <a class="f-link" href="#services" data-en="Investment Advisory" data-ar="الاستشارات الاستثمارية">Investment Advisory</a>
+        <a class="f-link" href="#services" data-en="Valuation" data-ar="التقييم العقاري">Valuation</a>
+      </div>
+      <div class="col-lg-3">
+        <h5 data-en="Newsletter" data-ar="النشرة البريدية">Newsletter</h5>
+        <p data-en="Join our newsletter for weekly market insights." data-ar="اشترك بنشرتنا للحصول على رؤى السوق أسبوعياً.">Join our newsletter for weekly market insights.</p>
+        <form class="f-news" id="newsForm">
+          <input type="email" required data-en-ph="Your email" data-ar-ph="بريدك الإلكتروني" placeholder="Your email">
+          <button type="submit" data-en="Subscribe" data-ar="اشترك">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="f-bottom d-flex flex-wrap justify-content-between align-items-center">
+      <span data-en="© 2026 Darna Estates. All rights reserved." data-ar="© 2026 دارنا العقارية. جميع الحقوق محفوظة.">© 2026 Darna Estates. All rights reserved.</span>
+      <span><a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a><a href="#" data-en="Terms" data-ar="الشروط">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating -->
+<button id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+<a class="wa-btn" href="https://wa.me/966112345678" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  /* ---------- LANGUAGE SWITCH (EN / AR + RTL) ---------- */
+  var bsCss = document.getElementById('bsCss');
+  var LTR = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+  var RTL = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css';
+  function setLang(l){
+    try{ localStorage.setItem('darnaLang', l); }catch(e){}
+    document.documentElement.lang = l;
+    document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+    document.body.classList.toggle('lang-ar', l === 'ar');
+    bsCss.href = (l === 'ar') ? RTL : LTR;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var t = el.getAttribute('data-' + l);
+      if(t !== null) el.textContent = t;
+    });
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      el.placeholder = el.getAttribute('data-' + l + '-ph') || '';
+    });
+    document.querySelectorAll('.lang-opt').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === l);
+    });
+    document.title = (l === 'ar') ? 'دارنا العقارية | عقارات السعودية' : 'Darna Estates | Real Estate in Saudi Arabia';
+  }
+  document.querySelectorAll('.lang-opt').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  var saved = 'en';
+  try{ saved = localStorage.getItem('darnaLang') || 'en'; }catch(e){}
+  setLang(saved);
+
+  /* ---------- PRELOADER ---------- */
+  window.addEventListener('load', function(){ document.body.classList.add('loaded'); });
+  setTimeout(function(){ document.body.classList.add('loaded'); }, 2500);
+
+  /* ---------- NAVBAR SCROLL STATE + BACK TO TOP ---------- */
+  var nav = document.getElementById('mainNav'), toTop = document.getElementById('toTop');
+  function onScroll(){
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    toTop.classList.toggle('show', window.scrollY > 450);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- CLOSE MOBILE MENU ON LINK CLICK ---------- */
+  var menuEl = document.getElementById('navMenu');
+  menuEl.querySelectorAll('a.nav-link, a.btn-grad').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(window.innerWidth < 992){
+        var oc = bootstrap.Offcanvas.getInstance(menuEl);
+        if(oc) oc.hide();
+      }
+    });
+  });
+
+  /* ---------- HERO SLIDESHOW (auto) ---------- */
+  var slides = document.querySelectorAll('.hero-slide'), si = 0;
+  setInterval(function(){
+    slides[si].classList.remove('active');
+    si = (si + 1) % slides.length;
+    slides[si].classList.add('active');
+  }, 6000);
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- COUNTERS ---------- */
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el = en.target, target = +el.getAttribute('data-target'), t0 = null;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts - t0) / 1800, 1);
+        el.textContent = Math.floor(target * (0.2 + 0.8 * p * p)).toLocaleString('en-US');
+        if(p < 1) requestAnimationFrame(step); else el.textContent = target.toLocaleString('en-US');
+      }
+      requestAnimationFrame(step);
+      cio.unobserve(el);
+    });
+  }, {threshold:.5});
+  document.querySelectorAll('.counter').forEach(function(el){ cio.observe(el); });
+
+  /* ---------- PROPERTY FILTER ---------- */
+  var fBtns = document.querySelectorAll('.filter-btn'), pCols = document.querySelectorAll('.prop-col');
+  fBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      fBtns.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      var f = b.getAttribute('data-filter');
+      pCols.forEach(function(c){
+        var show = (f === 'all') || (c.getAttribute('data-cat') === f);
+        c.classList.toggle('prop-hide', !show);
+        if(show){
+          var card = c.querySelector('.prop-card');
+          card.classList.remove('prop-anim'); void card.offsetWidth; card.classList.add('prop-anim');
+        }
+      });
+    });
+  });
+
+  /* ---------- FORMS ---------- */
+  var cf = document.getElementById('contactForm');
+  cf.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!cf.checkValidity()){ cf.classList.add('was-validated'); return; }
+    document.getElementById('formOk').classList.add('show');
+    cf.reset();
+  });
+  var nf = document.getElementById('newsForm');
+  nf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = nf.querySelector('button'), lang = document.documentElement.lang;
+    btn.textContent = (lang === 'ar') ? '✓ تم الاشتراك' : '✓ Subscribed';
+    nf.reset();
+    setTimeout(function(){ btn.textContent = (lang === 'ar') ? 'اشترك' : 'Subscribe'; }, 3000);
+  });
+
+  /* ---------- WISHLIST HEARTS ---------- */
+  document.querySelectorAll('.prop-actions button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var i = b.querySelector('i');
+      if(i.classList.contains('bi-heart')){ i.className = 'bi bi-heart-fill'; b.style.background = 'var(--grad)'; b.style.color = '#fff'; }
+      else { i.className = 'bi bi-heart'; b.style.background = ''; b.style.color = ''; }
+    });
+  });
+})();
+</script>
+</body>
+</html>
